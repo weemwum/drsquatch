@@ -13,8 +13,6 @@ At a high level, the workflow for editing and pushing code involves making chang
 
 First, clone this repo so you're up to date:
 
-First of all, you're gonna need to **clone** the current **master** branch:
-
 ```
 git clone 'https://github.com/dr-squatch/drsquatch'
 ```
