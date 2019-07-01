@@ -1,0 +1,345 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+<section class="banner-landscape landscape-0" data-echo-background="{{'images/holiday-slate.jpg' | asset_url }}">
+ <div class="col-sm-offset-7 col-sm-5 content text-invert text-center home-layout">
+  <div class="col-xs-12 hidden-sm hidden-md hidden-lg" data-barley="index-header-img" data-barley-editor="image">
+   <img src="" data-echo="{{ 'images/holiday-img-only.png' | asset_url }}" alt class="header-img-top-sm-home">
+   </img>
+  </div>
+  <div data-barley="index-header" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+   <hgroup>
+    <h2 class="heading">
+     <span style="color: inherit; background-color: initial;">
+      save up to 30%
+     </span>
+    </h2>
+    <h2 class="heading">
+     <span style="font-family: 'Amatic SC', cursive; font-size: 50px; letter-spacing: 3px; line-height: 55px;">
+      with our
+     </span>
+     <br>
+      <span style="font-size: 50px; letter-spacing: 3px; line-height: 55px; font-family: 'Amatic SC', cursive; font-weight: 400; background-color: initial;">
+       holiday offers
+      </span>
+    </h2>
+    <a href="/holidays/all-holiday-offers-b" class="btn btn-secondary btn-lg btn-frame">
+     <i class="icon footprint">
+     </i>
+     Get some!
+    </a>
+   </hgroup>
+  </div>
+ </div>
+</section>
+{% endblock %}
+
+{% block header_bottom_content %}
+<div class="squatch-diff">
+ <section class="item">
+  <figure>
+   <img src="" data-echo="{{ 'images/diff-natural.png' | asset_url }}" alt class="img-responsive"/>
+  </figure>
+  <div data-barley="index-s1" data-barley-editor="plus" contenteditable="false" class="barley_hide_outline">
+   <p>
+    skin
+    <span style="line-height: 1.2; background-color: initial;">
+     nourishing
+     <br>
+    </span>
+    <span style="line-height: 1.2; background-color: initial;">
+     plant oils
+    </span>
+   </p>
+  </div>
+ </section>
+ <section class="item">
+  <figure>
+   <img src="" data-echo="{{ 'images/diff-scens.png' | asset_url }}" alt class="img-responsive"/>
+  </figure>
+  <div data-barley="index-s2" data-barley-editor="plus">
+   <p>
+    masculine
+    <br>
+     scents
+   </p>
+  </div>
+ </section>
+ <section class="item">
+  <figure>
+   <img src="" data-echo="{{ 'images/diff-lather.png' | asset_url }}" alt class="img-responsive"/>
+  </figure>
+  <div data-barley="index-s3" data-barley-editor="plus">
+   <p>
+    glorious
+    <br>
+     lather
+   </p>
+  </div>
+ </section>
+ <section class="item">
+  <figure>
+   <img src="" data-echo="{{ 'images/diff-usa.png' | asset_url }}" alt class="img-responsive"/>
+  </figure>
+  <div data-barley="index-s4" data-barley-editor="plus">
+   <p>
+    Handmade
+    <br>
+     in the usa
+   </p>
+  </div>
+ </section>
+ <section class="item">
+  <figure>
+   <img src="" data-echo="{{ 'images/diff-chemical.png' | asset_url }}" alt class="img-responsive"/>
+  </figure>
+  <div data-barley="index-s5" data-barley-editor="plus">
+   <p>
+    no harsh
+    <br>
+     chemicals
+   </p>
+  </div>
+ </section>
+</div>
+{% endblock %}
+
+
+{% block page_content %}
+<section class="squatch-collection bg-alt pholder">
+ <div class="pholder-header" data-barley="index-collection-header" data-barley-editor="advanced">
+  <h1 class="heading">
+   the squatch collection
+  </h1>
+ </div>
+ <div class="row">
+  <section class="b-product col-sm-4">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img1" data-barley-editor="image" contenteditable="false">
+    <a href="/collections/bar-soap">
+     <img src="" data-echo="{{ 'images/collection-pine-tar-2.png' | asset_url }}" alt class="img-responsive">
+    </a>
+   </div>
+   <div data-barley="index-coll-desc1" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     bar soap
+     <span class="hlight">
+      $7
+     </span>
+    </h2>
+    <p class="ucase">
+     handmade soap,
+     <br class="visible-sm">
+      amazing scents
+    </p>
+    <a href="/collections/bar-soap" class="btn btn-secondary btn-frame btn-sm">
+     <i class="icon footprint">
+     </i>
+     Shop now
+    </a>
+   </div>
+  </section>
+  <section class="b-product col-sm-4">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img2" data-barley-editor="image" contenteditable="false">
+    <a href="/subscription" contenteditable="false">
+     <img src="" data-echo="{{ 'images/collection-soapscription-2.png' | asset_url }}" alt class="img-responsive">
+     </img>
+    </a>
+   </div>
+   <div data-barley="index-coll-desc2" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     soapscription
+     <span class="hlight">
+      $7
+      <small>
+       /mo
+      </small>
+     </span>
+    </h2>
+    <p class="ucase">
+     SubScribe and get free shipping
+    </p>
+    <a href="/subscription" class="btn btn-success btn-frame btn-sm">
+     <i class="icon footprint">
+     </i>
+     Subscribe
+    </a>
+   </div>
+  </section>
+  <section class="b-product col-sm-4">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img3" data-barley-editor="image" contenteditable="false">
+    <a href="/collections/cologne">
+     <img src="" data-echo="{{ 'images/collection-cologne-2.png' | asset_url }}" alt class="img-responsive">
+     </img>
+    </a>
+   </div>
+   <div data-barley="index-coll-desc3" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     cologne
+     <span class="hlight">
+      $42
+     </span>
+    </h2>
+    <p class="ucase">
+     subtly accentuate
+     <br class="visible-sm">
+      your manly musk
+    </p>
+    <a href="/collections/cologne" class="btn btn-secondary btn-frame btn-sm">
+     <i class="icon footprint">
+     </i>
+     Shop now
+    </a>
+   </div>
+  </section>
+ </div>
+</section>
+<section class="featured-in" data-echo-background="{{ 'images/cardboard-bg.jpg' | asset_url }}" >
+ <div class="pholder-header">
+  <h3 class="heading">
+   As Seen In
+  </h3>
+ </div>
+ <div class="clearfix">
+  <section class="item">
+   <figure>
+    <img src="" data-echo="{{ 'images/logo-esquire.png' | asset_url }}" alt class="img-responsive"/>
+   </figure>
+  </section>
+  <section class="item">
+   <figure>
+    <img src="" data-echo="{{ 'images/logo-mens-health.png' | asset_url }}" alt class="img-responsive"/>
+   </figure>
+  </section>
+  <section class="item">
+   <figure>
+    <img src="" data-echo="{{ 'images/logo-uncrate.png' | asset_url }}" alt class="img-responsive"/>
+   </figure>
+  </section>
+  <section class="item">
+   <figure>
+    <img src="" data-echo="{{ 'images/logo-birchbox.png' | asset_url }}" alt class="img-responsive"/>
+   </figure>
+  </section>
+  <section class="item">
+   <figure>
+    <img src="" data-echo="{{ 'images/logo-mens-journal.png' | asset_url }}" alt class="img-responsive"/>
+   </figure>
+  </section>
+ </div>
+</section>
+<section class="pholder verified-reviews">
+ <div class="pholder-header barley_hide_outline" data-barley="reviews-heading" data-barley-editor="advanced" contenteditable="false">
+  <h1 class="heading hlight">
+   2850+ VERIFIED REVIEWS
+  </h1>
+ </div>
+ <div class="row hpad">
+  <div class="col-lg-6 col-md-12 col-sm-12 hidden-xs">
+   <div class="well bg-alt reviews-box home_new_reviews">
+    <div class="media b-review">
+     <div class="media-body barley_hide_outline" data-barley="review-1" data-barley-editor="advanced" contenteditable="false">
+      <h4 class="media-heading">
+       300 lb Cage fighter approved!
+      </h4>
+      <p>
+       Between boxing, jui-jitsu , running, and lifting weights I shower alot. This soap is fantastic and doesn't damage my skin like chemical based soaps do, buy it  --
+       <i>
+        Scott L.
+       </i>
+      </p>
+     </div>
+     <div class="media-right" data-barley="review-1-img" data-barley-editor="image">
+      <img class="media-object" src="" data-echo="{{ 'images/reviewer-1.jpg' | asset_url }}" alt/>
+     </div>
+    </div>
+    <div class="media b-review">
+     <div class="media-left barley_hide_outline" data-barley="review-2-img" data-barley-editor="image" contenteditable="false">
+      <img class="media-object" src="" data-echo="{{ 'images/reviewer-2.jpg' | asset_url }}" alt/>
+     </div>
+     <div class="media-body barley_hide_outline" data-barley="review-2" data-barley-editor="advanced" contenteditable="false">
+      <h4 class="media-heading">
+       Awesome Man Soap, Pine Tar Rocks!
+      </h4>
+      <p>
+       The soap works wonders. I can punch steaks out of cows, drink lots of beer with no hangovers, and lift buildings. --
+       <i>
+        Chris T.
+       </i>
+      </p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="col-xs-12 hidden-md small-caption-details hidden-sm hidden-lg">
+   <div class="well bg-alt">
+    <div class="media b-review">
+     <div class="row">
+      <div class="col-xs-12 small-author-detail" data-barley="review-1-sm" data-barley-editor="advanced">
+       <img class="media-object author-detail-img pull-left" src="" data-echo="{{ 'images/reviewer-1.jpg' | asset_url }}" alt>
+        <h4 class="media-heading">
+         300 lb Cage fighter approved!
+        </h4>
+       </img>
+      </div>
+     </div>
+     <div class="media-body" data-barley="review-1-sm-body" data-barley-editor="advanced">
+      <p>
+       Between boxing, jui-jitsu , running, and lifting weights I shower alot. This soap is fantastic and doesn't damage my skin like chemical based soaps do, buy it  --
+       <a href="/index">
+        <em>
+         Scott L.
+        </em>
+       </a>
+      </p>
+     </div>
+    </div>
+    <div class="media b-review">
+     <div class="row">
+      <div class="col-xs-12 small-author-detail" data-barley="review-2-sm" data-barley-editor="advanced">
+       <a href="/index">
+        <img class="media-object author-detail-img pull-left" src="" data-echo="{{ 'images/reviewer-2.jpg' | asset_url }}" alt/>
+       </a>
+       <h4 class="media-heading">
+        Awesome Man Soap, Pine Tar Rocks!
+       </h4>
+      </div>
+     </div>
+     <div class="media-body" data-barley="review-2-sm-body" data-barley-editor="advanced">
+      <p>
+       The soap works wonders. I can punch steaks out of cows, drink lots of beer with no hangovers, and lift buildings. --
+       <a href="/index">
+        <em>
+         Chris T.
+        </em>
+       </a>
+      </p>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="col-lg-6 col-lg-offset-0 col-md-6 col-md-offset-3 col-sm-12">
+   <div class="embed-responsive embed-responsive-16by9">
+    <iframe id="youtube-iframe" class="embed-responsive-item" data-src="https://www.youtube.com/embed/s_zB1Mvz79Q?enablejsapi=1">
+    </iframe>
+   </div>
+  </div>
+ </div>
+</section>
+<section class="take-this quiz pholder hpad" data-echo-background="{{ 'images/bg-forest.jpg' | asset_url }}">
+ <div data-barley="index-quiz" data-barley-editor="advanced">
+  <h1 class="heading">
+   soap selector quiz
+  </h1>
+  <p>
+   explore our bar-oreal forest
+   <br class="hidden-xs">
+    to find your perfect soap
+  </p>
+ </div>
+ <a href="/quiz" class="btn btn-frame btn-md btn-secondary" data-barley="index-quiz-link" data-barley-editor="linkedit">
+  <i class="icon footprint">
+  </i>
+  take the quiz
+ </a>
+</section>
+{% endblock %}

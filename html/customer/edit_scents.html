@@ -1,0 +1,108 @@
+{% from 'macros.html' import render_sorted_products %}
+{% extends "base.html" %}
+
+{% block header_content %}{% endblock %}
+
+{% block page_content %}
+<div class="inner-container">
+
+  {% include "components/form_feedback.html" %}
+
+  <section class="errors">
+    <div class="row">
+      <div class="container error-container my-account">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <div class="alert alert-danger">
+              {{ message | safe }}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+      </div>
+    </div>
+  </section>
+
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1">
+      <h2 class="text-center _mb-20">
+        Choose your scents (<span id="total_scents">X</span> Total)
+      </h2>
+
+      <div class="scent-template-holder" style="min-height: 50vh;">
+        <div class="row -flex scents scent-edit-row"></div>
+        <div class="col-xs-12 _mt-20 _mb-40">
+          <a href="/customer/account" class="btn btn-primary pull-left">Go Back</a>
+          <button type="submit" class="btn btn-secondary pull-right" id="confirm-btn">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> {# .inner-container #}
+
+<script type="text/template" class="col-xs-12 col-md-4 _pl-0 _pr-0" id="scent_template">
+  <div class="product-item">
+    <%= image %>
+    <h4 class="_mt-0 _mb-20"><strong><%= name %></strong></h4>
+    <div class="quantity-control">
+      <button class="qty-down"><i class="fa fa-minus"></i></button>
+      <span class="qty"><%= qty %></span>
+      <button class="qty-up"><i class="fa fa-plus"></i></button>
+    </div>
+    <p class="description"><%= description %></p>
+  </div>
+</script>
+{% endblock page_content %}
+
+{% block page_javascript %}
+<script>
+
+  {% set found_sub = [] %}
+    {% for s in customer.subscriptions %}
+    {% if s.id|string == args['id'][0] %}
+      {% do found_sub.append(s) %}
+    {% endif %}
+  {% endfor %}
+
+  {% set sub = found_sub[0] %}
+  {% set prod = sub.billing.product %}
+  {% set chosen_scents = sub.custom_data.survey.values() %}
+
+  // Determine number of available scents
+  var qty = 1;
+  var term_type = 1;
+  {% for t in prod.taxonomy %}
+    {% if "collection-qty-" in t.slug %}
+      qty = parseInt("{{ t.slug.replace('collection-qty-','') }}");
+    {% endif %}
+    {% if "collection-term-" in t.slug %}
+      term_type = parseInt("{{ t.slug.replace('collection-term-','') }}");
+    {% endif %}
+  {% endfor %}
+  if (isNaN(term_type)) term_type = 1
+  if (isNaN(qty)) qty = 1
+  var num_scent_choices = qty * term_type;
+
+  // Populate availableScents to use with Backbone
+  {% set scents = store.shop_products(category='collection-scent') %}
+  var availableScents = {{ render_sorted_products(scents, 'subscription/products_array_js.html') }}
+
+  // Set the correct quantities for each scent
+  var chosenSkus = {{ chosen_scents | tojson }}
+  availableScents.forEach(function(scent) {
+    var matchingSkus = chosenSkus.filter(function(sku) { return sku == scent.sku })
+    scent.qty = matchingSkus.length
+  })
+
+  // Have Backbone submit the form when the button is clicked
+  $(document).on("click", "#confirm-btn", function() {
+    BBSafe.trigger("form:submitClicked", '{{ sub.id }}');
+  });
+</script>
+<script src="{{ 'js/backbone_account_new.js' | asset_url }}"></script>
+{% endblock %}

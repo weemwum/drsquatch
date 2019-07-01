@@ -1,0 +1,506 @@
+{% extends "base.html" %} {% block header_content %}
+
+<section class="home-mobile-banner">
+  <div class="top-text">
+    <h2>SOAPSCRIBE TODAY & GET FREE SHIPPING FOR LIFE</h2>
+    <a href="/subscription" contenteditable="false">
+      <img src="{{ 'images/soapscription-home-col.png' | asset_url }}" alt="Soapscribe Banner" class="img-responsive">
+      </img>
+    </a>
+  </div>
+  <div class="bottom-text">
+    <a href="/subscription" class="btn-home-top">SOAPSCRIBE</a>
+    <h2>FEEL LIKE A MAN, SMELL LIKE A CHAMPION</h2>
+  </div>
+</section>
+
+<div id="video-popup" class="overlay is-hidden" onclick="closeVideoPopup()">
+  <div class="popup" onclick="event.stopPropagation()">
+    <a class="close" onclick="closeVideoPopup()">×</a>
+    <div class="content">
+      <div class="embed-container">
+        <div class="fb-video embed-responsive-item"
+          data-href="https://www.facebook.com/facebook/videos/1152109414931703/" data-allowfullscreen="true"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="fb-root"></div>
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: "300984050310525",
+        xfbml: true,
+        version: "v2.5"
+      });
+
+      // Get Embedded Video Player API Instance
+      var my_video_player;
+      FB.Event.subscribe("xfbml.ready", function (msg) {
+        console.log("readumy_video_player", msg);
+        if (msg.type === "video") {
+          window.my_video_player = msg.instance;
+          console.log(my_video_player);
+        } else {
+          window.my_video_player = null;
+        }
+      });
+    };
+
+    (function (d, s, id) {
+      var js,
+        fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1";
+      fjs.parentNode.insertBefore(js, fjs);
+    })(document, "script", "facebook-jssdk");
+  </script>
+  <script>
+    var videoPopup = document.getElementById("video-popup");
+    var embedContainer = document.getElementsByClassName("embed-container")[0];
+    function openVideoPopup() {
+      videoPopup.classList.remove("is-hidden");
+      if (window.my_video_player) {
+        my_video_player.play();
+      }
+    }
+    function closeVideoPopup() {
+      videoPopup.classList.add("is-hidden");
+      embedContainer.innerHTML = embedContainer.innerHTML;
+      if (window.my_video_player) {
+        my_video_player.pause();
+      }
+    }
+  </script>
+</div>
+{% endblock %} {% block page_content %}
+
+{% import 'components/video.html' as video %}
+  <div class="banner-landscape banner-landscape-test banner-landscape-lg landscape-0">
+    {{ video.inline('5b70x8m3hp') }}
+   </div>
+
+<h1 class="market-font market-heading dark-beige-market text-center">
+  - Watch Our Video -
+</h1>
+<h1 class="metropolis-semi-bold dark-beige-metropolis text-center">
+  15 Million Views and Counting
+</h1>
+
+<section class="featured-in" data-echo-background="{{ 'images/as-seen-in-banner.jpg' | asset_url }}">
+  <div class="pholder-header">
+    <h3 class="heading">
+      As Seen In
+    </h3>
+  </div>
+  <div class="clearfix">
+    <section class="item">
+      <figure>
+        <img src="{{ 'images/mens-health-logo.png' | asset_url }}" alt class="img-responsive" />
+      </figure>
+    </section>
+    <section class="item">
+      <figure>
+        <img src="{{ 'images/birchbox-logo.png' | asset_url }}" alt class="img-responsive" />
+      </figure>
+    </section>
+    <section class="item">
+      <figure>
+        <img src="{{ 'images/mens-journal-logo.png' | asset_url }}" alt class="img-responsive" />
+      </figure>
+    </section>
+    <section class="item">
+      <figure>
+        <img src="{{ 'images/uncrate-logo.png' | asset_url }}" alt class="img-responsive" />
+      </figure>
+    </section>
+    <section class="item">
+      <figure>
+        <img src="{{ 'images/esquire-logo.png' | asset_url }}" alt class="img-responsive" />
+      </figure>
+    </section>
+  </div>
+</section>
+
+<h1 class="heading slider-featured-products">MOST POPULAR</h1>
+
+<div class="row home-popular-products">
+  <section class="b-product col-sm-4">
+    <div class="inline-block barley_hide_outline" data-barley="index-coll-img1" data-barley-editor="image"
+      contenteditable="false">
+      <a href="https://drsquatch.com/shop/product/70702082">
+        <img src="{{ 'images/PineTar-xxl.png' | asset_url }}" alt class="img-responsive">
+      </a>
+    </div>
+    <div data-barley="index-coll-desc1" data-barley-editor="advanced" contenteditable="false"
+      class="barley_hide_outline">
+      <h2 class="heading">
+        - Pine Tar -
+      </h2>
+      <p class="">
+        SMELL LIKE A MAN
+      </p>
+      <a href="https://drsquatch.com/shop/product/70702082" class="btn btn-secondary btn-frame btn-sm">
+        <span class="hlight">
+          $7
+        </span>
+        Shop now
+      </a>
+    </div>
+  </section>
+
+  <section class="b-product col-sm-4">
+    <div class="inline-block barley_hide_outline" data-barley="index-coll-img5" data-barley-editor="image"
+      contenteditable="false">
+      <a href="/collections/best-sellers">
+        <img src="{{ 'images/sampler-home-col.png' | asset_url }}" alt class="img-responsive">
+      </a>
+    </div>
+    <div data-barley="index-coll-desc5" data-barley-editor="advanced" contenteditable="false"
+      class="barley_hide_outline">
+      <h2 class="heading">
+        Sampler Bundle
+      </h2>
+      <p class="">
+        A 4-pack of our best sellers.
+      </p>
+      <a href="/collections/best-sellers" class="btn btn-secondary btn-frame btn-sm">
+        <span class="hlight">
+          $27
+        </span>
+        Shop now
+      </a>
+    </div>
+  </section>
+
+  <section class="b-product col-sm-4">
+    <div class="inline-block barley_hide_outline" data-barley="index-coll-img2" data-barley-editor="image"
+      contenteditable="false">
+      <a href="/subscription" contenteditable="false">
+        <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{ 'images/soapscription-home-col.png' | asset_url }}"
+          alt class="img-responsive lazy">
+        </img>
+      </a>
+    </div>
+    <div data-barley="index-coll-desc2" data-barley-editor="advanced" contenteditable="false"
+      class="barley_hide_outline">
+      <h2 class="heading">
+        soapscription
+      </h2>
+      <p class>
+        Handmade soaps delivered monthly.
+      </p>
+      <a href="/subscription" class="btn btn-secondary btn-frame btn-sm">
+        <span class="hlight">
+          $7
+          <small>
+            /mo
+          </small>
+        </span>
+        Subscribe
+      </a>
+    </div>
+  </section>
+</div> <!-- .row-->
+
+<section class="pholder verified-reviews off-white-bg">
+  <div class="row pholder-header barley_hide_outline review-text" data-barley="reviews-heading"
+    data-barley-editor="advanced" contenteditable="false">
+    <h2 class="heading">
+      3000+ VERIFIED REVIEWS
+    </h2>
+    <p class="reviews-subtitle">Don't take our word for it... hear what guys just like you are saying about Dr. Squatch.
+    </p>
+  </div>
+
+  <div class="row reviews-video">
+    <div class="col-md-6 col-md-offset-3 col-sm-12" style="margin-top: -125px;">
+      {{ video.inline('804qxuxl0v') }}
+    </div>
+  </div>
+
+  <div class="row fb-reviews hpad">
+    <div class="fb-review-item col-md-6">
+      <a href="https://www.facebook.com/118075261668462/posts/1152109414931703"><img
+          style="max-width:100%; margin-bottom: 15px;" src="{{'images/alan-jacobson-fb.png' | asset_url}}"></a>
+    </div>
+    <div class="fb-review-item col-md-6">
+      <a href="https://www.facebook.com/118075261668462/posts/1152109414931703"><img
+          style="max-width:100%; margin-bottom: 15px;" src="{{'images/alisia-carlson-fb.png' | asset_url}}"></a>
+    </div>
+  </div>
+
+  <section class="home-squatch-collection squatch-collection off-white-bg pholder">
+    <div class="pholder-header" data-barley="index-collection-header" data-barley-editor="advanced">
+      <h1 class="heading">
+        the squatch collection
+      </h1>
+      <p style="margin-bottom:15px;">
+        Give our natural products a try and we guarantee your skin will feel more nourished, healthy, and will smell
+        amazing.
+      </p>
+    </div>
+    <div class="row">
+      <section class="b-product col-sm-4">
+        <div class="inline-block barley_hide_outline" data-barley="index-coll-img1" data-barley-editor="image"
+          contenteditable="false">
+          <a href="/collections/bar-soap">
+            <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{ 'images/gold-moss-home-col.png' | asset_url }}"
+              alt class="img-responsive lazy">
+            </img>
+          </a>
+        </div>
+        <div data-barley="index-coll-desc1" data-barley-editor="advanced" contenteditable="false"
+          class="barley_hide_outline">
+          <h2 class="heading">
+            bar soaps
+          </h2>
+          <p class>
+            9 natural ways to smell like a man.
+          </p>
+          <a href="/collections/bar-soap" class="btn btn-secondary btn-frame btn-sm">
+            <span class="hlight">
+              $7
+            </span>
+            Shop now
+          </a>
+        </div>
+      </section>
+      <section class="b-product col-sm-4">
+        <div class="inline-block barley_hide_outline" data-barley="index-coll-img2" data-barley-editor="image"
+          contenteditable="false">
+          <a href="/subscription" contenteditable="false">
+            <img src="{{ 'images/blank.gif' | asset_url }}"
+              data-src="{{ 'images/soapscription-home-col.png' | asset_url }}" alt class="img-responsive lazy">
+            </img>
+          </a>
+        </div>
+        <div data-barley="index-coll-desc2" data-barley-editor="advanced" contenteditable="false"
+          class="barley_hide_outline">
+          <h2 class="heading">
+            soapscription
+          </h2>
+          <p class>
+            Handmade soaps delivered monthly.
+          </p>
+          <a href="/subscription" class="btn btn-secondary btn-frame btn-sm">
+            <span class="hlight">
+              $7
+              <small>
+                /mo
+              </small>
+            </span>
+            Subscribe
+          </a>
+        </div>
+      </section>
+      <section class="b-product col-sm-4">
+        <div class="inline-block barley_hide_outline" data-barley="index-coll-img3" data-barley-editor="image"
+          contenteditable="false">
+          <a href="/collections/hair-care" contenteditable="false">
+            <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{ 'images/hair-care-home-col.png' | asset_url }}"
+              alt class="img-responsive lazy">
+            </img>
+          </a>
+        </div>
+        <div data-barley="index-coll-desc3" data-barley-editor="advanced" contenteditable="false"
+          class="barley_hide_outline">
+          <h2 class="heading">
+            hair care
+          </h2>
+          <p class>
+            100% NPA natural certified
+          </p>
+          <a href="/collections/hair-care" class="btn btn-secondary btn-frame btn-sm">
+            <span class="hlight">
+              $18
+            </span>
+            Shop Now
+          </a>
+        </div>
+      </section>
+      <section class="b-product col-sm-4">
+        <div class="inline-block barley_hide_outline" data-barley="index-coll-img4" data-barley-editor="image"
+          contenteditable="false">
+          <a href="/collections/cologne">
+            <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{ 'images/colognes-home-col.png' | asset_url }}"
+              alt class="img-responsive lazy">
+            </img>
+          </a>
+        </div>
+        <div data-barley="index-coll-desc4" data-barley-editor="advanced" contenteditable="false"
+          class="barley_hide_outline">
+          <h2 class="heading">
+            Colognes
+          </h2>
+          <p class>
+            Accentuate yourself, naturally
+          </p>
+          <a href="/collections/cologne" class="btn btn-secondary btn-frame btn-sm">
+            <span class="hlight">
+              $42
+            </span>
+            Shop now
+          </a>
+        </div>
+      </section>
+      <section class="b-product col-sm-4">
+        <div class="inline-block barley_hide_outline" data-barley="index-coll-img5" data-barley-editor="image"
+          contenteditable="false">
+          <a href="/collections/best-sellers">
+            <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{ 'images/sampler-home-col.png' | asset_url }}"
+              alt class="img-responsive lazy">
+            </img>
+          </a>
+        </div>
+        <div data-barley="index-coll-desc5" data-barley-editor="advanced" contenteditable="false"
+          class="barley_hide_outline">
+          <h2 class="heading">
+            Sampler Bundle
+          </h2>
+          <p class>
+            A 4-pack of our best sellers.
+          </p>
+          <a href="/collections/best-sellers" class="btn btn-secondary btn-frame btn-sm">
+            <span class="hlight">
+              $27
+            </span>
+            Shop now
+          </a>
+        </div>
+
+      </section>
+      <section class="b-product col-sm-4">
+        <div class="inline-block barley_hide_outline" data-barley="index-coll-img6" data-barley-editor="image"
+          contenteditable="false">
+          <a href="/collections/shave">
+            <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{ 'images/shave-home-col.png' | asset_url }}" alt
+              class="img-responsive lazy">
+            </img>
+          </a>
+        </div>
+        <div data-barley="index-coll-desc6" data-barley-editor="advanced" contenteditable="false"
+          class="barley_hide_outline">
+          <h2 class="heading">
+            Shave
+          </h2>
+          <p class>
+            Shave the traditional way.
+          </p>
+          <a href="/collections/shave" class="btn btn-secondary btn-frame btn-sm"><span class="hlight"> $12 </span>Shop
+            now</a>
+        </div>
+      </section>
+
+    </div>
+  </section>
+  <!-- END POPULAR-->
+
+
+  {% endblock %} {% block page_javascript %}
+  <script src="{{ 'js/ma5slider.combined.js' | asset_url }}"></script>
+  <style>
+    .slides {
+      font-size: 14px;
+    }
+  </style>
+  <link href="{{ 'css/plugins/ma5slider.min.css' | asset_url }}" rel="stylesheet" type="text/css" />
+  <script>
+    document.querySelector(".home-play-btn").addEventListener("click", e => {
+      let embed_video =
+        '<div class="embed-container"><iframe src="https://player.vimeo.com/video/269745059?autoplay=1" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>',
+        video_container = document.querySelector(
+          ".home-banner-container .banner-landscape"
+        );
+
+      video_container.innerHTML = embed_video;
+      video_container.classList.add("-active");
+      document.body.classList.add("-video-active");
+    });
+
+    jQuerySafe(window).on("load", function () {
+      jQuery3(".ma5slider").ma5slider();
+      //jQuerySafe('.home-play-btn').show();
+    });
+  </script>
+
+  <script>
+    /* lazyload.js (c) Lorenzo Giuliani
+    * MIT License (http://www.opensource.org/licenses/mit-license.html)
+    *
+    * expects a list of:
+    * `<img src="blank.gif" data-src="my_image.png" width="600" height="400" class="lazy">`
+    */
+    $(function () {
+      var $q = function (q, res) {
+        if (document.querySelectorAll) {
+          res = document.querySelectorAll(q);
+        } else {
+          var d = document,
+            a = d.styleSheets[0] || d.createStyleSheet();
+          a.addRule(q, "f:b");
+          for (var l = d.all, b = 0, c = [], f = l.length; b < f; b++)
+            l[b].currentStyle.f && c.push(l[b]);
+
+          a.removeRule(0);
+          res = c;
+        }
+        return res;
+      },
+        addEventListener = function (evt, fn) {
+          window.addEventListener
+            ? this.addEventListener(evt, fn, false)
+            : window.attachEvent
+              ? this.attachEvent("on" + evt, fn)
+              : (this["on" + evt] = fn);
+        },
+        _has = function (obj, key) {
+          return Object.prototype.hasOwnProperty.call(obj, key);
+        };
+      function loadImage(el, fn) {
+        var img = new Image(),
+          src = el.getAttribute("data-src");
+        img.onload = function () {
+          if (!!el.parent) el.parent.replaceChild(img, el);
+          else el.src = src;
+
+          fn ? fn() : null;
+        };
+        img.src = src;
+      }
+
+      function elementInViewport(el) {
+        var rect = el.getBoundingClientRect();
+
+        return (
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.top <=
+          (window.innerHeight || document.documentElement.clientHeight)
+        );
+      }
+
+      var images = new Array(),
+        query = $q("img.lazy"),
+        processScroll = function () {
+          for (var i = 0; i < images.length; i++) {
+            if (elementInViewport(images[i])) {
+              loadImage(images[i], function () {
+                images.splice(i, i);
+              });
+            }
+          }
+        };
+      // Array.prototype.slice.call is not callable under our lovely IE8
+      for (var i = 0; i < query.length; i++) {
+        images.push(query[i]);
+      }
+
+      processScroll();
+      addEventListener("scroll", processScroll);
+    });
+  </script>
+
+  {% endblock %}

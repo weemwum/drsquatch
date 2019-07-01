@@ -1,0 +1,99 @@
+{# This file is only used by test.html which uses base2.html which then calls it. It's here to test performance #}
+
+<script type='text/template' id='selected_cart_item_template'>
+<div class="cart-item media alert" role="alert">
+    <button type="button" class="close btn-cart-product-remove" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <div class="media-left cart-product-img-holder">
+      <%= image %>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading"><%= name %></h4>
+      <p class=''><%= description %></p>
+      <div class="meta">
+        <% if (single_purchasable === "True"){ %>
+          <div class="control-counter">
+            <a href="#"><i class="btn-quantity-decrease fa fa-minus"></i></a>
+            QTY <span class="count"><%= quantity %></span>
+            <a href="#"><i class="btn-quantity-increase fa fa-plus"></i></a>
+          </div>
+        <% } %>
+        <span class="price"><%= total_price_text %></span>
+        <input type='hidden' class='unit-price' value='<%= unit_price %>'</span>
+      </div>
+    </div>
+  </div>
+</script>
+
+<div id="cart-slide" class="modal fade">
+  <div id='cart-holder'>
+    <section class="cart-slide">
+      <header>
+        <h1 class="heading" data-dismiss="modal" aria-label="Close">Your Cart &nbsp;&nbsp;<i class="fa fa-times"></i></h1>
+      </header>
+      <div id="cart-item-holder" class='hide-if-empty'>
+      </div>
+      <div id='cart-empty' class='show-if-empty'>
+      	Your cart is empty!
+      </div>
+      <footer>
+        <div class="total hide-if-empty">
+          <ul class="line strong">
+            <li>SubTotal</li>
+            <li id='cart-sub-total-price'>$0.00</li>
+          </ul>
+        </div>
+
+        <div class="text-center">
+          <a href="/checkout" type="button" class="link-checkout btn btn-success btn-frame btn-lg hide-if-empty"><i class="icon footprint"></i> Checkout</a>
+          <a href="#" id='btn-close-cart' data-dismiss='modal' arlia-label="Close" class="btn btn-success btn-frame btn-lg show-if-empty"><i class="icon footprint"></i> Close</a>
+        </div>
+      </footer>
+    </section>
+  </div>
+</div>
+
+<script type='text/javascript'>
+  cartAvailableProducts = [];
+  
+  {% for product in store.products %}
+  {% set min_price = product.calc_min_ecom_price() %}
+  cartAvailableProducts.push({
+    name: '{{ product.name }}',
+    image: '{{ product | object_img_tag(css_class="media-object cart-product-object") }}',
+    single_purchasable: '{{ product.single_purchasable }}',
+    description: '{{ product.description if product.single_purchasable == False else "ONE TIME PURCHASE" }}',
+    total_price: {{ min_price }},
+    total_price_text: '{{ min_price | currency }}',
+    quantity: 1,
+    unit_price: {{ min_price }},
+    product_id: '{{ product.id }}'
+  });
+  {% endfor %}
+  cartItems = [];
+  console.log("Generating cart items...");
+   {% for cp in cart.products %}
+  {% set product = cp.instance.product %}
+
+  var cartItem = {
+    name: '{{ product.name }}',
+    image: '{{ product | object_img_tag(css_class="media-object cart-product-object") }}',
+    single_purchasable: '{{ product.single_purchasable }}',
+    description: '{{ product.description if product.single_purchasable == False else "ONE TIME PURCHASE" }}',
+    total_price: {{ cp.price }},
+    total_price_text: '{{ cp.price | currency }}',
+    quantity: {{ cp.quantity }},
+    unit_price: {{ cp.price / cp.quantity }},
+    product_id: '{{ product.id }}',
+    metadata: {}
+  };
+  
+   {% if cp.md %}
+  var metadata = {};
+    {% for prop in cp.md.data['survey'] %}
+    metadata['mf:cart.survey.{{prop}}.string'] = "{{ cp.md.data['survey'][prop] }}";
+    {% endfor %}
+    cartItem['metadata'] = metadata;
+   {% endif %}
+  cartItems.push(cartItem);
+   {% endfor %}
+</script>

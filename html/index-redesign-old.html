@@ -1,0 +1,361 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+<section class="banner-landscape banner-landscape-lg landscape-0" style="background-image: url('{{'images/home-banner.jpg' | asset_url }}')" data-barley="index-bg-img" data-barley-editor="bgimage">
+ <div class="col-sm-7 content text-invert text-center home-layout">
+  <div class="col-xs-12 hidden-sm hidden-md hidden-lg" data-barley="index-header-img-mobile" data-barley-editor="image">
+   <img src="{{ 'images/goldmoss-no-side-bar.png' | asset_url }}" alt class="header-img-top-sm-home">
+  </div>
+  <div data-barley="index-header" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+   <hgroup>
+    <h2 class="heading metropolis-semi-bold">
+     <span style="">
+      ALL NATURAL<br>
+      MANLY SOAPS
+     </span>
+    </h2>
+    <p class="">
+     <span style="font-weight: normal; font-size: 18px; letter-spacing: 2px;">
+      Better smells &amp; better skin<br>
+	  without all the chemicals.
+     </span>
+    </p>
+    <a href="/collections/bar-soap" class="btn btn-secondary btn-md btn-frame">
+     SHOP NOW
+    </a>
+   </hgroup>
+  </div>
+ </div>
+</section>
+{% endblock %}
+
+{% block header_bottom_content %}
+<div class="squatch-diff">
+ <section class="item">
+  <figure>
+   <img src="{{ 'images/oils-icon.png' | asset_url }}" alt class="img-responsive"/>
+  </figure>
+  <div data-barley="index-s1" data-barley-editor="plus" contenteditable="false" class="barley_hide_outline">
+   <p>
+    skin-nourishing
+    <br>
+    plant oils
+   </p>
+  </div>
+ </section>
+ <section class="item">
+  <figure>
+   <img src="{{ 'images/masculine-icon.png' | asset_url }}" alt class="img-responsive"/>
+  </figure>
+  <div data-barley="index-s2" data-barley-editor="plus">
+   <p>
+    masculine
+    <br>
+    scents
+   </p>
+  </div>
+ </section>
+ <section class="item">
+  <figure>
+   <img src="{{ 'images/lather-icon.png' | asset_url }}" alt class="img-responsive"/>
+  </figure>
+  <div data-barley="index-s3" data-barley-editor="plus">
+   <p>
+    glorious
+    <br>
+    lather
+   </p>
+  </div>
+ </section>
+ <section class="item">
+  <figure>
+   <img src="{{ 'images/usa-icon.png' | asset_url }}" alt class="img-responsive"/>
+  </figure>
+  <div data-barley="index-s4" data-barley-editor="plus">
+   <p>
+    Handmade
+    <br>
+    in the usa
+   </p>
+  </div>
+ </section>
+ <section class="item">
+  <figure>
+   <img src="{{ 'images/no-chemicals-icon.png' | asset_url }}" alt class="img-responsive"/>
+  </figure>
+  <div data-barley="index-s5" data-barley-editor="plus">
+   <p>
+    no
+    <br>
+    chemicals
+   </p>
+  </div>
+ </section>
+</div>
+{% endblock %}
+
+
+{% block page_content %}
+<section class="squatch-collection off-white-bg pholder">
+ <div class="pholder-header" data-barley="index-collection-header" data-barley-editor="advanced">
+  <h1 class="heading">
+   the squatch collection
+  </h1>
+ </div>
+ <div class="row">
+  <section class="b-product col-sm-4">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img1" data-barley-editor="image" contenteditable="false">
+    <a href="/collections/bar-soap">
+     <img src="{{ 'images/gold-moss-home-col.png' | asset_url }}" alt class="img-responsive">
+    </a>
+   </div>
+   <div data-barley="index-coll-desc1" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     bar soaps
+    </h2>
+    <p class="">
+     9 natural ways to smell like a man.
+    </p>
+    <a href="/collections/bar-soap" class="btn btn-secondary btn-frame btn-sm">
+     <span class="hlight">
+      $7
+     </span>
+     Shop now
+    </a>
+   </div>
+  </section>
+  <section class="b-product col-sm-4">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img2" data-barley-editor="image" contenteditable="false">
+    <a href="/subscription" contenteditable="false">
+     <img src="{{ 'images/soapscription-home-col.png' | asset_url }}" alt class="img-responsive">
+    </a>
+   </div>
+   <div data-barley="index-coll-desc2" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     soapscription
+    </h2>
+    <p class="">
+     Handmade soaps delivered monthly.
+    </p>
+    <a href="/subscription" class="btn btn-secondary btn-frame btn-sm">
+     <span class="hlight">
+      $7<small>/mo</small>
+     </span>
+     Subscribe
+    </a>
+   </div>
+  </section>
+   <section class="b-product col-sm-4">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img3" data-barley-editor="image" contenteditable="false">
+    <a href="/collections/hair-care" contenteditable="false">
+     <img src="{{ 'images/hair-care-home-col.png' | asset_url }}" alt class="img-responsive">
+    </a>
+   </div>
+   <div data-barley="index-coll-desc3" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     hair care
+    </h2>
+    <p class="">
+     100% NPA natural certified
+    </p>
+    <a href="/collections/hair-care" class="btn btn-secondary btn-frame btn-sm">
+     <span class="hlight">
+      $18
+     </span>
+     Shop Now
+    </a>
+   </div>
+  </section>
+  <section class="b-product col-sm-4">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img4" data-barley-editor="image" contenteditable="false">
+    <a href="/collections/cologne">
+     <img src="{{ 'images/colognes-home-col.png' | asset_url }}" alt class="img-responsive">
+    </a>
+   </div>
+   <div data-barley="index-coll-desc4" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     Colognes
+    </h2>
+    <p class="">
+     Accentuate yourself, naturally
+    </p>
+    <a href="/collections/cologne" class="btn btn-secondary btn-frame btn-sm">
+     <span class="hlight">
+      $42
+     </span>
+     Shop now
+    </a>
+   </div>
+  </section>
+  <section class="b-product col-sm-4">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img5" data-barley-editor="image" contenteditable="false">
+    <a href="/collections/best-sellers">
+     <img src="{{ 'images/sampler-home-col.png' | asset_url }}" alt class="img-responsive">
+    </a>
+   </div>
+   <div data-barley="index-coll-desc5" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     Sampler Bundle
+    </h2>
+    <p class="">
+     A 4-pack of our best sellers.
+    </p>
+    <a href="/collections/best-sellers" class="btn btn-secondary btn-frame btn-sm">
+     <span class="hlight">
+      $27
+     </span>
+     Shop now
+    </a>
+   </div>
+  </section>
+  <section class="b-product col-sm-4">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img6" data-barley-editor="image" contenteditable="false">
+    <a href="/collections/shave">
+     <img src="{{ 'images/shave-home-col.png' | asset_url }}" alt class="img-responsive">
+    </a>
+   </div>
+   <div data-barley="index-coll-desc6" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     Shave
+    </h2>
+    <p class="">
+     Shave the traditional way.
+    </p>
+    <a href="/collections/shave" class="btn btn-secondary btn-frame btn-sm">
+     <span class="hlight">
+      $12
+     </span>
+     Shop now
+    </a>
+   </div>
+  </section>
+ </div>
+</section>
+<section class="featured-in" data-echo-background="{{ 'images/as-seen-in-banner.jpg' | asset_url }}">
+ <div class="pholder-header">
+  <h3 class="heading">
+   As Seen In
+  </h3>
+ </div>
+ <div class="clearfix">
+  <section class="item">
+   <figure>
+    <img src="{{ 'images/mens-health-logo.png' | asset_url }}" alt class="img-responsive"/>
+   </figure>
+  </section>
+  <section class="item">
+   <figure>
+    <img src="{{ 'images/birchbox-logo.png' | asset_url }}" alt class="img-responsive"/>
+   </figure>
+  </section>
+  <section class="item">
+   <figure>
+    <img src="{{ 'images/mens-journal-logo.png' | asset_url }}" alt class="img-responsive"/>
+   </figure>
+  </section>
+  <section class="item">
+   <figure>
+    <img src="{{ 'images/uncrate-logo.png' | asset_url }}" alt class="img-responsive"/>
+   </figure>
+  </section>
+  <section class="item">
+   <figure>
+    <img src="{{ 'images/esquire-logo.png' | asset_url }}" alt class="img-responsive"/>
+   </figure>
+  </section>
+ </div>
+</section>
+<section class="pholder verified-reviews off-white-bg">
+ <div class="pholder-header barley_hide_outline" data-barley="reviews-heading" data-barley-editor="advanced" contenteditable="false">
+  <h2 class="heading">
+   2850+ VERIFIED REVIEWS
+  </h2>
+   <p class="reviews-subtitle">Don't take our word for it... hear what guys just like you are saying about Dr. Squatch.</p>
+ </div>
+ <div class="row reviews-video">
+  <div class="col-md-6 col-md-offset-3 col-sm-12">
+    {% import 'components/video.html' as video %}
+    {{ video.inline ('5b70x8m3hp')}}
+  </div>
+ </div>
+ <div class="row hpad">
+  <div class="col-md-12 col-sm-12">
+   <div class="bg-alt reviews-box home_new_reviews">
+    <div class="media b-review col-sm-4">
+     <div class="media-top" data-barley="review-1-img" data-barley-editor="image">
+      <img class="" src="{{ 'images/reviewer-1.jpg' | asset_url }}" alt/>
+     </div>
+     <div class="media-body barley_hide_outline" data-barley="review-1" data-barley-editor="advanced" contenteditable="false">
+      <h4 class="media-heading">
+       300 lb Cage fighter approved!
+      </h4>
+      <p>
+       Between boxing, jui-jitsu , running, and lifting weights I shower alot. This soap is fantastic and doesn't damage my skin like chemical based soaps do, buy it
+       <br>
+       <b class="metropolis-semi-bold">
+        Scott L.
+       </b>
+      </p>
+     </div>
+    </div>
+    <div class="media b-review col-sm-4">
+     <div class="media-top barley_hide_outline" data-barley="review-2-img" data-barley-editor="image" contenteditable="false">
+      <img class="" src="{{ 'images/reviewer-2.jpg' | asset_url }}" alt/>
+     </div>
+     <div class="media-body barley_hide_outline" data-barley="review-2" data-barley-editor="advanced" contenteditable="false">
+      <h4 class="media-heading">
+       Awesome Man Soap, Pine Tar Rocks!
+      </h4>
+      <p>
+       The soap works wonders. I can punch steaks out of cows, drink lots of beer with no hangovers, and lift buildings.
+       <br>
+       <b class="metropolis-semi-bold">
+        Chris T.
+       </b>
+      </p>
+     </div>
+    </div>
+    <div class="media b-review col-sm-4">
+     <div class="media-top barley_hide_outline" data-barley="review-3-img" data-barley-editor="image" contenteditable="false">
+      <img class="" src="{{ 'images/reviewer-3.jpg' | asset_url }}" alt/>
+     </div>
+     <div class="media-body barley_hide_outline" data-barley="review-3" data-barley-editor="advanced" contenteditable="false">
+      <h4 class="media-heading">
+       Awesome Man Soap, Pine Tar Rocks!
+      </h4>
+      <p>
+       The soap works wonders. I can punch steaks out of cows, drink lots of beer with no hangovers, and lift buildings.
+       <br>
+       <b class="metropolis-semi-bold">
+        MIKE S.
+       </b>
+      </p>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+<section class="take-this quiz pholder hpad"  data-echo-background="{{ 'images/quiz-banner-bg.jpg' | asset_url }}">
+ <div class="quiz-banner-img hidden-md hidden-sm hidden-xs">
+   <img src="{{'images/quiz-banner-squatch.png' | asset_url}}">
+ </div>
+ <div class="quiz-banner-content" data-barley="index-quiz" data-barley-editor="advanced">
+  <p class="playball">
+    the Dr. Squatch
+  </p>
+  <h2 class="heading metropolis-semi-bold">
+    SOAP QUIZ
+  </h2>
+  <p class="col-xs-10 col-xs-offset-1">
+    Find the best soap for your personality &amp; skin type
+  </p>
+   <a href="/quiz" class="btn btn-frame btn-md btn-success" data-barley="index-quiz-link" data-barley-editor="linkedit">
+    take the quiz
+   </a>
+ </div>
+  <div class="quiz-banner-soap hidden-md hidden-sm">
+   <img src="{{'images/quiz-banner-soap.jpg' | asset_url}}">
+ </div>
+</section>
+{% endblock %}

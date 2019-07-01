@@ -1,0 +1,159 @@
+{% set cart = active_cart() %}
+<!DOCTYPE HTML>
+<html>
+ <html lang>
+  <head>
+   <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+      <title>
+       {% block title %} {{ page_title }} {% endblock %}
+      </title>
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" type="text/css" href="{{ 'css/plugins/jquery.formstyler.css' | asset_url }}">
+       <link rel="stylesheet" type="text/css" href="{{ 'css/main.css' | asset_url }}">
+        <link rel="stylesheet" type="text/css" href="{{ 'css/style.css' | asset_url }}">
+
+{{ 'css/product-reviews.css' | asset_url | stylesheet_tag }}
+         <!--link rel="stylesheet/less" type="text/css" href="less/main.less">
+<script src="js/less.min.js" type="text/javascript"></script-->
+         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+         <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+        </link>
+       </link>
+      </link>
+     </meta>
+    </meta>
+   </meta>
+   {{ settings.header_code | safe }}
+<script>
+  // Forces HTTPS
+  if (window.location.protocol != "https:")
+    window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+</script>
+  </head>
+  <body>
+   <!-- MAIN CONTAINER -->
+   <div class="container">
+    {% include 'components/topheader.html' %}
+    <div class="wrapper-content w-bg">
+     <!-- Main Navigation -->
+     {% include 'components/nav.html' %}
+      {% block header_content %}
+     <section class="banner-landscape landscape-0" style="background-image: url('{{'images/banner-main-7.jpg' | asset_url }}')" data-barley="default-bg-img" data-barley-editor="bgimage">
+      {% block header_inner_content %}
+      <div class="col-sm-offset-7 col-sm-5 content text-invert text-center home-layout">
+       <div class="col-xs-12 hidden-sm hidden-md hidden-lg" data-barley="index-top-header-img" data-barley-editor="image">
+        <img src="{{ 'images/CedarCitrus-xxl.png' | asset_url }}" alt class="header-img-top-sm-home">
+        </img>
+       </div>
+       <div data-barley="index-top-header" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+       </div>
+      </div>
+      {% endblock %}
+     </section>
+     {% endblock %}
+
+    {% block header_bottom_content %}
+    {% endblock %}
+
+    {% block page_content %}
+    {% endblock %}
+
+
+    {% include 'components/footer.html' %}
+    </div>
+    <!-- /.wrapper-content -->
+   </div>
+   <!-- /MAIN CONTAINER -->
+   {% include 'components/cart2.html' %}
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+   </script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js">
+   </script>
+   <script src="{{ 'js/underscore-min.js' | asset_url }}">
+   </script>
+   <script src="{{ 'js/backbone-min.js' | asset_url }}">
+   </script>
+   <script type="text/javascript">
+    BBSafe = window.Backbone;
+   </script>
+   <script src="{{ 'js/jquery.raty.js' | asset_url }}">
+   </script>
+   <script type="text/javascript">
+    jQuerySafe = $;
+   </script>
+   <script src="{{ 'js/jquery.formstyler.min.js' | asset_url }}">
+   </script>
+   <script src="{{ 'js/backbone_cart.js' | asset_url }}">
+   </script>
+   <script src="{{ 'js/cart.js' | asset_url }}">
+   </script>
+{{ picreel }}
+   <script type="text/javascript">
+    var submitEmailSignup = function(event){
+     	event.preventDefault();
+        var url = '/customer/list_subscribe';
+      	var data = {
+        	'list_id': $("#email-signup-list-id").val(),
+          	'email': $("#email-signup-email").val()
+        }
+        $.post(url, data, function(){
+        	$(".show-on-save").show();
+          	$(".hide-on-save").hide();
+        });
+    };
+    
+     
+     (function() {
+
+       $('.navbar-header .navbar-toggle').bind('mousedown', function(){
+
+         $('body').toggleClass('modal-open');
+         $(this).toggleClass('opened');
+         $(".nav-primary").toggleClass('in');
+       });
+
+	   $(document).on('mouseenter mouseleave click', '.dropdown', function(){
+           $(this).toggleClass('open');
+       });
+
+       jQuerySafe('.product-rating').raty({
+         score: function(){
+           return $(this).attr('data-score');
+         },
+         readOnly: true,
+         starType: 'i',
+         hints: null
+       });
+
+     })();
+
+  $(document).on('scroll', function(){
+    if ($(window).scrollTop() > 200) {
+      console.log("scroll!!");
+      $('html').addClass('fixed-top');
+      $('.navbar-site').addClass('navbar-fixed-top');
+    } else {
+      $('html').removeClass('fixed-top');
+      $('.navbar-site').removeClass('navbar-fixed-top');
+    }
+  });
+     
+    $(document).on('click', '#email-signup-submit', submitEmailSignup);
+   </script>
+    
+    {% block page_javascript %}
+
+    {% endblock %}
+
+    {{ settings.footer_code | safe}}
+
+    {% include 'js/criteo-tracking.js' %}
+  </body>
+ </html>
+</html>

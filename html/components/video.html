@@ -1,0 +1,56 @@
+{% macro popup(wistia_id, caption, thumb_video, thumb_image) %}
+    <script src="https://fast.wistia.com/embed/medias/{{ wistia_id }}.jsonp" async></script>
+    <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+    <script type="text/template" id="wistia-popup-{{ wistia_id }}">
+        <div class="home-page-our-story-video-thumbnail wistia_embed wistia_async_{{ wistia_id }} popover=true popoverContent=link">
+            <div class="video-thumbnail-caption">
+                <h3>{{ caption }}</h3>
+            </div>
+            <div class="video-thumbnail-background-video-wrapper">
+                <div class="video-thumbnail-background-video">
+                    <video muted="muted" volume="0" loop="" autoplay=""><source src="{{ thumb_video | asset_url }}"></video>
+                    <img src="{{ thumb_image | asset_url }}" alt="">
+                </div>
+                <div class="video-thumbnail-overlay">
+                    <img src="{{'images/play-button.png' | asset_url }}" alt="">
+                </div>    
+            </div>
+        </div>                
+    </script>
+    <script type="text/template" id="wistia-inline-{{ wistia_id }}">
+        <div class="home-page-our-story-video-thumbnail">
+            <div class="video-thumbnail-caption">
+                <h3>{{ caption }}</h3>
+            </div>
+            <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                <iframe src="https://fast.wistia.net/embed/iframe/{{ wistia_id }}?videoFoam=true"
+                    allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed"
+                    name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen
+                    oallowfullscreen msallowfullscreen width="100%" height="100%">
+                </iframe>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script type="text/javascript">
+        (function() {
+            const video_mode = window.outerWidth > 768 ? 'popup' : 'inline';
+            document.write(document.getElementById('wistia-' + video_mode + '-{{ wistia_id }}').innerHTML);
+        })();
+    </script>
+{% endmacro %}
+
+{% macro inline(wistia_id) %}
+    <script src="https://fast.wistia.com/embed/medias/{{ wistia_id }}.jsonp" async></script>
+    <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+    <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+        <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+        <iframe src="https://fast.wistia.net/embed/iframe/{{ wistia_id }}?videoFoam=true"
+            allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed"
+            name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen
+            oallowfullscreen msallowfullscreen width="100%" height="100%">
+        </iframe>
+        </div>
+    </div>
+{% endmacro %}

@@ -1,0 +1,527 @@
+{% include 'holidays/deluxe_bundle_popup.html' %}
+
+<style>
+  /* Landing Page Banner */
+  .landing-page-banner.banner-landscape.centered {
+  	height: 215px;
+    min-height: 215px;
+    overflow: hidden;
+  }
+  .landing-page-banner.banner-landscape .content hgroup {
+    margin-bottom: 0;
+  }
+  .landing-page-banner h1.heading {
+    font-size: 2.6em;
+    margin-top: 0;
+    padding-top: 0.5em;
+    text-align: right;
+  }
+  .landing-page-banner h1.heading.heading-sub-text {
+    padding-top: 0;
+  }
+  .landing-page-banner h1.heading.heading-sub-text:after {
+    content: 'offers are limited and exclusive to our loyal Squatches';
+    font-size: 0.35em;
+    font-weight: normal;
+    padding-top: 0.75em;
+    text-transform: lowercase;
+    font-family: 'Open Sans', sans-serif;
+    display: block;
+  }
+  .heading-sub-text-manliness {
+    padding-top: 15px;
+    font-size: 1.1em;
+  }
+  .landing-page-banner .heading-sub-text-manliness strong {
+     color: #cc7837;
+  }
+  .savings-right-col {
+    font-size: 16px;
+    font-family: 'Roboto Slab', sans-serif;
+    text-align: center;
+    padding-right: 18%;
+  }
+  .savings-right-col .up-to {
+    display: block;
+    font-weight: 100;
+  }
+  .savings-right-col .up-to:before, .savings-right-col .up-to:after {
+    content: '';
+    width: 1em;
+    height: 2px;
+    background-color: #cc7837;
+    display: inline-block;
+    margin: -1px 3px 0;
+    vertical-align: middle;
+  }
+  
+  
+    .an-additional-col {
+    font-size: 16px;
+    font-family: 'Roboto Slab', sans-serif;
+    text-align: center;
+    /*padding-right: 18%;*/
+    padding-top: 5%;
+  }
+  
+  .an-additional {
+    display: block;
+    font-weight: 300;
+  }
+  .an-additional:before, .an-additional:after {
+    content: '';
+    width: 2em;
+    height: 2px;
+    background-color: #cc7837;
+    display: inline-block;
+    margin: -1px 3px 0;
+    vertical-align: middle;
+  }
+  
+  
+  
+  .dollars-off {
+    font-size: 3em;
+    display: block;
+    font-weight: 300;
+    padding: 0.1em 0;
+  }
+  .savings-bottom {
+    display: block;
+    color: #cc7837;
+    font-size: 1.1em;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+  }
+  .savings-bottom.savings-bottom-white {
+    color: #FFF;
+    font-size: 1.2em;
+  }
+  .free-shipping-badge {
+    position: absolute;
+    top: 26px;
+    right: -15px;
+  }
+  /* Other Headings */
+  .savings-right-col.heading-left-align {
+    padding-right: 10%;
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+  }
+  .heading-product-name {
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+  }
+  .heading-product-name:after {
+      content: '';
+      height: 2px;
+      width: 30px;
+      display: block;
+      background: #cc7837;
+      margin: 15px 0;
+  }
+  .heading-first-months {
+      font-size: 0.8em;
+  }
+  .now-only {
+      font-size: 1.1em;
+      font-weight: 300;
+      font-family: 'Roboto Slab', sans-serif;
+      margin-top: 7px;
+      display: inline-block;
+  }
+  .now-price {
+    float: right;
+    padding-right: 22%;
+    font-size: 4.5em;
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 300;
+    margin-top: -0.6em;
+  }
+  
+  /* Landing Page Main */
+  .sub-header {
+      text-align: center;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 2.25em 0;
+  }
+  .landing-page-row {
+    margin-bottom: 30px;
+  }
+  .landing-page-row .container {
+    padding: 0 45px;
+  }
+  .lp-row-column {
+    background-color: #f4f3f1;
+    display: table;
+    height: 470px;
+    padding: 0;
+  }
+  .lp-row-main-img {
+    width: 440px;
+    max-width: 100%;
+    height: 470px;
+    margin: 0 auto;
+    background-size: cover;
+    background-position: center center;
+  }
+  .lp-row-text-container {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 16px;
+    padding: 0 3em;
+  }
+  .lp-row-header {
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 400;
+    font-size: 2.5em;
+  }
+  .lp-row-content {
+    line-height: 1.75em;
+    font-size: 0.9em;
+    padding: 1em 0 0;
+  }
+  .lp-row-prices {
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: 100;
+    font-size: 3.7em;
+  }
+  .lp-row-prices > div {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .old-price {
+      padding-right: 0.2em;
+      border-right: 1px solid #CCC;
+  }
+  .old-price:after {
+      content: "";
+      position:absolute;
+      border-top: 2px solid #cc7837;
+      width: 100%;
+      transform: rotate(20deg);
+      transform-origin: -50% 0%;
+      right: 0;
+  }
+  .after-savings-price {
+      font-size: 1.55em;
+      font-weight: 500;
+      color: #cc7837;
+  }
+  .plus-colored {
+    color: #cc7837;
+    font-weight: bold;
+  }
+  .lp-row-button-container {
+    margin-top: 0.75em;
+  }
+  .lp-row-badge {
+    background-image: url({{ 'images/best-value-badge.png' | asset_url }});
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    line-height: 30px;
+    font-size: 0.9em;
+    margin-bottom: 1em;
+    color: #FFF;
+  }
+  .lp-row-em {
+    padding-top: 1em;
+    font-size: 0.8em;
+  }
+  .lp-row-discount-code-container {
+    display: inline-block;
+    border: 2px dashed #7f992c;
+    font-weight: bold;
+    padding: 1.5em;
+    font-size: 0.75em;
+    margin: 0.5em 0;
+    position: relative;
+  }
+  .lp-row-discount-code-container:before {
+    content: '';
+    width: 22px;
+    height: 18px;
+    position: absolute;
+    top: -9px;
+    left: 5px;
+    background-image: url({{ 'images/scissor-icon.png' | asset_url }});
+    background-repeat: no-repeat;
+  }
+  .lp-row-code {
+    color: #7f992c;
+    font-weight: normal;
+    font-size: 2em;
+    font-family: 'Roboto Slab', sans-serif;
+  }
+  .lp-row-discount-code-container span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .lightbox {
+    display: none;
+  }
+  .featherlight.fixwidth {
+    background: rgba(0,0,0,0.7);
+  }
+  .fixwidth .featherlight-content {
+      width: 80%;
+      min-width: 300px;
+    padding: 0;
+    border-bottom: 0;
+  }
+  #deluxe-bundle-popup .landing-page-row {
+    margin-bottom: 0;
+  }
+  #deluxe-bundle-popup .lp-row-column {
+      height: 300px;
+  }
+  #deluxe-bundle-popup .lp-row-main-img {
+      height: 300px;
+    width: 100%;
+  }
+  #deluxe-bundle-popup .lp-row-em {
+    color: #7f992c;
+    padding: 0em 0 0.5em;
+  }
+  #deluxe-bundle-row .lp-row-badge {
+      margin-top: 20px;
+  }
+  #deluxe-bundle-row .lp-row-button-container {
+    margin-top: 25px;
+    padding-bottom: 20px;
+  }
+  #deluxe-bundle-popup .old-price:before {
+    content: 'ORIGINAL PRICE';
+    font-size: 0.1em;
+    display: block;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+  }
+  #deluxe-bundle-popup .after-savings-price:before {
+    content: 'YOUR PRICE | SAVE $43';
+    color: #000;
+    font-size: 0.1em;
+    display: block;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+  }
+  #deluxe-bundle-popup .old-price {
+    font-size: 1.55em;
+  }
+  #deluxe-bundle-popup .lp-row-prices {
+    margin-top: 25px;
+  }
+  .button-sub-text {
+    font-size: 0.8em;
+    display: inline-block;
+    padding-top: 8px;
+  }
+  .btn-back {
+      font-weight: bold;
+  }
+  .btn-text-only {
+      color: #cc7837 !important;
+      font-weight: bold;
+      background: none !important;
+  }
+  
+  /* Specific Rows */
+  #deluxe-bundle-row .plus-colored, #deluxe-bundle-row .after-savings-price {
+    color: #7f992c;
+  }
+  #deluxe-bundle-row .old-price:after {
+    border-color: #7f992c;
+  }
+  #quarterly-soap-longtext .lp-row-header {
+    font-size: 2.4em;
+  }
+  .lp-banner-row {
+      position: relative;
+      margin-bottom: 0;
+  }
+  .lp-row-badge.lp-row-orange-banner, .lp-row-badge.lp-row-orange-banner-long {
+     font-weight: bold;
+     text-align: center;
+     margin-bottom: 0;
+     z-index: 2;
+     position: absolute;
+     left: 0;
+     width: 100%;
+  }
+  .lp-row-badge.lp-row-orange-banner {
+     background-image: url({{ 'images/orange-banner.png' | asset_url }});
+   	 line-height: 67px;
+     font-size: 1.6em;
+     top: -33px;
+  }
+  .lp-row-badge.lp-row-orange-banner-long {
+     background-image: url({{ 'images/orange-banner-long.png' | asset_url }});
+   	 line-height: 52px;
+     font-size: 1.4em;
+     top: -26px;
+  }
+  .below-banner-label {
+      font-family: 'Roboto Slab', sans-serif;
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-top: 1.5em;
+      margin-bottom: 0.7em;
+  }
+  .lp-row-prices.below-banner-subtext {
+      font-size: 1.5em;
+  }
+  .lp-banner-row .lp-row-column {
+      height: 400px;
+  }
+  .lp-banner-row img {
+      margin-top: 25px;
+      max-height: 180px;
+  }
+  #haircare-kit-row .lp-row-em {
+    padding-top: 0;
+    padding-bottom: 1em;
+  }
+  #haircare-kit-row .after-savings-price {
+    font-size: 1.35em;
+  }
+  #haircare-kit-row .lp-row-discount-code-container {
+    margin-top: 1em;
+  }
+  #haircare-kit-row .lp-row-discount-code-container > span {
+    text-align: left;
+  }
+  #haircare-kit-row .lp-row-discount-code-container > span:first-child {
+    font-size: 0.85em;
+    padding-right: 0.5em;
+  }
+  #cologne-row {
+    margin-top: 35px;
+    margin-bottom: 65px;
+  }
+  #cologne-row .lp-row-prices {
+    font-size: 3.5em;
+  }
+  #cologne-banner-row .below-banner-label {
+    font-size: 0.9em;
+    font-weight: normal;
+    font-family: 'Open Sans', sans-serif;
+  }
+  #cologne-banner-row .lp-row-text-container {
+    padding: 0 0.5em;
+  }
+  
+  /* LP Other Benefits */
+  .other-benefits-container {
+    text-align: center;
+    padding: 2.5em 0 3em;
+    clear: both;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .other-benefits-header {
+    letter-spacing: 0.05em;
+    margin-bottom: 3em;
+  }
+  .benefit-item {
+    margin-bottom: 2em;
+  }
+  .benefit-icon-container {
+    display: table;
+    height: 70px;
+    margin: 0 auto;
+  }
+  .benefit-icon-container > div {
+    display: table-cell;
+    vertical-align: middle;
+  };
+  .benefit-item img {
+    display: table-cell;
+  }
+  .benefit-item strong {
+    margin: 1.75em 0 1em;
+    display: block;
+  }
+  .benefit-item span {
+    font-weight: normal;
+    font-size: 0.85em;
+    display: block;
+    padding: 0 1.4em;
+  }
+  
+  @media (max-width: 989px) {
+    .now-price {
+      float: none;
+      margin-top: 0;
+      font-size: 3em;
+    } 
+  }
+  @media (max-width: 767px) {
+    .savings-right-col {
+      padding-right: 0;
+    }
+    .banner-landscape.centered .content {
+      width: 100% !important;
+      font-size: 12px;
+      padding: 15px 0;
+      text-align: left;
+    }
+    .savings-right-col {
+      font-size: 13px;
+    }
+    .free-shipping-badge {
+      display: none;
+    }
+    .lp-row-column, .lp-banner-row .lp-row-column {
+      height: auto;
+      display: block;
+    }
+    .lp-row-text-container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      display: block;
+    }
+  }
+  @media (max-width: 479px) {
+    .landing-page-row .container {
+        padding: 0 15px;
+    }
+  	.landing-page-banner h1.heading { 
+        padding-top: 0;
+    }
+    .lp-row-main-img {
+        height: 300px;
+    }
+    .lp-row-text-container {
+        font-size: 13px;
+        padding: 1em;
+    }
+    #deluxe-bundle-popup .lp-row-column:first-child {
+        display: none;
+    }
+    .fixwidth .featherlight-content {
+        background-color: #f4f3f1;
+        height: 80%;
+    }
+    #deluxe-bundle-popup .lp-row-text-container {
+        font-size: 0.85em;
+    }
+    #deluxe-bundle-popup .lp-row-column {
+        height: auto;
+    }
+    #deluxe-bundle-popup .lp-row-prices {
+        font-size: 3em;
+    }
+    #deluxe-bundle-popup .ecom-add-to-cart-redirect {
+        font-size: 0.9em;
+    }
+    #deluxe-bundle-popup .lp-row-header {
+        font-size: 2.25em;
+    }
+  }
+
+</style>

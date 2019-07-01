@@ -1,0 +1,170 @@
+.banner-landscape .content h1 {
+    font-size: 45px;
+}
+.banner-landscape h4 {
+    font-size: 24px;
+}
+.banner-landscape .content {
+    padding-bottom: 35px;
+}
+.banner-landscape .content hgroup {
+    margin-bottom: 0;
+}
+
+.process h5 {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.process hr {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 0.5px solid #6e665f;
+}
+
+.image-pop {
+  cursor: pointer;
+}
+
+.inside .right-col p{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.inside .get-cta.text-center {
+  font-size: 22px;
+}
+
+.inside .right-col strong.text-left{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.process p {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.banner-landscape .product-page-banner {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  right: 0;
+}
+
+.get-cta {
+  margin-top: 20px;
+}
+
+.get-cta .lp-row-button-container{
+  margin-top: 10px;
+}
+
+.featured-in h3 {
+  color: #743422;
+}
+
+.green {
+  color: #7E982F;
+}
+
+.guarantee {
+  position: relative;
+}
+
+.guarantee hr{
+  margin-top: 66px;
+  border: 1px solid #f0f0f0;
+}
+
+.guarantee img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  z-index: 1;
+}
+
+.guarantee .guarantee-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 30px;
+  margin: auto;
+  z-index: 5;
+  color: #c8c8c8
+}
+
+.guarantee h4 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.inside .left-col img{
+  padding: 0 15px;
+}
+
+.banner-landscape.split {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 1330px){
+  .img-product-collection-holder-full img {
+    margin-top: -410px;
+  }
+}
+
+@media (max-width: 991px){
+  .inside .right-col {
+    margin-top: 30px;
+  }
+}
+
+.banner-landscape .sub-heading {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .guarantee {
+    padding-top: 10px;
+    padding-bottom: 45px;
+  }
+  
+  .process .row .text-center {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  .banner-landscape.split {
+    margin-top: 100px;
+  }
+  
+  .banner-landscape .content.text-invert {
+    margin-top: -125px;
+  }
+  
+  .banner-landscape .mobile-green{
+    color: #7d982f;
+  }
+}
+
+@media (min-width: 991px) {
+  .process .first-col{
+    padding-right: 0;
+  }
+
+  .process .second-col{
+    padding-left: 0;
+  }
+  
+  .process .top-div {
+    height: 190px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .process .top-div {
+    height: 170px;
+  }
+}

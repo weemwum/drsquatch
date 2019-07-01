@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+{% include 'static-page-css.html' %}
+
+<section class="banner-landscape split static-page-banner" style="background-image: url('{{'images/dark-wood-bg.jpg' | asset_url }}')" data-barley="index-bg-img" data-barley-editor="bgimage">
+  <div class="content text-invert text-center">
+    <hgroup>
+      <h1 class="heading" data-barley='returns-name' data-barley-editor='simple'>Dr. Squatch Return Policies</h1>
+    </hgroup>
+  </div>
+</section>
+{% endblock %}  
+
+{% block page_content %}
+<div class="wrapper-content w-bg">
+  <div class="sudisfaction-container">
+  <div class="sudisfaction-left"></div>
+  <div class="sudisfaction-guarantee">
+	<img src="{{'images/thumbs-up-icon-2.png' | asset_url}}">
+    <p class="sudisfaction-main-text bebas">SUDISFACTION GUARANTEED</p>
+    <p>Rest easy.  If this isn't the best soap you've ever used, it's on us.</p>
+  </div>
+  <div class="sudisfaction-right"></div>
+</div>
+</div>
+<div class="clearfix"></div>
+<div class="guarantee-box">
+	We are proud to offer a “Sudsifaction” guarantee: If you are unhappy with your purchase within 30 days of your order, please <a href="/contact">contact us</a> for a full refund.
+</div>
+
+			
+{% endblock %}

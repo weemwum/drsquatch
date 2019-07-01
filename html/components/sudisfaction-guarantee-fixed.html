@@ -1,0 +1,154 @@
+<style>
+/* Fixed version like in sidebar for sudisfaction guarantee */
+.sudisfaction-container.fixed-sudisfaction {
+  width: 100%;
+  height: 116px;
+  background: none;
+  position: relative;
+}
+.fixed-sudisfaction:before {
+    content: '';
+    background: #DDD;
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -1px);
+    z-index: -1;
+}
+.sudusfaction-guarantee-outer, .sudusfaction-guarantee-outer .sudisfaction-guarantee {
+  width: 256px;
+  height: 116px;
+  position: relative;
+  max-width: 100%;
+}
+.sudisfaction-container.fixed-sudisfaction .sudusfaction-guarantee-outer {
+  margin: 0 auto;
+}
+.sudisfaction-container.fixed-sudisfaction .sudisfaction-guarantee {
+    left: auto;
+    transform: none;
+    background: #FFF;
+    z-index: 2;
+}
+.sudisfaction-container.fixed-sudisfaction .sudisfaction-main-text {
+    font-size: 20px;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+    line-height: 1;
+    margin: 25px 0 10px;
+}
+.sudisfaction-container.fixed-sudisfaction .sudisfaction-guarantee p:last-child {
+    max-width: 80%;
+    margin: 0 auto;
+    line-height: 1.5em;
+}
+.cart-slide .sudisfaction-container.fixed-sudisfaction {
+  margin-top: 70px;
+}
+#diamond-narrow {
+	width: 0;
+	height: 0;
+	border: 30px solid transparent;
+	border-bottom: 58px solid #DFDFDD;
+	position: absolute;
+	top: -30px;
+	left: 0;
+	transform: translate(-50%, 0%);
+	z-index: -1;
+}
+#diamond-narrow:after {
+	content: '';
+	position: absolute;
+	left: -30px;
+	top: 58px;
+	width: 0;
+	height: 0;
+	border: 30px solid transparent;
+	border-top: 58px solid #DFDFDD;
+	z-index:-1
+}
+#diamond-narrow-inner {
+	width: 0;
+	height: 0;
+	border: 30px solid transparent;
+	border-bottom: 57px solid #FFF;
+	position: absolute;
+	top: -29px;
+	left: 2px;
+	transform: translate(-50%, 0%);
+}
+#diamond-narrow-inner:after {
+	content: '';
+	position: absolute;
+	left: -30px;
+	top: 57px;
+	width: 0;
+	height: 0;
+	border: 30px solid transparent;
+	border-top: 57px solid #FFF;
+}
+
+
+#diamond-narrow-right {
+	width: 0;
+	height: 0;
+	border: 30px solid transparent;
+	border-bottom: 58px solid #DFDFDD;
+	position: absolute;
+	right: 0;
+	top: -30px;
+	transform: translate(50%, 0%);
+	z-index: -1;
+}
+#diamond-narrow-right:after {
+	content: '';
+	position: absolute;
+	left: -30px;
+	top: 58px;
+	width: 0;
+	height: 0;
+	border: 30px solid transparent;
+	border-top: 58px solid #DFDFDD;
+	z-index:-1
+}
+#diamond-narrow-right-inner {
+	width: 0;
+	height: 0;
+	border: 30px solid transparent;
+	border-bottom: 57px solid #FFF;
+	position: absolute;
+	top: -29px;
+	right: 2px;
+	transform: translate(50%, 0%);
+}
+#diamond-narrow-right-inner:after {
+	content: '';
+	position: absolute;
+	left: -30px;
+	top: 57px;
+	width: 0;
+	height: 0;
+	border: 30px solid transparent;
+	border-top: 57px solid #FFF;
+}
+</style>
+
+
+<div class="sudisfaction-container fixed-sudisfaction">
+
+  <div class="sudusfaction-guarantee-outer">
+    <div id="diamond-narrow">
+  		<div id="diamond-narrow-inner"></div>
+  	</div>
+    <div class="sudisfaction-guarantee">
+      <img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-20/images/thumbs-up-icon-2.png?ts=1526766604&amp;host=drsquatch.com">
+      <p class="sudisfaction-main-text bebas">SUDISFACTION GUARANTEED</p>
+      <p>Rest easy. If this isn't the best soap you've ever used, it's on us.</p>
+    </div>
+    <div id="diamond-narrow-right">
+      <div id="diamond-narrow-right-inner"></div>
+  	</div>
+  </div>
+
+</div>

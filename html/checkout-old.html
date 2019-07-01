@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+{% endblock %}
+
+{% block page_content %}
+
+{{ checkout.page() }}
+{{ carthook_checkout }}
+
+{% endblock %}
+
+
+
+
+{% block page_javascript %}
+<script type='text/javascript'>
+  
+$(function(){
+	$(".action-cart").hide();
+  	$("#checkout_button").addClass("btn btn-md btn-success btn-frame").prepend("<i class='icon footprint'></i>").find('i').css('margin-top', '0px');
+    $(".coupon_section").find(".col-xs-8").removeClass("col-xs-8").addClass(".col-xs-12");
+});
+</script>
+{% endblock %}

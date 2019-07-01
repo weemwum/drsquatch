@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% import "components/contact-form.html" as contact %}
+
+{% block header_content %}
+{% include 'static-page-css.html' %}
+
+<section class="banner-landscape split static-page-banner" style="background-image: url('{{'images/dark-wood-bg.jpg' | asset_url }}')" data-barley="index-bg-img" data-barley-editor="bgimage">
+  <div class="content text-invert text-center">
+    <hgroup>
+      <h1 class="heading" data-barley='wholesale-name' data-barley-editor='simple'>Wholesale</h1>
+      <p class="regular sub-heading" data-barley='wholesale-description' data-barley-editor='simple'><span>Sell the Squatch in your store</span></p>
+    </hgroup>
+  </div>
+</section>
+{% endblock %}
+
+{% block page_content %}
+      <article class="hpad post">
+      	<h3 class="cf-secondary">Wholesale Opportunity</h3>
+			<p>We are currently looking to partner with engaging and dynamic stores who wish to carry the Squatch.  We have had tremendous success with all types of stores including: groceries, gift shops, men's clothing or general stores, boutiques, and various online retail shops.</p>
+
+			<p>For qualified retailers, we can offer competitive margins, dependable and speedy shipping times, and a unique, quality, handcrafted men's product.</p>
+
+			<p>If you think your store would be a good fit, we would be thrilled to hear from you. Please include some details about your store in the form below and we will be happy to talk with you further about partnering.</p>	
+			<hr>
+        
+			<h3 class="cf-secondary">Current Partners</h3>
+        	<div class="partner-logos text-center">
+        		<div class="col-sm-3 col-xs-4"><img src="{{ 'images/Good_day.png' | asset_url }}" alt="Good Day Pharmacy" class="img-responsive img-center">
+        		</div>
+        		<div class="col-sm-2 col-xs-4"><img src="{{ 'images/Fancy.png' | asset_url }}" alt="Fancy" class="img-responsive img-center">
+        		</div>
+        		<div class="col-sm-3 col-xs-4"><img src="{{ 'images/JackThreads.png' | asset_url }}" alt="JackThreads" class="img-responsive img-center">
+        		</div>
+        		<div class="col-sm-4 col-xs-12"><img src="{{ 'images/UO.png' | asset_url }}" alt="Urban Outfitters" class="img-responsive img-center pad-logo ">
+                  <img src="{{ 'images/Manready.png' | asset_url }}" alt="" class="img-responsive img-center pad-logo ">
+        		</div>
+        		<div class="clearfix"></div>
+        		<div class="col-sm-4 col-sm-offset-1 col-xs-6"><img src="{{ 'images/Grooming_Lounge.png' | asset_url }}" alt="Grooming Lounge" class="img-responsive img-center">
+        		</div>
+        		<div class="col-sm-3 col-xs-6"><img src="{{ 'images/Urban_Shave.png' | asset_url }}" alt="The Urban Shave" class="img-responsive img-center">
+        		</div>
+        		<div class="col-sm-3 col-xs-12"><img src="{{ 'images/erewhon.png' | asset_url }}" alt="erewhon" class="img-responsive img-center pad-logo ">
+        		</div>
+       			<div class="clearfix"></div>
+        		<div class="col-sm-3 col-sm-offset-3 col-xs-6"><img src="{{ 'images/Fireworks.png' | asset_url }}" alt="Fireworks" class="img-responsive img-center">
+        		</div>
+        		<div class="col-sm-3 col-xs-6"><img src="{{ 'images/Thorps.png' | asset_url }}" alt="Thorps" class="img-responsive img-center pad-logo ">
+        		</div>
+        		<div class="clearfix"></div>
+        	</div>
+        		<hr>
+
+				<h3 class="cf-secondary">Get Wholesale Info</h3>
+				<br>
+				<div class="row pholder">
+					<div class="col-sm-6">
+    					{{ contact.contact_form("Wholesale Form") }}
+					</div>
+				</div>
+      </article>
+{% endblock %}
+
+{% block page_javascript %}
+<script src="{{ 'js/contact.js' | asset_url }}"></script>
+
+<script type="text/javascript">
+  (function() {
+    setTimeout(function() {
+      $('.cstyle').styler();
+    }, 100);
+  })();        
+</script>
+
+{% endblock %}

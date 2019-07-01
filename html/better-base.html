@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block meta_additions %}
+    <link rel="stylesheet" href="{{ 'css/better-bar.css' | asset_url }}">
+{% endblock %}
+
+{% block page_content %}
+
+<section class="featured-in" data-echo-background="{{ 'images/as-seen-in-banner.jpg' | asset_url }}">
+  <div class="pholder-header">
+    <h3 class="heading">
+     As Seen In
+    </h3>
+   </div>
+   <div class="clearfix">
+    <section class="item">
+     <figure>
+      <img src="{{ 'images/mens-health-logo.png' | asset_url }}" alt class="img-responsive"/>
+     </figure>
+    </section>
+    <section class="item">
+     <figure>
+      <img src="{{ 'images/birchbox-logo.png' | asset_url }}" alt class="img-responsive"/>
+     </figure>
+    </section>
+    <section class="item">
+     <figure>
+      <img src="{{ 'images/mens-journal-logo.png' | asset_url }}" alt class="img-responsive"/>
+     </figure>
+    </section>
+    <section class="item">
+     <figure>
+      <img src="{{ 'images/uncrate-logo.png' | asset_url }}" alt class="img-responsive"/>
+     </figure>
+    </section>
+    <section class="item">
+     <figure>
+      <img src="{{ 'images/esquire-logo.png' | asset_url }}" alt class="img-responsive"/>
+     </figure>
+    </section>
+   </div>
+</section>
+
+{% block bb_section_content %}
+    <!--New Section content-->
+{% endblock %}
+
+{% block bb_section_video %}
+    <!--Section video -->
+{% endblock %}
+
+<section class="pholder verified-reviews off-white-bg">
+  <div class="pholder-header barley_hide_outline" data-barley="reviews-heading" data-barley-editor="advanced" contenteditable="false">
+   <h2 class="heading">
+    3000+ VERIFIED REVIEWS
+   </h2>
+    <p class="reviews-subtitle">Don't take our word for it... hear what guys just like you are saying about Dr. Squatch.</p>
+  </div>
+  <div class="row reviews-video">
+   <div class="col-md-6 col-md-offset-3 col-sm-12" style="margin-top: -125px;">
+    {% import 'components/video.html' as video %}
+    {{ video.inline('804qxuxl0v') }}
+   </div>
+  </div>
+  <div class="row fb-reviews hpad">
+   <div class="fb-review-item col-md-6">
+     <a href="https://www.facebook.com/118075261668462/posts/1152109414931703"><img style="max-width:100%; margin-bottom: 15px;" src="{{'images/alan-jacobson-fb.png' | asset_url}}"></a>
+   </div>
+   <div class="fb-review-item col-md-6">
+         <a href="https://www.facebook.com/118075261668462/posts/1152109414931703"><img style="max-width:100%; margin-bottom: 15px;" src="{{'images/alisia-carlson-fb.png' | asset_url}}"></a>
+    </div>
+  </div>
+ </section>
+
+<section class="home-page-our-story home-bottom-section">
+  <div class="container">
+      <div class="home-page-our-story-full-single row">
+          <div class="home-page-our-story-full-single-content col-md-12">
+              <img src="{{'images/squatch-illustrated.png' | asset_url }}" />
+              <h3>Your <span>Sudisfaction</span> is guaranteed</h3>
+              <p class=" _bb-mb-35">We’re confident in your confidence and truly believe our soap stands above the rest. If you use Dr. Squatch and can honestly say it’s not the <strong>best bar of soap</strong> you’ve ever used, we’ll send you your money back no questions asked.</p>
+              <div class="footer-call-to-action-buttons">
+                <a href="/our-products"><button class="squatch-button _bb-mb-10 _bb-bg-green">Shop Soap</button></a>
+                <a href="/subscription"><button class="squatch-button _bb-mb-10">Soapscribe</button></a>
+              </div>
+            </div>
+      </div>
+  </div>
+</section>
+
+{% endblock %}

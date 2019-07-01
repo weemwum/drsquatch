@@ -1,0 +1,68 @@
+<!-- Template Page - DATA BARLEY ID MUST BE UNIQUE -->
+
+{% extends "base.html" %}
+
+{% block header_content %}
+<section class="banner-landscape centered landscape-1" style="background-image: url('{{'images/banner-landscape-31.jpg' | asset_url }}')" data-barley="template" data-barley-editor="bgimage">
+ <div class="content text-invert" style="width:90%;">
+  <div data-barley="template-header" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+   <hgroup>
+    <h1 class="heading">
+     <span style="color: inherit; font-family: inherit; background-color: initial;">
+      Whoops!
+     </span>
+    </h1>
+    <h1 class="heading">
+     <span style="color: inherit; font-family: inherit; font-size: 25px; line-height: 1.1; background-color: initial;">
+      This page does not exist
+     </span>
+     <br>
+    </h1>
+   </hgroup>
+  </div>
+ </div>
+</section>
+{% endblock %}
+
+
+{% block page_content %}
+<article class="pholder hpad post">
+ <div data-barley="template-content" data-barley-editor="plus" contenteditable="false" class="barley_hide_outline">
+  Looking for Squatch? Maybe we can help
+  <p>
+   <br>
+  </p>
+  <ul>
+   <li>
+    <span style="line-height: 2.3; background-color: initial;">
+     Browse our
+    </span>
+    <a href="/" style="line-height: 2.3;">
+     homepage
+    </a>
+    <br>
+   </li>
+   <li>
+    <span style="line-height: 2.3; background-color: initial;">
+     Check out a
+    </span>
+    <a href="/subscription" style="line-height: 2.3;">
+     soapscription
+    </a>
+    <br>
+   </li>
+   <li>
+    <span style="line-height: 2.3; background-color: initial;">
+     Take our
+    </span>
+    <a href="/quiz" style="line-height: 2.3;">
+     soap quiz
+    </a>
+    <br>
+   </li>
+  </ul>
+  <p>
+  </p>
+ </div>
+</article>
+{% endblock %}

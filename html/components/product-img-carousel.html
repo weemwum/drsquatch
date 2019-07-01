@@ -1,0 +1,253 @@
+{% macro renderCarousel(product) %}
+  {# Takes in a cratejoy product image, maps id to below image list mapping, and renders them in a ma5slider library slider #}
+  {# TODO
+  	// Why cant $.ma5 be found when resizing screen (may need to set jQuerySafe or .noConflict or something
+  #}
+
+  <style> /* Style Overrides */
+    .ma5slider img { display: none; max-width: 100%; width: auto !important; } /* Styling for before ma5 slider renders */
+    .ma5slider a { transition: none; }
+    .ma5slider .slide img, .ma5slider>img.slide { max-width: 100%; width: auto !important; }
+    @media(max-width: 480px) {
+      .ma5slider img {
+        max-height: 150px;
+      }
+    }
+    @media(max-width: 370px) {
+      .ma5slider img {
+        max-height: 130px;
+      }
+    }
+  </style>
+
+  {% set productCarousel = {
+    70702082: ['pine-tar-main.png','pine-tar-bar.png','pine-tar-box.png','pine-tar-back.png'],
+    70700670: ['bay-rum-main.png','bay-rum-bar.png','bay-rum-box.png','bay-rum-back.png'],
+    70701577: ['cedar-citrus-main.png','cedar-citrus-bar.png','cedar-citrus-box.png','cedar-citrus-back.png'],
+    70701905: ['gold-moss-scrub-main.png','gold-moss-scrub-bar.png','gold-moss-scrub-box.png','gold-moss-scrub-back.png'],
+    112874164: ['nautical-sage-main.png','nautical-sage-bar.png','nautical-sage-box.png','nautical-sage-back.png'],
+    70701388: ['spearmint-basil-scrub-main.png','spearmint-basil-scrub-bar.png','spearmint-basil-scrub-box.png','spearmint-basil-scrub-back.png'],
+    70700416: ['eucalyptus-greek-yogurt-main.png','eucalyptus-greek-yogurt-bar.png','eucalyptus-greek-yogurt-box.png','eucalyptus-greek-yogurt-back.png'],
+    70699856: ['cool-fresh-aloe-main.png','cool-fresh-aloe-bar.png','cool-fresh-aloe-box.png','cool-fresh-aloe-back.png'],
+    70699496: ['deep-sea-goat-milk-main.png','deep-sea-goat-milk-bar.png','deep-sea-goat-milk-box.png','deep-sea-goat-milk-back.png'],
+  } %}
+  {% if productCarousel[product.id] %}
+    <div class="ma5slider outside-navs outside-dots anim-horizontal loop-mode">
+      <div class="slides">
+        <!-- children = slides -->
+
+        {% for prodImg in productCarousel[product.id] %}
+        {% set imgPath = 'images/' + prodImg %}
+        <a href="#slide-{{loop.index}}"><img src="{{imgPath | asset_url }}"></a>
+        {% endfor %}
+      </div>
+    </div>
+  {% else %}
+      {{ product | object_img_tag(css_class='img-responsive') }}
+  {% endif %}
+
+{% endmacro %}
+
+
+
+{% macro renderHomeCarousel() %}
+  <style>
+    @import url("https://use.typekit.net/ftg1sev.css");
+  </style>
+  <style> /* Style Overrides */
+    .ma5slider img { display: none; max-width: 100%; width: auto !important; } /* Styling for before ma5 slider renders */
+    .ma5slider a { transition: none; }
+    .ma5slider .slide img, .ma5slider>img.slide { max-width: 100%; width: auto !important; }
+    .ma5slider {
+      margin-bottom: 0 !important;
+    }
+    @media(max-width: 480px) {
+      .ma5slider img {
+        max-height: 150px;
+      }
+    }
+    @media(max-width: 370px) {
+      .ma5slider img {
+        max-height: 130px;
+      }
+    }
+    
+    .home-slider-section {
+        padding: 0 25px;
+        color: #FFF;
+    }
+    .home-slider-section, .slide-row {
+        height: 473px;
+    }
+    .home-slider-section .outside-navs .nav--next, .home-slider-section .outside-navs .nav--prev {
+     	font-size: 100px;
+        height: 120px;
+        color: #FFF;
+        line-height: 120px;
+    }
+    .home-slider-section .outside-navs .nav--next {
+      	right: 50px;
+    }
+    .home-slider-section .outside-navs .nav--prev {
+      	left: 50px;
+    }
+    .slide-has-text, .ma5slider .slide-has-text.slide, .ma5slider>.slides>.slide-has-text:first-child {
+        font-size: 16px;
+        text-align: left;
+    }
+    .slide-row {
+      display: table;
+      width: 100%;
+    }
+    .slide-has-text.slide .slide-left, .slide-has-text.slide .slide-right, .slide-has-text.slide .slide-spacer {
+        float: none;
+      	display: table-cell;
+      	vertical-align: middle;
+    }
+    .slide-has-text .metropolis {
+        font-size: 40px;
+    }
+    .slide-has-text .slide-description {
+      margin: 20px 0;
+      line-height: 1.75em;
+    }
+    .slide-right img {
+      max-height: 400px;
+    }
+    @media(max-width: 990px) {
+      .slide-has-text .metropolis {
+        font-size: 30px;
+      }
+      .slide-has-text .market-heading {
+        font-size: 24px;
+      }
+    }
+    @media(max-width: 767px) {
+      .ma5slider, .navs-wrapper, .slide-area, .slides {
+        height: 100%;
+      }
+      .slide-has-text.slide .slide-left, .slide-has-text.slide .slide-right, .slide-has-text.slide .slide-spacer {
+        float: left;
+      }
+      .home-slider-section, .slide-row {
+        height: 360px;
+      }
+      .home-slider-section .outside-navs .nav--next, .home-slider-section .outside-navs .nav--prev {
+        font-size: 60px;
+        line-height: 70px;
+        height: 70px;
+      }
+      .home-slider-section .outside-navs .nav--prev {
+        left: 30px;
+      }
+      .home-slider-section .outside-navs .nav--next {
+        right: 30px;
+      }
+      .slide-has-text .metropolis {
+        font-size: 23px;
+      }
+      .slide-has-text .market-heading {
+        font-size: 22px;
+      }
+      .slide-has-text .slide-description {
+        margin: 10px 0;
+        line-height: 1.5em;
+      }
+      .slide-has-text .slide-description br {
+        display: none;
+      }
+      .slide-right img {
+        margin: 15px auto !important;
+        max-height: 150px;
+        max-width: 100%;
+      }
+      .slide-left {
+        text-align: center;
+      }
+    }
+    @media (max-width: 480px) {
+		.ma5slider .slide-right img {
+          max-height: 130px;
+    	}
+    }
+  </style>
+
+
+  <div class="ma5slider outside-navs anim-horizontal loop-mode slider-text">
+    <div class="slides">
+      
+      <div class="slide-has-text">
+        <div class="slide-row">
+          <div class="col-sm-2 slide-spacer hidden-xs"></div>
+          <div class="col-sm-5 col-xs-12 col-sm-push-4 slide-right">
+              <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{'images/slider-pine-tar.png' | asset_url}}" class="lazy">
+          </div>
+          <div class="col-sm-4 col-xs-12 col-sm-pull-5 slide-left">
+            <div class="market-font market-heading">all natural</div>
+            <div class="metropolis">MANLY SOAPS</div>
+            <div class="slide-description">Better smells &amp; better skin --<br>without all the chemicals.</div>
+            <a href="/collections/bar-soap" class="btn btn-secondary btn-md btn-frame">
+             SHOP NOW
+            </a>
+          </div>
+          <div class="col-sm-1 slide-spacer hidden-xs"></div>
+        </div>
+      </div>
+      
+      <div class="slide-has-text">
+        <div class="slide-row">
+          <div class="col-sm-2 slide-spacer hidden-xs"></div>
+          <div class="col-sm-5 col-xs-12 col-sm-push-4 slide-right">
+              <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{'images/slider-soapscription.png' | asset_url}}" class="lazy">
+          </div>
+          <div class="col-sm-4 col-xs-12 col-sm-pull-5 slide-left">
+            <div class="market-font market-heading">The Dr. Squatch</div>
+            <div class="metropolis">SOAPSCRIPTION</div>
+            <div class="slide-description">Freshness delivered to<br>your door, automatically</div>
+            <a href="/subscription" class="btn btn-secondary btn-md btn-frame">
+             SHOP NOW
+            </a>
+          </div>
+          <div class="col-sm-1 slide-spacer hidden-xs"></div>
+        </div>
+      </div>
+      
+      <div class="slide-has-text">
+        <div class="slide-row">
+          <div class="col-sm-2 slide-spacer hidden-xs"></div>
+          <div class="col-sm-5 col-xs-12 col-sm-push-4 slide-right">
+              <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{'images/slider-hair-care.png' | asset_url}}" class="lazy">
+          </div>
+          <div class="col-sm-4 col-xs-12 col-sm-pull-5 slide-left">
+            <div class="market-font market-heading">all natural</div>
+            <div class="metropolis">HAIR CARE</div>
+            <div class="slide-description">100% NPA Certified</div>
+            <a href="/collections/hair-care" class="btn btn-dark-burgundy btn-md btn-frame">
+             SHOP NOW
+            </a>
+          </div>
+          <div class="col-sm-1 slide-spacer hidden-xs"></div>
+        </div>
+      </div>
+      
+      <div class="slide-has-text">
+        <div class="slide-row">
+          <div class="col-sm-2 slide-spacer hidden-xs"></div>
+          <div class="col-sm-5 col-xs-12 col-sm-push-4 slide-right">
+              <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{'images/both-cologne-new.png' | asset_url}}" class="lazy">
+          </div>
+          <div class="col-sm-4 col-xs-12 col-sm-pull-5 slide-left">
+            <div class="market-font market-heading">all natural</div>
+            <div class="metropolis">BEARD OIL</div>
+            <div class="slide-description">Keep Your Face Fur Tame</div>
+            <a href="/collections/cologne" class="btn btn-success btn-md btn-frame">
+             SHOP NOW
+            </a>
+          </div>
+          <div class="col-sm-1 slide-spacer hidden-xs"></div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+{% endmacro %}

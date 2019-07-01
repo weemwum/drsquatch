@@ -1,0 +1,926 @@
+{% import "widgets/order.html" as orders %}
+
+<style>
+section.order {
+  padding: 0 55px;
+  margin-top: -30px;
+}
+.order .checkout_content section.cart_listing {
+    margin: 0;
+    padding-top: 25px;
+    border-radius: 0;
+}
+.order .checkout_content section h3 {
+    padding-left: 25px;
+    padding-bottom: 10px;
+    padding-right: 25px;
+    border-bottom: 1px solid #d5d2d0;
+    margin-bottom: 0;
+}
+.order .cart_listing table {
+    padding: 20px 40px;
+    border-collapse: initial;
+    border: none;
+}
+.order .cart_listing table th, .order .cart_listing table strong {
+    font-family: 'MetropolisSemiBold';
+    font-size: 15px;
+}
+.order .cart_listing table td {
+    font-size: 13px;
+}
+.order .checkout_content section.cart_listing {
+    width: 59%;
+    margin-right: 2%;
+    float: left;
+}
+.order .checkout_content {
+    overflow: hidden;
+}
+.order .checkout_content .cart_addresses {
+    float: left;
+    width: 39%;
+    margin-top: 0;
+}
+.order .checkout_content .vertical:last-child {
+    margin: 0;
+}
+.order .checkout_content section {
+    border-radius: 0;
+    border: 1px solid #d5d2d0;
+    padding: 25px 0 0;
+    background: #f6f4f1;
+    font-size: 13px;
+    line-height: 1.6em;
+}
+.order .vcard.display {
+    padding: 24px 40px;
+}
+
+.order h4.add-lines:before, .order h4.add-lines:after {
+    width: 35%;
+    margin-left: 10px;
+    margin-right: 10px;
+    background: #d5d2d0;
+}
+
+.order .heading.add-lines {
+  margin: 50px 0;
+}
+.referral-row {
+  padding: 0 20px;
+}
+.referral-row h2 {
+  color: #80965e;
+  font-family: 'MetropolisSemiBold';
+  font-size: 19px;
+}
+.referral-row h4 {
+    font-size: 16px;
+      margin: 10px 0 20px;
+}
+.referral-row .refer-row input, .referral-row #refer-link-col .refer-link {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+  border: 1px solid #d5d2d0;
+}
+.thank-you-squatch-collection {
+  background: #FFF;
+  border-top: 1px solid #d5d2d0;
+  padding-top: 70px;
+}
+.thank-you-squatch-collection .b-product .inline-block a  {
+  height: 130px;
+}
+.thank-you-squatch-collection .pholder-header .heading {
+    display: inline-block;
+    padding: 0 5% 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #d5d2d0;
+}
+.thank-you-squatch-collection .b-product .heading {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #d5d2d0;
+    display: inline-block;
+    min-width: 155px;
+    margin-top: 25px;
+}
+
+@media(max-width: 1329px) {
+	section.order {
+      padding: 0 25px;
+  }
+}
+@media(max-width: 990px) {
+  .order .checkout_content section.cart_listing,
+  .order .checkout_content div.cart_addresses {
+    width: 100%;
+    margin: 0;
+    float: none;
+  }
+  .order .checkout_content section.cart_listing {
+    margin-bottom: 30px;
+  }
+  .order h4.add-lines:before, .order h4.add-lines:after {
+    content: none;
+  }
+}
+</style>
+
+{% macro referral_page(standalone=False, btn_class="btn-primary primary-button") %}
+{% if referral_campaign and referral_url %}
+<h4 class="heading product-page add-lines" style="font-size: 27px; font-family: 'MetropolisSemiBold'; text-align: center;">REFER A FRIEND</h4>
+<div class="row referral-row">
+  {% if email_sent %}
+  <div class="col-md-12">
+   <div class="referral-alert" data-barley="ref-sent-heading" data-barley-editor="simple">
+    Referral emails sent!
+   </div>
+  </div>
+  {% endif %}
+    {% if standalone %}
+  <div class="col-md-12" id="refer-back-link">
+   <a href="/customer/account">
+    Back to Account Page
+   </a>
+  </div>
+  {% endif %}
+  <div class="col-md-6" id="refer-email-col">
+   <h2>
+    {{ referral_campaign.display_settings['headline'] }}
+   </h2>
+   <h4>
+    {{ referral_campaign.display_settings['description'] }}
+   </h4>
+   <form action="/customer/refer" method="post">
+    <div class="refer-row row">
+     <div class="col-xs-5">
+      <input name="first-name_0" type="text" placeholder="First name"/>
+     </div>
+     <div class="col-xs-7">
+      <input name="email_0" type="email" placeholder="Email address"/>
+     </div>
+    </div>
+    <div class="refer-row row">
+     <div class="col-xs-5">
+      <input name="first-name_1" type="text" placeholder="First name"/>
+     </div>
+     <div class="col-xs-7">
+      <input name="email_1" type="email" placeholder="Email address"/>
+     </div>
+    </div>
+    <div class="refer-row row">
+     <div class="col-xs-5">
+      <input name="first-name_2" type="text" placeholder="First name"/>
+     </div>
+     <div class="col-xs-7">
+      <input name="email_2" type="email" placeholder="Email address"/>
+     </div>
+    </div>
+    <button id="refer-btn" class="btn {{ btn_class }}">
+     {{ referral_campaign.display_settings['share-button'] }}
+    </button>
+   </form>
+  </div>
+  <div class="col-md-6" id="refer-link-col">
+   <h2 data-barley="ref-share-heading" data-barley-editor="simple">
+    Share referral link:
+   </h2>
+   <h4 data-barley="ref-share2-heading" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    Share via Twitter, Facebook, or just copy and paste this link anywhere!
+   </h4>
+   <div class="refer-link">
+    {{ referral_url }}
+   </div>
+   <div class="refer-social-links">
+    <iframe width="125" height="40" seamless="seamless" src="//{{ store | cratejoy_domain }}/customer/refer_fb?use_subdomain=True">
+    </iframe>
+    <a href="#" id="refer-twt-share" class="refer-share-btn" data-url="{{ referral_url }}" data-text="{{ referral_campaign.share_settings['twitter'] }}">
+     <img src="{{ 'images/twt-share-alt.png' | global_asset_url }}">
+    </a>
+   </div>
+  </div>
+</div>
+{# Social Media Scripts #}
+<script>
+ window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+
+    t._e = [];
+    t.ready = function(f) {
+      t._e.push(f);
+    };
+
+    return t;
+  }(document, "script", "twitter-wjs"));
+</script>
+{% endif %}
+{% endmacro %}
+
+
+{%- macro show(order, header="Your order", remove_link=True, reference_no=False) -%}
+<section class="cart_listing">
+ <header>
+   <h3>ORDER DETAILS</h3>
+   {{ header }}
+   {%- if reference_no -%}
+   <!--<br>
+   <small>
+    <span data-barley="thanks-order-ref" data-barley-editor="simple">
+     ( Order reference number #
+    </span>
+    {{ order.id }}
+    <span data-barley="thanks-order-ref2" data-barley-editor="simple">
+     )
+    </span>
+   </small>-->
+   {%- endif -%}
+ </header>
+ {% if order and (order.products or order.bundles or order.gifts) %}
+ <table>
+  <tr>
+   <th data-barley="thanks-item-heading" data-barley-editor="simple">
+    Item
+   </th>
+   <th data-barley="qty-item-heading" data-barley-editor="simple">
+    Quantity
+   </th>
+   <th class="currency" data-barley="price-item-heading" data-barley-editor="simple">
+    Price
+   </th>
+  </tr>
+  {% for cart_coupon in order.coupons %}
+  <tr>
+   <td>
+    {{ cart_coupon.discount_name }}
+   </td>
+   <td>
+   </td>
+   <td class="currency" style="color:red;">
+    {% if cart_coupon.coupon.gift %}
+          GIFT
+          {% else %}
+          -{{ cart_coupon.discount_value | currency }}
+          {% endif %}
+   </td>
+  </tr>
+  {% endfor %}
+
+      {% for cart_prod in order.products %}
+      {% set instance = cart_prod.instance %}
+      {% set is_gifted = cart_prod.cart.product_is_gifted(cart_prod) if cart_prod.cart else False %}
+  <tr>
+   <td>
+    <span class="product-name">
+     {{ instance.product.name }}
+    </span>
+    {% if cart_prod.subscription_type_term %}
+          {% set stt = cart_prod.subscription_type_term %}
+    <span class="subscription-plan">
+     {{ stt.name|title }} Plan
+    </span>
+    <br>
+     {% if order.received_gift or not stt.subscription_type.autorenew %}
+     <span class="subscription-autorenew">
+      {{ stt.num_cycles }} deliver{% if stt.num_cycles==1 %}y{% else %}ies{% endif %}, does not auto-renew.
+     </span>
+     {% else %}
+     <span class="subscription-autorenew">
+      {{ stt.num_cycles }} deliver{% if stt.num_cycles==1 %}y{% else %}ies{% endif %}, renews every {{ stt.num_cycles * stt.subscription_type.cycle_days }} days
+     </span>
+     {% endif %}
+          {% endif %}
+          {% for var in instance.variants %}
+     <br>
+      <span class="variant-name">
+       {{ var.variant_type.name }}
+      </span>
+      : {{ var.variant_value.value }}
+          {% endfor %}
+
+
+          {% for k in cart_prod.order.meta %}
+      <br>
+       <span class="variant-name">
+        {{ k }}
+       </span>
+       : {{ cart_prod.order.meta[k] }}
+          {% endfor %}
+   </td>
+   <td>
+    {{ cart_prod.quantity }}
+   </td>
+   <td class="currency">
+    {% if is_gifted %}
+          GIFT
+          {% else %}
+          {{ cart_prod.price | currency}}
+          {% endif %}
+   </td>
+  </tr>
+  {% endfor %}
+
+      {% for pb in order.bundles %}
+
+      {% endfor %}
+
+      {% for cart_gift in order.gifts %}
+      {% set instance = cart_gift.instance %}
+  <tr>
+   <td>
+    <span class="product-name">
+     Gift of {{ instance.product.name }}
+    </span>
+    <br>
+     {% if cart_gift.subscription_type_term %}
+          {% set stt = cart_gift.subscription_type_term %}
+     <span class="subscription-plan">
+      {{ stt.name|title }} Plan
+     </span>
+     <br>
+      <span class="subscription-autorenew">
+       {{ stt.num_cycles }} deliver{% if stt.num_cycles==1 %}y{% else %}ies{% endif %}, does not auto-renew.
+      </span>
+      {% endif %}
+   </td>
+   <td>
+    {{ cart_gift.quantity }}
+   </td>
+   <td class="currency">
+    {{ cart_gift.price | currency }}
+   </td>
+  </tr>
+  {% endfor %}
+  <tr id="shipping_row" class="detail-row" {% if order.total_shipping == none %} style="display: none;" {% endif %}>
+   <td>
+    <strong data-barley="thanks-shipping-heading" data-barley-editor="simple">
+     Shipping
+    </strong>
+   </td>
+   <td>
+   </td>
+   <td class="currency" id="shipping_price">
+    {% if order.total_shipping == 0 %}
+                    FREE
+                {% elif order.total_shipping == None %}
+                {% else %}
+                    {{ order.total_shipping | currency }}
+                {% endif %}
+   </td>
+  </tr>
+  {% if order.store.settings.collect_taxes %}
+        {% for row in order.tax_rates %}
+  <tr class="detail-row tax-row sub">
+   <td>
+    {{ row['name'] }}
+   </td>
+   <td>
+   </td>
+   <td class="currency">
+    {{ row['price'] | currency }}
+   </td>
+  </tr>
+  {% endfor %}
+  <tr class="tax-row detail-row">
+   <td>
+    <strong data-barley="thanks-taxes-heading" data-barley-editor="simple">
+     Taxes
+    </strong>
+   </td>
+   <td>
+   </td>
+   <td class="currency">
+    {{ order.total_tax|default(0, True) | currency }}
+   </td>
+  </tr>
+  {% endif %}
+  <tr id="total_row" class="total-row">
+   <th data-barley="thanks-total-heading" data-barley-editor="simple">
+    Total
+   </th>
+   <th>
+   </th>
+   <th class="currency" id="total_price">
+    {{ order.total | currency }}
+   </th>
+  </tr>
+ </table>
+ {% else %}
+ <h2 data-barley="thanks-empty-heading" data-barley-editor="simple">
+  Your order is empty
+ </h2>
+ {% endif %}
+</section>
+{%- endmacro -%}
+
+
+
+{# This page is inserted into the framework defined by "base.html" #}
+{% extends "base.html" %}
+
+{% block header_content %}
+
+<!-- Various Conversion Pixel Scripts -->
+<script>
+  var product_ids = [
+      {% for product in order.products %}
+      "{{ product.instance.product_id }}"{% if order.products > 1%},{% else %}{% endif %}
+      {% endfor %}
+   ];
+
+  var cartItems = [];
+  var eventType = 'regularPurchase';
+  {% for product in order.products %}
+      var obj = {
+        id: "{{ product.instance.product_id }}",
+        price: {{product.price * 0.01}},
+        quantity: {{product.quantity}},
+        name: '{{product.instance.product.name}}'
+  	  };
+      cartItems.push(obj);
+
+      {% if product.subscription_type_term %}
+          eventType = 'soapscriptionPurchase';
+      {% endif %}
+  {% endfor %}
+  window.criteo_q.push(
+     { event: "setAccount", account: 22076}, // You should never update this line
+     { event: "setEmail", email: "{{customer.email}}" }, // Can be an empty string
+     { event: "setSiteType", type: deviceType},
+     { event: "trackTransaction", id: {{order.id}}, item: cartItems }
+  );
+
+   {% if order.coupons[0] %}
+   	{% set couponCode =  order.coupons[0].code_used %}
+   	{% set couponValue = order.coupons[0].discount_value %}
+   {% else %}
+   	{% set couponCode =  '' %}
+   	{% set couponValue = '' %}
+   {% endif %}
+
+   //Refersion tracking start
+   _refersion(function(){
+     _rfsn._addTrans({
+          'order_id':  '{{ order.id }}',
+          'shipping':  '{{ order.total_shipping /  100  }}',
+          'tax':  '{{ order.total_tax /  100  }}',
+          {%  if order.coupons |  length  >  0  %}
+              {%  for  coupon  in order.coupons %}
+                  'discount':  '{{ coupon.discount_value  /  100  }}',
+                  'discount_code':  '{{ coupon.code_used }}',
+              {%  endfor  %}
+          {%  endif  %}
+          'currency_code':  'USD'
+      });
+
+      _rfsn._addCustomer({
+          'first_name':  '{{ customer.first_name }}',
+          'last_name':  '{{ customer.last_name }}',
+          'email':  '{{ customer.email }}'
+      });
+
+      {%  if order.products |  length  >  0  %}
+          {%  for  product  in order.products %}
+          _rfsn._addItem({
+              'sku':  '{{ product.id }}',
+              'quantity':  '{{ product.quantity }}',
+              'price':  '{{ product.price /  100  }}'
+          });
+          {%  endfor  %}
+      {%  endif  %}
+
+	  _rfsn._sendConversion();
+	});
+	//REFERSION TRACKING: END
+
+  dataLayer.push({'event' : eventType, 'orderId': '{{order.id}}', 'products': cartItems, 'total': {{order.total / 100}} });
+
+  if(voyage) {
+    voyage.track('Purchase', { amountCents: {{order.total}} });
+  }
+
+
+  // Shop Message's script
+  /* if(_shopmsg) {
+    var shopMsgProducts = [];
+    {% for op in order.products %}
+      {% set product = op.instance.product %}
+      {% set imgSrc = product | object_img_tag(css_class="media-object cart-product-object") %}
+      shopMsgProducts.push({
+        "title": "{{ product.name }}",
+        "price": "{{ op.price / 100 }}",
+        "currency": "USD",
+        "product_id": "{{product.id}}",
+        {% if product.variants %}
+        "variant_id": "{{product.variants[0].id}}",
+        {% endif %}
+        "sku": "{{op.instance.sku}}",
+        {% if product.images %}
+        "image": "https:{{product.images[0].url }}",
+        {% endif %}
+        "tags": [{% for tag in product.taxonomy %}"{{ tag.name }}"{% if not loop.last %},{% endif %}{% endfor %}],
+        "product_url": "https://drsquatch.com/shop/product/{{product.id}}",
+        "quantity": {{ op.quantity }}
+      });
+    {% endfor %}
+
+    _shopmsg('trigger', 'PurchaseComplete', {
+      "order_id" : "{{order.id}}",
+      "subtotal_price" : "{{ order.sub_total * 0.01 }}",
+      "total_price" : "{{ order.total * 0.01 }}",
+      "total_tax" : "{{ order.total_tax|default(0, True) }}",
+      "items" : shopMsgProducts,
+      "customer_properties" : {
+        "email" : "{{ order.customer.email }}",
+        "customer_id" : "{{ order.customer.id }}",
+        "first_name" : "{{ order.customer.first_name }}",
+        "last_name" : "{{ order.customer.last_name }}"
+      }
+    });
+  } */
+  //End Shop Message's script
+</script>
+
+<script data-cfasync="false" type="text/javascript">
+  window.VWO = window.VWO || [];
+  window.VWO.push(['track.revenueConversion',"{{order.total / 100}}"]);
+</script>
+
+<img src="https://shareasale.com/sale.cfm?amount={{order.total / 100}}&tracking={{order.id}}&transtype=SALE&merchantID=78626" width="1" height="1">
+
+{% include 'static-page-css.html' %}
+
+<section class="banner-landscape split static-page-banner about-banner" style="background-image: url('{{'images/desert_banner.jpg' | asset_url }}')" data-barley="index-bg-img" data-barley-editor="bgimage">
+  <div class="col-sm-12 content text-invert text-center" style="padding: 0 15px 75px;">
+    <hgroup>
+      <h1 class="heading static-page" data-barley='thank-you-name' data-barley-editor='simple' style="padding-top: 70px;">THANK YOU<br>FOR YOUR ORDER</h1>
+      <p class="regular sub-heading" style="line-height: 1.5em; font-size: 15px;" data-barley='thank-you-description' data-barley-editor='simple'><span>We're putting together your order, and it will ship shortly.  Orders are processed within one business day and should arrive within a week.  Please check your email for tracking information.</span></p>
+      <p data-barley='thank-you-link' data-barley-editor='linkedit'><a href="/" class="btn btn-secondary btn-md btn-frame" style="margin-top:5px;">CONTINUE SHOPPING</a></p>
+    </hgroup>
+  </div>
+</section>
+{% endblock %}
+
+{% block body_class %}thanks{% endblock %}
+
+{#
+	Everything inside the page_content block is inserted into the main content area
+	of the page as defined by "base.html"
+#}
+{% block page_content %}
+<section class="order">
+ <!-- Begin order section -->
+ <div class="row">
+  <div class="col-sm-12">
+   <!-- The HTML for the order thank you page is rendered automatically by Cratejoy and
+cannot be modified. You can change the way it looks by editing the css though.
+There are examples of this in css/style.css
+-->
+   {# Expanded contents of 'order_page' macro #}
+      {% import "widgets/fields.html" as fields %}
+      {% import "widgets/address.html" as addr %}
+      {% import "widgets/card.html" as card %}
+      {% import "widgets/order.html" as orders %}
+   <div class="checkout_content">
+    {#<h1 class="order_thanks" data-barley="thanks-title" data-barley-editor="simple">
+     {{ title }}
+    </h1>#}
+    {# show(order, "Your order placed " ~ (order.placed_at | storedate("%A, %B %d %Y at %I:%M %p %Z")), False, True) #}
+    {{ show(order, "", False, True) }}
+    <div class="cart_addresses">
+     {% if order.ship_address and not order.sent_gift %}
+     <div class="ship_to vertical">
+      <section>
+       {% set address = order.ship_address %}
+       <h3 data-barley="ship-to-label" data-barley-editor="simple">
+        Shipping to:
+       </h3>
+       <div class="vcard display">
+        <div class="adr">
+         <div class="name">
+          {{ address.to }}
+         </div>
+         <div class="street-address">
+          {{ address.street }}
+         </div>
+         <div class="extended-address">
+          {{ address.unit }}
+         </div>
+         <span class="locality">
+          {{ address.city }}
+         </span>
+         <span class="region">
+          {{ address.state }}
+         </span>
+         <span class="postal-code">
+          {{ address.zip_code }}
+         </span>
+         <div class="country-name">
+          {{ address.country }}
+         </div>
+        </div>
+       </div>
+      </section>
+     </div>
+     {% endif %}
+    </div>
+   </div>
+   {% if is_prod and not store.settings.test_mode %}
+   <script src="//cratejoy.com/lead_dyno/purchase/{{ order.customer.email }}/{{ order.id }}/{{ order.total_price }}">
+   </script>
+   {% endif %}
+      {# finished with expanded contents #}
+
+  </div>
+ </div> <!-- End .row -->
+
+
+  {{ referral_page() }}
+  {{ carthook_thankyou }}
+</section>
+<!-- End order section -->
+
+
+<!-- You might also like -->
+<div class="thank-you-squatch-collection">
+<section class="squatch-collection pholder">
+ <div class="pholder-header" data-barley="index-collection-header" data-barley-editor="advanced">
+  <h2 class="heading">
+   YOU MIGHT ALSO LIKE
+  </h2>
+ </div>
+ <div class="row">
+  <section class="b-product col-md-3 col-sm-6">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img1" data-barley-editor="image" contenteditable="false">
+    <a href="/collections/bar-soap">
+     <img src="{{ 'images/gold-moss-home-col.png' | asset_url }}" alt class="img-responsive">
+    </a>
+   </div>
+   <div data-barley="index-coll-desc1" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     bar soaps
+    </h2>
+    <p class="">
+     9 natural ways to smell like a man.
+    </p>
+    <a href="/collections/bar-soap" class="btn btn-secondary btn-frame btn-sm">
+     <span class="hlight">
+      $7
+     </span>
+     Shop now
+    </a>
+   </div>
+  </section>
+  <section class="b-product col-md-3 col-sm-6">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img2" data-barley-editor="image" contenteditable="false">
+    <a href="/subscription" contenteditable="false">
+     <img src="{{ 'images/soapscription-home-col.png' | asset_url }}" alt class="img-responsive">
+    </a>
+   </div>
+   <div data-barley="index-coll-desc2" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     soapscription
+    </h2>
+    <p class="">
+     Handmade soaps delivered monthly.
+    </p>
+    <a href="/subscription" class="btn btn-secondary btn-frame btn-sm">
+     <span class="hlight">
+      $7<small>/mo</small>
+     </span>
+     Subscribe
+    </a>
+   </div>
+  </section>
+  <section class="b-product col-md-3 col-sm-6">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img6" data-barley-editor="image" contenteditable="false">
+    <a href="/collections/shave">
+     <img src="{{ 'images/shave-home-col.png' | asset_url }}" alt class="img-responsive">
+    </a>
+   </div>
+   <div data-barley="index-coll-desc6" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     Shave
+    </h2>
+    <p class="">
+     Shave the traditional way.
+    </p>
+    <a href="/collections/shave" class="btn btn-secondary btn-frame btn-sm">
+     <span class="hlight">
+      $12
+     </span>
+     Shop now
+    </a>
+   </div>
+  </section>
+  <section class="b-product col-md-3 col-sm-6">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img4" data-barley-editor="image" contenteditable="false">
+    <a href="/collections/cologne">
+     <img src="{{ 'images/colognes-home-col.png' | asset_url }}" alt class="img-responsive">
+    </a>
+   </div>
+   <div data-barley="index-coll-desc4" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     Colognes
+    </h2>
+    <p class="">
+     Accentuate yourself, naturally
+    </p>
+    <a href="/collections/cologne" class="btn btn-secondary btn-frame btn-sm">
+     <span class="hlight">
+      $42
+     </span>
+     Shop now
+    </a>
+   </div>
+  </section>
+ </div>
+</section>
+</div>
+<!-- End You might also like section -->
+
+
+<script type="text/javascript">
+	var purchasedTime = new Date().getTime();
+</script>
+
+<!-- Klaviyo's script -->
+{% for product in order.products %}
+  <script type="text/javascript">
+
+  _learnq.push(['track', 'Ordered Product', {
+      "event" : "Ordered Product",
+      "customer_properties": {
+          "$email" : customerEmail,
+          "$first_name" : customerFirstName,
+          "$last_name" : customerLastName
+      },
+      "properties": {
+          "$event_id" : "{{product.instance.sku}}_{{ product.id }}",
+          "$value" : {{ product.price * 0.01 }},
+          "Name": "{{ product.instance.product.name }}",
+          "Quantity" : {{ product.quantity }},
+          "ProductURL" : "https://drsquatch.com/shop/product/{{ product.id }}",
+          "ImageURL" : "https:{{ product.instance.product.calc_image_url() }}"
+      },
+      "time": purchasedTime
+  }]);
+
+
+
+  </script>
+{% endfor %}
+
+
+
+
+
+
+<script>
+window.dataLayer = window.dataLayer || [];
+dataLayer.push({
+   'event' : 'transactionSuccess',
+   'purchaseType' : eventType,
+   'transactionId': '{{order.id}}',
+   'transactionAffiliation': 'Dr. Squatch Soap Co.',
+   'transactionTotal': {{ order.total / 100 }},
+   'transactionTax': {{order.total_tax / 100 }},
+   'transactionShipping': {{order.total_shipping / 100 }},
+
+   'transactionProducts': [
+
+   {% for product in order.products %}
+
+   {
+       'sku': '{{product.instance.sku}}',
+       'name': '{{ product.instance.product.name }}',
+       'category': eventType,
+       'price': {{ product.price / 100 }},
+       'quantity': {{ product.quantity }}
+   }
+
+   {% if order.products > 1%},{% else %}{% endif %}
+   {% endfor %}
+
+   ]
+});
+</script>
+
+
+
+
+
+<!-- end Klaviyo's script -->
+
+<!-- Klaviyo's script -->
+<script type="text/javascript">
+_learnq.push(['track', 'Fulfilled Order', {
+    "$event_id" : "{{ order.cart.id }}",
+    "$value" : {{ order.total * 0.01 }},
+    "Items" : [
+      {% for product in order.products %}
+      		"{{product.instance.sku}}"{% if order.products > 1%},{% else %}{% endif %}
+      {% endfor %}
+      ]
+}]);
+</script>
+<!-- end Klaviyo's script -->
+
+<!-- Yotpo's script -->
+<script type="text/javascript">
+  (function e(){var e=document.createElement("script");
+  e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/rovsuhtR01AOZ8Vl90zCBkGot9h5DML2IsoJ9tn3/widget.js";
+  var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script>
+<script>
+  yotpoTrackConversionData = {
+    orderId: "{{ order.cart.id }}",
+    orderAmount: {{ order.total * 0.01 }},
+    orderCurrency: "USD"
+  }
+</script>
+<noscript>
+  <img src="//api.yotpo.com/conversion_tracking.gif?app_key=rovsuhtR01AOZ8Vl90zCBkGot9h5DML2IsoJ9tn3&order_id={{ order.cart.id }}&order_amount={{ order.total * 0.01 }}&order_currency=USD" width="1" height="1">
+</noscript>
+<!-- end Yotpo's script -->
+
+<!-- Yahoo/Gemini/Oath Script -->
+<script type="application/javascript">(function(w,d,t,r,u){w[u]=w[u]||[];w[u].push({'projectId':'10000','properties':{'pixelId':'10063850'}});var s=d.createElement(t);s.src=r;s.async=true;s.onload=s.onreadystatechange=function(){var y,rs=this.readyState,c=w[u];if(rs&&rs!="complete"&&rs!="loaded"){return}try{y=YAHOO.ywa.I13N.fireBeacon;w[u]=[];w[u].push=function(p){y([p])};y(c)}catch(e){}};var scr=d.getElementsByTagName(t)[0],par=scr.parentNode;par.insertBefore(s,scr)})(window,document,"script","https://s.yimg.com/wi/ytc.js","dotq");</script>
+<script type="application/javascript">
+ window.dotq = window.dotq || [];
+ window.dotq.push(
+ {
+   'projectId': '10000',
+   'properties': {
+     'pixelId': '10063850',
+     'qstrings': {
+       'et': 'custom',
+       'ec': 'conversion',
+
+       'gv': '{{ order.total / 100 }}'
+     }
+ } } );
+</script>
+
+
+
+
+
+<!-- Klaviyo's script
+<script type="text/javascript">
+_learnq.push(['track', 'Fulfilled Order', {
+    "$event_id" : "{{ order.cart.id }}",
+    "$value" : {{ order.total * 0.01 }},
+    "Items" : {
+      {% for product in order.products %}
+      "{{product.id}}": {
+      		"SKU": "{{product.instance.sku}}",
+      		"Name": "{{ product.instance.product.name }}",
+      		"Quantity" : {{ product.quantity }},
+      		"ItemPrice" : {{ product.price * 0.01 }},
+      		"RowTotal" : {{ product.price * product.quantity * 0.01 }},
+      		"ProductURL" : "https://drsquatch.com/shop/product/{{ product.id }}",
+      		"ImageURL" : "https:{{ product.instance.product.calc_image_url() }}",
+      		"ProductCategories" : []
+      }{% if order.products > 1%},{% else %}{% endif %}
+      {% endfor %}
+      }
+    }
+]);
+</script>
+end Klaviyo's script -->
+
+
+<!-- Google Code for Sales-BBL Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 1018509496;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "sZVFCJvEnGgQuPHU5QM";
+var google_conversion_value = {{ order.total * 0.01 }};
+var google_conversion_currency = "USD";
+var google_remarketing_only = false;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/1018509496/?value={{ order.total * 0.01 }}&amp;currency_code=USD&amp;label=sZVFCJvEnGgQuPHU5QM&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+<!-- BEGIN Pinterest Conversion Tracking -->
+{# <img height="1" width="1" alt="" src="https://ct.pinterest.com/?tid=CmcAF6JHdsW"/> #}
+<!-- END Pinterest Conversion Tracking -->
+
+{% endblock %}

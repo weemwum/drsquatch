@@ -1,0 +1,783 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+<section class="home-banner-container hpad">
+  <script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
+
+  <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+    <div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;">
+      <iframe src="https://fast.wistia.net/embed/iframe/5b70x8m3hp?videoFoam=true"
+        title="Dr. Squatch 4K FINAL (clean) Video" allowtransparency="true"
+        frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed"
+        allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen
+        msallowfullscreen width="100%" height="100%">
+      </iframe>
+    </div>
+    <div class="col-sm-offset-1 col-sm-4 content text-invert text-center home-layout" style="position: absolute; top: 125px;">
+      <div data-barley="index-header" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+        <hgroup>
+          <h2 class="heading metropolis-semi-bold hidden-xs hidden-sm" style="text-align: left; font-size: 45px; letter-spacing: 3px;">
+            <span style>
+              FEEL LIKE<br>A MAN,<br>SMELL<br>LIKE A<br>CHAMPION
+            </span>
+          </h2>
+        </hgroup>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    window._wq = window._wq = [];
+    _wq.push({
+      id: '5b70x8m3hp',
+      onReady: function(video) {
+        video.bind('play', function() {
+          document.querySelector('.home-layout').remove();
+          document.body.classList.add('-video-active');
+        });
+      }
+    });
+  </script>
+
+ <div class="banner-soapscription-container hidden-sm hidden-xs">
+  <div class="banner-soapscription-text">
+   <span class="metropolis-semi-bold">
+    <a href="/subscription/">
+     SOAPSCRIBE
+     <br>
+      AND SAVE
+    </a>
+   </span>
+   <span>
+    <i class="fa fa-chevron-right">
+    </i>
+   </span>
+  </div>
+  <a href="/subscription/">
+   <img style="min-width: 285px;" src="{{'images/freshness.png' | asset_url }}"/>
+  </a>
+ </div>
+</section>
+{% endblock %}
+
+{% block header_bottom_content %}
+<section class="hpad hidden-md hidden-lg">
+ <h2 class="heading metropolis-semi-bold" style="margin: 20px 0; font-size: 40px; Text-align: center;">
+  <span style>
+   FEEL LIKE
+   <br>
+    A MAN,
+    <br>
+     SMELL
+     <br>
+      LIKE A
+      <br>
+       CHAMPION
+  </span>
+ </h2>
+</section>
+<style>
+ .is-hidden {
+    display: none;
+  }
+
+  #video-popup.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 99;
+  }
+
+  #video-popup .close {
+    display: inline-block;
+    font-size: 30px;
+    width: 40px;
+    line-height: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    transition: background 0.5s;
+  }
+
+  #video-popup .close:hover {
+    background: #EEE;
+    transition: background 0.5s;
+  }
+
+  #video-popup .popup {
+    padding: 3%;
+    width: 80%;
+    max-width: 800px;
+    top: 20%;
+    position: relative;
+    margin: 0 auto 0;
+    background: #fff;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.7);
+  }
+</style>
+<div id="video-popup" class="overlay is-hidden" onclick="closeVideoPopup()">
+ <div class="popup" onclick="event.stopPropagation()">
+  <a class="close" onclick="closeVideoPopup()">
+   ×
+  </a>
+  <div class="content">
+   <style>
+    .embed-container {
+          position: relative;
+          padding-bottom: 56.25%;
+          height: 0;
+          overflow: hidden;
+          max-width: 100%;
+        }
+
+        .embed-container iframe,
+        .embed-container object,
+        .embed-container embed {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+   </style>
+  </div>
+ </div>
+ <div id="fb-root">
+ </div>
+ <script>
+  window.fbAsyncInit = function () {
+      FB.init({
+        appId: '300984050310525',
+        xfbml: true,
+        version: 'v2.5'
+      });
+
+      // Get Embedded Video Player API Instance
+      var my_video_player;
+      FB.Event.subscribe('xfbml.ready', function (msg) {
+        console.log('readumy_video_player', msg);
+        if (msg.type === 'video') {
+          window.my_video_player = msg.instance;
+          console.log(my_video_player);
+        } else {
+          window.my_video_player = null
+        }
+      });
+    };
+
+    (function (d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+ </script>
+ <script>
+  var videoPopup = document.getElementById('video-popup');
+    var embedContainer = document.getElementsByClassName('embed-container')[0];
+    function openVideoPopup() {
+      videoPopup.classList.remove("is-hidden");
+      if (window.my_video_player) {
+        my_video_player.play();
+      }
+    }
+    function closeVideoPopup() {
+      videoPopup.classList.add("is-hidden");
+      embedContainer.innerHTML = embedContainer.innerHTML;
+      if (window.my_video_player) {
+        my_video_player.pause();
+      }
+    }
+ </script>
+</div>
+{% endblock %}
+
+
+{% block page_content %}
+
+{% import 'components/product-img-carousel.html' as imgCarousel %}
+{% import 'components/video.html' as video %}
+<section class="home-slider-section" data-echo-background="{{ 'images/slider-background.jpg' | asset_url }}" style="-webkit-background-size: cover;background-size: cover;-moz-background-size: cover;-o-background-size: cover;">
+ {{ imgCarousel.renderHomeCarousel() }}
+</section>
+<section class="featured-in" data-echo-background="{{ 'images/as-seen-in-banner.jpg' | asset_url }}" style="-webkit-background-size: cover;background-size: cover;-moz-background-size: cover;-o-background-size: cover;">
+ <div class="pholder-header">
+  <h3 class="heading">
+   As Seen In
+  </h3>
+ </div>
+ <div class="clearfix">
+  <section class="item">
+   <figure>
+    <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{ 'images/mens-health-logo.png' | asset_url }}" alt class="img-responsive lazy"/>
+   </figure>
+  </section>
+  <section class="item">
+   <figure>
+    <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{ 'images/birchbox-logo.png' | asset_url }}" alt class="img-responsive lazy"/>
+   </figure>
+  </section>
+  <section class="item">
+   <figure>
+    <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{ 'images/mens-journal-logo.png' | asset_url }}" alt class="img-responsive lazy"/>
+   </figure>
+  </section>
+  <section class="item">
+   <figure>
+    <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{ 'images/uncrate-logo.png' | asset_url }}" alt class="img-responsive lazy"/>
+   </figure>
+  </section>
+  <section class="item">
+   <figure>
+    <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{ 'images/esquire-logo.png' | asset_url }}" alt class="img-responsive lazy"/>
+   </figure>
+  </section>
+ </div>
+</section>
+<section class="home-squatch-collection squatch-collection off-white-bg pholder">
+ <div class="pholder-header" data-barley="index-collection-header" data-barley-editor="advanced">
+  <h1 class="heading">
+   the squatch collection
+  </h1>
+  <p style="margin-bottom:15px;">
+   Give our natural products a try and we guarantee your skin will feel more nourished, healthy, and will smell
+      amazing.
+  </p>
+ </div>
+ <div class="row">
+  <section class="b-product col-sm-4">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img1" data-barley-editor="image" contenteditable="false">
+    <a href="/collections/bar-soap">
+     <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{ 'images/gold-moss-home-col.png' | asset_url }}" alt class="img-responsive lazy">
+     </img>
+    </a>
+   </div>
+   <div data-barley="index-coll-desc1" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     bar soaps
+    </h2>
+    <p class>
+     9 natural ways to smell like a man.
+    </p>
+    <a href="/collections/bar-soap" class="btn btn-secondary btn-frame btn-sm">
+     <span class="hlight">
+      $7
+     </span>
+     Shop now
+    </a>
+   </div>
+  </section>
+  <section class="b-product col-sm-4">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img2" data-barley-editor="image" contenteditable="false">
+    <a href="/subscription" contenteditable="false">
+     <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{ 'images/soapscription-home-col.png' | asset_url }}" alt class="img-responsive lazy">
+     </img>
+    </a>
+   </div>
+   <div data-barley="index-coll-desc2" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     soapscription
+    </h2>
+    <p class>
+     Handmade soaps delivered monthly.
+    </p>
+    <a href="/subscription" class="btn btn-secondary btn-frame btn-sm">
+     <span class="hlight">
+      $7
+      <small>
+       /mo
+      </small>
+     </span>
+     Subscribe
+    </a>
+   </div>
+  </section>
+  <section class="b-product col-sm-4">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img3" data-barley-editor="image" contenteditable="false">
+    <a href="/collections/hair-care" contenteditable="false">
+     <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{ 'images/hair-care-home-col.png' | asset_url }}" alt class="img-responsive lazy">
+     </img>
+    </a>
+   </div>
+   <div data-barley="index-coll-desc3" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     hair care
+    </h2>
+    <p class>
+     100% NPA natural certified
+    </p>
+    <a href="/collections/hair-care" class="btn btn-secondary btn-frame btn-sm">
+     <span class="hlight">
+      $18
+     </span>
+     Shop Now
+    </a>
+   </div>
+  </section>
+  <section class="b-product col-sm-4">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img4" data-barley-editor="image" contenteditable="false">
+    <a href="/collections/cologne">
+     <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{ 'images/colognes-home-col.png' | asset_url }}" alt class="img-responsive lazy" />
+    </a>
+   </div>
+   <div data-barley="index-coll-desc4" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     Colognes
+    </h2>
+    <p class>
+     Accentuate yourself, naturally
+    </p>
+    <a href="/collections/cologne" class="btn btn-secondary btn-frame btn-sm">
+     <span class="hlight">
+      $42
+     </span>
+     Shop now
+    </a>
+   </div>
+  </section>
+  <section class="b-product col-sm-4">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img5" data-barley-editor="image" contenteditable="false">
+    <a href="/shop/product/203407568">
+      <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{ 'images/sampler.png' | asset_url }}" alt class="img-responsive lazy" />
+    </a>
+   </div>
+   <div data-barley="index-coll-desc5" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     Sampler Bundle
+    </h2>
+    <p class>
+     A 4-pack of our best sellers.
+    </p>
+    <a href="/shop/product/203407568" class="btn btn-secondary btn-frame btn-sm">
+     <span class="hlight">
+      $27
+     </span>
+     Shop now
+    </a>
+   </div>
+  </section>
+  <section class="b-product col-sm-4">
+   <div class="inline-block barley_hide_outline" data-barley="index-coll-img6" data-barley-editor="image" contenteditable="false">
+    <a href="/collections/shave">
+     <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{ 'images/shave-home-col.png' | asset_url }}" alt class="img-responsive lazy">
+     </img>
+    </a>
+   </div>
+   <div data-barley="index-coll-desc6" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+    <h2 class="heading">
+     Shave
+    </h2>
+    <p class>
+     Shave the traditional way.
+    </p>
+    <a href="/collections/shave" class="btn btn-secondary btn-frame btn-sm">
+     <span class="hlight">
+      $12
+     </span>
+     Shop now
+    </a>
+   </div>
+  </section>
+ </div>
+</section>
+<section class="home-brand-ambassador hpad">
+ <div class="ambassador-text text-center">
+  <span class="metropolis-semi-bold">
+   Become a Squatch Ambassador!
+  </span>
+  <span>
+   Help us create a better smelling world & earn cool stuff doing it.
+  </span>
+  <span>
+   <a href="/ambassador" class="btn btn-secondary btn-frame btn-sm">
+    Learn More
+    <i class="fa fa-chevron-right">
+    </i>
+   </a>
+  </span>
+ </div>
+</section>
+<section class="home-two-col">
+ <!-- Raising the Bar -->
+ <div class="hpad home-raising-the-bar">
+  <div class="col-md-6">
+   <div class="two-col-img">
+    <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{'images/axe-and-soap.jpg' | asset_url}}" class="lazy">
+    </img>
+   </div>
+  </div>
+  <div class="col-md-6 product-meta-container">
+   <div class="market-font market-heading">
+    again and again
+   </div>
+   <h2 class="heading regular barley_hide_outline" data-barley="raising-the-bar" data-barley-editor="simple" contenteditable="false">
+    WE'RE RAISING THE BAR
+   </h2>
+   <div class="two-col-description">
+    <strong class="market-font">
+     Dr. Squatch
+    </strong>
+    is changing the way men approach hygiene by providing natural, healthy products that make you feel like a man
+        and smell like a champion. All of our soaps and products are made here in the US of A using the finest
+        ingredients nature has to offer.
+   </div>
+   <div class="two-col-icons-row">
+    <div class="icons-column">
+     <div class="icons-img">
+        <svg width="50px" height="31px" viewBox="0 0 60.25 37.5">
+          <image xlink:href="{{ 'images/svg/flag.svg' | asset_url }}" />
+        </svg>
+     </div>
+     <div class="icons-txt">
+      HANDMADE
+      <br>
+       IN THE USA
+     </div>
+    </div>
+    <div class="icons-column">
+      <div class="icons-img">
+        <svg width="72px" height="43px" viewbox="0 0 170.89 103.07">
+          <image xlink:href="{{ 'images/svg/medal_and_stars.svg' | asset_url }}" />
+        </svg>
+      </div>
+      <div class="icons-txt">
+        CHAMPIONSHIP
+        <br>
+        FEEL
+      </div>
+    </div>
+   </div>
+  </div>
+ </div>
+ <!-- Better Scents & Later -->
+ <div class="hpad home-better-shower">
+  <div class="wavy-background-container">
+   <div class="wavy-background" data-echo-background="{{ 'images/home-wavy-texture.png' | asset_url }}">
+   </div>
+  </div>
+  <div class="col-md-6 col-md-push-6">
+   <div class="two-col-img">
+    <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{'images/soap-lathered.jpg' | asset_url}}" class="lazy">
+    </img>
+   </div>
+  </div>
+  <div class="col-md-6 col-md-pull-6 product-meta-container">
+   <div class="market-font market-heading">
+    better scents & better lather
+   </div>
+   <h2 class="heading regular barley_hide_outline" data-barley="a-better-shower" data-barley-editor="simple" contenteditable="false">
+    A BETTER SHOWER
+   </h2>
+   <div class="two-col-description">
+    With 9 manly scents that produce an intoxicating, thick, foamy lather, Dr. Squatch showers are an experience—an
+        adventure into the wilderness that will have you coming up with excuses to get dirty, just so you can get clean.
+   </div>
+   <div class="two-col-icons-row">
+    <div class="icons-column">
+     <div class="icons-img">
+      <svg xmlns="http://www.w3.org/2000/svg" width="62px" height="22px" viewbox="0 0 66.5 23.75">
+       <defs>
+        <style>
+         .cls-1 {
+                    fill: #fff;
+                  }
+        </style>
+       </defs>
+       <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_1-2" data-name="Layer 1">
+         <path class="cls-1" d="M47.2,23.75a18.9,18.9,0,0,1-14-6.58A18.9,18.9,0,0,1,19.3,23.75C3.68,23.75.08,8.59,0,8.44A1.77,1.77,0,0,1,.64,6.7a1.72,1.72,0,0,1,1.81-.25c2.61,1.13,6.87,2.17,8.08,1.16L11.2,7c3.11-2.63,8.33-7,14-7a10.91,10.91,0,0,1,8.1,3.35A10.91,10.91,0,0,1,41.35,0C47,0,52.19,4.41,55.3,7l.67.57c1.22,1,5.47,0,8.08-1.16a1.73,1.73,0,0,1,1.81.25,1.77,1.77,0,0,1,.6,1.74C66.42,8.59,62.82,23.75,47.2,23.75Zm-14-11.15a1.75,1.75,0,0,1,1.47.8c0,.06,4.58,6.85,12.48,6.85A15.54,15.54,0,0,0,61.86,10.9c-2.65.71-6.07,1.11-8.13-.61h0L53,9.72C50.29,7.39,45.69,3.5,41.35,3.5A7.3,7.3,0,0,0,34.82,7a1.76,1.76,0,0,1-3.14,0A7.31,7.31,0,0,0,25.15,3.5c-4.34,0-8.94,3.89-11.69,6.22l-.69.57c-2,1.72-5.46,1.32-8.11.62A15.59,15.59,0,0,0,19.3,20.25c8,0,12.44-6.78,12.48-6.85A1.75,1.75,0,0,1,33.25,12.6Z">
+         </path>
+        </g>
+       </g>
+      </svg>
+     </div>
+     <div class="icons-txt">
+      MASCULINE
+      <br>
+       SCENTS
+     </div>
+    </div>
+    <div class="icons-column">
+     <div class="icons-img">
+      <svg xmlns="http://www.w3.org/2000/svg" width="55px" height="33px" viewbox="0 0 59.02 36.6">
+       <defs>
+        <style>
+         .cls-1 {
+                    fill: #fff;
+                  }
+        </style>
+       </defs>
+       <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_1-2" data-name="Layer 1">
+         <path class="cls-1" d="M43.08,30.9a16.33,16.33,0,0,1-3.87-.47,15.5,15.5,0,0,1-12.08-15A15.43,15.43,0,0,1,35.29,2a16.46,16.46,0,0,1,7.79-2A15.72,15.72,0,0,1,59,15.45,15.72,15.72,0,0,1,43.08,30.9ZM36.72,4.59a12.42,12.42,0,0,0-6.6,10.86,12.52,12.52,0,0,0,9.79,12.08,13.61,13.61,0,0,0,3.17.38A12.73,12.73,0,0,0,56,15.45,12.74,12.74,0,0,0,43.08,3a13.35,13.35,0,0,0-6.36,1.61Z">
+         </path>
+         <path class="cls-1" d="M10.11,31.6A10.39,10.39,0,0,1,0,21,10.39,10.39,0,0,1,10.11,10.36a10.37,10.37,0,0,1,10.08,9.8,1,1,0,0,1-.92,1.07l-.49,0a1,1,0,0,1-1.07-.93,7.88,7.88,0,0,0-7.6-7.48A7.89,7.89,0,0,0,2.49,21a7.89,7.89,0,0,0,7.62,8.12,7.05,7.05,0,0,0,2.9-.61,1,1,0,0,1,1.32.51l.2.45a1,1,0,0,1,0,.76,1,1,0,0,1-.53.56A9.57,9.57,0,0,1,10.11,31.6Z">
+         </path>
+         <path class="cls-1" d="M21,36.6a8.93,8.93,0,0,1-2.33-17.55,9.26,9.26,0,0,1,4.59,0,8.93,8.93,0,0,1,1.34,16.81A8.61,8.61,0,0,1,21,36.6Zm0-15.36a6.42,6.42,0,0,0-6.44,6.43,6.81,6.81,0,0,0,.21,1.66A6.45,6.45,0,0,0,21,34.11a6.25,6.25,0,0,0,2.58-.54,6.44,6.44,0,0,0-1-12.12A6.39,6.39,0,0,0,21,21.24Z">
+         </path>
+         <path class="cls-1" d="M5.44,19.9h0l-.29,0a.49.49,0,0,1-.47-.52A4.36,4.36,0,0,1,7,15.71a.52.52,0,0,1,.67.24l.12.27a.53.53,0,0,1,0,.39.47.47,0,0,1-.27.28,3.09,3.09,0,0,0-1.59,2.54.53.53,0,0,1-.17.35A.5.5,0,0,1,5.44,19.9Z">
+         </path>
+         <path class="cls-1" d="M34.05,14.59l-.13,0-1-.24a.5.5,0,0,1-.36-.61A10.81,10.81,0,0,1,37,7.32a9,9,0,0,1,2.28-1.18.5.5,0,0,1,.38,0,.53.53,0,0,1,.25.3l.28.94a.5.5,0,0,1-.33.62A6.78,6.78,0,0,0,38.1,9a8.9,8.9,0,0,0-3.57,5.26.48.48,0,0,1-.23.31A.45.45,0,0,1,34.05,14.59Z">
+         </path>
+        </g>
+       </g>
+      </svg>
+     </div>
+     <div class="icons-txt">
+      GLORIOUS
+      <br>
+       LATHER
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+ <!-- Why All Natural -->
+ <div class="hpad home-all-natural">
+  <div class="col-md-6">
+   <div class="two-col-img">
+    <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{'images/showering-in-woods.jpg' | asset_url}}" class="lazy">
+    </img>
+   </div>
+  </div>
+  <div class="col-md-6 product-meta-container">
+   <div class="market-font market-heading">
+    you might be wondering
+   </div>
+   <h2 class="heading regular barley_hide_outline" data-barley="why-allnatural" data-barley-editor="simple" contenteditable="false">
+    WHY ALL NATURAL?
+   </h2>
+   <div class="two-col-description">
+    <strong class="market-font">
+     Great question!
+    </strong>
+    Maybe you've been using the same brand name bar for years, maybe, much like a dish, you rub yourself down with
+        liquid detergent each morning. The truth is, you are not a dish, you are a man. As a man, you have some skin in
+        the game and that skin craves natural, nourishing ingredients
+    <a href="/about">
+     like the ones found in our soap.
+    </a>
+   </div>
+   <div class="two-col-icons-row">
+    <div class="icons-column">
+     <div class="icons-img">
+      <svg xmlns="http://www.w3.org/2000/svg" width="26px" height="40px" viewbox="0 0 3.41 5.05">
+       <defs>
+        <style>
+         .cls-1 {
+                    fill: #fff;
+                  }
+        </style>
+       </defs>
+       <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_1-2" data-name="Layer 1">
+         <path class="cls-1" d="M1.15,4.24A1.61,1.61,0,0,1,0,2.77,2.59,2.59,0,0,1,.91.89a5.14,5.14,0,0,0,.63-.8A.18.18,0,0,1,1.8,0s.05,0,.07.06h0A5,5,0,0,0,2.5.89a2.59,2.59,0,0,1,.91,1.88A1.61,1.61,0,0,1,2.25,4.24a1.56,1.56,0,0,1-.43.08h0a.73.73,0,0,1-.73.73A.11.11,0,0,1,1,4.94a.11.11,0,0,1,.11-.12.5.5,0,0,0,.5-.5h0a1.63,1.63,0,0,1-.44-.08ZM.88,2.71h0a.12.12,0,0,1,0-.16.1.1,0,0,1,.16,0l.55.54V1.36a.11.11,0,0,1,.11-.12.12.12,0,0,1,.12.12v1.2L2.37,2a.12.12,0,0,1,.16,0,.14.14,0,0,1,0,.17l-.71.7V3.94a1.65,1.65,0,0,0,.32-.06A1.23,1.23,0,0,0,3,2.76a2.23,2.23,0,0,0-.82-1.62C2,.94,1.86.75,1.7.54a5.78,5.78,0,0,1-.51.6A2.26,2.26,0,0,0,.38,2.76a1.23,1.23,0,0,0,.88,1.12,1.91,1.91,0,0,0,.33.06V3.41l-.71-.7Z">
+         </path>
+        </g>
+       </g>
+      </svg>
+     </div>
+     <div class="icons-txt">
+      SKIN-NOURISHING
+      <br>
+       PLANT OILS
+     </div>
+    </div>
+    <div class="icons-column">
+     <div class="icons-img">
+      <svg xmlns="http://www.w3.org/2000/svg" width="44px" height="44px" viewbox="0 0 43 43">
+       <defs>
+        <style>
+         .cls-1 {
+                    fill: #fff;
+                  }
+        </style>
+       </defs>
+       <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_1-2" data-name="Layer 1">
+         <path class="cls-1" d="M21.5,43A21.5,21.5,0,1,1,43,21.5,21.52,21.52,0,0,1,21.5,43Zm0-39.5a18,18,0,1,0,18,18A18,18,0,0,0,21.5,3.5Z">
+         </path>
+         <path class="cls-1" d="M8.16,37.66a1.75,1.75,0,0,1-1.27-3L33.58,6.94a1.75,1.75,0,0,1,2.53,2.43L9.42,37.12A1.76,1.76,0,0,1,8.16,37.66Z">
+         </path>
+         <path class="cls-1" d="M31.65,34.11H11.35a1,1,0,0,1-.84-.45,1,1,0,0,1-.08-.95L16.66,18.6V9.45a1,1,0,0,1,2,0v9.36a1,1,0,0,1-.09.41L12.88,32.11H30.12L24.43,19.22a1,1,0,0,1-.09-.41V9.45a1,1,0,0,1,2,0V18.6l6.23,14.11a1,1,0,0,1-.08.95A1,1,0,0,1,31.65,34.11Z">
+         </path>
+         <path class="cls-1" d="M27.17,10H15.83a1,1,0,1,1,0-2H27.17a1,1,0,0,1,0,2Z">
+         </path>
+         <path class="cls-1" d="M27.69,26.12H14.87a1,1,0,0,1,0-2H27.69a1,1,0,0,1,0,2Z">
+         </path>
+        </g>
+       </g>
+      </svg>
+     </div>
+     <div class="icons-txt">
+      NO
+      <br>
+       CHEMICALS
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+<section class="pholder verified-reviews off-white-bg">
+  <div class="pholder-header barley_hide_outline"
+    data-barley="reviews-heading" data-barley-editor="advanced" contenteditable="false">
+
+    <h2 class="heading">3000+ VERIFIED REVIEWS</h2>
+    <p class="reviews-subtitle">
+      Don't take our word for it... hear what guys just like you are saying about Dr. Squatch.
+    </p>
+  </div>
+
+  <div class="row reviews-video">
+    <div class="col-md-6 col-md-offset-3 col-sm-12" style="margin-top: -125px;">
+      {{ video.inline('1sri3k4jg1') }}
+    </div>
+  </div>
+
+  <div class="row fb-reviews hpad">
+    <div class="fb-review-item col-md-6">
+      <a href="https://www.facebook.com/118075261668462/posts/1152109414931703">
+        <img class="lazy" style="max-width:100%; margin-bottom: 15px;"
+          src="{{ 'images/blank.gif' | asset_url }}"
+          data-src="{{'images/alan-jacobson-fb.png' | asset_url}}" />
+      </a>
+    </div>
+
+    <div class="fb-review-item col-md-6">
+      <a href="https://www.facebook.com/118075261668462/posts/1152109414931703">
+        <img class="lazy" style="max-width:100%; margin-bottom: 15px;"
+          src="{{ 'images/blank.gif' | asset_url }}"
+          data-src="{{'images/alisia-carlson-fb.png' | asset_url}}" />
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="take-this quiz pholder hpad" data-echo-background="{{ 'images/quiz-banner-bg.jpg' | asset_url }}">
+ <div class="quiz-banner-img hidden-md hidden-sm hidden-xs">
+  <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{'images/quiz-banner-squatch.png' | asset_url}}" class="lazy" />
+ </div>
+ <div class="quiz-banner-content" data-barley="index-quiz" data-barley-editor="advanced">
+  <p class="playball">
+   the Dr. Squatch
+  </p>
+  <h2 class="heading metropolis-semi-bold">
+   SOAP QUIZ
+  </h2>
+  <p class="col-xs-10 col-xs-offset-1">
+   Find the best soap for your personality & skin type
+  </p>
+  <a href="/quiz" class="btn btn-frame btn-md btn-success" data-barley="index-quiz-link" data-barley-editor="linkedit">
+   take the quiz
+  </a>
+ </div>
+ <div class="quiz-banner-soap hidden-md hidden-sm">
+  <img src="{{ 'images/blank.gif' | asset_url }}" data-src="{{'images/quiz-banner-soap.jpg' | asset_url}}" class="lazy">
+  </img>
+ </div>
+</section>
+{% endblock %}
+
+{% block page_javascript %}
+<script src="{{ 'js/ma5slider.combined.js' | asset_url }}">
+</script>
+<style>
+ .slides {
+    font-size: 14px
+  }
+</style>
+<link href="{{ 'css/plugins/ma5slider.min.css' | asset_url }}" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+  jQuerySafe(window).on('load', function () {
+    jQuery3('.ma5slider').ma5slider();
+    //jQuerySafe('.home-play-btn').show();
+  });
+</script>
+<script>
+  /* lazyload.js (c) Lorenzo Giuliani
+   * MIT License (http://www.opensource.org/licenses/mit-license.html)
+   *
+   * expects a list of:
+   * `<img src="blank.gif" data-src="my_image.png" width="600" height="400" class="lazy">`
+   */
+  $(function () {
+    var $q = function (q, res) {
+      if (document.querySelectorAll) {
+        res = document.querySelectorAll(q);
+      } else {
+        var d = document
+          , a = d.styleSheets[0] || d.createStyleSheet();
+        a.addRule(q, 'f:b');
+        for (var l = d.all, b = 0, c = [], f = l.length; b < f; b++)
+          l[b].currentStyle.f && c.push(l[b]);
+
+        a.removeRule(0);
+        res = c;
+      }
+      return res;
+    }
+      , addEventListener = function (evt, fn) {
+        window.addEventListener
+          ? this.addEventListener(evt, fn, false)
+          : (window.attachEvent)
+            ? this.attachEvent('on' + evt, fn)
+            : this['on' + evt] = fn;
+      }
+      , _has = function (obj, key) {
+        return Object.prototype.hasOwnProperty.call(obj, key);
+      }
+      ;
+
+    function loadImage(el, fn) {
+      var img = new Image()
+        , src = el.getAttribute('data-src');
+      img.onload = function () {
+        if (!!el.parent)
+          el.parent.replaceChild(img, el)
+        else
+          el.src = src;
+
+        fn ? fn() : null;
+      }
+      img.src = src;
+    }
+
+    function elementInViewport(el) {
+      var rect = el.getBoundingClientRect()
+
+      return (
+        rect.top >= 0
+        && rect.left >= 0
+        && rect.top <= (window.innerHeight || document.documentElement.clientHeight)
+      )
+    }
+
+    var images = new Array()
+      , query = $q('img.lazy')
+      , processScroll = function () {
+        for (var i = 0; i < images.length; i++) {
+          if (elementInViewport(images[i])) {
+            loadImage(images[i], function () {
+              images.splice(i, i);
+            });
+          }
+        };
+      }
+      ;
+    // Array.prototype.slice.call is not callable under our lovely IE8
+    for (var i = 0; i < query.length; i++) {
+      images.push(query[i]);
+    };
+
+    processScroll();
+    addEventListener('scroll', processScroll);
+
+  });
+ </script>
+{% endblock %}

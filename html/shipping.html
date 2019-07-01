@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+{% include 'static-page-css.html' %}
+
+<section class="banner-landscape split static-page-banner" style="background-image: url('{{'images/dark-wood-bg.jpg' | asset_url }}')" data-barley="index-bg-img" data-barley-editor="bgimage">
+  <div class="content text-invert text-center">
+    <hgroup>
+      <h1 class="heading" data-barley='shipping-policies-name' data-barley-editor='simple'>Dr. Squatch Shipping Policies</h1>
+    </hgroup>
+  </div>
+</section>
+{% endblock %}
+
+{% block page_content %}
+<article class="hpad post shipping-text">
+<span style="line-height: 2.3; background-color: initial;">  
+  <h3>
+	1. Domestic Shipping
+</h3>
+
+<p>
+Our standard shipping method is via DHL Global mail. DHL global mail has an average delivery time of 3-5 days. Orders to 
+  the west coast may take up to 5 days. Large orders may be shipped through UPS Ground. You should expect 2-5 business 
+  days for delivery once it leaves our shop. Please check your inbox for tracking information as we will automatically send a 
+  tracking number to the email on file with the order.
+  If you would like to place a rush order, please <a href="/contact">contact us</a> in advance and we can arrange that for you!
+  </p>
+<hr>
+  <h3>
+	2. Order Processing
+</h3>
+
+<p>
+Orders placed through our website will ship within 1 business day. Orders received by 1pm EST typically are shipped out 
+  the same day, and if it's after this cutoff it will usually go out the next day. In rare occasions or during exceptionally busy 
+  times, we do experience stockouts, which can cause a longer delay in an order. If this happens we will do our best to 
+  contact you ahead of time. 
+
+</p>
+<hr> 
+<h3>
+	3. International Shipping
+</h3>
+
+<p>
+International shipping is done through DHL global mail and rates are calculated at checkout based on your country and 
+order size. Please contact us with questions or for an order quote.
+</p>
+  </span>
+</article>
+			
+{% endblock %}

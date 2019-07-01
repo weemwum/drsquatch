@@ -1,0 +1,1215 @@
+
+<script type='text/template' id='selected_cart_item_template'>
+<div class="cart-item media alert" role="alert">
+    <button type="button" class="close btn-cart-product-remove" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <div class="media-left cart-product-img-holder">
+      <%= image %>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading"><%= name %></h4>
+      <p class=''><%= description %></p>
+      <div class="meta">
+        <% if (single_purchasable === "True"){ %>
+          <div class="control-counter">
+            <a href="#"><i class="btn-quantity-decrease fa fa-minus"></i></a>
+            <span class="counter-qty-middle"><span>QTY:</span>&nbsp;<span class="count"><%= quantity %></span></span>
+            <a href="#"><i class="btn-quantity-increase fa fa-plus"></i></a>
+          </div>
+        <% } %>
+        <span class="price"><%= total_price_text %></span>
+        <input type='hidden' class='unit-price' value='<%= unit_price %>'</span>
+      </div>
+    </div>
+  </div>
+</script>
+
+<div id="cart-slide" class="modal fade">
+  <div id='cart-holder'>
+    <section class="cart-slide">
+      <header>
+        <h2 class="heading" data-dismiss="modal" aria-label="Close">
+          <span>Your Cart</span>
+          <i class="fa fa-times"></i>
+        </h2>
+      </header>
+      <div id="cart-item-holder" class='hide-if-empty'>
+      </div>
+      <div id='cart-empty' class='show-if-empty'>
+      	Your cart is empty!
+      </div>
+      <footer>
+        <div class="total hide-if-empty">
+          <ul class="line">
+            <li>Subtotal</li>
+            <li id='cart-sub-total-price'>$0.00</li>
+          </ul>
+        </div>
+        {# May put this back later #}
+		{#
+          <div style='display:none'>
+            <ul class="line">
+              <li>SUBTOTAL</li>
+              <li>$42.00</li>
+            </ul>
+            <div class="form-group">
+              <label class="sr-only" for="inputGroupSuccess1">Promo code</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="inputGroupSuccess1" aria-describedby="inputGroupSuccessStatus" placeholder="enter a promo code">
+                <a href="#" class="input-group-addon">Apply</a>
+              </div>
+            </div>
+          </div>
+        #}
+        <div class="text-center" style="border-top: 1px solid #CCC;">
+          <a href="/checkout" type="button" class="link-checkout btn btn-secondary btn-frame btn-lg hide-if-empty">Checkout</a>
+          <a href="#" id='btn-close-cart' data-dismiss='modal' arlia-label="Close" class="btn btn-secondary btn-frame btn-lg show-if-empty">Close</a>
+        </div>
+
+        {% include 'components/sudisfaction-guarantee-fixed.html' %}
+      </footer>
+    </section>
+  </div>
+</div>
+
+<script type='text/javascript'>
+  cartAvailableProducts = [];
+
+cartAvailableProducts.push({
+    name: 'Example',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/c6abdad9258e47feb8ca38a02d3456fd.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'ONE TIME PURCHASE',
+    total_price: 500,
+    total_price_text: '$5.00',
+    quantity: 1,
+    unit_price: 500,
+    product_id: '70275554'
+  });
+
+  cartAvailableProducts.push({
+    name: 'Cypress Coast Shampoo',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/drsquatchsoapco/joybox_men-copy-13/images/shampoo-pic.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 1800,
+    total_price_text: '$18.00',
+    quantity: 1,
+    unit_price: 1800,
+    product_id: '83122902'
+  });
+
+    cartAvailableProducts.push({
+    name: 'Cool Citrus Conditioner',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/drsquatchsoapco/joybox_men-copy-13/images/conditioner-pic-3.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 1800,
+    total_price_text: '$18.00',
+    quantity: 1,
+    unit_price: 1800,
+    product_id: '83122952'
+  });
+
+   cartAvailableProducts.push({
+    name: 'Hair Care Kit',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/drsquatchsoapco/joybox_men-copy-13/images/s&c.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 3000,
+    total_price_text: '$30.00',
+    quantity: 1,
+    unit_price: 3000,
+    product_id: '503651566'
+  });
+
+  cartAvailableProducts.push({
+    name: 'Travel Bag',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/24656f40f01348168386dc51324a0224.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 800,
+    total_price_text: '$8.00',
+    quantity: 1,
+    unit_price: 800,
+    product_id: '543921815'
+  });
+
+  cartAvailableProducts.push({
+    name: 'Travel Bag',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/24656f40f01348168386dc51324a0224.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 1000,
+    total_price_text: '$10.00',
+    quantity: 1,
+    unit_price: 1000,
+    product_id: '544132706'
+  });
+
+  cartAvailableProducts.push({
+    name: 'Soap Saver',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/4197f12a4cc64afe8916ed2ac03dbb26.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 1500,
+    total_price_text: '$15.00',
+    quantity: 1,
+    unit_price: 1500,
+    product_id: '70698419'
+  });
+
+  cartAvailableProducts.push({
+    name: 'Deep Sea Goats Milk',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/0384cdaaae4e46358c119baa92d44908.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 700,
+    total_price_text: '$7.00',
+    quantity: 1,
+    unit_price: 700,
+    product_id: '70699496'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Cool Fresh Aloe',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/ca5fd1e2ca9c4558b5586a654d96cd4d.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 700,
+    total_price_text: '$7.00',
+    quantity: 1,
+    unit_price: 700,
+    product_id: '70699856'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Eucalyptus Yogurt',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/ec41de87ef384f3eada6096f10865d55.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 700,
+    total_price_text: '$7.00',
+    quantity: 1,
+    unit_price: 700,
+    product_id: '70700416'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Bay Rum',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/65053139a0584bc6b187f78579024654.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 700,
+    total_price_text: '$7.00',
+    quantity: 1,
+    unit_price: 700,
+    product_id: '70700670'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Spearmint Basil',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/b10bb2d9472e4a2a94143632ce530755.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 700,
+    total_price_text: '$7.00',
+    quantity: 1,
+    unit_price: 700,
+    product_id: '70701388'
+  });
+
+  cartAvailableProducts.push({
+    name: 'Crisp IPA',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/drsquatchsoapco/joybox_men-copy-26/images/New_Crisp_IPA_image.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 700,
+    total_price_text: '$7.00',
+    quantity: 1,
+    unit_price: 700,
+    product_id: '1802804246'
+  });
+
+  cartAvailableProducts.push({
+    name: 'Cedar Citrus',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/ea8c4fb50e4c4828be92cb578d14143f.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 700,
+    total_price_text: '$7.00',
+    quantity: 1,
+    unit_price: 700,
+    product_id: '70701577'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Gold Moss',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/59629c9fd86543319f87bfc639967221.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 700,
+    total_price_text: '$7.00',
+    quantity: 1,
+    unit_price: 700,
+    product_id: '70701905'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Pine Tar',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/7c6a60f37ee641cca0dff93de519ef4b.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 700,
+    total_price_text: '$7.00',
+    quantity: 1,
+    unit_price: 700,
+    product_id: '70702082'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Beechwood Bourbon',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/drsquatchsoapco/joybox_men-copy-20/images/Cologne_Beechwood_Bourbonpng.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2100,
+    total_price_text: '$21.00',
+    quantity: 1,
+    unit_price: 2100,
+    product_id: '70704176'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Crushed Pine',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/072093028c8448548076bc6f54aaa24a.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2100,
+    total_price_text: '$21.00',
+    quantity: 1,
+    unit_price: 2100,
+    product_id: '70704519'
+  });
+
+  cartAvailableProducts.push({
+    name: 'Fresh Fir',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/6730d256677b4ee1b740efb4d990042f.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'ONE TIME PURCHASE',
+    total_price: 1800,
+    total_price_text: '$18.00',
+    quantity: 1,
+    unit_price: 1800,
+    product_id: '1727801243'
+  });
+
+
+  cartAvailableProducts.push({
+    name: 'Lakeside Bourbon',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/8111bd72865943fa815756f5b8dd8eb6.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'ONE TIME PURCHASE',
+    total_price: 1800,
+    total_price_text: '$18.00',
+    quantity: 1,
+    unit_price: 1800,
+    product_id: '1727791130'
+  });
+
+    cartAvailableProducts.push({
+    name: 'Fresh Fir',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/74436d65635c4945983e0abbafd86394.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'ONE TIME PURCHASE',
+    total_price: 1800,
+    total_price_text: '$18.00',
+    quantity: 1,
+    unit_price: 1800,
+    product_id: '1727795073'
+  });
+
+
+  cartAvailableProducts.push({
+    name: 'Lakeside Bourbon',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/8111bd72865943fa815756f5b8dd8eb6.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'ONE TIME PURCHASE',
+    total_price: 1800,
+    total_price_text: '$18.00',
+    quantity: 1,
+    unit_price: 1800,
+    product_id: '1727797354'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Cologne Samples',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/4399a3a0953f4136b8e9166499f66dbb.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 1000,
+    total_price_text: '$10.00',
+    quantity: 1,
+    unit_price: 1000,
+    product_id: '70705703'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Gift Box',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/ddf7f09812c2419dbd144156b118190b.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 4200,
+    total_price_text: '$42.00',
+    quantity: 1,
+    unit_price: 4200,
+    product_id: '73715486'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Squatch Picks',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/f7ff2a1957dd4d1d9c252a4fca3c42d7.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 0,
+    total_price_text: '$0.00',
+    quantity: 1,
+    unit_price: 0,
+    product_id: '75684627'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Best Sellers Gift Box',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/c60f4a1be28349048b9c6db1f775d869.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 5200,
+    total_price_text: '$52.00',
+    quantity: 1,
+    unit_price: 5200,
+    product_id: '81318210'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'The Woodsmen Gift Box',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/d02dc6ec6b794523be7604a3b681390e.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 5200,
+    total_price_text: '$52.00',
+    quantity: 1,
+    unit_price: 5200,
+    product_id: '81325435'
+  });
+
+  cartAvailableProducts.push({
+    name: 'Super Fresh Gift Box',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/0a251b34af0e45699e913232dadc0cca.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 5200,
+    total_price_text: '$52.00',
+    quantity: 1,
+    unit_price: 5200,
+    product_id: '81326129'
+  });
+
+  cartAvailableProducts.push({
+    name: 'Pine Tar Gift Box',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/ffae3e77463943eaacca369ee2abaa33.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 5200,
+    total_price_text: '$52.00',
+    quantity: 1,
+    unit_price: 5200,
+    product_id: '2219599492'
+  });
+
+  cartAvailableProducts.push({
+    name: 'Soapscription',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/31660806167e4485946b920434a16d11.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 700,
+    total_price_text: '$7.00',
+    quantity: 1,
+    unit_price: 700,
+    product_id: '83096993'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Shower Koozie',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/623c3885cbef4be18520477d986da8df.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 1200,
+    total_price_text: '$12.00',
+    quantity: 1,
+    unit_price: 1200,
+    product_id: '83120443'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Shave Brush',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/8e837cb5199d4c37b7ee3c2f316985df.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2800,
+    total_price_text: '$28.00',
+    quantity: 1,
+    unit_price: 2800,
+    product_id: '83120574'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Shave Bar',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/26ca697957e94b7f8ea15e610694aaaf.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 1200,
+    total_price_text: '$12.00',
+    quantity: 1,
+    unit_price: 1200,
+    product_id: '83120728'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Shave Kit',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/9a4eb3c9f29f4dc8ad480c4a85adfba3.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 7800,
+    total_price_text: '$78.00',
+    quantity: 1,
+    unit_price: 7800,
+    product_id: '83121030'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Shave Mug',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/da868143470841faaa6ea1261f3ee259.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 1000,
+    total_price_text: '$10.00',
+    quantity: 1,
+    unit_price: 1000,
+    product_id: '83121848'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Dr. Squatch Sticker',
+    image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-1/images/default_product.png?ts=1448512070&host=drsquatch.com" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 0,
+    total_price_text: '$0.00',
+    quantity: 1,
+    unit_price: 0,
+    product_id: '83121906'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Shampoo',
+    image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-1/images/default_product.png?ts=1448512070&host=drsquatch.com" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 0,
+    total_price_text: '$0.00',
+    quantity: 1,
+    unit_price: 0,
+    product_id: '83122902'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Conditioner',
+    image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-1/images/default_product.png?ts=1448512070&host=drsquatch.com" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 0,
+    total_price_text: '$0.00',
+    quantity: 1,
+    unit_price: 0,
+    product_id: '83122952'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Dr. Squatch Favorites',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/bbcd45e168f5452380f590b547ddb35c.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2700,
+    total_price_text: '$27.00',
+    quantity: 1,
+    unit_price: 2700,
+    product_id: '83126452'
+  });
+
+
+    cartAvailableProducts.push({
+    name: 'Dr. Squatch Favorites Pack',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/bbcd45e168f5452380f590b547ddb35c.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2700,
+    total_price_text: '$27.00',
+    quantity: 1,
+    unit_price: 2700,
+    product_id: '203407568'
+  });
+
+
+  cartAvailableProducts.push({
+    name: 'Soap Saver',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/5278d388529a41bb8073d1b3f8d39040.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 1500,
+    total_price_text: '$15.00',
+    quantity: 1,
+    unit_price: 1500,
+    product_id: '86209383'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Crushed Pine',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/072093028c8448548076bc6f54aaa24a.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2100,
+    total_price_text: '$21.00',
+    quantity: 1,
+    unit_price: 2100,
+    product_id: '86211176'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Beechwood Bourbon',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/drsquatchsoapco/joybox_men-copy-20/images/Cologne_Beechwood_Bourbonpng.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2100,
+    total_price_text: '$21.00',
+    quantity: 1,
+    unit_price: 2100,
+    product_id: '86211517'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Cologne Samples',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/42768b2feb8e400f87b541439d540845.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 800,
+    total_price_text: '$8.00',
+    quantity: 1,
+    unit_price: 800,
+    product_id: '86211745'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Test Product with Variant',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/1df3f23368644726926ba6c57b3db431.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 500,
+    total_price_text: '$5.00',
+    quantity: 1,
+    unit_price: 500,
+    product_id: '89028629'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Test product with duplicate variant SKU',
+    image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-1/images/default_product.png?ts=1448512070&host=drsquatch.com" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 500,
+    total_price_text: '$5.00',
+    quantity: 1,
+    unit_price: 500,
+    product_id: '89078020'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Shave Bar',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/e3b3b9665a964ca1a85c3e22380f9cec.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 1200,
+    total_price_text: '$12.00',
+    quantity: 1,
+    unit_price: 1200,
+    product_id: '98582817'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Shave Brush',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/85b2d41c04ea4bee8544f19236d7da70.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2800,
+    total_price_text: '$28.00',
+    quantity: 1,
+    unit_price: 2800,
+    product_id: '98585164'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Shave Mug',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/c0a4545df290473cbdc86e911dd2308b.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2800,
+    total_price_text: '$28.00',
+    quantity: 1,
+    unit_price: 2800,
+    product_id: '98587407'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Shave Kit',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/3bf7aff5a0e04cc5ad2abf0a0f7b5596.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 7800,
+    total_price_text: '$78.00',
+    quantity: 1,
+    unit_price: 7800,
+    product_id: '98589597'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Nautical Sage',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/abc473ba8db64c69a3aca34637cd8879.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 700,
+    total_price_text: '$7.00',
+    quantity: 1,
+    unit_price: 700,
+    product_id: '112874164'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Small Shirt',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/b3199bbf01634d0391c19c6220b8aaf0.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2800,
+    total_price_text: '$28.00',
+    quantity: 1,
+    unit_price: 2800,
+    product_id: '112901908'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Dr. Squatch Gift Card',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/8a3f4ca8d5144d758034d7aa5421e68c.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 5000,
+    total_price_text: '$50.00',
+    quantity: 1,
+    unit_price: 5000,
+    product_id: '120735378'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Medium Shirt',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/c094b437a5204f30b81db8ac69b50201.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2800,
+    total_price_text: '$28.00',
+    quantity: 1,
+    unit_price: 2800,
+    product_id: '127056935'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Large Shirt',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/2d102f71b38d43ce8701c880a66af8b4.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2800,
+    total_price_text: '$28.00',
+    quantity: 1,
+    unit_price: 2800,
+    product_id: '127062200'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'XLarge Shirt',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/f7533fe2ef6947728bddfd87805822be.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2800,
+    total_price_text: '$28.00',
+    quantity: 1,
+    unit_price: 2800,
+    product_id: '127063345'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'XXLarge Shirt',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/90d8b4abd8fb4c43a4f6c6cd37885cc2.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2800,
+    total_price_text: '$28.00',
+    quantity: 1,
+    unit_price: 2800,
+    product_id: '127065534'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Custom Cigar Box',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/d7f800e3e378468abbd9b69a5e44b589.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2500,
+    total_price_text: '$25.00',
+    quantity: 1,
+    unit_price: 2500,
+    product_id: '127089506'
+  });
+
+
+
+  cartAvailableProducts.push({
+    name: 'Dr. Squatch Shirts',
+    image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-1/images/default_product.png?ts=1448512070&host=drsquatch.com" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2800,
+    total_price_text: '$28.00',
+    quantity: 1,
+    unit_price: 2800,
+    product_id: '138753842'
+  });
+
+  cartAvailableProducts.push({
+    name: 'Ultimate Bundle',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/1ee7429595b740c087cf20db61a9ba2a.jpeg" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2700,
+    total_price_text: '$27.00',
+    quantity: 1,
+    unit_price: 2700,
+    product_id: '1077513364'
+  });
+
+    cartAvailableProducts.push({
+    name: 'The Squatch Starter',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/drsquatchsoapco/joybox_men-copy-18/images/bundle-2bar-sav.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 1400,
+    total_price_text: '$14.00',
+    quantity: 1,
+    unit_price: 1400,
+    product_id: '1467524069'
+  });
+
+      cartAvailableProducts.push({
+    name: 'The Mane Man',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/drsquatchsoapco/joybox_men-copy-18/images/bundle-3bar-sav-kit.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 4300,
+    total_price_text: '$43.00',
+    quantity: 1,
+    unit_price: 4300,
+    product_id: '1467546874'
+  });
+
+        cartAvailableProducts.push({
+    name: 'The Refined Beast',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/drsquatchsoapco/joybox_men-copy-18/images/bundle-2bar-sav-col.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 2900,
+    total_price_text: '$29.00',
+    quantity: 1,
+    unit_price: 2900,
+    product_id: '1467537929'
+  });
+
+  cartAvailableProducts.push({
+    name: 'The Kings Ransom',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/85855a9cef3848a2818105228aefc2e9.png" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'One-time purchase',
+    total_price: 5000,
+    total_price_text: '$50.00',
+    quantity: 1,
+    unit_price: 5000,
+    product_id: '1469824140'
+  });
+
+  cartAvailableProducts.push({
+    name: 'Tame Your Beast Kit',
+    image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-21/images/beast-Tame-Your-Beast-Kit.jpg" class="media-object cart-product-object"  >',
+    single_purchasable: 'True',
+    description: 'ONE TIME PURCHASE',
+    total_price: 2999,
+    total_price_text: '$29.99',
+    quantity: 1,
+    unit_price: 2999,
+    product_id: '1549025229'
+  });
+
+  cartAvailableProducts.push({
+    name: 'Deluxe Bundle Box',
+    image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/26f9cb29ce874e30b33f53d619f8f849.jpeg" class="media-object cart-product-object"  >',
+    single_purchasable: 'False',
+    description: 'FIRST SHIPMENT IS A GIFTBOX, REPEATING SHIPMENTS WILL BE A QUARTERLY SUBSCRIPTION',
+    total_price: 15000,
+    total_price_text: '$150.00',
+    quantity: 1,
+    unit_price: 15000,
+    product_id: '1041547867',
+    term_cycles: 4,
+    metadata: {"mf:cart.survey.sku.string":"holiday-bundle"}
+      /*{
+        "mf:cart.survey.scent1.string":"bar-pt",
+        "mf:cart.survey.scent2.string":"bar-br",
+        "mf:cart.survey.scent3.string":"bar-gms",
+        "mf:cart.survey.scent4.string":"bar-ns",
+        "mf:cart.survey.scent5.string":"bar-sbs",
+        "mf:cart.survey.scent6.string":"bar-cc"
+    }*/
+  });
+
+
+
+
+/**
+ * Raindrop Marketing Additions
+ */
+
+cartAvailableProducts.push({
+  name: 'Ultimate Squatch Bundle',
+  image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-20/images/ultimate-squatch-bundle-2.jpg" class="media-object cart-product-object"  >',
+  single_purchasable: 'True',
+  description: 'One-time purchase',
+  total_price: 8900,
+  total_price_text: '$89.00',
+  quantity: 1,
+  unit_price: 8900,
+  product_id: '1844520801'
+});
+
+cartAvailableProducts.push({
+  name: 'Mane Man Bundle',
+  image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-20/images/mane-man-bundle-2.jpg" class="media-object cart-product-object"  >',
+  single_purchasable: 'True',
+  description: 'One-time purchase',
+  total_price: 4100,
+  total_price_text: '$41.00',
+  quantity: 1,
+  unit_price: 4100,
+  product_id: '1844523595'
+});
+
+cartAvailableProducts.push({
+  name: 'Refined Beast Bundle',
+  image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-20/images/refined-beast-bundle-2.jpg" class="media-object cart-product-object"  >',
+  single_purchasable: 'True',
+  description: 'One-time purchase',
+  total_price: 3500,
+  total_price_text: '$35.00',
+  quantity: 1,
+  unit_price: 3500,
+  product_id: '1844525322'
+});
+
+cartAvailableProducts.push({
+  name: 'Subtle Stud Bundle',
+  image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-20/images/subtle-stud-2.jpg" class="media-object cart-product-object"  >',
+  single_purchasable: 'True',
+  description: 'One-time purchase',
+  total_price: 3000,
+  total_price_text: '$30.00',
+  quantity: 1,
+  unit_price: 3000,
+  product_id: '1844528447'
+});
+
+
+cartAvailableProducts.push({
+  name: 'Alpine Man Bundle',
+  image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-20/images/alpine-man-2.jpg" class="media-object cart-product-object"  >',
+  single_purchasable: 'True',
+  description: 'One-time purchase',
+  total_price: 3000,
+  total_price_text: '$30.00',
+  quantity: 1,
+  unit_price: 3000,
+  product_id: '1844526925'
+});
+
+cartAvailableProducts.push({
+  name: 'Best S(m)ellers',
+  image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-20/images/best-smellers.png" class="media-object cart-product-object"  >',
+  single_purchasable: 'True',
+  description: 'One-time purchase',
+  total_price: 1700,
+  total_price_text: '$17.00',
+  quantity: 1,
+  unit_price: 1700,
+  product_id: '1844529845'
+});
+
+cartAvailableProducts.push({
+  name: 'Best S(m)ellers w/ Soap Saver',
+  image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-20/images/best-smellers-soap-saver.png" class="media-object cart-product-object"  >',
+  single_purchasable: 'True',
+  description: 'One-time purchase',
+  total_price: 2300,
+  total_price_text: '$23.00',
+  quantity: 1,
+  unit_price: 2300,
+  product_id: '1844536362'
+});
+
+cartAvailableProducts.push({
+  name: 'Freshness',
+  image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-20/images/freshness.png" class="media-object cart-product-object"  >',
+  single_purchasable: 'True',
+  description: 'One-time purchase',
+  total_price: 1700,
+  total_price_text: '$17.00',
+  quantity: 1,
+  unit_price: 1700,
+  product_id: '1844531086'
+});
+
+cartAvailableProducts.push({
+  name: 'Freshness w/ Soap Saver',
+  image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-20/images/freshness-soap-saver.png" class="media-object cart-product-object"  >',
+  single_purchasable: 'True',
+  description: 'One-time purchase',
+  total_price: 2300,
+  total_price_text: '$23.00',
+  quantity: 1,
+  unit_price: 2300,
+  product_id: '1844538923'
+});
+
+cartAvailableProducts.push({
+  name: 'Pine Tar',
+  image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-20/images/pine-tar.png" class="media-object cart-product-object"  >',
+  single_purchasable: 'True',
+  description: 'One-time purchase',
+  total_price: 1700,
+  total_price_text: '$17.00',
+  quantity: 1,
+  unit_price: 1700,
+  product_id: '1844532285'
+});
+
+cartAvailableProducts.push({
+  name: 'Pine Tar w/ Soap Saver',
+  image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-20/images/pine-tar-soap-saver.png" class="media-object cart-product-object"  >',
+  single_purchasable: 'True',
+  description: 'One-time purchase',
+  total_price: 2300,
+  total_price_text: '$23.00',
+  quantity: 1,
+  unit_price: 2300,
+  product_id: '1844545594'
+});
+
+cartAvailableProducts.push({
+  name: 'Bay Rum',
+  image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-20/images/bay-rum.png" class="media-object cart-product-object"  >',
+  single_purchasable: 'True',
+  description: 'One-time purchase',
+  total_price: 1700,
+  total_price_text: '$17.00',
+  quantity: 1,
+  unit_price: 1700,
+  product_id: '1844533216'
+});
+
+cartAvailableProducts.push({
+  name: 'Bay Rum w/ Soap Saver',
+  image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-20/images/bay-rum-soap-saver.png" class="media-object cart-product-object"  >',
+  single_purchasable: 'True',
+  description: 'One-time purchase',
+  total_price: 2300,
+  total_price_text: '$23.00',
+  quantity: 1,
+  unit_price: 2300,
+  product_id: '1844539904'
+});
+
+cartAvailableProducts.push({
+  name: 'Gold Moss w/ Soap Saver',
+  image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-20/images/gold-moss-soap-saver.png" class="media-object cart-product-object"  >',
+  single_purchasable: 'True',
+  description: 'One-time purchase',
+  total_price: 2300,
+  total_price_text: '$23.00',
+  quantity: 1,
+  unit_price: 2300,
+  product_id: '1844550558'
+});
+
+cartAvailableProducts.push({
+  name: 'Squatchmas',
+  image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-20/images/squatchma.png" class="media-object cart-product-object"  >',
+  single_purchasable: 'True',
+  description: 'One-time purchase',
+  total_price: 4900,
+  total_price_text: '$49.00',
+  quantity: 1,
+  unit_price: 4900,
+  product_id: '1870252626'
+});
+
+cartAvailableProducts.push({
+  name: 'Ultimate Squatch Bundle',
+  image: '<img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-20/images/ultimate-squatch-new.png" class="media-object cart-product-object"  >',
+  single_purchasable: 'True',
+  description: 'One-time purchase',
+  total_price: 7900,
+  total_price_text: '$79.00',
+  quantity: 1,
+  unit_price: 7900,
+  product_id: '1870238301'
+});
+
+ cartAvailableProducts.push({
+   name: "Karl's Special",
+   image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/6d379797daba4dd083c01d7a1e9e0187.png" class="media-object cart-product-object"  >',
+   single_purchasable: 'True',
+   description: 'One-time purchase',
+   total_price: 2000,
+   total_price_text: '$27.00',
+   quantity: 1,
+   unit_price: 2700,
+   product_id: '2185991005'
+ });
+
+
+
+
+1870238301
+
+    /*metadata: {
+      data: {
+        survey: ["bar-pt","bar-br","bar-gms","bar-ns","bar-sbs","bar-cc"]
+    }*/
+  cartItems = [];
+  console.log("Generating cart items...", '{{cart.id}}');
+   {% for cp in cart.products %}
+  {% set product = cp.instance.product %}
+  {% set term_cycles = cp.instance.term_prices | length %}
+  var cartItem = {
+    name: '{{ product.name }}',
+    image: '{{ product | object_img_tag(css_class="media-object cart-product-object") }}',
+    single_purchasable: '{{ product.single_purchasable }}',
+    description: '{{ product.description if product.single_purchasable == False else "One-time purchase" }}',
+    total_price: {{ cp.price }},
+    total_price_text: '{{ cp.price | currency }}',
+    quantity: {{ cp.quantity }},
+    unit_price: {{ cp.price / cp.quantity }},
+    product_id: '{{ product.id }}',
+    term_cycles: {% if term_cycles %}'{{term_cycles}}'{% else %}null{% endif %},
+    metadata: {}
+  };
+
+   {% if cp.md %}
+     var metadata = {};
+     {% for prop in cp.md.data['survey'] %}
+       metadata['mf:cart.survey.{{prop}}.string'] = "{{ cp.md.data['survey'][prop] }}";
+     {% endfor %}
+     cartItem['metadata'] = metadata;
+   {% endif %}
+
+   cartItems.push(cartItem);
+   {% endfor %}
+
+  console.log("Finished generating cart items...");
+</script>

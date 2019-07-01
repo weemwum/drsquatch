@@ -1,0 +1,20 @@
+<!-- This script is a macro instead of a simple include because it needs a param (user_id) to render-->
+{% macro script(user_id) %}
+<script type="text/javascript">
+  (function (w) {
+    var s = document.createElement('script');
+    s.src = '//survey.survicate.com/workspaces/bd0cca1ea338864015e788844bc476de/web_surveys.js';
+    s.async = true;
+    var e = document.getElementsByTagName('script')[0];
+    e.parentNode.insertBefore(s, e);
+  })(window);
+</script>
+<script type="text/javascript">
+  (function(opts) {
+    opts.traits = {
+      "user_id": "{{ user_id }}"
+    };
+  })(window._sva = window._sva || {});
+</script>
+<!-- End of Survicate code -->
+{% endmacro %}

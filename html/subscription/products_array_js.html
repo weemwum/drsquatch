@@ -1,0 +1,22 @@
+[
+  {% for product in sorted -%}
+  {% set price = product.calc_min_price() if not product.single_purchasable else product.calc_min_ecom_price() %}
+    {
+      id: "{{ product.id }}",
+      sku: "{{ product.instances[0].sku }}",
+      name: "{{ product.name }}",
+      url: "https://drsquatch.com/shop/product/{{ product.id }}?iframe=true",
+      description: "{{ product.description }}",
+      image: '{{ product | object_img_tag() }}',
+      is_single_purchasable: {{ 'true' if product.single_purchasable else 'false' }},
+      price: {{ price / 100 }},
+      displayPrice: '{{ price|currency }}',
+      stock: {{ product.instances[0].inventory.quantity_on_hand | int }},
+      outofstock_purchase: {{ 1 if product.instances[0].inventory.out_of_stock_purchases else 0 }},
+
+      {# Extra fields related to state #}
+      selected: false,
+      qty: 0,
+    }{% if not loop.last %},{% endif %}
+  {%- endfor %}
+]

@@ -1,0 +1,11 @@
+{% for addon in sorted if addon.instances[0].inventory.quantity_on_hand %}
+  <div class="col-xs-12 col-sm-6 col-md-4 addon-item js_slide">
+    {{ addon | object_img_tag() }}
+    <h4 class="media-heading">{{ addon.name }}</h4>
+    <p class="description">{{ addon.description }}</p>
+    <span class="price">{{  addon.calc_min_ecom_price() | currency }}</span>
+    <a href="/shop/product/{{ addon.id }}" class="ecom-add-to-cart btn btn-secondary" data-toggle="modal" data-target="#cart-slide" data-ecom-id="{{ addon.id }}">
+      Add to cart
+    </a>
+  </div>
+{% endfor %}

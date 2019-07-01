@@ -1,0 +1,247 @@
+<!-- Saved ~2-3s on bad wifi, but did have to comment out css.base(), js.base(), and ga.base() for some reason -->
+{% set cart = active_cart() %}
+<!DOCTYPE HTML>
+<html>
+ <html lang>
+  <head>
+   <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+      <meta property="fb:app_id" content="259221937513591" /> 
+
+      <title>
+       {% block title %} {{ page_title }} {% endblock %}
+      </title>
+      <!-- Bootstrap CSS -->
+    <link rel="shortcut icon" href="{{ 'images/favicon.ico' | asset_url }}" type="image/x-icon"/>
+      <link rel="stylesheet" type="text/css" href="{{ 'css/plugins/jquery.formstyler.css' | asset_url }}">
+       <link rel="stylesheet" type="text/css" href="{{ 'css/main.css' | asset_url }}">
+        <link rel="stylesheet" type="text/css" href="{{ 'css/style.css' | asset_url }}">
+    	<link rel="stylesheet" type="text/css" href="{{ 'css/subscription-v2.min.css' | asset_url }}">
+    	<link href="//cdn.rawgit.com/noelboss/featherlight/1.4.0/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+         {# css.base() #}
+{{ 'css/product-reviews.css' | asset_url | stylesheet_tag }}
+         <!--link rel="stylesheet/less" type="text/css" href="less/main.less">
+<script src="js/less.min.js" type="text/javascript"></script-->
+         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+         <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+        </link>
+       </link>
+      </link>
+     </meta>
+    </meta>
+   </meta>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+   </script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js">
+   </script>
+
+	<style>
+      
+      .review_excerpt .cancel-on-png, 
+      .review_excerpt .cancel-off-png, 
+      .review_excerpt .star-on-png, 
+      .review_excerpt .star-off-png, 
+      .review_excerpt .star-half-png {
+        font-size: 1em !important;
+      }
+      @font-face {
+        font-family: "raty";
+        font-style: normal;
+        font-weight: normal;
+        src: url("{{ 'fonts/fontawesome-webfont.eot' | asset_url }}");
+        src: url("{{ 'fonts/fontawesome-webfont.eot?#iefix' | asset_url }}") format("embedded-opentype");
+        src: url("{{ 'fonts/fontawesome-webfont.svg' | asset_url }}") format("svg");
+        src: url("{{ 'fonts/fontawesome-webfont.ttf' | asset_url }}") format("truetype");
+        src: url("{{ 'fonts/fontawesome-webfont.woff' | asset_url }}") format("woff");
+      }
+      .cancel-on-png, .cancel-off-png, .star-on-png, .star-off-png, .star-half-png {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: "raty";
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        line-height: 1;
+        speak: none;
+        text-transform: none;
+      }
+      .cancel-on-png:before {
+        content: "\e600";
+      }
+      .cancel-off-png:before {
+        content: "\e601";
+      }
+      .star-on-png:before {
+        content: "\f005";
+      }
+      .star-off-png:before {
+        content: "\f006";
+      }
+      .star-half-png:before {
+        content: "\f123";
+      }
+      
+    </style>
+
+   {{ settings.header_code | safe }}
+	
+
+
+  </head>
+  <body>
+   <!-- MAIN CONTAINER -->
+   <div class="container">
+    {% include 'components/topheader.html' %}
+    <div class="wrapper-content w-bg">
+     <!-- Main Navigation -->
+     {% include 'components/nav.html' %}
+      {% block header_content %}
+     <section class="banner-landscape landscape-0" style="background-image: url('{{'images/banner-main-7.jpg' | asset_url }}')" data-barley="default-bg-img" data-barley-editor="bgimage">
+      {% block header_inner_content %}
+      <div class="col-sm-offset-7 col-sm-5 content text-invert text-center home-layout">
+       <div class="col-xs-12 hidden-sm hidden-md hidden-lg" data-barley="index-top-header-img" data-barley-editor="image">
+        <img src="{{ 'images/CedarCitrus-xxl.png' | asset_url }}" alt class="header-img-top-sm-home">
+        </img>
+       </div>
+       <div data-barley="index-top-header" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+       </div>
+      </div>
+      {% endblock %}
+     </section>
+     {% endblock %}
+
+    {% block header_bottom_content %}
+    {% endblock %}
+
+    {% block page_content %}
+    {% endblock %}
+
+    {% include 'components/yotpo-gallery.html' %}
+    {% include 'components/footer_3rdparties.html' %}
+    </div>
+    <!-- /.wrapper-content -->
+   </div>
+   <!-- /MAIN CONTAINER -->
+   {% include 'components/cart.html' %}
+   
+   <script src="{{ 'js/underscore-min.js' | asset_url }}">
+   </script>
+   <script src="{{ 'js/backbone-min.js' | asset_url }}">
+   </script>
+   <script type="text/javascript">
+    BBSafe = window.Backbone;
+   </script>
+   <script src="{{ 'js/jquery.raty.js' | asset_url }}">
+   </script>
+   <script type="text/javascript">
+    jQuerySafe = $;
+   </script>
+   <script src="//cdn.rawgit.com/noelboss/featherlight/1.4.0/release/featherlight.min.js" type="text/javascript" charset="utf-8">
+   </script>
+   <script src="{{ 'js/jquery.formstyler.min.js' | asset_url }}">
+   </script>
+   <script src="{{ 'js/backbone_cart.js' | asset_url }}">
+   </script>
+   <script src="{{ 'js/cart.js' | asset_url }}">
+   </script>
+   {# js.base() #}
+   <script>
+  
+   </script>
+   <script type="text/javascript">
+    var submitEmailSignup = function(event){
+     	event.preventDefault();
+        var url = '/customer/list_subscribe';
+      	var data = {
+        	'list_id': $("#email-signup-list-id").val(),
+          	'email': $("#email-signup-email").val()
+        }
+        $.post(url, data, function(){
+        	$(".show-on-save").show();
+          	$(".hide-on-save").hide();
+        });
+    };
+     
+$('#accordion').on('show hide', function() {
+    $(this).css('height', 'auto');
+});
+    
+     
+     (function() {
+
+       //$('.navbar-header .navbar-toggle').bind('mousedown', function(e){
+       $(document).on('click', '.navbar-header .navbar-toggle', function(e){
+		e.preventDefault();
+         //$('body').toggleClass('modal-open');
+         $(this).toggleClass('opened');
+         $(".nav-primary").toggleClass('in');
+       });
+
+	   $(document).on('mouseenter mouseleave click', '.dropdown', function(e){
+           //e.preventDefault();
+           $(this).toggleClass('open');
+       });
+
+       jQuerySafe('.product-rating').raty({
+         score: function(){
+           return $(this).attr('data-score');
+         },
+         readOnly: true,
+         starType: 'i',
+         hints: null
+       });
+
+     })();
+
+  $(document).on('scroll', function(){
+    if ($(window).scrollTop() > 200) {
+      $('html').addClass('fixed-top');
+      $('.navbar-site').addClass('navbar-fixed-top');
+    } else {
+      $('html').removeClass('fixed-top');
+      $('.navbar-site').removeClass('navbar-fixed-top');
+    }
+  });
+
+$('body').on({
+    'touchmove': function(e) { 
+      if ($(this).scrollTop() > 200) {
+        $('html').addClass('fixed-top');
+        $('.navbar-site').addClass('navbar-fixed-top');
+      } else {
+        $('html').removeClass('fixed-top');
+        $('.navbar-site').removeClass('navbar-fixed-top');
+      }
+    }
+});
+     
+$(window).scroll(function() { 
+      if ($(this).scrollTop() > 200) {
+        $('html').addClass('fixed-top');
+        $('.navbar-site').addClass('navbar-fixed-top');
+      } else {
+        $('html').removeClass('fixed-top');
+        $('.navbar-site').removeClass('navbar-fixed-top');
+      }
+});
+     
+    $(document).on('click', '#email-signup-submit', submitEmailSignup);     
+     
+   </script>
+    
+	{# ga.base() #}
+    {% block page_javascript %}
+
+    {% endblock %}
+
+    {{ settings.footer_code | safe}}
+
+  </body>
+ </html>
+</html>

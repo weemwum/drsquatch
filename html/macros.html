@@ -1,0 +1,17 @@
+{# Sort products by their "collection-ordering" taxonomy #}
+{# Template will be rendered with access to a "sorted" variable containing the products #}
+{% macro render_sorted_products(products, template) -%}
+  {% set unsorted = [] %}
+  {% for product in products %}
+    {% set prod_item = {"product": product, "ordering": -1} %}
+    {% for t in product.taxonomy %}
+      {% if "collection-ordering-" in t.slug %}
+        {% do prod_item.update({"ordering": t.slug.rsplit('-', 1)[-1] | int}) %}
+      {% endif %}
+    {% endfor %}
+    {% do unsorted.append(prod_item) %}
+  {% endfor %}
+
+  {% set sorted = unsorted | sort(attribute="ordering", reverse=True) | map(attribute="product") %}
+  {% include template %}
+{%- endmacro  %}

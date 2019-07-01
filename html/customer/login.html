@@ -1,0 +1,68 @@
+{# This page is inserted into the framework defined by "base.html" #}
+{% extends "base.html" %}
+
+
+{% block header_content %}
+
+{% endblock %}
+
+
+{% block body_class %}login{% endblock %}
+
+{#
+  Everything inside the page_content block is inserted into the main content area
+  of the page as defined by "base.html"
+#}
+{% block page_content %}
+
+
+
+<section class='login row text-center'>
+    <div class="col-sm-12">
+      <h1 data-barley="login_heading" data-barley-editor="simple">Account Login</h1>
+
+      <p data-barley="login_sub_heading" data-barley-editor="simple">Log in to change your subscription or update your shipping/billing information.</p>
+
+
+    </div>
+</section>
+
+<section class="row login-form">
+  <div class="col-sm-6 col-sm-offset-3 text-center">
+
+    <div class="row">
+      <div class="col-sm-12 form-container">
+        <p> Don't have an account? <a style="font-weight: 700; color: #fff; background: #de7c00; padding: 6px; border-radius: 3px;" href="/subscription">Subscribe!</a></p>
+        <form role="form" class="cform" action="/customer/login" method="post" accept-charset="utf-8">
+          <div class="row">
+            <div class="col-sm-12">
+            <div class="form-group frm-input-grp">
+              <input type="email" name="email" class="form-control frm-input-grp input-lg" id="email" placeholder="Email address" required><label for="email" class="sr-only" data-barley="login_label_email" data-barley-editor="simple" placeholder="Email">Email</label>
+            </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+            <div class="form-group frm-input-grp">
+              <input type="password" class="form-control frm-input-grp input-lg" id="inputPassword" name="password" placeholder="Password" required>
+              <label for="password" class="sr-only" data-barley="login_label_password" data-barley-editor="simple">Password</label>
+            </div>
+            </div>
+          </div>
+
+
+
+          <div class="row">
+            <div class="col-md-6 pull-left">
+              <p><a href="/customer/forgot_password">Forgot your password?</a></p>
+            </div>
+            <div class="col-md-6 pull-right">
+              <button type="submit" class="btn btn-med btn-primary fullsize drk-btn-grp">LOGIN</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

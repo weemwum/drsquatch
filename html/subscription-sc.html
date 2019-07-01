@@ -1,0 +1,666 @@
+
+<!-- Google Analytics Content Experiment code -->
+<script>function utmx_section(){}function utmx(){}(function(){var
+k='88153193-2',d=document,l=d.location,c=d.cookie;
+if(l.search.indexOf('utm_expid='+k)>0)return;
+function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
+indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
+length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
+'<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
+'://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
+'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
+valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+'" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
+</script><script>utmx('url','A/B');</script>
+<!-- End of Google Analytics Content Experiment code -->
+
+<div class="loading active">
+	Hang on a sec, we're loading the Soapscription page.
+</div>
+{% extends "base.html" %}
+{% block meta_additions %}
+	<link rel="canonical" href="https://drsquatch.com/subscription">
+{% endblock %}
+{% block header_content %}
+<div class="subscription-v2">
+<section class="banner-landscape banner-landscape-v2 centered" style="background-image: url({{ 'images/banner-subscription.jpg' | asset_url }})" data-barley="bg-img-subscription" data-barley-editor="bgimage">
+ <div class="header-hand">
+   Soupscription
+ </div>
+ <div class="col-md-offset-5 col-md-7 col-sm-offset-5 col-sm-7 content text-invert text-center">
+  <div data-barley="subscription-header" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+   <hgroup>
+    <h1 class="heading">
+     The Soapscription
+    </h1>
+    <h2 class="heading">
+     The best natural soap, delivered automatically
+    </h2>
+   </hgroup>
+   <div class="header-container orange">
+    <div class="header-container-border">
+    	<h3>Sudisfaction Guaranteed</h3>
+      	<span>If it's not the best soap you’ve ever used, it's on us.</span>
+    </div>
+   </div>
+   <ul class="header-list">
+     <li><span class="list-number">1</span>Choose your number of soaps</li>
+     <li><span class="list-number">2</span>Pick your favorite scents</li>
+     <li><span class="list-number">3</span>Get ready for the best shower of your life </li>
+   </ul>
+   <div class="header-sticker">
+     <div class="header-sticker-border">
+     Save 15% + free shipping on every order
+     </div>
+   </div>
+  </div>
+ </div>
+</section>
+{% endblock %}
+
+{% block page_content %}
+
+{# STEP 1 - SELECT PRODUCT #}
+<div class="panel-group hpad pholder" id="accordion" role="tablist" aria-multiselectable="true">
+ <section class="panel substep">
+  <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+   <span class="number">
+    1
+   </span>
+   <h1 class="panel-title" data-barley="subscription-step1-header" data-barley-editor="simple">
+    How many bars per month?
+   </h1>
+  </div>
+  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+   <div class="panel-body">
+    <section class="squatch-collection">
+     <h4 class="h-section" data-barley="sub-step-1-sub-heading" data-barley-editor="simple">
+      on average a bar lasts about two weeks
+     </h4>
+     <div class="row product-template-holder">
+     </div>
+    </section>
+   </div>
+   <div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+     <a href="#collapseTwo" role="tab" class="btn btn-success btn-frame btn-md fullsize subscribe_btn btn-subscription-choose-plan" data-toggle="collapse" data-parent="#accordion" aria-controls="collapseTwo">
+      <i class="icon footprint">
+      </i>
+      Next >
+     </a>
+    </div>
+   </div>
+  </div>
+ </section>
+ {# STEP 2 - SELECT TERM #}
+ <section class="panel substep">
+  <div class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+   <span class="number">
+    2
+   </span>
+   <h1 class="panel-title" data-barley="subscription-step2-header" data-barley-editor="simple">
+    How often should we ship?
+   </h1>
+  </div>
+  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+   <div class="panel-body">
+    <section class="squatch-collection">
+     <h4 class="h-section" data-barley="sub-step-2-sub-heading" data-barley-editor="simple">
+      Free Shipping
+     </h4>
+     <div class="row term-template-holder">
+     </div>
+    </section>
+   </div>
+   <div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+     <a href="#collapseThree" role="tab" class="btn btn-success btn-frame btn-md fullsize subscribe_btn btn-subscription-choose-term" data-toggle="collapse" data-parent="#accordion" aria-controls="collapseThree">
+      <i class="icon footprint">
+      </i>
+      Next >
+     </a>
+    </div>
+   </div>
+  </div>
+ </section>
+ {# STEP 3 - SELECT SCENTS #}
+ <section class="panel substep">
+  <div class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" data-target="#collapseThree" aria-controls="collapseThree">
+   <span class="number">
+    3
+   </span>
+   <h1 class="panel-title" data-barley="subscription-step3-header" data-barley-editor="simple">
+    What scents should we send?
+   </h1>
+  </div>
+  <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+   <div class="panel-body">
+    <div class="row">
+     <div class="col-md-7 col-sm-6 scents">
+      <div class="h-section">
+       <h4 class="heading" data-barley="sub-step-3-sub-heading" data-barley-editor="simple">
+        choose your scents
+       </h4>
+      </div>
+      {# STEP 3A - AVAILABLE SCENTS #}
+      <div class="content scent-template-holder">
+      </div>
+     </div>
+     <div class="col-md-5 col-sm-6 scents chosen-scents">
+      <div class="h-section">
+       <h4 class="heading" data-barley="sub-step-4-sub-heading" data-barley-editor="simple">
+        your shipment <span class="scents-quantity"></span>
+       </h4>
+      </div>
+      <div class="selected">
+       {# STEP 3B - CHOSEN SCENTS #}
+       <div class="chosen-scent-template-holder"></div>
+       <div class="chosen-scent-placeholder"></div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+    	<div class="select_msg hidden-xs" id="select_msg"></div>
+      	<!-- href="#collapseFour" -->
+     <a id="collapseFour_btn" href="#collapseFour" role="tab" class="btn btn-success btn-frame btn-md fullsize subscribe_btn btn-subscription-choose-scent" data-toggle="collapse" data-parent="#accordion" aria-controls="collapseFour">
+      <i class="icon footprint">
+      </i>
+      Next >
+     </a>
+    </div>
+   </div>
+  </div>
+ </section>
+ {# STEP 4 - SELECT S&C #}
+ <section class="panel substep">
+  <div class="panel-heading collapsed" role="tab" id="headingFour" data-toggle="collapse" data-parent="#accordion" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+   <span class="number">
+    4
+   </span>
+   <h1 class="panel-title" data-barley="subscription-step4-header" data-barley-editor="simple">
+    Shampoo & Conditioner (New!)
+   </h1>
+  </div>
+  <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+   <div class="panel-body">
+    <section class="squatch-collection">
+     <h4 class="h-section barley_hide_outline" data-barley="sub-step-5-sub-heading" data-barley-editor="simple" contenteditable="false">
+      Haircare products are shipped quarterly only
+     </h4>
+     <div class="row haircare-template-holder">
+     </div>
+    </section>
+   </div>
+   <div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+     <div class="select_msg" id="select_msg_checkout"></div>
+     <a href="#collapseFive" class="btn btn-success btn-frame btn-md fullsize btn-subscription-choose-plan" data-toggle="collapse" data-parent="#accordion" aria-controls="collapseFive">
+      <i class="icon footprint">
+      </i>
+      Next
+     </a>
+    </div>
+   </div>
+  </div>
+ </section>
+ {# STEP 5 - SELECT ADDONS #}
+ <section class="panel substep">
+  <div class="panel-heading collapsed" role="tab" id="headingFive" data-toggle="collapse" data-parent="#accordion" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+   <span class="number">
+    5
+   </span>
+   <h1 class="panel-title" data-barley="subscription-step5-header" data-barley-editor="simple">
+    What Add-Ons would you like?
+   </h1>
+  </div>
+  <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+   <div class="panel-body">
+    <section class="squatch-collection">
+     <h4 class="h-section barley_hide_outline" data-barley="sub-step-6-sub-heading" data-barley-editor="simple" contenteditable="false">
+      Add some goodies, only sent with your first shipment
+     </h4>
+     <div class="row addon-template-holder">
+       <div class="addon-category addon-most-polular">
+         <h2>Most Popular</h2>
+       </div>
+       <div class="addon-category addon-hair">
+         <h2>Hair Care</h2>
+       </div>
+       <div class="addon-category addon-cologne">
+         <h2>Cologne</h2>
+       </div>
+       <!--<div class="addon-category addon-shave">
+         <h2>Shave</h2>
+       </div> -->
+     </div>
+    </section>
+   </div>
+   <div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+     <div class="select_msg" id="select_msg_checkout"></div>
+     <a href="#" class="btn btn-success btn-frame btn-md fullsize submit-subscription btn-subscription-choose-addon-finish">
+      <i class="icon footprint">
+      </i>
+      Finish
+     </a>
+    </div>
+   </div>
+  </div>
+ </section>
+</div>
+</div>
+{# ITEM TEMPLATE FOR STEP 1 - PRODUCTS #}
+<script type="text/template" id="product_template">
+ <section class="b-product col-sm-4 col-xs-12">
+    <figure><%= image %></figure>
+    <hgroup>
+      <h3 class="heading"><%= name %><span class="hlight"><%= price %></span></h3>
+      <h4 class="p-title"><%= description %></h4>
+    </hgroup>
+	
+    <a href="#" class="btn btn-default btn-frame btn-md btn-product-select <%= selected == true ? "btn-subscription-selected": "" %>">
+        <i class="icon footprint"></i> 
+    	<%= selected == true ? "Selected" : "Select" %>
+  	</a>
+  </section>
+</script>
+{# END ITEM TEMPLATE STEP 1 #}
+
+{# ITEM TEMPLATE FOR STEP 2 - TERMS #}
+<script type="text/template" id="term_template">
+ <section class="b-product col-sm-6 col-xs-12">
+    <figure><%= image %></figure>
+    <hgroup>
+      <h3 class="heading"><%= name %></h3>
+      <h4 class="p-title"><%= description%></h4>
+      <input type='hidden' value="<%= term_type %>" class='term_type' />
+    </hgroup>
+    <a href="#" class="btn btn-default btn-frame btn-md btn-term-select <%= selected == true ? "btn-subscription-selected": "" %>">
+    	<i class="icon footprint"></i>
+    	<%= selected == true ? "Selected" : "Select" %>
+    </a>
+  </section>
+</script>
+{# END ITEM TEMPLATE STEP 2 #}
+
+{# ITEM TEMPLATE FOR STEP 3A - AVAILABLE SCENTS #}
+<script type="text/template" id="scent_template">
+
+ <section class="col-md-4 col-xs-12 box-counter out_of_stock_<%= outofstock %>_<%= outofstock_purchase %>">
+    <figure>
+    	<%= image %>
+ 		<div class="scent-description">
+        	<div class="info"><%= name == "Squatch Picks" ? "Dr. Squatch picks a scent for you!" : description %></div>
+        </div>
+  	</figure>
+    <div class="product-content-wrapper">
+      <h3 class="heading center-text"><%= name %></h3>
+      <div class="control-counter framed center-align">
+        <a href="#" class="qty-down vless click_number"><i class="fa fa-minus"></i></a>
+        <span class="count"><%= qty %></span>
+        <a href="#" class="qty-up vmore click_number"><i class="fa fa-plus"></i></a>
+      </div>
+      <input type='hidden' class='scent_id' value='<%= id %>' />
+    </div>
+  </section>
+</script>
+{# END ITEM TEMPLATE STEP 3A #}
+
+{# ITEM TEMPLATE FOR STEP 3B - CHOSEN SCENTS #}
+<script type="text/template" id="chosen_scent_template">
+ <section class="col-lg-4 col-sm-5 box-counter number_of_box">
+    <figure>
+	  <div class="remove">x</div>
+      <% if (qty > 1) { %>
+        <div class="qty"><%= qty %>x</div>
+      <% } %>
+      <%= image %>
+    </figure>
+  </section>
+</script>
+<script type="text/template" id="chosen_scent_placeholder">
+<div>
+  <section class="col-lg-4 col-sm-5 box-counter">
+    <figure>
+    	<img src="https://s3.amazonaws.com/cratejoy_vendor_images/drsquatchsoapco/joybox_men-copy-2/images/scent-placeholder.png" class="img-responsive">
+    </figure>
+  </section>
+</div>
+</script>
+{# END ITEM TEMPLATE STEP 3B #}
+
+{# ITEM TEMPLATE FOR STEP 4 - HAIRCARE #}
+<script type="text/template" id="haircare_template">
+ <section class="b-product col-sm-4 col-xs-12">
+    <figure><%= image %></figure>
+    <hgroup>
+      <h3 class="heading"><%= name %><span class="hlight"><%= price %></span></h3>
+      <h4 class="p-title"><%= description %></h4>
+    </hgroup>
+    <div class="control-counter framed center-align" style="margin-bottom: 20px">
+      <a href="#" class="qty-down vless click_number"><i class="fa fa-minus"></i></a>
+      <span class="count"><%= qty %></span>
+      <a href="#" class="qty-up vmore click_number"><i class="fa fa-plus"></i></a>
+    </div>
+
+    <a href="#" class="btn btn-default btn-frame btn-md btn-product-select <%= selected == true ? "btn-subscription-selected": "" %>">
+        <i class="icon footprint"></i>
+        <%= selected == true ? "Selected" : "Select" %>
+    </a>
+  </section>
+</script>
+{# END ITEM TEMPLATE STEP 4 #}
+
+{# ITEM TEMPLATE STEP 5 - ADDONS #}
+<script type="text/template" id="addon_template">
+ <section class="b-product col-sm-4 col-xs-12 subscribe_addon  out_of_stock_<%= outofstock %>_<%= outofstock_purchase %>">
+    <figure>
+    	<%= image %>
+  	</figure>
+    <hgroup>
+      <h3 class="heading"><%= name %><span class="hlight"><%= price %></span></h3>
+      <h4 class="p-title"><%= description %></h4>
+    </hgroup>
+	
+    <!--hide_out_stock-->
+	<a href="#" class=" btn btn-default btn-frame btn-md btn-addon-select <%= selected == true ? "btn-subscription-selected": "" %>"><i class="icon footprint"></i> 
+    	<%= selected == true ? "Added" : "Add" %>
+  	</a>
+	<!--<a class="show_out_stock"><img src="{{ 'images/out-of-stock.png' | asset_url }}" /></a>-->
+    <input type='hidden' class='addon_id' value='<%= id %>' />
+  </section>
+</script>
+{# END ITEM TEMPLATE STEP 5 #}
+
+{% endblock %}
+
+
+{% block page_javascript %}
+<script type="text/javascript">
+  
+  jQuerySafe('.subscribe_btn').click(function() {
+    console.log('TRACK: Subscription click next button');
+    //pintrk('track', 'SubscriptionNextClick');
+  });
+  
+  jQuerySafe('.submit-subscription').click(function() {
+    console.log('TRACK: Subscription click finish button');
+    //pintrk('track', 'SubscriptionFinishClick');
+  });
+  
+ var availableProducts = [];
+  {% for prod in store.shop_products(category='collection-subscription-new') %}
+    {# Resolving quantity based on the appropriate tag - Defaults to '1' if not found #}
+    var qty = 1; 
+    {% for t in prod.taxonomy %}
+      {% if 'collection-qty-' in t.slug %}
+      	qty = parseInt("{{ t.slug.replace('collection-qty-','') }}");
+      {% endif %}
+    {% endfor %}
+    if (isNaN(qty)){ qty = 1; }
+    {# End Resolving quantity #}
+
+    {# Resolving term type (monthly, quarterly) based on the appropriate tag - Defaults to '1' if not found #}
+    var term_type = 1;
+    {% for t in prod.taxonomy %}
+      {% if 'collection-term-' in t.slug %}
+      	term_type = parseInt("{{ t.slug.replace('collection-term-','') }}");
+      {% endif %}
+    {% endfor %}
+    if (isNaN(term_type)){ term_type = 1; }
+    {# End Resolving term type #}
+    
+    var product_type = 'soap';
+    {% for t in prod.taxonomy %}
+      {% if 'collection-haircare' in t.slug %}
+      	product_type = 'hair';
+      {% endif %}
+    {% endfor %}
+     
+
+    var product = {
+      id: {{ prod.id }},
+      term_type: term_type,
+      qty: qty,
+      type: product_type
+    };
+
+    availableProducts.push(product);
+  {% endfor %}
+  
+  
+  {# STEP 1 - Setting up available quantities #}
+  var availableQuantities = [];
+  availableQuantities.push({
+      	name: "1 BAR ", 
+    	image: '<img src="{{ "images/Soapscription-1.png" | asset_url }}" alt class="img-responsive small-monthly-icon">',
+  		description: "FOR LIGHT SHOWERING, TRAVELERS",
+    	price: '$6.00',
+    	selected: false,
+    	qty: 1
+  });
+  availableQuantities.push({
+      	name: "2 BARS ", 
+    	image: '<img src="{{ "images/Soapscription-2.png" | asset_url }}" alt class="img-responsive small-monthly-icon">',
+  		description: "MOST POPULAR FOR REGULAR USE",
+    	price: '$12.00',
+    	selected: true,
+    	qty: 2
+  });
+  availableQuantities.push({
+      	name: "3 BARS ", 
+    	image: '<img src="{{ "images/Soapscription-3.png" | asset_url }}" alt class="img-responsive small-monthly-icon">',
+  		description: "MAXIMUM LATHER, SHOWER SHARING",
+    	price: '$18.00',
+    	selected: false,
+    	qty: 3 
+  });
+  
+  {# STEP 2 - Setting up available terms #}
+  var availableTerms = [];
+  availableTerms.push({
+    image: '<img src="{{ "images/sub-monthly.png" | asset_url }}" alt class="img-responsive small-monthly-icon">',
+    name: 'Monthly',
+    description: 'Add $1 for Handling',
+    term_type: 1,
+    selected: false,
+    display: true,
+  });
+  availableTerms.push({
+    image: '<img src="{{ "images/sub-quarterly.png" | asset_url }}" alt class="img-responsive small-monthly-icon">',
+    name: 'Quarterly',
+    description: 'Max Savings',
+    term_type: 3,
+    selected: true,
+    display: true
+  });
+   {# END STEP 2 #}
+  
+   {# STEP 3 - Setting up available Scents #}
+  var availableScents = [];
+  {% for prod in store.shop_products(category='collection-scent') %}
+        
+  	var ordering = 1; 
+  	{% for t in prod.taxonomy %}
+  		{% if 'collection-ordering-' in t.slug %}
+  		ordering = parseInt("{{ t.slug.replace('collection-ordering-','') }}");
+  		{% endif %}
+  	{% endfor %}
+    
+  if (isNaN(ordering)){ ordering = 1; }
+   
+  availableScents.push({ 
+    id: "{{ prod.id }}",
+    name: "{{ prod.name }}",
+    description: "{{ prod.description }}",
+    image: '{{ prod | object_img_tag(css_class="img-responsive") }}',
+    qty:0,
+    outofstock:"{{  prod.instances[0].inventory.quantity_on_hand }}",
+    outofstock_purchase:"{{  prod.instances[0].inventory.out_of_stock_purchases }}",
+    sku: "{{ prod.instances[0].sku }}",
+  	ordering: ordering});
+  {% endfor %}
+  
+  availableScents = _.sortBy(availableScents, function(item){ return -1*item.ordering });
+  
+  {# END STEP 3 #}
+  
+  {# STEP 4 - S&C Subscription #}
+  var availableHaircare = [];
+  availableHaircare.push({
+     name: "SHAMPOO",
+     image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/866da3a76f594eed8f2227f9239e5362.png" alt class="img-responsive small-monthly-icon">',
+     description: "All Natural Thickening Shampoo",
+     price: '$17.00',
+     selected: false,
+     type: 'haircare',
+     ids: [521924849, 521931384, 521932183],
+     qty: 1
+   });
+  availableHaircare.push({
+     name: "CONDITIONER",
+     image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/8935ecf2b1d946bba5c77a4545cc48ba.png" alt class="img-responsive small-monthly-icon">',
+     description: "100% Natural Daily Moisturizing",
+     price: '$17.00',
+     selected: true,
+     ids: [521933474, 521942313, 521944692],
+     type: 'haircare',
+     qty: 1
+   });
+  availableHaircare.push({
+     name: "HAIR CARE KIT",
+     image: '<img src="//s3.amazonaws.com/cratejoy_vendor_images/4d5bf68ee6fb460991e775833ab19ebe.png" alt class="img-responsive small-monthly-icon">',
+     description: "Buy our shampoo &amp; conditioner together and save 15%",
+     price: '$28.00',
+     selected: false,
+     type: 'haircare',
+     ids: [521952292, 521955471, 521956646],
+     qty: 1
+  });
+
+  {# END STEP 4 #}
+  
+  {# STEP 5 - Addons #}
+  var availableAddons = [];
+  // Older collectio collection-subscription-addons
+   
+  // Most Popular
+  {% for prod in store.shop_products(category='collection-addons-most-popular') %}
+  
+  var ordering = 1; 
+  	{% for t in prod.taxonomy %}
+  		{% if 'collection-ordering-' in t.slug %}
+  		ordering = parseInt("{{ t.slug.replace('collection-ordering-','') }}");
+  		{% endif %}
+    {% endfor %}
+  
+  if (isNaN(ordering)){ ordering = 1; }
+     
+  availableAddons.push({ 
+    id: "{{ prod.id }}", 
+    name: "{{ prod.name }}",
+    url: "https://drsquatch.com/shop/product/{{ prod.id }}?iframe=true", 
+    description: "{{ prod.description }}",
+	image: '{{ prod | object_img_tag(css_class="img_responsive") }}',
+    is_single_purchasable: "{{ prod.single_purchasable }}",
+    price: "{% if prod.single_purchasable == False %}{{ prod.calc_min_price() | currency }}{% else %}{{ prod.calc_min_ecom_price() | currency }}{% endif %}",
+    selected: false,
+    outofstock:"{{  prod.instances[0].inventory.quantity_on_hand }}",
+    outofstock_purchase:"{{  prod.instances[0].inventory.out_of_stock_purchases }}",
+    ordering: ordering,
+    category: 'most-popular'
+  });
+  {% endfor %}
+  
+  // Cologne
+  {% for prod in store.shop_products(category='collection-addons-cologne') %}
+  
+  var ordering = 1; 
+  	{% for t in prod.taxonomy %}
+  		{% if 'collection-ordering-' in t.slug %}
+  		ordering = parseInt("{{ t.slug.replace('collection-ordering-','') }}");
+  		{% endif %}
+    {% endfor %}
+  
+  if (isNaN(ordering)){ ordering = 1; }
+     
+  availableAddons.push({ 
+    id: "{{ prod.id }}", 
+    name: "{{ prod.name }}",
+    url: "https://drsquatch.com/shop/product/{{ prod.id }}?iframe=true", 
+    description: "{{ prod.description }}",
+	image: '{{ prod | object_img_tag(css_class="img_responsive") }}',
+    is_single_purchasable: "{{ prod.single_purchasable }}",
+    price: "{% if prod.single_purchasable == False %}{{ prod.calc_min_price() | currency }}{% else %}{{ prod.calc_min_ecom_price() | currency }}{% endif %}",
+    selected: false,
+    outofstock:"{{  prod.instances[0].inventory.quantity_on_hand }}",
+    outofstock_purchase:"{{  prod.instances[0].inventory.out_of_stock_purchases }}",
+    ordering: ordering,
+    category: 'cologne'
+  });
+  {% endfor %}
+  
+  // Shave
+  {% for prod in store.shop_products(category='collection-addons-shave') %}
+  
+  var ordering = 1; 
+  	{% for t in prod.taxonomy %}
+  		{% if 'collection-ordering-' in t.slug %}
+  		ordering = parseInt("{{ t.slug.replace('collection-ordering-','') }}");
+  		{% endif %}
+    {% endfor %}
+  
+  if (isNaN(ordering)){ ordering = 1; }
+     
+  availableAddons.push({ 
+    id: "{{ prod.id }}", 
+    name: "{{ prod.name }}",
+    url: "https://drsquatch.com/shop/product/{{ prod.id }}?iframe=true", 
+    description: "{{ prod.description }}",
+	image: '{{ prod | object_img_tag(css_class="img_responsive") }}',
+    is_single_purchasable: "{{ prod.single_purchasable }}",
+    price: "{% if prod.single_purchasable == False %}{{ prod.calc_min_price() | currency }}{% else %}{{ prod.calc_min_ecom_price() | currency }}{% endif %}",
+    selected: false,
+    outofstock:"{{  prod.instances[0].inventory.quantity_on_hand }}",
+    outofstock_purchase:"{{  prod.instances[0].inventory.out_of_stock_purchases }}",
+    ordering: ordering,
+    category: 'shave'
+  });
+  {% endfor %}
+  
+  // Hair Care
+  {% for prod in store.shop_products(category='product-type-haircare') %}
+  
+  var ordering = 1; 
+  	{% for t in prod.taxonomy %}
+  		{% if 'collection-ordering-' in t.slug %}
+  		ordering = parseInt("{{ t.slug.replace('collection-ordering-','') }}");
+  		{% endif %}
+    {% endfor %}
+  
+  if (isNaN(ordering)){ ordering = 1; }
+     
+  availableAddons.push({ 
+    id: "{{ prod.id }}", 
+    name: "{{ prod.name }}",
+    url: "https://drsquatch.com/shop/product/{{ prod.id }}?iframe=true", 
+    description: "{{ prod.description }}",
+	image: '{{ prod | object_img_tag(css_class="img_responsive") }}',
+    is_single_purchasable: "{{ prod.single_purchasable }}",
+    price: "{% if prod.single_purchasable == False %}{{ prod.calc_min_price() | currency }}{% else %}{{ prod.calc_min_ecom_price() | currency }}{% endif %}",
+    selected: false,
+    outofstock:"{{  prod.instances[0].inventory.quantity_on_hand }}",
+    outofstock_purchase:"{{  prod.instances[0].inventory.out_of_stock_purchases }}",
+    ordering: ordering,
+    category: 'hair'
+  });
+  {% endfor %}
+  
+  availableAddons = _.sortBy(availableAddons, function(item){ return -1*item.ordering });
+  {# END STEP 5 #}
+</script>
+<script src="{{ 'js/backbone_subscription_sc.js' | asset_url }}"></script>
+
+{% endblock %} 

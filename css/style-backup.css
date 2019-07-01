@@ -1,0 +1,1369 @@
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 736px) { 
+	.checkout_content .cta { text-align:center; }
+}
+.center-text {
+	text-align:center; 
+}
+.bold-text {
+  font-weight:600;
+}
+
+/* Yotpo styles */
+.rating-yotpo {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+.yotpo-description {
+    margin: 0 !important;
+    width: auto !important;  
+}
+
+.yotpo-collection {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  	min-height: 35px;
+}
+
+.yotpo-collection .questions {
+  display:none;
+}
+
+.yotpo .yotpo-regular-box {
+    padding: 0 !important;
+}
+
+.yotpo-description .yotpo-nav-content, 
+.yotpo-description .yotpo-nav, 
+.yotpo-description .yotpo-messages, 
+.yotpo-description .yotpo-label,
+.yotpo-description .yotpo-bottomline-box-2 {
+	display: none !important; 
+}
+
+.yotpo-description .yotpo-regular-box {
+    padding: 0;
+    height: auto !important;
+}
+
+.yotpo-description .yotpo-sum-reviews span {
+    color: #cc7837 !important;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+  	font-family: 'Open Sans', sans-serif;
+}
+
+.yotpo-product-banner .questions {
+  	display:none;
+}
+
+.yotpo-collection.yotpo-main-widget .yotpo-bottomline .yotpo-icon-star,
+.yotpo-collection.yotpo-main-widget .yotpo-bottomline .yotpo-icon-half-star,
+.yotpo-collection.yotpo-main-widget .yotpo-bottomline .yotpo-icon-empty-star {
+    font-size: 16px !important;
+}
+
+.yotpo-collection.yotpo-main-widget .yotpo-bottomline .yotpo-sum-reviews span {
+    font-size: 12px !important;
+    padding: 0;
+    text-transform: capitalize;
+}
+
+.yotpo-collection.yotpo-main-widget .yotpo-bottomline.yotpo-bottomline-2-boxes .yotpo-bottomline-box-1 {
+    min-width: auto !important;
+}
+
+.yotpo-collection.yotpo-main-widget .yotpo-bottomline .yotpo-sum-reviews {
+    padding: 0 !important;
+}
+
+
+/* hides add address button on account page */
+.cj-edit-address-add {
+    display: none;
+}
+
+.center-align {
+	margin: 0px auto; 
+}
+
+.btn-subscription-selected {
+	background: #cc7837; 
+}
+
+.btn-contact-submit>i {
+	margin-top: 0px !important; 
+}
+
+.cart-product-object {
+  	max-height: 75px;
+  	max-width: 110px;
+  	margin: 0px auto;
+}
+
+.cart-product-img-holder {
+	vertical-align:middle;
+}
+
+.account-addon-img-holder {
+	vertical-align:middle;
+  	text-align:center;
+}
+
+.inline-block {
+	display: inline-block; 
+}
+
+.img-product-collection-holder img {
+	max-width:100%;
+  	max-height:300px; 
+  	margin: 0px auto;
+}
+
+.product-page-banner {
+  position:absolute; 
+  margin: 0px auto;
+  max-width:100%;
+  max-height:100%;
+  overflow:hidden; 
+}
+
+.img-scent-edit {
+	max-height: 210px;
+    max-width: 300px;
+}
+
+.scent-edit-row {
+	width: 90%;
+  	margin: 0px auto;
+  	padding-top: 20px;
+  	padding-bottom: 20px;
+}
+
+/*
+#edit_scents_button {
+	width: 200px;
+  	font-weight: bold;
+  	margin: 10px 0;
+  	font-size: 13px;
+  	line-height: 14px;
+  	cursor: pointer;
+  	display: inline-block;
+  	border: 1px solid #ee4141;
+  	color: #ee4141;
+}
+*/
+
+.checkout_content {
+	margin: 20px; 
+}
+
+#checkout_form {
+	margin-right:30px;
+}
+
+
+
+.likebtn {
+    text-align: center;
+    display: inline-block;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 5px 15px;
+    min-width: 130px;
+    background-color: #392b13;
+    color: #e3e2e1;
+    font-size: 17px;
+    line-height: 1
+}
+.likebtn .lb-like {
+  	font: normal normal normal 14px/1 FontAwesome;
+    text-align: center !important;
+    display: inline-block;
+    background-color: #392b13 !important; 
+    color: #e3e2e1 !important;
+    font-size: 17px !important;
+    line-height: 1;
+}
+
+.lb-like-label, .lb-count{
+    text-align: center !important;
+    display: inline-block;
+    background-color: #392b13 !important; 
+    color: #e3e2e1 !important;
+    font-size: 17px !important;
+    line-height: 1 
+}
+
+.lb-like:before {
+    content: "\f164" 
+}
+
+.lb-like-icon {
+	display:none !important; 
+}
+
+.lb-like-label{
+	padding-bottom: 6px !important;
+  	padding-left: 6px !important;
+}
+
+.lb-comment{
+	font-family: "Helvetica Neue", Arial, sans-serif;
+  	font-weight: 700;
+  	padding-top:7px !important;
+  	padding-bottom:7px !important;
+}
+
+
+.box-vote.smaller .btn-action {
+	font-size: 17px; 
+}
+
+#cart-empty { 
+  	font-size: 25px;
+	margin: 20px auto;
+  	text-align: center;
+  	color: Gray;
+}
+
+.hide-if-empty{
+	display:none; 
+}
+
+#add_coupon_code {
+	width: 105px !important; 
+}
+
+.star-on-png, .star-off-png, .star-half-png {
+	font-size: 25px !important; 
+}
+
+.img-gift-box{
+  max-height:125px;
+}
+
+.my-account {
+	margin-left: 15px !important;
+  	margin-right: 15px !important;
+}
+
+.cj-edit-sub {
+	width: 55% !important;
+  	margin-bottom: 10px !important;
+}
+
+.login-form {
+	margin-bottom:20px; 
+}
+
+.img-product-collection-holder-full img {
+	max-height:400px;
+  	margin: 0px auto;
+}
+
+#reset-submit {
+	margin-top: 20px;
+  	margin-bottom: 20px;
+}
+
+.box-counter{
+	padding-left: 0px !important;
+  	padding-right: 0px !important;
+}
+
+.giftbox-addon span{
+	font-size: 12px; 
+}
+
+.j-paginate .juicer-button .fart {
+	display:none;
+}
+
+#edit-page-header {
+	margin-left: 20px; 
+}
+
+.giftbox-description {
+	margin-top: 10px; 
+}
+
+.collection-heading {
+	/*margin-bottom: 25px !important;*/
+  	overflow:visible !important;
+}
+
+.btn.account-edit-btn{
+  	border: none !important;
+}
+
+.form-container {
+	margin-bottom: 20px;
+}
+
+#edit-top-btn-row:first-child {
+	margin-bottom: 20px; 
+}
+
+/*-------------------*/
+
+/*---------------*/
+img{
+	max-width:100%;	
+}
+.shave_banner_main{
+	
+}
+.shave_banner_section {
+    padding: 33px 90px;
+}
+.shave_banner_section  .shave_logo{
+	margin-bottom:-54px;
+	text-align:right;	
+}
+.shave_banner_section  .banner_cnt{
+	text-align:right;
+	padding-right:18px;
+}
+.shave_banner_section  .banner_cnt h1{
+	font-family: "Roboto Slab",serif;
+    font-size: 68px;
+    margin-bottom: 0;
+	color:#fff;
+	text-transform:uppercase;
+	font-weight:800;
+}
+.shave_banner_section  .banner_cnt h2{
+	font-family:"Open Sans",sans-serif;
+    font-size:28px;
+    margin-bottom: 0;
+	color:#fff;
+	text-transform:uppercase;
+	margin-top:0px;
+	margin-bottom:20px;
+}
+.shave_banner_section  .banner_cnt .price_review{ 
+}
+.shave_banner_section  .banner_cnt .price_review .price{
+	display:inline-block;
+	vertical-align:top;
+	font-size:40px;
+	color:#cc7837;
+	font-family: "Roboto Slab",serif;
+	font-weight:500;
+}
+.shave_banner_section  .banner_cnt .price_review .review{
+	display:inline-block;
+	vertical-align:top;
+	font-size:19px;
+	color:#ffffff;
+	text-transform:uppercase;
+	font-weight:400;
+	margin-top:10px;
+	margin-left:15px;
+}
+.shave_banner_section  .banner_cnt .banner_btn{
+	margin-top:20px;	
+}
+.shave_banner_section  .banner_cnt .banner_btn a+a{
+	margin-left:15px;	
+}
+.main_padding{
+	padding:64px 20px;	
+}
+.tab_details_section{
+	padding-top:60px;
+	padding-bottom:60px;	
+}
+.tab_details_section .tab-content {
+    background: #f4f3f0 none repeat scroll 0 0;
+    padding: 10px;
+	color:#392b13;
+	font-size:14px;
+	font-weight:300;
+}
+.ui-helper-clearfix:before,
+.ui-helper-clearfix:after {
+	content: "";
+	display: table;
+}
+.ui-helper-clearfix:after {
+	clear: both;
+}
+#tabs {
+	position:relative;
+}
+#tabs ul{
+	padding:0px;
+	margin:0px;	
+}
+#tabs ul li+li{
+	margin-top:0px;	
+}
+#tabs ul.tab_link li{
+	display:inline-block;
+	vertical-align:top;
+}
+#tabs ul.tab_link{
+		
+}
+#tabs ul.tab_link li a {
+    color: #acaba9;
+    font-family: open sans;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+	display:block;
+	padding:5px 8px;
+}
+#tabs ul.tab_link li a:focus{
+	outline:none;
+}	
+#tabs ul.tab_link li.select > a,#tabs ul.tab_link li:hover > a{
+	background:#f4f3f0;
+	color:#000;
+	text-decoration:none;	
+}
+#tabs .result {
+    padding-top: 37px;
+}
+#tabs .result + .result {
+    border-top: 1px dotted #AAAAAA;
+}
+#tabs .result h5 {
+    color: #0B0B0B;
+    font-size: 18px;
+    font-weight: 400;
+	font-family: 'Source Sans Pro', 'sans-serif';
+}
+#tabs .result h5 a{
+	color: #0B0B0B;
+	font-size: 18px;
+}
+#tabs .result > p {
+    color: #666666;
+    font-family: source sans pro;
+    font-weight: 500;
+}
+.tab-content #tabs-1, 
+.tab-content #tabs-2, 
+.tab-content #tabs-3, 
+.tab-content #tabs-4,
+.tab-content #tabs-5 {
+    display: none;
+}
+.tab-content #tabs-1.active, 
+.tab-content #tabs-2.active, 
+.tab-content #tabs-3.active, 
+.tab-content #tabs-4.active,
+.tab-content #tabs-5.active {
+    display: block;
+}
+.tab_details_section .tab-content p{
+	margin-bottom:15px;
+	line-height:26px;	
+}
+.product-rating .cancel-on-png, .product-rating .cancel-off-png, .product-rating .star-on-png, .product-rating .star-off-png, .product-rating .star-half-png{
+	color:#fbcf33 !important;	
+}
+.banner-landscape .product-rating {
+    display: inline-block;
+    margin-top: 10px;
+    vertical-align: top;
+}
+.shave_detail_image{
+	text-align:center;	
+}
+.shave_detail_image h2{
+	font-size:24px;
+	color:#000;
+	font-weight:600;	
+}
+.clr{
+	clear:both;
+	float:none;
+	overflow:hidden;	
+}
+.how_to_shave_section{
+	background-image:url("{{ 'images/how_to_shave_bg.png' | asset_url }}");
+	padding:20px 116px 50px 116px;	
+}
+.how_to_shave_section .heading_box{
+	text-align:center;	
+}
+.how_to_shave_section .heading_box h2{
+	font-size:18px;
+	color:#382b14;
+	font-family:"Open Sans",sans-serif;
+	font-weight:600;
+	text-transform:uppercase;	
+}
+.how_to_shave_section .heading_box h1{
+	font-size:50px;
+	color:#382b14;
+	font-family:"Roboto Slab",serif;
+	font-weight:800;
+	text-transform:uppercase;
+	margin-top:0px;
+	margin-bottom:50px;	
+}
+.how_to_shave_section .how_shave_box{
+	
+}
+.how_to_shave_section .how_shave_box .shave_txt{
+	float:left;
+	max-width:160px;
+	font-size:17px;
+	line-height:26px;	
+}
+.how_to_shave_section .how_shave_box .shave_image{
+	float:right;
+	max-width:170px;	
+}
+.how_to_shave_section .how_shave_box .shave_txt h1 {
+    font-family: open sans;
+    font-weight: 800;
+}
+.how_to_shave_section .how_shave_box  .shave_more{
+	text-align:center;
+	margin-top:30px;	
+}
+.how_to_shave_section .how_shave_box  .shave_more a{
+	display:inline-block;
+	font-size:18px;
+	color:#cc7837;
+	font-weight:700;
+	text-transform:uppercase;
+}
+.review_excerpt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 35px;
+}
+.review_excerpt .num-reviews {
+	color: #cc7837;
+  	padding-left: 10px;
+}
+.review_excerpt .no-reviews {
+	color: #666;  
+}
+.new_review_section {
+    background: #f0f0f0;
+    padding: 60px 30px 20px 30px;
+}
+.new_review_section .reviews_heading{
+	text-align:left;
+	font-size:18px;
+	font-weight:700;
+	/*border-bottom:2px solid #e2e3e3;*/
+	color:#e27718;
+	padding-bottom:4px;	
+}
+.new_review_section .reviews_heading span{
+	border-bottom:2px solid #e7822d;
+	padding-bottom:2px;	
+}
+.new_review_section .new_review_box{
+	color:#4e4e4d;	
+}
+.new_review_section .new_review_box h2 {
+    color: #eba058;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+    text-transform: capitalize;
+}
+.new_review_section .new_review_box h3{
+    color: #000;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+}
+.new_review_section .new_review_box #write-a-review h3 {
+    color: #eba058;
+}
+.new_review_section .new_review_box a{
+    color: #eba058;
+}
+#write-a-review input[type="text"], #write-a-review textarea {
+    border: 1px solid #ccc;
+    border-radius: 0;
+    font-family: open sans;
+    padding: 15px;
+}
+.new_review_section .new_review_box .review_text{
+	line-height:28px;	
+}
+
+.pin_section{
+	
+}
+.pin_section .hlight{
+	/*font-size:50px;
+	color:#392b13;*/
+}
+/*.juicer-feed.image-grid .j-text, .juicer-feed.slider .j-text, .juicer-feed.hip .j-text {
+    opacity: 1 !important;
+    position: relative !important;
+	padding-top:0px !important;
+}
+.juicer-feed.image-grid .j-poster, .juicer-feed.slider .j-poster, .juicer-feed.hip .j-poster {
+    opacity: 1 !important;
+    position: relative !important;
+    visibility: visible !important;
+	top:-10px !important;
+}
+.juicer-feed.image-grid .j-text .message, .juicer-feed.slider .j-text .message, .juicer-feed.hip .j-text .message {
+    display: block !important;
+    visibility: visible !important;
+	text-align:left;
+}
+.juicer-feed.image-grid .j-meta, .juicer-feed.slider .j-meta, .juicer-feed.hip .j-meta {
+    position: relative !important;
+    visibility: visible !important;
+}
+.juicer-feed li.feed-item{
+	border:1px solid #dce1e3;
+		
+}
+.juicer-feed .j-poster img{
+	border-radius:50px;
+	-moz-border-radius:50px;
+	-ms-border-radius:50px;
+	-o-border-radius:50px;	
+	-webkit-border-radius:50px;	
+}
+a.j-image {
+    display: block;
+    padding: 10px;
+}
+.juicer-feed .feed-item {
+    background: #ffffff !important;
+}
+.j-text:hover,.juicer-feed .feed-item:hover .j-text {
+	background:none !important;	
+}
+.juicer-feed .j-poster a h3 {
+    color: #0e0c0f !important;
+}
+.juicer-feed.image-grid .j-text .message p, .juicer-feed.slider .j-text .message p, .juicer-feed.hip .j-text .message p{
+	color:#918a89 !important;	
+}
+.juicer-feed.image-grid .j-meta, .juicer-feed.slider .j-meta, .juicer-feed.hip .j-meta {
+    background: #f3f7f9 none repeat scroll 0 0 !important;
+    bottom: -18px !important;
+    margin-left: -22px !important;
+    margin-right: 29px !important;
+    margin-top: 16px !important;
+    padding: 13px !important;
+    width: 113% !important;
+	border-top:1px solid #e9ebed;
+}
+.juicer-feed.image-grid .j-poster, .juicer-feed.slider .j-poster, .juicer-feed.hip .j-poster {
+    padding-top: 0 !important;
+}*/
+/*----15-10-15-----*/
+
+.shave_new_banner{
+	background-image:url("{{ 'images/shave_new_banner.jpg' | asset_url }}"); 
+}
+.banner-landscape .overlay{
+	bottom:-28px;	
+}
+.banner-landscape .content .heading.regular{
+	font-weight:600;	
+}
+.shave_kit_new_text {
+    font-size: 21px;
+    line-height: 37px;
+    text-align: center;
+}
+.shave_kit_new_text a{
+	color:#cc7837;	
+}
+.shave_kit_new_text p{
+	margin-bottom:20px;	
+}
+.home_new_reviews{
+	
+}
+.home_new_reviews .media-body {
+    display: inline-block;
+    vertical-align: top;
+    width: 70%;
+}
+.home_new_reviews .media-right,.home_new_reviews .media-left {
+    display: inline-block;
+    vertical-align: top;
+    width: 29%;
+}
+.product-overview .tab-pane{
+	margin-bottom:20px;	
+}
+.navbar-site .navbar-header {
+	z-index: 3 !important; 
+  	position: relative;
+}
+
+
+.navbar-site .hpad{
+	background: none !important;
+  	background-color: rgb(248, 248, 248) !important;
+}
+
+.navbar.navbar-default.navbar-site {
+  	max-width: 1300px;
+  	margin: 0px auto;
+}
+.link-checkout.btn-frame.btn-lg::after {
+    right: 16px;
+}
+.subscribe_addon .show_out_stock{
+	display:none;
+}
+.out_of_stock_0_False {
+    cursor: not-allowed;
+    opacity: 0.2;
+    pointer-events: none;
+}
+.subscribe_addon.out_of_stock_0_False .hide_out_stock{
+	display:none;	
+}
+.subscribe_addon.out_of_stock_0_False .show_out_stock{
+	display:block;	
+}
+.not_allow_btn {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+.select_msg {
+    color: #cc7837;
+    font-size: 18px;
+    margin-bottom: 18px;
+    text-align: center;
+	display:none;
+}
+.one_time_product_submit{
+		
+}
+.one_time_product_submit .form-group{
+	display:inline-block;
+	vertical-align:top;
+	margin:0px;
+}
+.one_time_product_submit .select_arrow{
+	background-image:url("{{ 'images/select_arrow.jpg' | asset_url }}");
+	background-repeat:no-repeat;
+	background-position:calc(100% - 5px);
+	background-color:#ffffff;
+	overflow:hidden;
+	margin-top:5px;
+  	width: 140px;
+    height: 50px;
+}
+.one_time_product_submit .select_arrow .select_border{
+    border: 2px solid #3a2907;
+	overflow:hidden;
+    margin: 5px;
+	height:41px;
+}
+.one_time_product_submit select {
+    background: transparent none repeat scroll 0 0;
+    border: 0 none;
+    box-sizing: border-box;
+    color: #3a2907;
+    font-size: 18px;
+    padding: 3px 63px 3px 5px;
+    text-transform: uppercase;
+    width: 109%;
+  	margin-top: 5px;
+}
+.one_time_product_submit select option:hover{
+	/*border:2px solid #3a2907;	*/
+	background:#ebebeb !important;
+}
+.one_time_product_submit select option+option{
+	 
+}
+
+.img-product-collection-holder {
+    height: auto;
+    min-height: 300px;
+}
+
+.product-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    min-height: 130px;
+    margin-bottom: 10px;
+}
+
+.barley_hide_outline a {
+	margin-top: 15px;  
+}
+
+
+
+
+/**
+ * Hair Care (Component)
+**/
+hr {
+  margin-top:40px;
+  margin-bottom:40px;
+  border:2px solid #E0C1BE;
+}
+
+.hair-care h1 {
+  font-family: 'Roboto Slab', serif;
+  font-weight:600;
+  font-size:50px;
+}
+.hair-care h2 {
+  font-size:20px;
+}
+.hair-care h3 {
+  font-family: 'Roboto Slab', serif;
+  font-weight: bold;
+  color:#5F3928;
+}
+.hair-care p {
+  font-size:22px;
+  color:black;
+  font-style:italic;
+}
+.hair-care-header {
+	text-align:center;
+}
+.hair-care-intro-section {
+  padding-top:60px;
+  margin-top:40px;
+  min-height:1000px;
+}
+
+.hair-care-intro-section {
+  line-height:30px;
+  background:url("{{ 'images/hair-care-bg1.jpg' | asset_url }}");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position:center;
+}
+.hair-care-intro-section .text-take-care-hair-container {
+  margin-top:60px;
+  margin-bottom:40px;
+}
+.hair-care-intro-section h3 {
+  line-height:40px;
+}
+
+.hair-care-intro-section .image-take-care-hair {
+  width:200px;
+}
+
+.hair-care-intro-section .image-high-ph {
+  width:350px;
+  margin-bottom:15px;
+}
+
+.hair-care-intro-section .text-high-ph-container {
+  margin-top:60px;
+  margin-bottom:60px;
+}
+
+
+#shampooing-section {
+  min-height:726px;
+  background:url("{{ 'images/shampooing-bg.jpg' | asset_url }}");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position:center;
+}
+
+.text-shampooing-container {
+  margin-top:130px;
+  margin-bottom:80px;
+}
+.text-shampooing-container h3,
+.text-shampooing-container p {
+  color:white;
+}
+.text-shampooing-container h3 {
+  font-size:30px;
+  font-weight:400;
+}
+.text-shampooing-container p {
+  line-height:30px;
+}
+
+
+#curly-straight-hair-section {
+  min-height:626px;
+  background:url("{{ 'images/curly-straight-hair-section-bg.jpg' | asset_url }}");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position:center;
+}
+
+.curly-straight-hair-container {
+  text-align:center;
+  margin-top:120px;
+  margin-bottom:60px;
+}
+
+.curly-straight-hair-container img {
+  width:200px;
+}
+
+
+#conditioner-section {
+  min-height:626px;
+  background:url("{{ 'images/conditioner-bg.jpg' | asset_url }}");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position:center;
+}
+
+.hair-care #conditioner-section p,
+.hair-care #conditioner-section h3 {
+  color:white;
+}
+
+.hair-care #conditioner-section h3 {
+  font-size:33px;
+  font-weight:400;
+  line-height:50px;
+}
+
+.conditioner-text-container {
+  margin-top:120px;
+}
+
+.conditioner-heading-container {
+  margin-top:80px;
+  margin-bottom:80px;
+}
+
+
+#dirt-sweat-oil-section {
+  min-height:626px;
+  background:url("{{ 'images/dirt-sweat-oil-section-bg.jpg' | asset_url }}");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position:center;
+}
+
+.dirt-sweat-oil-icons-container {
+  text-align:center;
+  margin-top:60px;
+  margin-bottom:60px;
+}
+.dirt-sweat-oil-icons {
+  max-width:700px;
+  margin-bottom:40px;
+}
+
+.text-nutrients-moisturizer-container {
+  margin-top:60px;
+}
+.text-nutrients-moisturizer-container h3 {
+  line-height:40px;
+  margin-bottom:40px;
+}
+.text-nutrients-moisturizer-container p {
+  line-height:40px;
+}
+.image-nutrients-moisturizer {
+  width:300px;
+  margin-bottom:60px;
+}
+
+/**
+ * End Hair Care
+**/
+
+
+/** 
+ * Dr Squatch vs Competition (Component)
+**/
+
+.dr-squatch-vs-competition hr {
+  margin:0;
+  margin-left:10px;
+  margin-right:10px;
+  border:0;
+  border-top: 1px solid #5B2D10;
+}
+.dr-squatch-vs-competition p {
+  font-style:italic;
+  font-size:18px;
+}
+.dr-squatch-vs-competition h1 {
+  font-family: 'Roboto Slab', serif;
+  font-weight:600;
+  font-size:50px;
+}
+.dr-squatch-vs-competition h2 {
+  font-size:20px;
+}
+.dr-squatch-vs-competition h3 {
+  font-family: 'Roboto Slab', serif;
+  font-size:30px;
+}
+.dr-squatch-vs-competition h4 {
+  font-family: 'Open Sans', sans-serif;
+  font-size:24px;
+  font-style:italic;
+  font-weight:600;
+  color:#233D80;
+}
+.dr-squatch-vs-competition .dr-squatch-header {
+  margin-top:30px;
+  margin-bottom:30px;
+}
+.dr-squatch-vs-competition .components-title {
+  position:relative;
+  top:209px;
+  padding:26px;
+}
+.dr-squatch-vs-competition .header-box img {
+  width:200px;
+}
+.dr-squatch-vs-competition .dr-squatch-header-box {
+  padding-top:30px;
+}
+.dr-squatch-vs-competition .other-brands-header-box {
+  padding-top:89px;
+}
+.dr-squatch-vs-competition .header-box {
+  height:320px;
+}
+.dr-squatch-vs-competition .content-box {
+  height:320px;
+  padding:40px;
+}
+.dr-squatch-vs-competition .beige-bg {
+  background:rgba(248,248,245,0.9);
+}
+.dr-squatch-vs-competition .brown-bg {
+  background:rgba(223,210,197,0.9);
+}
+.dr-squatch-vs-competition .blue-bg {
+  background:rgba(235,243,248,0.9);
+}
+
+.dr-squatch-vs-competition .quote-container {
+  margin-top:80px;
+  margin-bottom:60px;
+}
+.dr-squatch-vs-competition .quote-container .source {
+  margin-top:40px;
+  color:#999;
+}
+
+#toxic-ingredients h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-size:18px;
+  font-style:italic;
+  color:#BA4520;
+}
+
+#toxic-ingredients hr {
+  border-top:2px solid #D2B796;
+}
+
+.toxic-ingredients-title-container {
+  font-family: 'Roboto Slab', serif;
+  margin-top:40px;
+  margin-bottom:80px;
+}
+.title-big-12 {
+  position:absolute;
+  font-size:100px;
+}
+.toxic-title-align-container {
+  margin:0 auto; 
+  max-width:490px;
+  padding-top:20px;
+}
+.toxic-ingredients-title-container h2 {
+  font-size:27px;
+}
+.toxic-ingredients-title-container h2.bottom-row {
+  font-size:30px;
+}
+.toxic-ingredients-title-container .right-title {
+  position:relative;
+  top:8px;
+  left:109px;
+}
+.toxic-item-row .toxic-item-box:first-child {
+  border:0;
+}
+.toxic-item-box {
+  height:250px;
+  padding:35px;
+  border-left:2px solid #D2B796;
+}
+
+
+
+/**
+ * End Dr Squatch vs Competition
+**/
+
+
+
+
+
+@media only screen and (min-width:992px) and (max-width:1330px){
+	.img-product-collection-holder-full img{
+		max-height:360px;	
+	}
+  	.img-product-collection-holder {
+        height: auto;
+        min-height: 230px;
+    }
+	.link-checkout.btn-frame.btn-lg::after {
+		right: 14px;
+	}
+	.one_time_product_submit .select_arrow .select_border {
+		height: 50px;
+		margin: 0;
+	}
+	.one_time_product_submit .select_arrow{
+		background-size:54px;
+		background-position:calc(100% - 2px) center;
+	}	
+	.one_time_product_submit select{
+		padding-top:10px;
+        margin-top: 9px;
+	}
+}
+@media only screen and (min-width:769px) and (max-width:992px){
+	.img-product-collection-holder-full img{
+		max-height:286px;	
+	}
+  	.img-product-collection-holder {
+        height: auto;
+        min-height: 170px;
+    }
+	.link-checkout.btn-frame.btn-lg::after {
+		right: 12px;
+	}
+}
+
+@media only screen  and (max-width:992px){
+	
+	.shave_banner_section .shave_logo{
+		text-align:center;
+		margin-bottom:0px;	
+	}
+	.shave_banner_main{
+		background-size:cover;	
+	}
+	.shave_banner_section .banner_cnt{
+		text-align:center;
+		padding-right:0px;	
+	}
+	.shave_banner_section .banner_cnt h1{
+		font-size:28px;	
+	}
+	.shave_banner_section .banner_cnt h2{
+		font-size:18px;
+		margin-bottom:0px;	
+	}
+	.product-page-banner img {
+		max-width: none;
+	}
+  	.one_time_product_submit .select_arrow {
+  		height: 40px;
+  	}
+	.one_time_product_submit .select_arrow .select_border {
+		height: 30px;
+		width: 130px;
+	}
+	.one_time_product_submit .select_arrow{
+		background-size:33px;	
+	}
+	.one_time_product_submit select{
+		padding:2px 45px 0 5px;
+		font-size:15px;
+      	margin-top: 2px; 
+	}
+    .hair-care .text-take-care-hair-container,
+  	.hair-care .image-take-care-hair-container,
+    .hair-care .image-high-ph-container,
+    .hair-care .text-high-ph-container,
+    .text-nutrients-moisturizer-container,
+  	.image-nutrients-moisturizer-container {
+      text-align:center;
+    }
+    .toxic-ingredients-title-container {
+      text-align:center;
+  	}
+    .title-big-12 {
+      position:relative;
+      display:block;
+    }
+    .toxic-ingredients-title-container h2 {
+      font-size:27px;
+    }
+    .toxic-ingredients-title-container h2.bottom-row {
+      font-size:30px;
+    }
+    .toxic-ingredients-title-container .right-title {
+      position:relative;
+      top:0px;
+      left:0px;
+    }
+}
+@media only screen  and (max-width:769px){
+	.how_to_shave_section .how_shave_box .shave_txt {
+		float: none;
+		max-width: none;
+		text-align: center;
+		width: 100%;
+	}
+	.how_to_shave_section .how_shave_box .shave_image {
+		float: none;
+		max-width: none;
+		text-align: center;
+	}
+	.how_to_shave_section {
+		padding: 20px;
+	}
+	
+	.pin_section .hlight{
+		 
+	}
+	.small-author-detail .media-heading {
+		display:block;
+		vertical-align: middle;
+		width:100%;
+		padding-right:0px;
+	}
+	.small-author-detail .author-detail-img {
+		width: auto;
+		height: 46px;
+		border-radius: 50%;
+		margin-right: 15px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	
+	.link-checkout.btn-frame.btn-lg::after {
+		right: 7px;
+	}
+	.one_time_product_submit .form-group a {
+		display: block;
+		width: 100%;
+	}
+  	.bar-top li.logout a {
+    	position: relative;
+    	top: -3px;  
+  	}
+  	.img-product-collection-holder {
+        height: auto;
+        min-height: 170px;
+    }
+	.pholder {
+        padding-top: 45px;
+        padding-bottom: 10px;
+    }
+  	.product-container {
+    	min-height: 145px;  
+  	}
+  	.b-product p {
+    	margin: 0 15px;  
+  	}
+  	.dr-squatch-vs-competition p {
+      font-size:14px;
+    }
+   	.dr-squatch-vs-competition .content-box {
+  	  height:216px;
+	}
+  	.dr-squatch-vs-competition h3, 
+  	.dr-squatch-vs-competition h4 {
+  	  font-size:20px;
+  	}
+  	#toxic-ingredients {
+  	  margin-bottom:40px;
+  	}
+    #toxic-ingredients hr {
+      display:none;
+    }
+  	#toxic-ingredients .toxic-item-box {
+  	  height:auto;
+      padding-bottom:0;
+      border:0;
+  	}
+}
+@media only screen and (min-width:500px) and (max-width:737px){
+	.dr-squatch-vs-competition .content-box {
+  	  height:225px;
+      padding:20px;
+	}
+  	.dr-squatch-vs-competition .header-box {
+  	  height:225px;
+	}
+  	.dr-squatch-vs-competition .header-box img {
+	  width:120px;  	
+  	}
+  	.dr-squatch-vs-competition .components-title {
+  	  padding:0;
+      top:151px;
+  	}
+    .dr-squatch-vs-competition .other-brands-header-box {
+      padding-top:65px;
+    }
+}
+@media only screen  and (max-width:500px){
+	.shave_banner_section .banner_cnt .banner_btn a + a{
+		margin-left:0px;	
+	}
+	.one_time_product_submit .select_arrow .select_border{
+		width:130px;	
+	}
+  	.img-product-collection-holder {
+        height: auto;
+        min-height: 210px;
+    }
+    .dr-squatch-vs-competition h1 {
+  	  font-size:31px;
+  	}
+  	.dr-squatch-vs-competition h3, 
+  	.dr-squatch-vs-competition h4 {
+  	  font-size:14px;
+  	}
+  	.dr-squatch-vs-competition .header-box {
+  	  height:159px;
+	}
+  	.dr-squatch-vs-competition .header-box img {
+	  width:65px;  	
+  	}
+  	.dr-squatch-vs-competition .components-title {
+  	  padding:0;
+      top:96px;
+  	}
+    .dr-squatch-vs-competition .other-brands-header-box {
+      padding-top:51px;
+    }
+  	.dr-squatch-vs-competition .content-box {
+  	  height:325px;
+      padding:15px;
+	}
+	 
+}
+
+
+#demoid1{
+  text-align: left;
+}

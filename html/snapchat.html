@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+{% include 'static-page-css.html' %}
+<section class="banner-landscape split static-page-banner" style="background-image: url('{{'images/dark-wood-bg.jpg' | asset_url }}')" data-barley="index-bg-img" data-barley-editor="bgimage">
+ <div class="content text-invert text-center">
+  <hgroup>
+   <h2 class="heading barley_hide_outline" data-barley="terms-name" data-barley-editor="simple" contenteditable="false">
+    Weekly Soap Contest
+   </h2>
+   <img src="{{ 'images/sampler.png' | asset_url }}" align="center" width="500">
+  </hgroup>
+ </div>
+</section>
+
+  {% endblock %}
+
+  
+  {% block page_content %}
+<article class="hpad post barley_hide_outline" data-barley="about-content" data-barley-editor="advanced" contenteditable="false">
+   
+   <span style="line-height: 2.3; background-color: initial;">
+
+  <h2>
+   <figure>
+    <span style="line-height: 32.2px;">
+     Thanks for joining the contest!
+    </span>
+   </figure>
+  </h2>
+  
+    <figure>
+   <span style="line-height: 32.2px;">
+We hope you win!  Winnners are announced every week so be on the look out for a text to see if you won.
+     <b></b>
+   </span>
+  </figure>
+  
+  <figure>
+   <span style="line-height: 32.2px;">
+     Try out our 
+    <a href="/quiz">
+      <strong>soap quiz</strong>
+    </a>
+    while you wait and see what bar of soap is the perfect match for your personality and skin type. <b></br><b></br>
+   </span>
+  </figure>
+ 
+  </span>
+</article>
+  
+{% endblock %}

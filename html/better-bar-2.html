@@ -1,0 +1,103 @@
+{% extends "better-base.html" %}
+
+{% block header_content %}
+    <section class="banner-landscape landscape-0" style="background-image: url('{{'images/dark-wood-bg.jpg' | asset_url }}')" data-barley="default-bg-img" data-barley-editor="bgimage">
+      <div class="bb-featured-banner">
+          <div class="bb-image">
+            <h1>Try A Better Bar</h1>
+            <img src="{{'images/bundle.png' | asset_url}}" alt="">
+          </div>
+          <div class="bb-content">
+              <h1><span>The Squatch</span> Sampler Bundle</h1>
+              <span>Our 3 most popular bars:</span>
+              <span>Pine Tar | Cedar Citrus | Gold Moss</span>
+              <span>+ A Wood Soap Saver</span>
+              <div class="bb-price">
+                <span class="bb-price-past">$36</span>
+                <span class="bb-price-new">$27</span>
+              </div>
+              <p>
+                <a href="/shop/product/203407568 "><button class="squatch-button btn-md _bb-bg-green">shop bundle</button></a>
+              </p>
+          </div>
+      </div>
+    </section>
+{% endblock %}
+
+{% block bb_section_content %}
+    <section class="home-page-our-story">
+      <div class="container">
+        <div class="bb-soap-scribe">
+          <div class="bb-content">
+            <h1 class="_bb-title-orange"><span>the dr. squatch</span> soapscription</h1>
+            <p>Our Soapscribers:</p>
+            <ul class="list-unstyled">
+              <li class="_bb-mb-10"><i class="fa fa-check _bb-color-green"></i><b> Save up to 20% on Soap</b></li>
+              <li class="_bb-mb-10"><i class="fa fa-check _bb-color-green"></i> Get Free Shipping</li>
+              <li class="_bb-mb-10"><i class="fa fa-check _bb-color-green"></i> Select Their Scents</li>
+              <li class="_bb-mb-10"><i class="fa fa-check _bb-color-green"></i><b> NEVER RUN OUT OF SOAP</b></li>
+            </ul>
+            <p>
+              <a href="/subscription"><button class="squatch-button">Soapscribe</button></a>
+            </p>
+          </div>
+          <div class="bb-image">
+            <img src="{{'images/soapscription.png' | asset_url}}" alt="">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-page-our-story">
+      <div class="container">
+        <div class="bb-see-video">
+          <h2>
+            See How Dr. Squatch<br>
+            Stacks Up to the Competition<br>
+            <a href="#section_video">
+              <i class="fa fa-angle-down"></i>
+            </a>
+          </h2>
+        </div>
+      </div>
+    </section>
+{% endblock %}
+
+{% block bb_section_video %}
+{% import 'components/video.html' as video %}
+
+<section class="home-page-our-story container" id="section_video">
+    <div class="home-page-our-story-single bb-featured-video _bb-mb-40">
+      <div class="bb-item-video">
+          <div class="bb-live-thumbnail-embed" data-wistia-id="3h07mcmhmj">
+            <video muted loop autoplay src="{{'video/lather-video-thumbnail.mp4' | asset_url }}"></video>
+            <div class="content">
+                <h1 class="_bb-title-orange"><span>The</span> Lather Test</h1>
+            </div>
+          </div>
+          {{ video.inline('3h07mcmhmj') }}
+      </div>
+      <div class="bb-item-video">
+          <div class="bb-live-thumbnail-embed" data-wistia-id="w93qrxbpki">
+            <video muted loop autoplay src="{{'video/scent-video-thumbnail.mp4' | asset_url }}"></video>
+            <div class="content">
+                <h1><span>The</span> Scent Test</h1>
+            </div>
+          </div>
+          {{ video.inline('w93qrxbpki') }}
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block page_javascript %}
+<script src="{{ 'js/ma5slider.combined.js' | asset_url }}"></script>
+<link href="{{ 'css/plugins/ma5slider.min.css' | asset_url }}" rel="stylesheet" type="text/css">
+<script>
+jQuerySafe(window).on('load', function () {
+    jQuery3('.ma5slider').ma5slider();
+    //jQuerySafe('.home-play-btn').show();
+});
+</script>
+<script src="{{ 'js/raindrop.min.js' | asset_url }}"></script>
+{% endblock %}

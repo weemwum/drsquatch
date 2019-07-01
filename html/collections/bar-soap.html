@@ -1,0 +1,49 @@
+{% import "collections/generic.html" as cg %}
+
+{% extends "base.html" %}
+
+{% block header_content %}
+<section class="banner-landscape split collection-fix landscape-19 collection-bar-soap-masthead">
+ <div class="col-sm-6 col-sm-offset-1 row hpad content">
+    {% import 'components/video.html' as video %}
+    {{ video.inline('1sri3k4jg1') }}
+ </div>
+ <div class="col-sm-4 content text-invert text-center barley_hide_outline" data-barley="collection-bar-soap-header" data-barley-editor="advanced" contenteditable="false">
+    <hgroup>
+      <p class="playball">
+      	All Natural
+       </p>
+       <h1 class="heading metropolis-semi-bold">
+         HANDMADE<br>BAR SOAPS
+       </h1>
+     </hgroup>
+   <p class="vspace">
+     Handmade.  Cold Processed.<br>9 natural ways to smell like a man.
+   </p>
+ </div>
+</section>
+
+
+<div id="video-embed-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-body">
+              <button id="video-embed-modal-close" type="button" class="close" data-dismiss="modal">&times;</button>
+              <iframe width="100%" height="415" src="" frameborder="0" allowfullscreen></iframe>
+          </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block page_content %}
+{{ cg.render_collection_page_content(tag_filter='collection-bar-soap', show_soapscribe=True, show_quiz=True) }}
+{% endblock %}
+
+{% block page_javascript %}
+<script src="{{ 'js/reviews-excerpt.js' | asset_url }}">
+</script>
+<script src="{{ 'js/raindrop.min.js' | asset_url }}"></script>
+{% endblock %}

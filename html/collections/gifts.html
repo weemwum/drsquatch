@@ -1,0 +1,65 @@
+{% import "collections/generic.html" as cg %}
+
+{% extends "base.html" %}
+
+{# block header_content %}
+<section class="banner-landscape split landscape-21">
+ <div class="col-sm-offset-6 col-sm-5 content text-invert text-center">
+  <div data-barley="collection-gifts-header" data-barley-editor="advanced">
+   <br>
+    <br>
+     <hgroup>
+      <h1 class="heading">
+       gifts
+      </h1>
+      <h2 class="heading regular">
+       the subtle way to say “you stink”
+      </h2>
+     </hgroup>
+     <p class="vspace">
+      Those logs didn’t cut themselves, and that lumberjack probably stinks right now. With our thoughtful gifts, your loved ones won’t even realize you’re telling them to shower.
+     </p>
+  </div>
+ </div>
+ <div class="overlay row hpad">
+  <div class="col-sm-6 hidden-xs barley_hide_outline" data-barley="gifts-bg" data-barley-editor="image" contenteditable="false">
+   <img src="{{ 'images/shave-kit-for-web.png' | asset_url }}" alt class="img-responsive"/>
+  </div>
+ </div>
+</section>
+{% endblock #}
+
+{% block header_content %}
+<section class="banner-landscape split collection-fix landscape-19">
+ <div class="col-sm-5 col-sm-offset-1 row hpad hidden-xs content">
+   <br>
+   <br>
+  <div class="" data-barley="gifts-bg" data-barley-editor="image">
+   <img src="{{ 'images/shave-kit-for-web.png' | asset_url }}" alt class="img-responsive">
+  </div>
+ </div>
+ <div class="col-sm-5 content text-invert text-center barley_hide_outline" data-barley="collection-gifts-header" data-barley-editor="advanced" contenteditable="false">
+  <br>
+   <br>
+    <hgroup>
+       <h1 class="heading metropolis-semi-bold">
+         GIFTS
+       </h1>
+        <h3 class="heading metropolis-semi-bold">
+        the subtle way to say “you stink”
+       </h3>
+     </hgroup>
+   <p class="vspace">
+     Those logs didn’t cut themselves, and that lumberjack probably stinks right now. With our thoughtful gifts, your loved ones won’t even realize you’re telling them to shower.
+   </p>
+ </div>
+</section>
+{% endblock %} 
+
+{% block page_content %}
+{{ cg.render_collection_page_content(tag_filter='collection-gift', show_soapscribe=False, show_quiz=False) }}
+{% endblock %}
+
+{% block page_javascript %}
+<script src="{{ 'js/reviews-excerpt.js' | asset_url }}"></script>
+{% endblock %}

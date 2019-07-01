@@ -1,0 +1,30 @@
+{# This page is inserted into the framework defined by "base.html" #}
+{% extends "base.html" %}
+
+{% block body_class %}betterman-order{% endblock %}
+
+{#
+	Everything inside the page_content block is inserted into the main content area
+	of the page as defined by "base.html"
+#}
+{% block page_content %}
+
+<section class="order"> <!-- Begin order section -->
+	<div class="container">
+		<div class="row content">
+			<!-- The HTML for the order page is rendered automatically by Cratejoy and
+					cannot be modified. You can change the way it looks by editing the css though.
+					There are examples of this in css/style.css
+			-->
+			{{ customer_helper.order_page() }}
+{{ carthook_thankyou }}
+{{ carthook_thankyou }}
+{{ carthook_thankyou }}
+		</div>
+	</div>
+</section> <!-- End order section -->
+
+{% endblock %}
+
+
+

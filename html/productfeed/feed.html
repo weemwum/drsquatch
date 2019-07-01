@@ -1,0 +1,8 @@
+id|sku|price|name|description|producturl|bigimage|child_ids|extra_atp|
+<br>
+{% for p in store.products %}
+{% if p.calc_min_ecom_price() > 0 %}
+{{p.id}}|{{p.sku}}|{{p.calc_min_ecom_price() | currency}}|{{p.name}}|{{p.description}}|{% if p.name == "Gift Box" %}https://drsquatch.cratejoy.com/giftbox{% else %}https://drsquatch.cratejoy.com/shop/product/{{p.slug}}{% endif %}|{% if p.images[0] is defined %}http:{{ p.images[0].url }}{% endif %}|{{ p.instances | join(',', attribute='id') }}||<br>
+{% endif %}
+{% endfor %}
+1|subsoap|7|Soapscription|Glorious soap delivered to your door; automatically, and get free shipping on all orders.|https://drsquatch.cratejoy.com/subscription|http://d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men/images/Soapscription-3.png|{{ store.subscription_products | join(',', attribute='id') }}{% for sp in store.subscription_products %},{{ sp.instances | join(',', attribute='id') }}{% endfor %}|$7/mo|

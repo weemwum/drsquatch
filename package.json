@@ -1,0 +1,29 @@
+{
+  "name": "drsquatch",
+  "version": "1.0.0",
+  "description": "Frontend file",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/raindrops/drsquatch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "~9.4.8",
+    "chokidar-cli": "~1.2.2",
+    "google-closure-compiler": "~20190301.0.0",
+    "node-sass": "~4.11.0",
+    "postcss-cli": "~6.1.2"
+  },
+  "scripts": {
+    "prebuild:css": "node-sass --output-style compressed css/raindrop.scss css/raindrop.min.css",
+    "build:css": "postcss --use autoprefixer --no-map -r css/raindrop.min.css",
+    "build:js": "google-closure-compiler --language_out ECMASCRIPT5_STRICT --rewrite_polyfills false --js js/raindrop.js --js_output_file js/raindrop.min.js",
+    "start": "chokidar \"css/**/*.scss\" -c \"npm run build:css\""
+  },
+  "browserslist": [
+    "> 5%",
+    "IE 11"
+  ]
+}

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+{% endblock %}
+
+{% block page_content %}
+
+{{ checkout.page() }}
+{{ carthook_checkout }}
+<style>
+  .checkout-sudisfaction {
+    margin: 50px 20px 0 0;
+    position: relative;
+    z-index:1;
+  }
+  .checkout-sudisfaction .fixed-sudisfaction:before {
+    content: none;
+  }
+</style>
+<div class="checkout-sudisfaction">
+{% include 'components/sudisfaction-guarantee-fixed.html' %}
+</div>
+
+{% endblock %}
+
+
+
+
+{% block page_javascript %}
+<script type='text/javascript'>
+var cartItems = [];
+{% for product in cart.products %}
+  var obj = {
+    id: "{{ product.instance.product_id }}",
+    price: {{product.price * 0.01}},
+    quantity: {{product.quantity}}
+  };
+  cartItems.push(obj);
+{% endfor %}
+window.criteo_q.push(
+   { event: "setAccount", account: 22076}, // You should never update this line
+   { event: "setEmail", email: "" }, // Can be an empty string 
+   { event: "setSiteType", type: deviceType},
+   { event: "viewBasket", item: cartItems}
+);
+ 
+console.log(cartItems);
+dataLayer.push({'event' : 'initiateCheckout'});
+  
+$(function(){
+	$(".action-cart").hide();
+  	$("#checkout_button").addClass("btn btn-md btn-secondary btn-frame btn-success");//.prepend("<i class='icon footprint'></i>").find('i').css('margin-top', '0px');
+    $(".coupon_section").find(".col-xs-8").removeClass("col-xs-8").addClass(".col-xs-12");
+    $('<span>&nbsp;&nbsp;OR</span>').insertAfter('a[data-paypal-button]')
+    $('.checkout-sudisfaction').insertAfter('.cart_listing');
+  
+  	var existingCoupon = $('.coupon-code');
+    if(!existingCoupon || existingCoupon.length == 0) {
+      addHolidayCoupons();
+    }
+    //else run the tracking here so it doesn't run twice
+  
+    function addHolidayCoupons() {
+      var quarterlySubs = ['270516023','270519234','270519767'];
+      var hasQuarterlySub = checkForQuarterlySub(cartItems);
+      //Reverse order so sub goes last
+      cartItems.sort(function(a,b) { return a.id - b.id })
+      for(var i = 0; i < cartItems.length; i++) {
+        var item = cartItems[i];
+        var couponCode = '';
+        if((item.id == '70704176' || item.id == '86211517') && hasQuarterlySub) { //Driftwood cologne
+          couponCode = 'COLOGNEGIFT';
+          break;
+        } else if((item.id == '70704519' || item.id == '86211176') && hasQuarterlySub) { //Hemlock Cologne
+          couponCode = 'COLOGNEGIFT';
+          break;
+        } else if(item.id == '503651566') { // Hair Care Kit
+          couponCode = '30HAIRKIT';
+          break;
+        } else if(item.id == '270519234') { //Quarterly soapscription
+          couponCode = 'SUB25';
+          break;
+        }
+      }
+      if(couponCode) {
+        applyCouponCode(couponCode);
+      }
+    }
+  
+  	function checkForQuarterlySub(items) {
+      /// 3bar/q - 270516023 | 6bars/q - 270519234 | 9bars/q - 270519767
+      var ids = ['270516023','270519234','270519767']
+      var isFound = false;
+      var quarterlySubs = items.filter(function(item) {
+        return ids.indexOf(item.id) > -1;
+      });
+      return quarterlySubs.length > 0;
+    }
+
+    function applyCouponCode(code) {
+      jQuery('#id_coupon_code').val(code);
+      jQuery('#add_coupon_code').click()
+    }
+});
+</script>
+{% endblock %}

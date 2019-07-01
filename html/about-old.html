@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+{% include 'static-page-css.html' %}
+
+<section class="banner-landscape split static-page-banner about-banner" style="background-image: url('{{'images/sunset-banner.jpg' | asset_url }}')" data-barley="index-bg-img" data-barley-editor="bgimage">
+  <div class="col-sm-6 col-sm-offset-1 about-embed-banner" data-barley="index-header-img" data-barley-editor="image">
+    {% import 'components/video.html' as video %}
+    {{ video.inline('c44mrbeme7') }}
+  </div>
+  <div class="col-sm-4 content text-invert text-center">
+    <hgroup>
+      <h1 class="heading static-page" data-barley='about-name' data-barley-editor='simple'>Our Story</h1>
+      <p class="regular sub-heading" data-barley='about-description' data-barley-editor='simple'><span>Two friends quit their jobs to start a soap company</span></p>
+    </hgroup>
+  </div>
+</section>
+{% endblock %}
+
+
+{% block page_content %}
+<article class="pholder hpad post about-text">
+  <div data-barley="about-content" data-barley-editor="plus" contenteditable="false" class="barley_hide_outline">
+    <p>
+      <span class="shout">
+        Dr. Squatch Soap Co.
+      </span>
+        began as the founder Jack was putting in grueling hours as an IT Consultant in Chicago. It was the start to a good “career”, but the work was far from rewarding.
+    </p>
+    <p>
+        An entrepreneur at heart and a fan of all things natural because of a skin condition, Jack was intent on striking off on his own and creating a company that put out a product he truly cared about. When he wasn’t traveling around the country for work or spending long days in the office, he was up late at night researching everything from Paleo diets to vegan body care. While doing his research, he discovered that commercial, mass-produced soap not only contains harmful chemicals, but is also devoid of the nourishing, good-for-your-skin ingredients.
+    </p>
+    <p>
+        He also noticed that there wasn’t a company out there that was making honest, all-natural soap for dudes at a reasonable price. He used his precious spare hours tinkering with soap recipes in Chicago and finally stumbled on one to bring the idea to life. While producing small batches, he built a website on the fly, taught himself some internet marketing techniques, and packaged orders with his mom on weekends.
+    </p>
+    <div>
+	    <img src="{{'images/our-story-image-1.jpg' | asset_url}}">
+        <hr>
+    </div>
+    <p>
+      <span class="shout">
+        Word slowly got out 
+      </span>
+        and his childhood buddy who was living in Colorado, AJ, requested a bar. All it took was one shower for him to know that he not only believed in the product, but also the bigger mission of the company. After some negotiations, the two decided they would enter into a partnership. They quit their day jobs, packed their bags, moved out West, and jumped headfirst into Dr. Squatch.
+    </p>
+    <p>
+      The journey has been marked by part-time jobs -- like giving kayak tours in the San Juan Islands -- and humbling experiences -- selling door-to-door down the Oregon coast -- but has resulted in a company they love. And a company that others love, with over 150,000 units sold and being featured with partners like Men’s Journal, Men’s Health, Esquire, Birchbox, and the diehards of Dr. Squatch nation.
+    </p>
+    <div>
+	    <img src="{{'images/our-story-image-2.jpg' | asset_url}}">
+        <hr>
+    </div>
+    <p>
+      <span class="shout">
+        What’s next for Dr. Squatch?
+      </span>
+        We strive to continue to bring transparency to the men’s personal care market by providing high-quality natural alternatives to everyday products. Our first step was creating an organic, 100% plant based cologne with full transparency on all ingredients used. This is a sharp contrast from traditional fragrances and perfumes, which do not disclose any of the ingredients within the bottle. The journey continues with the release of an all-natural shave bar and a natural shampoo & conditioner targeted for late 2015. 
+    </p>
+    <p>
+      We became passionate about natural soap when we learned the surprising story behind how most mass-produced soap and personal care products are made. The traditional cold process, handmade method of making soap has been around for hundreds of years. However, advances in technology created new ways to create alternative soaps that were much cheaper to produce.
+    </p>
+    <div class="col-xs-12">
+      <div>
+        <hr>
+      </div>
+    </div>
+    <p>
+      <span class="shout">
+        Unfortunately, these new soaps are closer to detergents than traditional soaps.
+      </span>
+        The mass production process removes the natural glycerin (animal or vegetable fat) from the soap, which gives it moisturizing properties, and replaces it with synthetic agents such as parabens, sodium laureth sulfate, and sodium lauryl sulfate to make up the difference. The glycerin is then used in other products with higher markups (e.g. lotions, skin creams), to drive company profits and give the customer back the moisturizing agents they were missing in the first place.  
+    </p>
+    <p>
+      While these detergent bars are more economical for companies and consumers, these soaps are harder on the skin. Because of the ingredients (or lack thereof), they frequently cause dryness and skin irritation (bumps, redness, or acne). This leads to the need for using additional specialized products, which are often unnecessary when sticking to traditional soap. In addition, many of the additives have been linked to cancer or identified as hormone disruptors. After learning this, we found the story to be much the same in other personal care products. Therefore our mission is to educate guys and provide them with a natural alternative that their body will notice the difference.
+    </p>
+  </div>
+</article>
+{% include "components/soapmaking-process.html" %}
+
+{% endblock %}

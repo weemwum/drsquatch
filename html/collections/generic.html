@@ -1,0 +1,415 @@
+{% macro render_product_row(products) %}
+
+<section class="squatch-collection pholder">
+
+  <div class="row">
+
+
+
+    {% for product in products %}
+
+    {% set min = product.calc_min_ecom_price() %}
+
+    {% set max = product.calc_max_ecom_price() %}
+
+    {% set url = '/shop/product/' ~ product.id %}
+
+    {% if product.id == 73715486 %}
+
+    {% set url = '/giftbox' %}
+
+    {% endif %}
+
+    {% if product.id == 83096993 %}
+
+    {% set url = '/subscription' %}
+
+    {% endif %}
+
+
+
+    {# Add class for modulus of 3  #}
+
+    <section class="b-product col-sm-4" data-product-id="{{product.id}}">
+
+      <a href="{{ url }}">
+
+        <div class='img-product-collection-holder' data-barley='product_{{product.id}}_image' data-barley-editor='image'>
+
+          {{ product | object_img_tag(css_class='img-responsive') }}
+
+        </div>
+
+      </a>
+
+      <div class="product-container">
+        <h3 class="heading collection-heading">
+
+          <a href="{{ url }}">{{ product.name }}</a>
+
+        </h3>
+        {% set productId = 81318210 if product.id == 73715486 else product.id %}
+
+        <div style="text-align:center">
+          <div class="yotpo bottomLine"
+               style="display:inline-block"
+               data-product-id="{{ productId }}"
+               data-url="{{ url }}">
+          </div>
+        </div>
+
+
+
+
+        <!--<div id="reviews_excerpt" class="review_excerpt"></div>-->
+
+      </div>
+
+
+
+      <!-- Underscore template to reviews 
+
+<script type='text/template' id='product_review'>
+
+
+
+<span class="product-rating" data-score="<%= avg_rating %>" data-readonly="true"></span>
+
+<span class="num-reviews"><%= num_reviews %> Review(s)</span>
+
+
+
+</script>
+
+
+
+{% if reviews_data and reviews_data.num_ratings[product.id] > 0 and product.reviewable %}
+
+<p class="rating">
+
+<span class="score" data-score="{{ reviews_data.avg_ratings[product.id] | float }}"></span>
+
+<a href="#">{{ reviews_data.num_ratings[product.id] }} Review(s)</a>
+
+</p>
+
+{% endif %}-->
+
+
+
+      {% if product.instances[0].inventory.quantity_on_hand==0  and product.instances[0].inventory.out_of_stock_purchases==False  %}
+
+      <a><img style="max-height: 40px;" src="{{ 'images/out-of-stock.png' | asset_url }}" /></a>
+
+      {% else %}
+
+      {% set priceObj = {'price': 0} %}
+
+      {% if min == max %}
+
+      {% do priceObj.update({'price': min | currency(0)}) %}
+
+      {% else %}
+
+      {% do priceObj.update({'price': min | currency(0) - max | currency(0)}) %}
+
+      {% endif %}
+
+
+
+      {% if product.id == 73715486 or product.id == 83096993 %}
+
+      <a href="{{ url }}" class="btn btn-secondary btn-frame btn-sm">
+
+        <!--  <span class="hlight">{{priceObj.price}}/mo</span> Add to cart -->
+
+        <span class="hlight">{{priceObj.price}}</span> Add to cart
+
+      </a>
+
+
+
+      {% else %}
+
+      <a href="#" data-toggle="modal" data-target="#cart-slide" class="ecom-add-to-cart btn btn-secondary btn-frame btn-sm" data-ecom-price='{{ product.calc_min_ecom_price() }}' data-ecom-id='{{product.id}}'>
+
+        <span class="hlight">{{priceObj.price}}</span> Add to cart
+
+      </a>
+
+      {% endif %}
+
+      {% endif %}
+
+      <p class="product-description">{{ product.description }}</p>
+
+      <a class="learn-more-link" href="{{ url }}">LEARN MORE</a>
+
+    </section>
+
+
+
+    {% if loop.index % 3 == 0 %}
+
+    <div class="productDivider hidden-xs"></div>
+
+    {% endif %}
+
+    {% endfor %}
+
+
+
+  </div>
+
+</section>
+
+{% endmacro %}
+
+
+
+
+
+{% macro render_collection_page_content(tag_filter='all', show_soapscribe=False, show_quiz=False, page_length=3) %}
+
+
+
+{% set pages = [] %}
+
+{% set new_page = [] %}
+
+{% set count = 0 %}
+
+{% set products = [] %}
+
+
+
+{% set all_products = [] %}
+
+
+
+{# Get all products from the store to start with. used for length filtering and for iteration #}
+
+
+
+{% for p in store.shop_products(category=tag_filter) %}
+
+{% do products.append(p) %}
+
+{% endfor %}
+
+
+
+<script>
+
+  //criteo getting top 3 items from the collection page
+
+  var productlist= [];
+
+  {% for p in store.shop_products(category=tag_filter)| batch(3) | first %}
+
+  productlist.push('{{p.id}}');
+
+   {% endfor %}
+
+   var productIds= [];
+
+    {% for product in store.shop_products(category=tag_filter) %}
+
+    productIds.push('{{product.id}}');
+
+     {% endfor %}
+
+     window.criteo_q.push(
+
+       { event: "setAccount", account: 22076}, // You should never update this line
+
+       { event: "setEmail", email: "" }, // Can be an empty string
+
+       { event: "setSiteType", type: deviceType},
+
+       { event: "viewList", item: productIds });
+
+</script>
+
+
+
+{% for p in products %}
+
+{% set ordering = [-1] %}
+
+{% for t in p.taxonomy %}
+
+{% if 'collection-ordering-' in t.slug %}
+
+{% do ordering.append(t.slug.replace('collection-ordering-','')|int) %}
+
+{% endif %}
+
+{% endfor %}
+
+
+
+{% do all_products.append({'product': p, 'ordering': (-1)*ordering[-1]}) %}
+
+{% endfor %}
+
+
+
+{% for record in all_products|sort(attribute='ordering') %}
+
+
+
+{% set p = record['product'] %}
+
+
+
+{# append each item to the page until the page is full (page_length determines this) - then save that page and start again #}
+
+{% do new_page.append(p) %}
+
+
+
+{% if new_page | length == page_length %}
+
+{% do pages.append(new_page) %}
+
+{% set new_page = [] %}
+
+{% endif %}
+
+
+
+{# if you're on the last cell and you don't have a full page - save the portion of the page #}
+
+{% set count = count + 1 %}
+
+{% if count == (all_products | length) and new_page | length > 0 %}
+
+{% do pages.append(new_page) %}
+
+{% endif %}
+
+
+
+{% endfor %}
+
+
+
+
+
+{% if pages | length == 0 %}
+
+{# If there are less than 3 items, create a page with the remainder #}
+
+<script>console.log('less than 3 items', {{pages | length}})</script>
+
+{% do pages.append(new_page) %}
+
+{% endif %}
+
+
+
+{% set count = 1 %}
+
+<script>console.log('pages', {{pages | length}})</script>
+
+{% for page in pages %}
+
+{{ render_product_row(page) }}
+
+
+
+{# if count == 1 and show_soapscribe == True %}
+
+<section class="take-this soapscription large hpad">
+
+  <div data-barley='collection-soapscribe-section' data-barley-editor='advanced'>
+
+    <h2 class="heading text-invert">the soapscription</h2>
+
+    <p>get soap automatically delivered <br class="hidden-xs"> and save up to 30%</p>
+
+    <a href="/subscription" class="btn btn-success btn-frame btn-md"><i class="icon footprint"></i> soapscribe</a>
+
+  </div>
+
+</section>
+
+{% endif %}
+
+
+
+{% if count == 2 and show_quiz == True %}
+
+<section class="take-this quiz pholder hpad">
+
+  <div data-barley='collection-selector-quiz-section' data-barley-editor='advanced'>
+
+    <h2 class="heading">soap selector quiz</h2>
+
+    <p>explore our bar-oreal forest <br class="hidden-xs"> to find your perfect soap</p>
+
+    <a href="/quiz" class="btn btn-frame btn-md btn-secondary"><i class="icon footprint"></i> take the quiz</a>
+
+  </div>
+
+</section>
+
+{% endif #}
+
+
+
+{% set count = count + 1 %}
+
+{% endfor %}
+
+
+
+<section class="take-this quiz pholder hpad"  data-echo-background="{{ 'images/quiz-banner-bg.jpg' | asset_url }}">
+
+  <!--<div class="quiz-banner-img hidden-md hidden-sm hidden-xs">
+
+<img src="{{'images/quiz-banner-squatch.png' | asset_url}}">
+
+</div>-->
+
+  <div class="quiz-banner-content" data-barley="index-quiz" data-barley-editor="advanced">
+
+    <p class="playball">
+
+      the Dr. Squatch
+
+    </p>
+
+    <h2 class="heading metropolis-semi-bold">
+
+      SOAP QUIZ
+
+    </h2>
+
+    <p class="col-xs-10 col-xs-offset-1">
+
+      Find the best soap for your personality &amp; skin type
+
+    </p>
+
+    <a href="/quiz" class="btn btn-frame btn-md btn-success" data-barley="index-quiz-link" data-barley-editor="linkedit">
+
+      take the quiz
+
+    </a>
+
+  </div>
+
+  <div class="quiz-banner-soap hidden-md hidden-sm">
+
+    <img src="{{'images/quiz-banner-soap.jpg' | asset_url}}">
+
+  </div>
+
+</section>
+
+
+
+{% endmacro %}
+

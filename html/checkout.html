@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% set priorityShippingId = 70275554 %}
+
+{% block header_content %}
+<style>
+  .orange-soapscription {
+    display: none !important;
+  }
+</style>
+{% endblock %}
+
+{% block page_content %}
+
+{{ checkout.page() }}
+{{ carthook_checkout }}
+
+{# Priority Shipping #}
+{% set alreadyAdded = {'toCart': false} %}
+{% for prod in active_cart().products %}
+	{% if prod.instance.product_id == priorityShippingId %}
+		{% do alreadyAdded.update({'toCart':true}) %}
+	{% endif %}
+{% endfor %}
+
+{% if not alreadyAdded.toCart %}
+<style>
+  .priority-shipping {
+      background: #f6f4f1;
+      padding: 15px 0;
+      border: 1px solid #d5d2d0;
+      margin-right: 20px;
+      margin-top: 10px;
+      text-align: center;
+      font-size:1.2em;
+  }
+  .priority-shipping input+label {
+      margin-bottom: 0;
+      vertical-align:middle;
+      text-align: left;
+      color: #392b13;
+  }
+  .priority-shipping label span {
+      display: inline-block;
+      vertical-align:middle;
+  }
+  .priority-shipping label span span {
+      font-size: 0.8em;
+      display: block;
+  }
+  .priority-shipping input[type=checkbox] { display:none; } /* to hide the checkbox itself */
+  .priority-shipping input[type=checkbox] + label:before {
+    font-family: FontAwesome;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.2em;
+  }
+
+  .priority-shipping input[type=checkbox] + label:before { content: "\f096"; } /* unchecked icon */
+  .priority-shipping input[type=checkbox] + label:before { letter-spacing: 10px; } /* space between checkbox and label */
+
+  .priority-shipping input[type=checkbox]:checked + label:before { content: "\f046"; } /* checked icon */
+  .priority-shipping input[type=checkbox]:checked + label:before { letter-spacing: 5px; } /* allow space for check mark */
+  
+  @media(max-width: 400px) {
+    .priority-shipping { margin-right: 0; }
+    .priority-shipping { font-size: 1em; }
+  }
+</style>
+<div class="priority-shipping form-check">
+  <div>
+    <input id="shippingProd" class="form-check-input" type="checkbox" name="shippingProd">
+    <label class="form-check-label" for="shippingProd">
+      <span>
+        <strong class="metropolis-semi-bold">Add Priority Shipping?</strong>
+      	<span>Smell great in just 2-3 business days</span>
+      </span>
+    </label>
+  </div>
+</div>
+{% endif %}
+
+{# Sudisfaction #}
+<style>
+  .checkout-sudisfaction {
+    margin: 50px 20px 0 0;
+    position: relative;
+    z-index:1;
+  }
+  .checkout-sudisfaction .fixed-sudisfaction:before {
+    content: none;
+  }
+</style>
+<div class="checkout-sudisfaction">
+{% include 'components/sudisfaction-guarantee-fixed.html' %}
+</div>
+
+{% endblock %}
+
+
+
+
+{% block page_javascript %}
+<script type='text/javascript'>
+var cartItems = [];
+{% for product in cart.products %}
+  var obj = {
+    id: "{{ product.instance.product_id }}",
+    price: {{product.price * 0.01}},
+    quantity: {{product.quantity}}
+  };
+  cartItems.push(obj);
+{% endfor %}
+window.criteo_q.push(
+   { event: "setAccount", account: 22076}, // You should never update this line
+   { event: "setEmail", email: "" }, // Can be an empty string 
+   { event: "setSiteType", type: deviceType},
+   { event: "viewBasket", item: cartItems}
+);
+ 
+console.log(cartItems);
+dataLayer.push({'event' : 'initiateCheckout'});
+  
+$(function(){
+	$(".action-cart").hide();
+  	$("#checkout_button").addClass("btn btn-md btn-secondary btn-frame btn-success");//.prepend("<i class='icon footprint'></i>").find('i').css('margin-top', '0px');
+    $(".coupon_section").find(".col-xs-8").removeClass("col-xs-8").addClass(".col-xs-12");
+    $('<span>&nbsp;&nbsp;OR</span>').insertAfter('a[data-paypal-button]')
+    $('.checkout-sudisfaction').insertAfter('.cart_listing');
+    $('.priority-shipping').insertAfter('.cart_listing');
+  
+  	var shippingProductToggle = $('[name="shippingProd"');
+  	if(shippingProductToggle) {
+      shippingProductToggle.change(function() {
+        if($(this).is(':checked')) {
+          //Add Shipping product to cart
+          addPriorityShipping();
+        } else {
+          // Clicking X to remove -> checkout/remove/1831937278 <-- is active_cart product instance id
+          //removePriorityShipping();
+        }
+      });
+    }
+  
+  	function addPriorityShipping() {
+      var endpoint = "/cart/add";
+      var shippingProduct = {
+        metadata: {},
+        price: 5,
+        product_id: "{{priorityShippingId}}",
+        quantity: 1,
+        term_cycles: null
+      };
+	  var data = {products: [shippingProduct], clear_cart: false};
+
+      $.ajax({
+         type: 'POST',
+         contentType: 'application/json',
+         data: JSON.stringify(data),
+         dataType: 'json',
+         url: endpoint,
+         success: function(e){
+             window.location = '/checkout';
+         },
+         error: function(e) {
+           console.log('error adding shipping product', e);
+         }
+      });
+    }
+  
+});
+</script>
+{% endblock %}

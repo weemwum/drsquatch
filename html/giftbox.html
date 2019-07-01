@@ -1,0 +1,312 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+<style>
+  #gift-box-masthead .price-slash-wrapper h5.price-slashed:after {
+    background-color: #ffffff !important;
+    transform: translate(-50%, -50%) rotate(20deg);
+    width: 100%;
+    left: 50%;
+  }
+  .promoted-products-box {
+    display: none !important;
+  }
+
+  section.squatch-masthead {
+    padding: 0 !important;
+    background-image: url("{{ 'images/giftbox-landing-page-header-desktop.png' | asset_url }}"), url("{{ 'images/gift-box.gif' | asset_url }}");
+    background-position: bottom right, top left;
+    background-repeat: no-repeat, no-repeat;
+    background-size: contain, contain;
+  }
+
+  @media (max-width: 1330px) {
+    section.squatch-masthead {
+      background-position: bottom right -125px, top left;
+    }
+  }
+
+  @media (max-width: 1330px) {
+    section.squatch-masthead {
+      background-position: bottom right -80px, top left;
+    }
+    section.squatch-masthead .col-md-5 {
+      padding: 65px 0 !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    section.squatch-masthead {
+      background-image: url("{{ 'images/giftbox-landing-page-header-mobile.png' | asset_url }}"), url("{{ 'images/gift-box.gif' | asset_url }}");
+      background-position: top left, bottom right;
+
+    }
+    section.squatch-masthead .col-md-5 {
+      padding: 150px 0 450px !important;
+    }
+  }
+
+  @media (max-width: 576px) {
+    section.squatch-masthead {
+      background-size: cover, contain;
+      background-position: top -152px left, bottom right;
+    }
+    section.squatch-masthead .col-md-5 {
+      padding: 50px 0 200px !important;
+    }
+  }
+</style>
+
+<section id="gift-box-masthead" class="squatch-masthead">
+  <div class="row">
+    <div class="col-md-5 col-md-offset-7" style="padding:100px 0;">
+      <h1 style="font-size:54px;">Gift Box</h1>
+      <div class="price-slash-wrapper">
+          <h5 class="price-slashed" style="font-size:75px;color:#ffffff !important;"><span style="font-size:45px;">$</span>71</h5>
+          <h5 class="price-savings" style="font-size:75px;color:#de7e00 !important;"><span style="font-size:45px;">$</span>52</h5>
+      </div>
+      <h3 style="width: 250px;font-size: 40px;margin: 30px auto;">A Unique Gift with a Personal Touch</h3>
+      <a href="#choose-your-scents"><button style="font-size: 30px;">Choose Your Scents</button></a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block page_content %}
+
+<section class="gift-box-page-content">
+  <ul class="gift-box-perks">
+    <li><span class="gift-box-perks-image"><img src="{{'images/icon-mailbox.png' | asset_url }}" alt="Mailbox Icon" /></span> <span class="gift-box-perks-text">Custom Cigar Box</span></li>
+    <li><span class="gift-box-perks-image"><img src="{{'images/icon-mustache.png' | asset_url }}" alt="Mustache Icon" /></span> <span class="gift-box-perks-text">Pick the Bars That Fit Your Guy</span></li>
+    <li><span class="gift-box-perks-image"><img src="{{'images/icon-stars.png' | asset_url }}" alt="Stars Icon" /></span> <span class="gift-box-perks-text">Make It Special With Extras</span></li>
+  </ul>
+  <h2>Great Gifts, Made Easy</h2>
+  <p>Finding the perfect gift for a dude is no easy task; look no further than the stack of never-worn clown ties in your dad’s closet. Take the guesswork out of gentleman gifting when you ship a custom cigar box of all-natural goodness.</p>
+</section>
+<h3 id="choose-your-scents" class="gift-box-step"><span>1.</span> Pick Your Bundle</h3>
+
+{% macro product_box(product_id, title, id, background) %}
+  {% set product = product_id | get_product %}
+  <div class="gift-box-select-single col-md-6" style="background-image: url('{{('images/gift-box-' + background + '-background.jpg') | asset_url }}')">
+    <h2>The <em>{{ title }}</em> Box</h2>
+    <img src="{{('images/gift-box-' + id + '-box.png') | asset_url }}" alt="Gift Box" />
+    <fieldset class="squatch-gift-box-option" data-product-id="{{ product.id }}" data-price="52">
+      {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+      <input type="radio" id="radio-gift-box-{{ id }}" name="gift-box-primary">
+      <label for="radio-gift-box-{{ id }}"><i class="fa fa-square-o"></i> Select</label>
+      {% else %}
+      <label for="radio-gift-box-{{ id }}"><i class="fa fa-times"></i> OUT OF STOCK</label>
+      {% endif %}
+    </fieldset>
+  </div>
+{% endmacro %}
+
+<section class="gift-box-select container-fluid">
+  <div class="row">
+    {{ product_box(81318210, 'Best s(M)ellers', 'best-smellers', 'woods') }}
+    {{ product_box(81325435, 'Woodsman', 'woodsman', 'wood') }}
+  </div>
+  <div class="row">
+    {{ product_box(81326129, 'Super Fresh', 'super-fresh', 'orange-soap') }}
+    {{ product_box(2219599492, 'Pine Tar', 'pine-tar', 'deep-forest') }}
+  </div>
+</section>
+
+<section class="gift-box-step-two-section">
+  <h3 class="gift-box-step"><span>2.</span> Make It Extra Special</h3>
+  <div class="squatch-horizontal-slider" data-transform="0">
+    <div class="squatch-horizontal-slider-inner">
+      <div class="squatch-horizontal-slide">
+        {% set product = 70698419 | get_product %}
+        {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+        <div>
+          <img src="{{'images/squatch-soap-saver.png' | asset_url }}" alt="Soap Saver" />
+          <h4>Soap Saver</h4>
+          <p class="squatch-price"><span>$</span>15</p>
+          <fieldset class="squatch-gift-box-option" data-product-id="70698419" data-price="15">
+            <input type="checkbox" id="squatch-soap-saver">
+            <label for="squatch-soap-saver"><i class="fa fa-square-o"></i> Select</label>
+          </fieldset>
+        </div>
+        {% endif %}
+
+        {% set product = 1727791130 | get_product %}
+        {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+        <div>
+          <img src="{{'images/lakeside-bourbon.png' | asset_url }}" alt="Lakeside Bourbon" />
+          <h4>Lakeside Bourbon</h4>
+          <p class="squatch-price"><span>$</span>18</p>
+          <fieldset class="squatch-gift-box-option" data-product-id="1727791130" data-price="18">
+            <input type="checkbox" id="squatch-lakeside-bourbon">
+            <label for="squatch-lakeside-bourbon"><i class="fa fa-square-o"></i> Select</label>
+          </fieldset>
+        </div>
+        {% endif %}
+
+        {% set product = 70704519 | get_product %}
+        {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+        <div>
+          <img src="{{'images/crushed-pine.png' | asset_url }}" alt="Soap Saver" />
+          <h4>Crushed Pine Cologne</h4>
+          <p class="squatch-price"><span>$</span>21</p>
+          <fieldset class="squatch-gift-box-option" data-product-id="70704519" data-price="21">
+            <input type="checkbox" id="squatch-crushed-pine-cologne">
+            <label for="squatch-crushed-pine-cologne"><i class="fa fa-square-o"></i> Select</label>
+          </fieldset>
+        </div>
+        {% endif %}
+
+        {% set product = 70704176 | get_product %}
+        {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+        <div>
+          <img src="{{'images/Cologne_Beechwood_Bourbonpng.png' | asset_url }}" alt="Hair Care" />
+          <h4>Beechwood Bourbon Cologne</h4>
+          <p class="squatch-price"><span>$</span>21</p>
+          <fieldset class="squatch-gift-box-option" data-product-id="70704176" data-price="21">
+            <input type="checkbox" id="squatch-beechwood-bourbon-cologne">
+            <label for="squatch-beechwood-bourbon-cologne"><i class="fa fa-square-o"></i> Select</label>
+          </fieldset>
+        </div>
+        {% endif %}
+
+        {% set product = 1727801243 | get_product %}
+        {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+        <div>
+          <img src="{{'images/fresh-fir.png' | asset_url }}" alt="Fresh Fir" />
+          <h4>Fresh Fir</h4>
+          <p class="squatch-price"><span>$</span>18</p>
+          <fieldset class="squatch-gift-box-option" data-product-id="1727801243" data-price="18">
+            <input type="checkbox" id="squatch-fresh-fir">
+            <label for="squatch-fresh-fir"><i class="fa fa-square-o"></i> Select</label>
+          </fieldset>
+        </div>
+        {% endif %}
+        
+      </div>
+    </div>
+    <div class="squatch-horizontal-slide-controls">
+      <div class="squatch-horizontal-slide-control" data-direction="prev">
+        <i class="fa fa-angle-left"></i>
+      </div>
+      <div class="squatch-horizontal-slide-control" data-direction="next">
+        <i class="fa fa-angle-right"></i>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="squatch-grand-total">
+  <p>Total With<br>Selected Options</p>
+  <p class="squatch-price"><span>$</span>0</p>
+  <button data-toggle="modal" data-target="#cart-slide" >Add To Cart</button>
+</section>
+<!-- Yotpo Review -->
+<section class="pholder bg-alt new_review_section">
+  <div class="pholder-header">
+    <div id="product-reviews-list-row" class="pholder-header">
+    	<h1 class="heading hlight">REVIEWS</h1>
+        <div class="yotpo yotpo-main-widget"
+             data-product-id="81318210"
+             data-name="Best Sellers Gift Box"
+             data-url="https://drsquatch.com/giftbox"
+             data-image-url="The product image url. Url escaped"
+             data-description="Gold Moss, Pine Tar, Spearmint Basil, Bay Rum">
+        </div>
+    </div>
+  </div>
+</section>
+<!-- end -->
+{% endblock %}
+
+{% block page_javascript %}
+<script src="{{'js/jquery.formstyler.min.js' | asset_url}}"></script>
+<script type="text/javascript">
+
+document.body.classList.add('page-gift-box');
+
+function giftbox_prepare() {
+  document.querySelectorAll('.gift-box-select-single label').forEach(elem => {
+    elem.addEventListener('click', e => {
+      document.querySelectorAll('.gift-box-select-single').forEach(select => {
+        select.classList.add('-not-selected');
+      });
+      e.target.closest('.gift-box-select-single').classList.remove('-not-selected');
+    })
+  });
+
+  document.querySelectorAll('.squatch-gift-box-option label').forEach(elem => {
+    elem.addEventListener('click', e => {
+      setTimeout(update_grand_total, 100);
+    });
+  });
+
+  document.querySelector('.squatch-grand-total button').addEventListener('click', e => {
+    let final_items = update_grand_total();
+    squatch_add_to_cart(final_items);
+  });
+}
+
+function update_grand_total() {
+  let elem = document.querySelector('.squatch-grand-total .squatch-price'),
+      cart_items = [],
+      grand_total = 0;
+
+
+  document.querySelectorAll('.squatch-gift-box-option').forEach(elem => {
+    if (elem.querySelector('input').checked) {
+      let item = {
+        id: elem.getAttribute('data-product-id'),
+        price: parseInt(elem.getAttribute('data-price'))
+      };
+      
+      cart_items.push(item);
+      grand_total += item.price;
+    }
+  });
+
+  elem.innerHTML = `<span>$</span>${grand_total}`;
+  return cart_items;
+}
+
+function squatch_add_callback() {
+  jQuerySafe("#cart-slide").modal('show');
+}
+
+function squatch_add_to_cart(items = []) {
+    let single_data = [];
+
+    console.log('Items added to cart:');
+    items.forEach(item => {
+      let single_item = {
+        product_id: item.id,
+        qty: 1
+      }
+      BBSafe.trigger("newProduct:add", item.id, function(item) {console.log(item)});
+      single_data.push(single_item);
+    });
+}
+
+function prepare_anchor_links() {
+    document.querySelectorAll('a[href^="#"]').forEach(elem => {
+        elem.addEventListener('click', e => {
+            e.preventDefault();
+
+            let target = elem.getAttribute('href'),
+                target_top = document.querySelector(target).offsetTop,
+                padding = document.querySelector('.navbar').clientHeight,
+                top = target_top - padding;
+
+            window.scroll({
+                top: top,
+                left: 0, 
+                behavior: 'smooth' 
+            });          
+        });
+    });
+}
+
+giftbox_prepare();
+prepare_anchor_links();
+
+</script>
+<script src="{{ 'js/raindrop.min.js' | asset_url }}"></script>
+{% endblock %}

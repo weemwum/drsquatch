@@ -1,0 +1,695 @@
+{% extends "base.html" %}
+
+{% macro slider_controls() -%}
+  <div class="js_prev" aria-hidden="true">
+    <i class="fa fa-angle-left fa-3x fa-fw"></i>
+  </div>
+  <div class="js_next" aria-hidden="true">
+    <i class="fa fa-angle-right fa-3x fa-fw"></i>
+  </div>
+  <ul class="js_dots"></ul>
+{%- endmacro  %}
+
+{% block endofhead %}
+  <link rel="stylesheet" href="{{ 'css/soapscription.css' | asset_url }}">
+{% endblock endofhead %}
+
+{% block header_content %}
+<!-- Google Analytics Content Experiment code -->
+<script>function utmx_section(){}function utmx(){}(function(){var
+k='88153193-2',d=document,l=d.location,c=d.cookie;
+if(l.search.indexOf('utm_expid='+k)>0)return;
+function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
+indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
+length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
+'<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
+'://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
+'&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
+valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
+'" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
+</script><script>utmx('url','A/B');</script>
+<!-- End of Google Analytics Content Experiment code -->
+
+<div class="loading active" style="left:0; top: 0;">
+	Hang on a sec, we're loading the Soapscription page.
+</div>
+{% endblock header_content %}
+
+{% block page_content %}
+
+{# Tab navigation #}
+<ul id="step-tab-nav" class="step-tabs" role="tablist">
+  {% set titles = [
+    "Bars per month",
+    "How often should we ship",
+    "Choose your scents",
+    "Choose your add-ons"
+  ] %}
+  {% for title in titles %}
+    <li role="presentation"{% if loop.first %} class="active"{% endif %}>
+      <a href="#step-{{ loop.index }}" aria-controls="step-{{ loop.index }}" role="tab" data-toggle="tab">
+        Step {{ loop.index }}<span>: {{ title }}</span>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+
+<div class="tab-content">
+
+  {# STEP 1 - SELECT PRODUCT #}
+  <section id="step-1" role="tabpanel" class="tab-pane fade in active">
+    <section class="banner-landscape -auto-height" style="background-image: url('{{'images/dark-wood-bg.jpg' | asset_url }}')">
+      <div class="content text-invert text-center">
+        <span class="_font-family-cursive">the</span>
+        <h1 class="heading _mt-0">Soapscription</h1>
+        <p data-barley="soapscription-description" data-barley-editor="simple">The best natural soap delivered right to your doorstep. <br> Sudisfaction guaranteed.</p>
+      </div>
+    </section>
+    <div class="section-wrapper -slim">
+      <div class="inner -narrow">
+      <div class="text-center _mb-40">
+        <h3 class="_mt-0">How many bars per month?</h3>
+        <p class="_color-green">On average, a bar lasts about two weeks</p>
+      </div>
+        <div class="product-wrapper" data-transform="slider">
+          {{ slider_controls() }}
+          <div class="js_frame">
+            <div class="js_slides product-template-holder"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# STEP 2 - SELECT TERM #}
+  <section id="step-2" role="tabpanel" class="tab-pane fade">
+    <section class="banner-landscape -auto-height" style="background-image: url('{{'images/dark-wood-bg.jpg' | asset_url }}')">
+      <div class="content text-invert text-center">
+        <h1 class="heading _mt-0">How often should we ship?</h1>
+        <p data-barley="soapscription-frequency" data-barley-editor="simple">Subscribers get free shipping on all orders!</p>
+      </div>
+    </section>
+    <div class="section-wrapper">
+      <div class="inner -narrow">
+        <div class="product-wrapper" data-transform="slider">
+          {{ slider_controls() }}
+          <div class="js_frame">
+            <div class="js_slides term-template-holder"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# STEP 3 - SELECT SCENTS #}
+  <section id="step-3" role="tabpanel" class="tab-pane fade">
+    <section class="banner-landscape -auto-height" style="background-image: url('{{'images/dark-wood-bg.jpg' | asset_url }}')">
+      <div class="content text-invert text-center">
+        <h1 class="heading _mt-0">What scents should we send?</h1>
+        <p data-barley="soapscription-scents" data-barley-editor="simple">9 natural ways to smell like a man</p>
+      </div>
+    </section>
+
+    <div class="section-wrapper">
+      <div class="inner">
+        <div class="sidebar-layout">
+
+          <div class="main">
+            <p class="text-center">Select how many of each scent you want in your Soapscription box.</p>
+            <hr style="border-color: #ccc;" class="visible-md visible-lg">
+
+            {# STEP 3 (mobile) - SCENT SELECTOR #}
+            <div class="visible-xs visible-sm">
+              <div class="option-list-wrapper _mb-20 _mt-20" data-options>
+                <i class="fa fa-caret-right"></i>
+                <div class="option-list scent-options-template-holder"></div>
+              </div>
+            </div>
+
+            {# STEP 3A - AVAILABLE SCENTS #}
+            <div class="product-wrapper">
+              <div class="js_frame">
+                <div class="js_slides scent-template-holder"></div>
+              </div>
+            </div>
+          </div>
+
+          {# STEP 3B - CHOSEN SCENTS #}
+          <aside class="sidebar">
+            <div class="_sticky-top">
+              <p class="sidebar-legend">
+                You've selected <strong class="scents-quantity _color-orange"></strong> bars<br>
+                (select <span class="scents-remaining"></span> more or let us choose the rest for you!)
+              </p>
+              <div class="chosen-scent-template-holder quantity-list"></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# STEP 4 - SELECT ADDONS #}
+  <section id="step-4" role="tabpanel" class="tab-pane fade">
+    <section class="banner-landscape -auto-height" style="background-image: url('{{'images/dark-wood-bg.jpg' | asset_url }}')">
+      <div class="content text-invert text-center">
+        <h1 class="heading _mt-0">Add-ons</h1>
+        <p>Add more manly stuff. <br>Shipped with your first box.</p>
+      </div>
+    </section>
+
+    <div class="section-wrapper">
+      <div class="inner">
+        <div class="sidebar-layout">
+
+          <div class="main">
+            <p class="text-center">Select any add-ons you want in your first Soapscription box.</p>
+            <hr style="border-color: #ccc;" class="visible-md visible-lg">
+
+            {# STEP 4 (mobile) - ADDON SELECTOR #}
+            <div class="visible-xs visible-sm">
+              <div class="option-list-wrapper _mb-20 _mt-20" data-options>
+                <i class="fa fa-caret-right"></i>
+                <div class="option-list addon-options-template-holder"></div>
+              </div>
+            </div>
+
+            {# STEP 4A - AVAILABLE ADDONS #}
+            <div class="product-wrapper">
+              <div class="js_frame">
+                <div class="js_slides addon-template-holder"></div>
+              </div>
+            </div>
+          </div>
+
+          {# STEP 4B - CHOSEN ADDONS #}
+          <aside class="sidebar">
+            <div class="_sticky-top">
+              <p class="sidebar-legend">These items will ship in your first box.</p>
+              <div class="chosen-addon-template-holder quantity-list _sticky-top"></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div> <!-- End tab-content -->
+
+{# GRAND TOTAL #}
+<div class="grand-total-template-holder"></div>
+
+{# ITEM TEMPLATE FOR STEP 1 - PRODUCTS #}
+<script type="text/template" id="product_template" class="product-item -separated">
+  <div class="pretitle"><%= pretitle %></div>
+  <img class="image" src="<%= image %>" alt="<%= qtyDescription %>">
+  <h2 class="title"><%= name %></h2>
+  <p class="subtitle">
+    <span><%= qtyDescription %></span>
+    <%= subtitle %>
+  </p>
+  <p class="actions">
+    <button class="btn btn-frame btn-md btn-product-select <%= selected ? 'btn-subscription-selected': '' %>">
+    	<%= selected ? "Selected" : "Select" %>
+  	</button>
+  </p>
+  <p class="description"><%= description %></p>
+</script>
+{# END ITEM TEMPLATE STEP 1 #}
+
+{# ITEM TEMPLATE FOR STEP 2 - TERMS #}
+<script type="text/template" id="term_template" class="product-item -separated">
+  <input type="hidden" value="<%= term_type %>" class="term_type" />
+  <img class="image" src="<%= image %>" alt="<%= name %>">
+  <h2 class="title"><%= name %></h2>
+  <p class="subtitle">
+    <span><%= subtitle %></span>
+    + Free Shipping
+  </p>
+  <% if (available) { %>
+    <p class="actions">
+      <button class="btn btn-frame btn-md btn-term-select <%= selected ? 'btn-subscription-selected': '' %>">
+        <%= selected ? "Selected" : "Select" %>
+      </button>
+    </p>
+  <% } else { %>
+    <h4 class="_mb-20"><strong>COMING SOON</strong></h4>
+  <% } %>
+  <%= description ? '<p class="callout">' + description + '</p>' : '' %>
+</script>
+{# END ITEM TEMPLATE STEP 2 #}
+
+{# ITEM TEMPLATE FOR STEP 3 (mobile) - Scent selector #}
+<script type="text/template" id="scent_option_template" class="option-item">
+  <%= image %>
+  <div class="title"><%= name %></div>
+</script>
+{# END ITEM TEMPLATE STEP 3 (mobile) #}
+
+{# ITEM TEMPLATE FOR STEP 3A - AVAILABLE SCENTS #}
+<script type="text/template" id="scent_template" class="product-item -mobile-condensed hidden-xs hidden-sm">
+  <input type="hidden" class="scent_id" value="<%= id %>" />
+  <%= image %>
+  <h3 class="_mt-0 _mb-20"><strong><%= name %></strong></h3>
+  <div class="quantity-control">
+    <% if ((stock < 1) && !outofstock_purchase) { %>
+      <button disabled>Out of stock</button>
+    <% } else { %>
+      <button class="qty-down"><i class="fa fa-minus"></i></button>
+      <span><%= qty %></span>
+      <button class="qty-up"><i class="fa fa-plus"></i></button>
+    <% } %>
+  </div>
+  <p class="description"><%= name === 'Squatch Picks' ? 'Dr. Squatch picks a scent for you!' : description %></p>
+
+  <% if (name !== 'Squatch Picks') { %>
+    <a href="/shop/product/<%= id %>" data-ajax-modal="#product-modal-<%= id %>" class="learnmore">Learn more</a>
+
+    <div id="product-modal-<%= id %>" class="product-modal">
+      <div class="product-modal-content">
+        <button data-close>
+          <span class="sr-only">Close</span>
+        </button>
+        <header>
+          <%= image %>
+          <h3><%= name %></h3>
+          <p><%= description %></p>
+        </header>
+        <div class="loading-placeholder fragment">
+          <h5>Loading</h5>
+          <p><i class="fa fa-2x fa-fw fa-spin fa-refresh"></i></p>
+        </div>
+        <div data-ajax="content">
+          <!-- AJAX content will appear here -->
+        </div>
+        <div data-ajax="reviews" class="fragment" style="display: none;">
+          <!-- Yotpo reviews will appear here -->
+          <h5>Reviews</h5>
+          <div class="star-gauge _mr-1"></div>
+        </div>
+      </div>
+    </div>
+  <% } %>
+</script>
+{# END ITEM TEMPLATE STEP 3A #}
+
+{# ITEM TEMPLATE FOR STEP 3B - CHOSEN SCENTS #}
+<script type="text/template" id="chosen_scent_template">
+  <section class="quantity-item <%= qty ? '-nonzero' : '' %>">
+    <div class="image"><%= image %></div>
+    <span class="qty"><%= qty %></span>
+    <span class="title"><%= name %></span>
+    <button class="remove">
+      <span class="sr-only">Remove</span>
+      <i class="fa fa-times-circle"></i>
+    </button>
+  </section>
+</script>
+{# END ITEM TEMPLATE STEP 3B #}
+
+{# ITEM TEMPLATE FOR STEP 4 (mobile) - Addon selector #}
+<script type="text/template" id="addon_option_template" class="option-item">
+  <%= image %>
+  <div class="title"><%= name %></div>
+</script>
+{# END ITEM TEMPLATE STEP 4 (mobile) #}
+
+{# ITEM TEMPLATE STEP 4A - AVAILABLE ADDONS #}
+<script type="text/template" id="addon_template" class="product-item -mobile-condensed hidden-xs hidden-sm">
+  <input type="hidden" class="addon_id" value="<%= id %>" />
+  <%= image %>
+  <h3 class="title _text-transform-none"><%= name %></h3>
+  <p class="subtitle">
+    <span>$<%= price.toFixed(0) %></span>
+  </p>
+  <div class="quantity-control">
+    <% if ((stock < 1) && !outofstock_purchase) { %>
+      <button disabled>Out of stock</button>
+    <% } else { %>
+      <button class="qty-down"><i class="fa fa-minus"></i></button>
+      <span><%= qty %></span>
+      <button class="qty-up"><i class="fa fa-plus"></i></button>
+    <% } %>
+  </div>
+  <p class="description"><%= description %></p>
+
+  <a href="/shop/product/<%= id %>" data-ajax-modal="#product-modal-<%= id %>" class="learnmore">Learn more</a>
+
+  <div id="product-modal-<%= id %>" class="product-modal">
+    <div class="product-modal-content">
+      <button data-close>
+        <span class="sr-only">Close</span>
+      </button>
+      <header>
+        <%= image %>
+        <h3><%= name %></h3>
+        <p><%= description %></p>
+      </header>
+      <div class="loading-placeholder fragment">
+        <h5>Loading</h5>
+        <p><i class="fa fa-2x fa-fw fa-spin fa-refresh"></i></p>
+      </div>
+      <div data-ajax="content">
+        <!-- AJAX content will appear here -->
+      </div>
+      <div data-ajax="reviews" class="fragment" style="display: none;">
+        <!-- Yotpo reviews will appear here -->
+        <h5>Reviews</h5>
+        <div class="star-gauge _mr-1"></div>
+      </div>
+    </div>
+  </div>
+</script>
+{# END ITEM TEMPLATE STEP4A #}
+
+{# ITEM TEMPLATE FOR STEP 4B - CHOSEN ADDONS #}
+<script type="text/template" id="chosen_addon_template">
+  <section class="quantity-item <%= qty ? '-nonzero' : '' %>">
+    <div class="image"><%= image %></div>
+    <span class="qty"><%= qty %></span>
+    <span class="title"><%= name %></span>
+    <button class="remove">
+      <span class="sr-only">Remove</span>
+      <i class="fa fa-times-circle"></i>
+    </button>
+  </section>
+</script>
+{# END ITEM TEMPLATE STEP 4B #}
+
+{# GRAND TOTAL #}
+<script type="text/template" id="grand_total_template" class="squatch-grand-total -dark _mb-20">
+  <% if (showTotal) { %>
+    <p>Total with <br>selected options:</p>
+    <p class="squatch-price _color-orange">
+      <span>$</span><%= total.toFixed(0) %>
+    </p>
+  <% } %>
+  <button data-bb="next-step">Next</button>
+</script>
+{# END ITEM TEMPLATE NEXT STEP CONTROL #}
+
+<div class="section-wrapper">
+  {% include 'components/sudisfaction-guarantee.html' %}
+</div>
+
+{% endblock %}
+
+
+{% block page_javascript %}
+<script type="text/javascript">
+
+  jQuerySafe('.submit-subscription').click(function() {
+    console.log('TRACK: Subscription click finish button');
+    if(dataLayer) {
+      dataLayer.push({'event' : 'addToCart', 'type': 'soapscriptionProduct' });
+    }
+  });
+
+ var availableProducts = [];
+  {% for prod in store.shop_products(category='collection-subscription-new') %}
+  {# Resolving quantity based on the appropriate tag - Defaults to '1' if not found #}
+  var qty = 1;
+  {% for t in prod.taxonomy %}
+  {% if 'collection-qty-' in t.slug %}
+  qty = parseInt("{{ t.slug.replace('collection-qty-','') }}");
+  {% endif %}
+  {% endfor %}
+  if (isNaN(qty)){ qty = 1; }
+  {# End Resolving quantity #}
+
+  {# Resolving term type (monthly, quarterly) based on the appropriate tag - Defaults to '1' if not found #}
+  var term_type = 1;
+  {% for t in prod.taxonomy %}
+  {% if 'collection-term-' in t.slug %}
+  term_type = parseInt("{{ t.slug.replace('collection-term-','') }}");
+  {% endif %}
+  {% endfor %}
+  if (isNaN(term_type)){ term_type = 1; }
+  {# End Resolving term type #}
+  var product_type = 'soap';
+    {% for t in prod.taxonomy %}
+      {% if 'collection-haircare' in t.slug %}
+      	product_type = 'hair';
+      {% endif %}
+    {% endfor %}
+
+  var product = {
+  	id: {{ prod.id }},
+    price: {{ prod.instances[0].term_prices[0].price / 100 }},
+    term_type: term_type,
+    qty: qty,
+    type: product_type
+  };
+
+  if (product.type != 'hair') {
+   availableProducts.push(product);
+  }
+
+  {% endfor %}
+
+
+  {# STEP 1 - Setting up available quantities #}
+  var availableQuantities = [
+    {
+      pretitle: '',
+      image: '{{ "images/Soapscription-1.png" | asset_url }}',
+      name: '<span class="_font-family-cursive">the</span> Lone Wolf',
+      qtyDescription: '1 bar',
+      subtitle: 'Keep it simple',
+      description: 'One natural scent. Pefect for the man who likes to roam alone.',
+      selected: false,
+      qty: 1
+    },
+    {
+      pretitle: 'Most Popular',
+      image: '{{ "images/Soapscription-2.png" | asset_url }}',
+      name: '<span class="_font-family-cursive">the</span> Bachelor',
+      qtyDescription: '2 bars',
+      subtitle: 'Most popular for regular use',
+      description: '2x the aroma for the man who goes about town, the woods or anywhere else.',
+      selected: true,
+      qty: 2
+    },
+    {
+      pretitle: '',
+      image: '{{ "images/Soapscription-3.png" | asset_url }}',
+      name: '<span class="_font-family-cursive">the</span> Manly Man',
+      qtyDescription: '3 bars',
+      subtitle: 'Maximum lather &amp; shower sharing',
+      description: 'Three scents. Maximum clean. Our very best deal for the leader of the pack.',
+      selected: false,
+      qty: 3
+    }
+  ]
+
+  {# STEP 2 - Setting up available terms #}
+  var availableTerms = [
+    {
+      image: '{{ "images/calendar-1mo.png" | asset_url }}',
+      name: 'Monthly',
+      subtitle: '$7/bar',
+      description: '',
+      term_type: 1,
+      selected: false,
+      available: true
+    },
+    {
+      image: '{{ "images/calendar-3mo.png" | asset_url }}',
+      name: 'Quarterly',
+      subtitle: '$6/bar',
+      description: 'Save 5%',
+      term_type: 3,
+      selected: true,
+      available: true
+    },
+    {
+      image: '{{ "images/calendar-6mo.png" | asset_url }}',
+      name: 'Semi-annual',
+      subtitle: '$5/bar',
+      description: 'Save 15%',
+      term_type: 6,
+      selected: false,
+      available: false
+    }
+  ]
+
+  {# STEP 3 - Setting up available Scents #}
+  var availableScents = [];
+  {% for prod in store.shop_products(category='collection-scent') %}
+
+  	var ordering = 1;
+  	{% for t in prod.taxonomy %}
+  		{% if 'collection-ordering-' in t.slug %}
+  		ordering = parseInt("{{ t.slug.replace('collection-ordering-','') }}");
+  		{% endif %}
+  	{% endfor %}
+
+  if (isNaN(ordering)){ ordering = 1; }
+
+  availableScents.push({
+    id: "{{ prod.id }}",
+    name: "{{ prod.name }}",
+    description: "{{ prod.description }}",
+    image: '{{ prod | object_img_tag(css_class="image") }}',
+    qty: 0,
+    stock: parseInt("{{ prod.instances[0].inventory.quantity_on_hand }}", 10),
+    outofstock_purchase: {{ 1 if prod.instances[0].inventory.out_of_stock_purchases else 0 }},
+    sku: "{{ prod.instances[0].sku }}",
+  	ordering: ordering});
+  {% endfor %}
+
+  availableScents = _.sortBy(availableScents, function(item){ return -1*item.ordering });
+
+  {# STEP 4 - Addons #}
+  var availableAddons = [];
+  // Older collectio collection-subscription-addons
+
+  // Most Popular
+  {% for prod in store.shop_products(category='collection-addons-most-popular') %}
+
+  var ordering = 1;
+  	{% for t in prod.taxonomy %}
+  		{% if 'collection-ordering-' in t.slug %}
+  		ordering = parseInt("{{ t.slug.replace('collection-ordering-','') }}");
+  		{% endif %}
+    {% endfor %}
+
+  if (isNaN(ordering)){ ordering = 1; }
+
+  {% set addon_price = prod.calc_min_price() if not prod.single_purchasable else prod.calc_min_ecom_price() %}
+  availableAddons.push({
+    id: "{{ prod.id }}",
+    name: "{{ prod.name }}",
+    url: "https://drsquatch.com/shop/product/{{ prod.id }}?iframe=true",
+    description: "{{ prod.description }}",
+    image: '{{ prod | object_img_tag(css_class="image") }}',
+    is_single_purchasable: {{ 'true' if prod.single_purchasable else 'false' }},
+    price: {{ addon_price / 100 }},
+    displayPrice: '{{ addon_price|currency }}',
+    selected: false,
+    qty: 0,
+    stock: parseInt("{{ prod.instances[0].inventory.quantity_on_hand }}", 10),
+    outofstock_purchase: {{ 1 if prod.instances[0].inventory.out_of_stock_purchases else 0 }},
+    ordering: ordering,
+    category: 'most-popular'
+  });
+  {% endfor %}
+
+  // Cologne
+  {% for prod in store.shop_products(category='collection-addons-cologne') %}
+
+  var ordering = 1;
+  	{% for t in prod.taxonomy %}
+  		{% if 'collection-ordering-' in t.slug %}
+  		ordering = parseInt("{{ t.slug.replace('collection-ordering-','') }}");
+  		{% endif %}
+    {% endfor %}
+
+  if (isNaN(ordering)){ ordering = 1; }
+
+  {% set addon_price = prod.calc_min_price() if not prod.single_purchasable else prod.calc_min_ecom_price() %}
+  availableAddons.push({
+    id: "{{ prod.id }}",
+    name: "{{ prod.name }}",
+    url: "https://drsquatch.com/shop/product/{{ prod.id }}?iframe=true",
+    description: "{{ prod.description }}",
+    image: '{{ prod | object_img_tag(css_class="image") }}',
+    is_single_purchasable: {{ 'true' if prod.single_purchasable else 'false' }},
+    price: {{ addon_price / 100 }},
+    displayPrice: '{{ addon_price|currency }}',
+    selected: false,
+    qty: 0,
+    stock: parseInt("{{ prod.instances[0].inventory.quantity_on_hand }}", 10),
+    outofstock_purchase: {{ 1 if prod.instances[0].inventory.out_of_stock_purchases else 0 }},
+    ordering: ordering,
+    category: 'cologne'
+  });
+  {% endfor %}
+
+  // Shave
+  {% for prod in store.shop_products(category='collection-addons-shave') %}
+
+  var ordering = 1;
+  	{% for t in prod.taxonomy %}
+  		{% if 'collection-ordering-' in t.slug %}
+  		ordering = parseInt("{{ t.slug.replace('collection-ordering-','') }}");
+  		{% endif %}
+    {% endfor %}
+
+  if (isNaN(ordering)){ ordering = 1; }
+
+  {% set addon_price = prod.calc_min_price() if not prod.single_purchasable else prod.calc_min_ecom_price() %}
+  availableAddons.push({
+    id: "{{ prod.id }}",
+    name: "{{ prod.name }}",
+    url: "https://drsquatch.com/shop/product/{{ prod.id }}?iframe=true",
+    description: "{{ prod.description }}",
+    image: '{{ prod | object_img_tag(css_class="image") }}',
+    is_single_purchasable: {{ 'true' if prod.single_purchasable else 'false' }},
+    price: {{ addon_price / 100 }},
+    displayPrice: '{{ addon_price|currency }}',
+    selected: false,
+    qty: 0,
+    stock: parseInt("{{ prod.instances[0].inventory.quantity_on_hand }}", 10),
+    outofstock_purchase: {{ 1 if prod.instances[0].inventory.out_of_stock_purchases else 0 }},
+    ordering: ordering,
+    category: 'shave'
+  });
+  {% endfor %}
+
+  // Hair Care
+  {% for prod in store.shop_products(category='product-type-haircare') %}
+
+  var ordering = 1;
+  	{% for t in prod.taxonomy %}
+  		{% if 'collection-ordering-' in t.slug %}
+  		ordering = parseInt("{{ t.slug.replace('collection-ordering-','') }}");
+  		{% endif %}
+    {% endfor %}
+
+  if (isNaN(ordering)){ ordering = 1; }
+
+  {% set addon_price = prod.calc_min_price() if not prod.single_purchasable else prod.calc_min_ecom_price() %}
+  availableAddons.push({
+    id: "{{ prod.id }}",
+    name: "{{ prod.name }}",
+    url: "https://drsquatch.com/shop/product/{{ prod.id }}?iframe=true",
+    description: "{{ prod.description }}",
+    image: '{{ prod | object_img_tag(css_class="image") }}',
+    is_single_purchasable: {{ 'true' if prod.single_purchasable else 'false' }},
+    price: {{ addon_price / 100 }},
+    displayPrice: '{{ addon_price|currency }}',
+    selected: false,
+    qty: 0,
+    stock: parseInt("{{ prod.instances[0].inventory.quantity_on_hand }}", 10),
+    outofstock_purchase: {{ 1 if prod.instances[0].inventory.out_of_stock_purchases else 0 }},
+    ordering: ordering,
+    category: 'hair'
+  });
+  {% endfor %}
+
+  availableAddons = _.sortBy(availableAddons, function(item){ return -1*item.ordering });
+  {# END STEP 4 #}
+
+  var productIds= [];
+  availableAddons.forEach(function(addon) {
+    productIds.push(addon.id);
+  });
+  availableScents.forEach(function(scent) {
+    productIds.push(scent.id);
+  });
+  window.criteo_q.push(
+   { event: "setAccount", account: 22076}, // You should never update this line
+   { event: "setEmail", email: "" }, // Can be an empty string
+   { event: "setSiteType", type: deviceType},
+   { event: "viewList", item: productIds });
+</script>
+
+<script src="{{ 'js/subscription-v3/backbone.js' | asset_url }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lory.js/2.5.3/jquery.lory.min.js"></script>
+<script src="{{ 'js/subscription-v3/product-slider.js' | asset_url }}"></script>
+<script src="{{ 'js/subscription-v3/product-select.js' | asset_url }}"></script>
+<script src="{{ 'js/subscription-v3/product-modal.js' | asset_url }}"></script>
+
+{% endblock %}

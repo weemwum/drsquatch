@@ -1,0 +1,604 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+<div id="content" class="entry-content page-holiday-bundles">
+    <section class="header-cta-countdown">
+        <div class="header-cta-countdown-column header-cta-countdown-left">
+            <h5>Order Now to get your delivery<span class="-alt-color"> before christmas</span></h5>
+        </div>
+        <div class="header-cta-countdown-column header-cta-countdown-right">
+            <h5>Act Fast! <span id="countdown-timer" class="-alt-color">00 DAYS 00 HOURS 00 MINUTES<span></h5>
+        </div>
+    </section>
+    <section class="holiday-bundle-main-masthead" style="background-image: url('{{'images/squatch-masthead-bg.jpg' | asset_url }}')">
+        <div class="holiday-bundle-main-masthead-inner _grid-2">
+            <div>
+                <h2>The Gift<br>Your Man <span>Actually Wants</span></h2>
+                <p>Dr. Squatch All-Natural Soap & Grooming Goods</p>
+            </div>
+            <div>
+                <div class="video-thumbnail" data-video="https://player.vimeo.com/video/298234117?autoplay=1">
+                    <div class="video-thumbnail-background-video-wrapper">
+                        <div class="video-thumbnail-background-video">
+                            <video muted="muted" volume="0" loop="" autoplay=""><source src="{{'video/holiday-video-thumbnail.mp4' | asset_url }}"></video>
+                            <img src="{{'images/holiday-video-thumbnail.png' | asset_url }}" alt="">
+                        </div>
+                        <div class="video-thumbnail-overlay">
+                            <img src="{{'images/play-button.png' | asset_url }}" alt="">
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="holiday-bundle-main-masthead-jump">
+            <p>SHOP UP TO 45%<br>SAVINGS BELOW<br><i class="fa fa-angle-down"></i></p>
+        </div>
+    </section>
+    <section id="holiday-bundle-gifts-under-100" class="holiday-bundle-gifts-display">
+        <header>
+            <h1>Gifts Under $100</h1>
+        </header>
+        <div class="holiday-bundle-gifts-grid _grid-2">
+
+            {% set product = 1870238301 | get_product %}
+            <div class="holiday-bundle-gift-single" data-product-id="{{ product.id }}">
+                <div class="holiday-bundle-gift-single-images">
+                    <img class="holiday-bundle-gift-single-image" src="{{'images/Ult-Bundle-V3.png' | asset_url }}" alt="" />
+                    <img class="holiday-bundle-gift-single-image" src="{{'images/Ult-Bundle-V3_2.png' | asset_url }}" alt="" />
+                </div>
+                <h3 class="holiday-bundle-gift-single-title">Ultimate Squatch Bundle</h3>
+                <p class="holiday-bundle-gift-single-subtitle">For the man worthy of nothing but the best</p>
+                <div class="holiday-bundle-gift-single-accordion rd-accordion" data-desktop-popup="true">
+                    <div class="rd-accordion-toggle">
+                        <h4 class="-smallcaps -color-orange">See What's In The Bundle <i class="fa fa-plus"></i></h4>
+                    </div>
+                    <div class="rd-accordion-inner holiday-bundle-gift-single-content">
+                        <div class="item-popup-content">
+                            <h4>Here’s what you get:</h4>
+                            <ul>
+                                <li>5 Soaps <span>(Bay Rum, Pine Tar, Gold Moss, Crisp IPA, Nautical Sage)</span></li>
+                                <li>Soap Saver</li>
+                                <li>Daily Conditioner Rinse</li>
+                                <li>Cologne <span>(Beechwood Bourbon)</span></li>
+                                <li>Beard Oil <span>(Lakeside Bourbon)</span></li>
+                                <li>Custom Squatch Box</li>
+                            </ul>
+                        </div>
+                        <div class="item-popup-price">
+                            <p class="item-popup-retail-sale-price item-popup-retail-price">Retail Value $130</p>
+                            <p class="item-popup-retail-sale-price item-popup-sale-price">Holiday Price $79 (39% Savings!)</p>
+                            <div class="price-slash-wrapper">
+                                <h5 class="price-slashed"><span>$</span>130</h5>
+                                <h5 class="price-savings"><span>$</span>79</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="holiday-bundle-gift-single-footer">
+                    <div class="price-slash-wrapper">
+                        <h5 class="price-slashed"><span>$</span>130</h5>
+                        <h5 class="price-savings"><span>$</span>79</h5>
+                    </div>
+                    {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+                    <button class="ecom-add-to-cart" data-ecom-id="{{ product.id }}">Add To Cart</button>
+                    {% else %}
+                    <button class="out-of-stock" disabled>Out Of Stock</button>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% set product = 1870252626 | get_product %}
+            <div class="holiday-bundle-gift-single" data-product-id="{{ product.id }}">
+                <div class="holiday-bundle-gift-single-images">
+                    <img class="holiday-bundle-gift-single-image" src="{{'images/squatchma.jpg' | asset_url }}" alt="" />
+                    <img class="holiday-bundle-gift-single-image" src="{{'images/squatchma-2.jpg' | asset_url }}" alt="" />                   
+                </div>
+                <h3 class="holiday-bundle-gift-single-title">Squatchmas</h3>
+                <p class="holiday-bundle-gift-single-subtitle">All 10 Dr. Squatch Scents</p>
+                <div class="holiday-bundle-gift-single-accordion rd-accordion" data-desktop-popup="true">
+                    <div class="rd-accordion-toggle">
+                        <h4 class="-smallcaps -color-orange">See What's In The Bundle <i class="fa fa-plus"></i></h4>
+                    </div>
+                    <div class="rd-accordion-inner holiday-bundle-gift-single-content">
+                        <div class="item-popup-content">
+                            <h4>Here’s what you get:</h4>
+                            <ul>
+                                <li>10 Soaps <span>(one of each Dr. Squatch scent)</span></li>
+                                <li>Pine Tar, Eucalyptus Greek Yogurt, Nautical Sage</li>
+                                <li>Deep Sea Goat's Milk, Cool Fresh Aloe, Cedar Citrus</li>
+                                <li>Gold Moss Scrub, Bay Rum, Crisp IPA, Spearmint Basil Scrub</li>
+                            </ul>
+                        </div>
+                        <div class="item-popup-price">
+                            <p class="item-popup-retail-sale-price item-popup-retail-price">Retail Value $70</p>
+                            <p class="item-popup-retail-sale-price item-popup-sale-price">Holiday Price $49 (30% Savings!)</p>
+                            <div class="price-slash-wrapper">
+                                <h5 class="price-slashed"><span>$</span>70</h5>
+                                <h5 class="price-savings"><span>$</span>49</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="holiday-bundle-gift-single-footer">
+                    <div class="price-slash-wrapper">
+                        <h5 class="price-slashed"><span>$</span>70</h5>
+                        <h5 class="price-savings"><span>$</span>49</h5>
+                    </div>
+                    {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+                    <button class="ecom-add-to-cart" data-ecom-id="{{ product.id }}">Add To Cart</button>
+                    {% else %}
+                    <button class="out-of-stock" disabled>Out Of Stock</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="palm-tree-branch -one"></div>
+        <div class="palm-tree-branch -two"></div>
+    </section>
+    <section class="soapscription-callout">
+        <div class="soapscription-callout-inner _grid-2">
+            <div class="soapscription-callout-image">
+                <img src="{{'images/soap-collection.png' | asset_url }}" alt="" />
+            </div>
+            <div class="soapscription-callout-content">
+                <h3>The Soapscription</h3>
+                <p>A gift that keeps on giving all year long</p>
+                <div class="styled-callout">
+                    <h4 class="-color-green">Starting at $7/month</h4>
+                    <h4 class="-color-dark-green">$1 off Every bar + Free Shipping</h4>
+                </div>
+                <p>Choose your scents & get freshness delivered automatically</p>
+                <a href="/subscription/"><button class="-green">Soapscribe Now</button></a>
+            </div>
+        </div>
+        <div class="palm-tree-branch -two"></div>
+    </section>
+    <section id="holiday-bundle-gifts-under-40" class="holiday-bundle-gifts-display">
+        <header>
+            <h1>Gifts Under $40</h1>
+        </header>
+        <div class="holiday-bundle-gifts-grid _grid-2">
+            <div class="holiday-bundle-gift-single">
+                <div class="holiday-bundle-gift-single-images">
+                    <img class="holiday-bundle-gift-single-image" src="{{'images/classic-squatch-gift-box.jpg' | asset_url }}" alt="" />
+                    <img class="holiday-bundle-gift-single-image" src="{{'images/classic-squatch-gift-box-2.jpg' | asset_url }}" alt="" />                   
+                </div>
+                <h3 class="holiday-bundle-gift-single-title">Classic Squatch Gift Box</h3>
+                <p class="holiday-bundle-gift-single-subtitle">A unique gift with a personal touch</p>
+                <div class="holiday-bundle-gift-single-accordion rd-accordion" data-desktop-popup="true">
+                    <div class="rd-accordion-toggle">
+                        <h4 class="-smallcaps -color-orange">See What's In The Bundle <i class="fa fa-plus"></i></h4>
+                    </div>
+                    <div class="rd-accordion-inner holiday-bundle-gift-single-content">
+                        <div class="item-popup-content">
+                            <h4>Here’s what you get:</h4>
+                            <ul>
+                                <li>4 Soaps <span>(Pick Variety)</span></li>
+                                <li>Custom Box</li>
+                            </ul>
+                        </div>
+                        <div class="item-popup-price">
+                            <p class="item-popup-retail-sale-price item-popup-retail-price">Retail Value $53</p>
+                            <p class="item-popup-retail-sale-price item-popup-sale-price">Holiday Price $39 (27% Savings!)</p>
+                            <div class="price-slash-wrapper">
+                                <h5 class="price-slashed"><span>$</span>53</h5>
+                                <h5 class="price-savings"><span>$</span>39</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="holiday-bundle-gift-single-footer">
+                    <div class="price-slash-wrapper">
+                        <h5 class="price-slashed"><span>$</span>53</h5>
+                        <h5 class="price-savings"><span>$</span>39</h5>
+                    </div>
+                    <button style="padding: 0"><a style="padding: 10px 30px" href="/giftbox/">See More</a></button>
+                </div>
+            </div>
+            {% set product = 1844525322 | get_product %}
+            <div class="holiday-bundle-gift-single" data-product-id="{{ product.id }}">
+                <div class="holiday-bundle-gift-single-images">
+                    <img class="holiday-bundle-gift-single-image" src="{{'images/refined-beast-bundle.jpg' | asset_url }}" alt="" />
+                    <img class="holiday-bundle-gift-single-image" src="{{'images/refined-beast-bundle-2.jpg' | asset_url }}" alt="" />                   
+                </div>
+                <h3 class="holiday-bundle-gift-single-title">Refined Beast Bundle</h3>
+                <p class="holiday-bundle-gift-single-subtitle">The perfect gift for the wild gentleman</p>
+                <div class="holiday-bundle-gift-single-accordion rd-accordion" data-desktop-popup="true">
+                    <div class="rd-accordion-toggle">
+                        <h4 class="-smallcaps -color-orange">See What's In The Bundle <i class="fa fa-plus"></i></h4>
+                    </div>
+                    <div class="rd-accordion-inner holiday-bundle-gift-single-content">
+                        <div class="item-popup-content">
+                            <h4>Here’s what you get:</h4>
+                            <ul>
+                                <li>3 Soaps <span>(Bay Rum, Pine Tar, Gold Moss)</span></li>
+                                <li>Soap Saver</li>
+                                <li>Cologne <span>(Beechwood Bourbon)</span></li>
+                            </ul>
+                        </div>
+                        <div class="item-popup-price">
+                            <p class="item-popup-retail-sale-price item-popup-retail-price">Retail Value $57</p>
+                            <p class="item-popup-retail-sale-price item-popup-sale-price">Holiday Price $35 (39% Savings!)</p>
+                            <div class="price-slash-wrapper">
+                                <h5 class="price-slashed"><span>$</span>57</h5>
+                                <h5 class="price-savings"><span>$</span>35</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="holiday-bundle-gift-single-footer">
+                    <div class="price-slash-wrapper">
+                        <h5 class="price-slashed"><span>$</span>57</h5>
+                        <h5 class="price-savings"><span>$</span>35</h5>
+                    </div>
+                    {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+                    <button class="ecom-add-to-cart" data-ecom-id="{{ product.id }}">Add To Cart</button>
+                    {% else %}
+                    <button class="out-of-stock" disabled>Out Of Stock</button>
+                    {% endif %}
+                </div>
+            </div>
+            {% set product = 1844528447 | get_product %}
+            <div class="holiday-bundle-gift-single" data-product-id="{{ product.id }}">
+                <div class="holiday-bundle-gift-single-images">
+                    <img class="holiday-bundle-gift-single-image" src="{{'images/subtle-stud-2.jpg' | asset_url }}" alt="" />                   
+                    <img class="holiday-bundle-gift-single-image" src="{{'images/subtle-stud.jpg' | asset_url }}" alt="" />
+                </div>
+                <h3 class="holiday-bundle-gift-single-title">Subtle Stud Bundle</h3>
+                <p class="holiday-bundle-gift-single-subtitle">For the guy who is always the best-smelling in the room</p>
+                <div class="holiday-bundle-gift-single-accordion rd-accordion" data-desktop-popup="true">
+                    <div class="rd-accordion-toggle">
+                        <h4 class="-smallcaps -color-orange">See What's In The Bundle <i class="fa fa-plus"></i></h4>
+                    </div>
+                    <div class="rd-accordion-inner holiday-bundle-gift-single-content">
+                        <div class="item-popup-content">
+                            <h4>Here’s what you get:</h4>
+                            <ul>
+                                <li>2 Bars <span>(Gold Moss)</span></li>
+                                <li>BEECHWOOD BOURBON COLOGNE</li>
+                                <li>Fresh Fir Beard Oil</li>
+                            </ul>
+                        </div>
+                        <div class="item-popup-price">
+                            <p class="item-popup-retail-sale-price item-popup-retail-price">Retail Value $53</p>
+                            <p class="item-popup-retail-sale-price item-popup-sale-price">Holiday Price $30 (43% Savings!)</p>
+                            <div class="price-slash-wrapper">
+                                <h5 class="price-slashed"><span>$</span>53</h5>
+                                <h5 class="price-savings"><span>$</span>30</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="holiday-bundle-gift-single-footer">
+                    <div class="price-slash-wrapper">
+                        <h5 class="price-slashed"><span>$</span>53</h5>
+                        <h5 class="price-savings"><span>$</span>30</h5>
+                    </div>
+                    {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+                    <button class="ecom-add-to-cart" data-ecom-id="{{ product.id }}">Add To Cart</button>
+                    {% else %}
+                    <button class="out-of-stock" disabled>Out Of Stock</button>
+                    {% endif %}
+                </div>
+            </div>
+            {% set product = 1844526925 | get_product %}
+            <div class="holiday-bundle-gift-single" data-product-id="{{ product.id }}">
+                <div class="holiday-bundle-gift-single-images">
+                    <img class="holiday-bundle-gift-single-image" src="{{'images/SAO-KIT-A2.png' | asset_url }}" alt="" />
+                    <img class="holiday-bundle-gift-single-image" src="{{'images/SAO-KIT-A2_2.png' | asset_url }}" alt="" />                   
+                </div>
+                <h3 class="holiday-bundle-gift-single-title">Alpine Man Bundle</h3>
+                <p class="holiday-bundle-gift-single-subtitle">For the man that climbs mountains or moves them for you</p>
+                <div class="holiday-bundle-gift-single-accordion rd-accordion" data-desktop-popup="true">
+                    <div class="rd-accordion-toggle">
+                        <h4 class="-smallcaps -color-orange">See What's In The Bundle <i class="fa fa-plus"></i></h4>
+                    </div>
+                    <div class="rd-accordion-inner holiday-bundle-gift-single-content">
+                        <div class="item-popup-content">
+                            <h4>Here’s what you get:</h4>
+                            <ul>
+                                <li>2 Bars <span>(Pine Tar)</span></li>
+                                <li>Beechwood Bourbon Cologne </li>
+                                <li>Lakeside Bourbon Beard Oil</li>
+                            </ul>
+                        </div>
+                        <div class="item-popup-price">
+                            <p class="item-popup-retail-sale-price item-popup-retail-price">Retail Value $53</p>
+                            <p class="item-popup-retail-sale-price item-popup-sale-price">Holiday Price $30 (43% Savings!)</p>
+                            <div class="price-slash-wrapper">
+                                <h5 class="price-slashed"><span>$</span>53</h5>
+                                <h5 class="price-savings"><span>$</span>30</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="holiday-bundle-gift-single-footer">
+                    <div class="price-slash-wrapper">
+                        <h5 class="price-slashed"><span>$</span>53</h5>
+                        <h5 class="price-savings"><span>$</span>30</h5>
+                    </div>
+                    {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+                    <button class="ecom-add-to-cart" data-ecom-id="{{ product.id }}">Add To Cart</button>
+                    {% else %}
+                    <button class="out-of-stock" disabled>Out Of Stock</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="palm-tree-branch -three"></div>
+        <div class="palm-tree-branch -one"></div>
+    </section>
+    <section id="stocking-stuffers" class="holiday-bundle-gifts-four-display">
+        <header>
+            <h1>Gifts Under $25</h1>
+            <div>
+                <h3>Stocking Stuffers</h3>
+                <p>The perfect gifts to stuff your man’s stockings</p>
+            </div>
+        </header>
+        <div class="holiday-bundle-gifts-four-display-content">
+            <div class="squatch-horizontal-slider" data-transform="0">
+                <div class="squatch-horizontal-slider-inner">
+                    <div class="squatch-horizontal-slide">
+                        {% set product = 1844529845 | get_product %}
+                        <div data-product-id="{{ product.id }}">
+                            <img src="{{'images/best-smellers.png' | asset_url }}" alt="" />
+                            <h5>Best S(m)ellers</h5>
+                            <p>3 bars: Pine Tar, Bay Rum, Gold Moss Scrub</p>
+                            <div class="price-slash-wrapper">
+                                <h5 class="price-slashed"><span>$</span>21</h5>
+                                <h5 class="price-savings"><span>$</span>17</h5>
+                            </div>
+                            {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+                            <button class="ecom-add-to-cart" data-ecom-id="{{ product.id }}">Add To Cart</button>
+                            {% else %}
+                            <button class="out-of-stock" disabled>Out Of Stock</button>
+                            {% endif %}
+                        </div>
+                        {% set product = 1844536362 | get_product %}
+                        <div data-product-id="{{ product.id }}">
+                            <img src="{{'images/best-smellers-soap-saver.png' | asset_url }}" alt="" />
+                            <h5>Best S(m)ellers w/ Soap Saver</h5>
+                            <p>Soap Saver, 2 bars: Pine Tar, Gold Moss Scrub</p>
+                            <div class="price-slash-wrapper">
+                                <h5 class="price-slashed"><span>$</span>29</h5>
+                                <h5 class="price-savings"><span>$</span>23</h5>
+                            </div>
+                            {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+                            <button class="ecom-add-to-cart" data-ecom-id="{{ product.id }}">Add To Cart</button>
+                            {% else %}
+                            <button class="out-of-stock" disabled>Out Of Stock</button>
+                            {% endif %}
+                        </div>
+                        {% set product = 1844531086 | get_product %}
+                        <div data-product-id="{{ product.id }}">
+                            <img src="{{'images/freshness.png' | asset_url }}" alt="" />
+                            <h5>Freshness</h5>
+                            <p>3 bars: Crisp IPA, Nautical Sage, Spearmint Basil</p>
+                            <div class="price-slash-wrapper">
+                                <h5 class="price-slashed"><span>$</span>21</h5>
+                                <h5 class="price-savings"><span>$</span>17</h5>
+                            </div>
+                            {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+                            <button class="ecom-add-to-cart" data-ecom-id="{{ product.id }}">Add To Cart</button>
+                            {% else %}
+                            <button class="out-of-stock" disabled>Out Of Stock</button>
+                            {% endif %}
+                        </div>
+                        {% set product = 1844538923 | get_product %}
+                        <div data-product-id="{{ product.id }}">
+                            <img src="{{'images/freshness-soap-saver.png' | asset_url }}" alt="" />
+                            <h5>Freshness w/ Soap Saver</h5>
+                            <p>Soap Saver, 2 bars: Crisp IPA, Bay Rum</p>
+                            <div class="price-slash-wrapper">
+                                <h5 class="price-slashed"><span>$</span>29</h5>
+                                <h5 class="price-savings"><span>$</span>23</h5>
+                            </div>
+                            {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+                            <button class="ecom-add-to-cart" data-ecom-id="{{ product.id }}">Add To Cart</button>
+                            {% else %}
+                            <button class="out-of-stock" disabled>Out Of Stock</button>
+                            {% endif %}
+                        </div>
+                        {% set product = 1844532285 | get_product %}
+                        <div data-product-id="{{ product.id }}">
+                            <img src="{{'images/pine-tar.png' | asset_url }}" alt="" />
+                            <h5>Pine Tar</h5>
+                            <p>3 bars: Pine Tar x3</p>
+                            <div class="price-slash-wrapper">
+                                <h5 class="price-slashed"><span>$</span>21</h5>
+                                <h5 class="price-savings"><span>$</span>17</h5>
+                            </div>
+                            {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+                            <button class="ecom-add-to-cart" data-ecom-id="{{ product.id }}">Add To Cart</button>
+                            {% else %}
+                            <button class="out-of-stock" disabled>Out Of Stock</button>
+                            {% endif %}
+                        </div>
+                        {% set product = 1844545594 | get_product %}
+                        <div data-product-id="{{ product.id }}">
+                            <img src="{{'images/pine-tar-soap-saver.png' | asset_url }}" alt="" />
+                            <h5>Pine Tar w/ Soap Saver</h5>
+                            <p>Soap Saver, 2 bars: Pine Tar x2</p>
+                            <div class="price-slash-wrapper">
+                                <h5 class="price-slashed"><span>$</span>29</h5>
+                                <h5 class="price-savings"><span>$</span>23</h5>
+                            </div>
+                            {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+                            <button class="ecom-add-to-cart" data-ecom-id="{{ product.id }}">Add To Cart</button>
+                            {% else %}
+                            <button class="out-of-stock" disabled>Out Of Stock</button>
+                            {% endif %}
+                        </div>
+                        {% set product = 1844533216 | get_product %}
+                        <div data-product-id="{{ product.id }}">
+                            <img src="{{'images/bay-rum.png' | asset_url }}" alt="" />
+                            <h5>Bay Rum</h5>
+                            <p>3 bars: Bay Rum x3</p>
+                            <div class="price-slash-wrapper">
+                                <h5 class="price-slashed"><span>$</span>21</h5>
+                                <h5 class="price-savings"><span>$</span>17</h5>
+                            </div>
+                            {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+                            <button class="ecom-add-to-cart" data-ecom-id="{{ product.id }}">Add To Cart</button>
+                            {% else %}
+                            <button class="out-of-stock" disabled>Out Of Stock</button>
+                            {% endif %}
+                        </div>
+                        {% set product = 1844539904 | get_product %}
+                        <div data-product-id="{{ product.id }}">
+                            <img src="{{'images/bay-rum-soap-saver.png' | asset_url }}" alt="" />
+                            <h5>Bay Rum w/ Soap Saver</h5>
+                            <p>Soap Saver, 2 bars: Bay Rum x2</p>
+                            <div class="price-slash-wrapper">
+                                <h5 class="price-slashed"><span>$</span>29</h5>
+                                <h5 class="price-savings"><span>$</span>23</h5>
+                            </div>
+                            {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+                            <button class="ecom-add-to-cart" data-ecom-id="{{ product.id }}">Add To Cart</button>
+                            {% else %}
+                            <button class="out-of-stock" disabled>Out Of Stock</button>
+                            {% endif %}
+                        </div>
+                        {% set product = 1844550558 | get_product %}
+                        <div data-product-id="{{ product.id }}">
+                            <img src="{{'images/gold-moss-soap-saver.png' | asset_url }}" alt="" />
+                            <h5>Gold Moss w/ Soap Saver</h5>
+                            <p>Soap Saver, 2 bars: Gold Moss x2</p>
+                            <div class="price-slash-wrapper">
+                                <h5 class="price-slashed"><span>$</span>29</h5>
+                                <h5 class="price-savings"><span>$</span>23</h5>
+                            </div>
+                            {% if product.instances[0].inventory.quantity_on_hand > 0 or product.instances[0].inventory.out_of_stock_purchases==True %}
+                            <button class="ecom-add-to-cart" data-ecom-id="{{ product.id }}">Add To Cart</button>
+                            {% else %}
+                            <button class="out-of-stock" disabled>Out Of Stock</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="squatch-horizontal-slide-controls">
+                    <div class="squatch-horizontal-slide-control" data-direction="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </div>
+                    <div class="squatch-horizontal-slide-control" data-direction="next">
+                        <i class="fa fa-angle-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="palm-tree-branch -two"></div>
+        <div class="palm-tree-branch -one"></div>
+    </section>
+    <section class="squatch-verified-reviews">
+        <header>
+            <h1>3,000+ Verified Reviews</h1>
+            <p>Don’t take our word for it.. hear what guys just like you are saying about Dr. Squatch.</p>
+        </header>
+        <div id="squatch-verified-reviews-video" class="video-thumbnail">
+            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/feCEbbI7PlY?enablejsapi=1">
+            </iframe>
+        </div>
+        <div class="squatch-verified-facebook-reviews">
+            <div class="_grid-2 _container">
+                <div class="fb-review-item">
+                    <a href="https://www.facebook.com/118075261668462/posts/1152109414931703"><img style="max-width:100%; margin-bottom: 15px;" src="{{'images/alan-jacobson-fb.png' | asset_url}}"></a>
+                </div>
+                <div class="fb-review-item">
+                    <a href="https://www.facebook.com/118075261668462/posts/1152109414931703"><img style="max-width:100%; margin-bottom: 15px;" src="{{'images/alisia-carlson-fb.png' | asset_url}}"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="sudisfaction-guaranteed _container -small">
+        <div>
+            <img src="{{'images/holiday-squatch-illustration.png' | asset_url }}" alt="" />
+            <h3>Your <span>Sudisfaction</span> is guaranteed</h3>
+            <p>We’re confident in your confidence and truly believe our soap stands above the rest. If you use Dr. Squatch and can honestly say it’s not the <strong>best bar of soap</strong> you’ve ever used, we’ll send you your money back no questions asked.</p>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block header_bottom_content %}
+
+{% endblock %}
+
+{% block page_content %}
+    <div id="video-embed-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button id="video-embed-modal-close" type="button" class="close -close-button" data-dismiss="modal"><i class="fa fa-times"></i></button>
+                    <iframe width="100%" height="415" src="" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="item-popup" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="item-popup-close">
+                        <button id="item-popup-close" type="button" class="close -close-button" data-dismiss="modal"><i class="fa fa-times-circle"></i></button>
+                    </div>
+                    <div class="item-popup-header">
+                        <h3>Ultimate Squatch Bundle</h3>
+                        <p>For the man worthy of nothing but the best</p>
+                    </div>
+                    <div class="item-popup-content-container _grid-2">
+                        <div class="item-popup-left">
+                            <div class="holiday-bundle-gift-single-images">
+                                <img class="holiday-bundle-gift-single-image" src="{{'images/ultimate-squatch-bundle.jpg' | asset_url }}" alt="" />
+                                <img class="holiday-bundle-gift-single-image" src="{{'images/ultimate-squatch-bundle-2.jpg' | asset_url }}" alt="" />                   
+                            </div>
+                        </div>
+                        <div class="item-popup-right">
+                            <div class="item-popup-content">
+                                <h4>Here’s what you get:</h4>
+                                <ul>
+                                    <li>6 Soaps (Bay Rum, Pine Tar,   Gold Moss, Crisp IPA, Nautical   Sage, Spearmint Basil)</li>
+                                    <li>Soap Saver</li>
+                                    <li>Hair Care Kit</li>
+                                    <li>Cologne (Crushed Pine)</li>
+                                    <li>Beard Oil (Fresh Fir)</li>
+                                    <li>Custom Squatch Box</li>
+                                </ul>
+                            </div>
+                            <div class="item-popup-price">
+                                <p class="item-popup-retail-sale-price item-popup-retail-price">Retail Value $151</p>
+                                <p class="item-popup-retail-sale-price item-popup-sale-price">Holiday Price $97 (36% Savings!)</p>
+                                <div class="price-slash-wrapper">
+                                    <h5 class="price-slashed"><span>$</span>151</h5>
+                                    <h5 class="price-savings"><span>$</span>97</h5>
+                                </div>
+                            </div>
+                            <button class="ecom-add-to-cart">Add To Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div id="item-popup-trigger" data-toggle="modal" data-target="#item-popup"></div>
+    <div id="raindrop-page"></div>
+</div>
+{% endblock %}
+
+{% block page_javascript %}
+<script>
+    document.body.classList.add('page-holiday-bundles');
+</script>
+<script src="{{ 'js/ma5slider.combined.js' | asset_url }}"></script>
+<style>.slides { font-size: 14px}</style>
+<link href="{{ 'css/plugins/ma5slider.min.css' | asset_url }}" rel="stylesheet" type="text/css">
+<script>
+jQuerySafe(window).on('load', function () {
+    jQuery3('.ma5slider').ma5slider();
+    //jQuerySafe('.home-play-btn').show();
+});
+</script>
+<script src="{{ 'js/raindrop.min.js' | asset_url }}"></script>
+{% endblock %}

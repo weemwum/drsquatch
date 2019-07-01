@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+<section class="banner-landscape centered landscape-1 landing-page-banner" style="background-image: url('{{'images/black-friday-banner.jpg' | asset_url }}')" data-barley="bg-img-black-friday" data-barley-editor="bgimage">
+ <div class="content text-invert" style='width:90%;'>
+  <div data-barley="black-friday-header" data-barley-editor="advanced">
+   <hgroup>
+    <h1 class="heading col-xs-6">
+     Black Friday<br>
+     Soap Savings
+    </h1>
+    <div class="savings-right-col col-xs-6">
+      <span class="up-to">UP TO</span>
+      <span class="dollars-off">$45 OFF</span>
+      <span class="savings-bottom">THIS HOLIDAY SEASON</span>
+    </div>
+   </hgroup>
+  </div>
+ </div>
+ <img class="free-shipping-badge" src="{{ 'images/free-shipping-badge.png' | asset_url }}">
+</section>
+{% endblock %}
+
+
+{% block page_content %}
+<!--
+Add Links
+Move CSS to actual css file
+Make buttons work
+Link product titles
+Metadata
+Change column images to be background images
+-->
+{% include 'holidays/holiday-styles.html' %}
+
+<div class="sub-header">
+  LIMITED QUANTITY AVAILABLE
+</div>
+
+<div class="landing-page-row row">
+  <div class="container">
+    <div class="lp-row-column col-xs-12 col-md-6 col-md-push-6">
+      <div class="lp-row-main-img" style="background-image:url('{{ 'images/lp-HolidayBundle.jpg' | asset_url }}')" data-barley="bg-img-holiday-bundle" data-barley-editor="bgimage"></div>
+    </div>
+
+    <div class="lp-row-column col-xs-12 col-md-6 col-md-pull-6">
+      <div class="lp-row-text-container">
+        <div class="lp-row-header">
+          <a href="/holidays/holiday-bundle-detail">THE HOLIDAY BUNDLE</a>
+        </div>
+        <div class="lp-row-content">
+          6 Of Our Top Selling Soaps: Pine Tar, Cedar Citrus, Gold Moss, Bay Rum, 
+          Nautical Sage &amp; Spearmint Basil <span class="plus-colored">+</span> A Soap Saver <span class="plus-colored">+</span> A Custom
+          Wood Squatch Cigar Box <span class="plus-colored">+</span> Free Shipping
+        </div>
+        <div class="lp-row-prices">
+          <div class="old-price">$85</div>
+          <div class="after-savings-price">$65</div>
+        </div>
+        <div class="lp-row-button-container">
+          <!--<a class="btn btn-secondary btn-frame btn-md" href="#"><i class="icon footprint"></i> BUY HOLIDAY BUNDLE</a>-->
+          {#<a href="#" class="ecom-add-to-cart btn btn-secondary btn-frame btn-md" data-ecom-price='{{ product.calc_min_ecom_price() }}' data-ecom-id='{{product.id}}'><i class="icon footprint"></i> BUY HOLIDAY BUNDLE</a>#}
+          {#<a href="#" class="ecom-add-to-cart btn btn-secondary btn-frame btn-md" data-ecom-price='6500' data-ecom-id='1077513364'><i class="icon footprint"></i> BUY HOLIDAY BUNDLE</a>#}
+          <a href="#" data-featherlight="#deluxe-bundle-popup" data-featherlight-variant="fixwidth" class="btn btn-secondary btn-frame btn-md"><i class="icon footprint"></i> BUY HOLIDAY BUNDLE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- End landing page row -->
+
+<div class="landing-page-row row" id="deluxe-bundle-row">
+  <div class="container">
+    <div class="lp-row-column col-xs-12 col-md-6">
+      <div class="lp-row-main-img" style="background-image:url('{{ 'images/lp-DeluxeBundle.jpg' | asset_url }}')" data-barley="bg-img-deluxe-bundle" data-barley-editor="bgimage"></div>
+    </div>
+    
+    <div class="lp-row-column col-xs-12 col-md-6">
+      <div class="lp-row-text-container">
+        <div class="lp-row-badge"><em>Best Value!</em></div>
+        <div class="lp-row-header">
+          <span>THE DELUXE BUNDLE</span>
+        </div>
+        <div class="lp-row-content">
+          All the Goodness of the Base Bundle <span class="plus-colored">+</span> 9 Months of Soap Refills <span class="plus-colored">+</span> 
+          Free Shipping on All Squatch Orders
+        </div>
+        <div class="lp-row-em">
+          <em>Customize Your Scent Preferences Each Quarter</em>
+        </div>
+        <div class="lp-row-prices">
+          <div class="old-price">$195</div>
+          <div class="after-savings-price">$150</div>
+        </div>
+        <div class="lp-row-button-container">
+          <!--<a class="btn btn-success btn-frame btn-md" href="#">BUY DELUXE BUNDLE</a>-->
+          <!--<a href="/subscription" class="btn btn-success btn-frame btn-md"><i class="icon footprint"></i> BUY DELUXE BUNDLE</a>-->
+          <a href="#" class="ecom-add-to-cart-redirect btn btn-success btn-frame btn-md" data-ecom-price='15000' data-ecom-id='1041547867'><i class="icon footprint"></i> BUY DELUXE BUNDLE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- End landing page row -->
+    
+<div class="landing-page-row row">
+  <div class="container">
+    <div class="lp-row-column col-xs-12 col-md-6 col-md-push-6">
+      <div class="lp-row-main-img"  style="background-image:url('{{ 'images/lp-QuarterlySoapscription.jpg' | asset_url }}')" data-barley="bg-img-quarterly-soapscription" data-barley-editor="bgimage"></div>
+    </div>
+
+    <div class="lp-row-column col-xs-12 col-md-6 col-md-pull-6">
+      <div class="lp-row-text-container">
+        <div class="lp-row-header">
+          <span>QUARTERLY SOAPSCRIPTION</span>
+        </div>
+        <div class="lp-row-content">
+          For a Limited Time Get Your First 3-Months for only
+          $25 <span class="plus-colored">+</span> Free Shipping on All Squatch Orders
+        </div>
+        <div class="lp-row-prices">
+          <div class="old-price">$36</div>
+          <div class="after-savings-price">$25</div>
+        </div>
+        <div class="lp-row-discount-code-container">
+          <span>USE CODE AT CHECK OUT - </span>
+          <span class="lp-row-code">SUB25</span>
+        </div>
+        <div class="lp-row-button-container">
+          <a class="btn btn-secondary btn-frame btn-md" href="/holidays/quarterly-subscription"><i class="icon footprint"></i> SOAPSCRIBE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- End landing page row -->
+
+<div class="other-benefits-row row">
+  <div class="other-benefits-container container">
+    <div class="other-benefits-header">
+      CHECK OUT SOME OF THE OTHER BENEFITS OUR QUARTERLY SOAPSCRIBERS RECEIVE:
+    </div>
+    <div class="benefit-item col-md-3 col-xs-6">
+      <div class="benefit-icon-container">
+      	<div><img class="media-object" src="{{ 'images/save-money-icon.png' | asset_url }}" alt=""></div>
+      </div>
+      <strong>SAVE MONEY</strong>
+      <span>For the savvy Squatcher, you save $1 on every bar.</span>
+    </div>
+    <div class="benefit-item col-md-3 col-xs-6">
+      <div class="benefit-icon-container">
+      	<div><img class="media-object" src="{{ 'images/free-shipping-icon.png' | asset_url }}" alt=""></div>
+      </div>
+      <strong>FREE SHIPPING</strong>
+      <span>All Squatch website orders shipped to your door for free.</span>
+    </div>
+    <div class="benefit-item col-md-3 col-xs-6">
+      <div class="benefit-icon-container">
+	    <div><img class="media-object" src="{{ 'images/thumbs-up-icon.png' | asset_url }}" alt=""></div>
+      </div>
+      <strong>CUSTOMIZE ORDER</strong>
+      <span>Find your sent or stock up on your favorite.<br>It's up to you.</span>
+    </div>
+    <div class="benefit-item col-md-3 col-xs-6">
+      <div class="benefit-icon-container">
+        <div><img class="media-object" src="{{ 'images/star-icon.png' | asset_url }}" alt=""></div>
+      </div>
+      <strong>STAY FRESH</strong>
+      <span>Never run out of soap and never settle for anything less than greatness.</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  /*
+  var data = {}
+data.products = [];
+
+data.products.push({
+	product_id: 1041547867,
+	  term_cycles: 4,
+	  quantity: 1
+});
+
+data.products[0]['metadata'] = {
+	"mf:cart.survey.scent1.string":"bar-pt",
+	"mf:cart.survey.scent2.string":"bar-br",
+	"mf:cart.survey.scent3.string":"bar-gms",
+	"mf:cart.survey.scent4.string":"bar-ns",
+	"mf:cart.survey.scent5.string":"bar-sbs",
+	"mf:cart.survey.scent6.string":"bar-cc"
+}
+//This causes the cart to be emptied before this purchase is made.
+data.clear_cart = true;
+
+$.ajax({
+	type: 'POST',
+	  contentType: 'application/json',
+	  data: JSON.stringify(data),
+	  dataType: 'json',
+	  url: '/cart/add',
+	  success: function(e){
+		window.location = '/checkout';
+	}
+});
+*/
+</script>
+{% endblock %}

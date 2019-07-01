@@ -1,20 +1,20 @@
 # Dr. Squatch
 
-Dr. Squatch provides organic and natural handmade soap to men who want to feel like a man, and smell like a champion.
+In order to allow the contributions of multiple developers to be merged seamlessly, we make use of the standard Github Flow.
+A detailed guide can be found here: https://guides.github.com/introduction/flow/
 
-## What's in this Repo
+This worflow can be summarized in n steps:
 
-This repository houses the main code base for the <https://drsquatch.com> website.
+1. Work in **your personal branch**.
+2. **Push** your changes to Github.
+3. Open a **Pull Request**.
+4. Get your changes merged into the **master branch**.
 
-At a high level, the workflow for editing and pushing code involves making changes in your personal branch and then merging them into master. The production branch represents the live codebase and is separate from master.
+## Setup
 
-* Link to preview master: <willgohere.com>
-## Contributing
-
-First, clone this repo so you're up to date:
-
+First of all, you're gonna need to **clone** the current **master** branch:
 ```
-git clone 'https://github.com/dr-squatch/drsquatch'
+$ git clone git@github.com:erik-escobedo/drsquatch.git
 ```
 
 Then, you need to create your personal branch.
@@ -22,16 +22,15 @@ Then, you need to create your personal branch.
 **IMPORTANT:** The name of your personal branch must match the name of the folder holding your design in the FTP server!
 
 Example:
-
-```bash
-git checkout -b joybox_men-copy-40_2153636200
+```
+$ git checkout -b joybox_men-copy-40_2153636200
 ```
 
 ## Development Workflow
 
 Once you have your personal branch setup correctly, you can making changes and creating commits:
 Example:
-```bash
+```
 git commit -a -m "Make Title's font size bigger"
 ```
 
@@ -51,5 +50,3 @@ Codeship deploy script, this time pointing to the **Published Design**.
 
 **NOTE:** Any conflict between different versions of the same file will show up in this step, and the Github Pull Request interface
 will allow us to solve these conflicts in an ordered manner, without overwritting another developer's work.
-
-

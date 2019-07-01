@@ -1,0 +1,240 @@
+/* Styles for the customer pages */
+
+/* Misc */
+
+a.btn,
+button.btn {
+  height: auto;
+}
+
+/* Section header */
+
+.section-header {
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  text-transform: uppercase;
+}
+.section-header h1 {
+  font-size: 45px;
+  font-weight: bold;
+}
+@media (max-width: 991px) {
+  .account-status {
+    text-align: center;
+    padding: 2rem 0 1rem;
+  }
+}
+@media (min-width: 992px) {
+  .account-status {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 0 0.5rem;
+  }
+}
+
+/* Cratejoy Panel */
+
+.panel-cratejoy {
+  border: 1px solid #dadada;
+  position: relative;
+}
+.panel-cratejoy.-alt {
+  background-color: transparent;
+}
+.panel-cratejoy .panel-heading {
+  border-bottom: 1px solid #dadada;
+  padding-bottom: 10px;
+  padding-top: 15px;
+  padding-right: 60px; /* Make space for .panel-footer */
+}
+.panel-cratejoy .panel-title {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+/* Variation to move the footer to the top */
+.panel-cratejoy.-footer-top .panel-footer,
+.panel-cratejoy.-footer-top .edit-button-row {
+  background-color: transparent;
+  border: 0;
+  bottom: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.panel-cratejoy .panel-footer .btn,
+.panel-cratejoy .edit-button-row .btn {
+  font-size: 16px;
+  line-height: 1.65;
+  padding: 0 1.5rem;
+  width: auto !important;
+}
+.panel-cratejoy > table {
+  margin: 10px !important; /* Match padding on normal panel body */
+  width: calc(100% - 20px);
+}
+.panel-cratejoy tr > * {
+  border: 0 !important;
+}
+.panel-cratejoy .info-label {
+  color: #999;
+}
+
+/* Account address information */
+
+.panel-cratejoy .address-info {
+  display: flex;
+}
+.panel-cratejoy .address-info tr > * {
+  display: block;
+  font-weight: normal;
+  width: auto !important;
+}
+.panel-cratejoy .address-info tr {
+  display: table-cell;
+}
+
+/* Hide rows from the subscription info panel to match mockups */
+
+.account-view-subscriptions tr:nth-child(3),
+.account-view-subscriptions tr:nth-child(4),
+.account-view-subscriptions tr:nth-child(6),
+.account-view-subscriptions tr:nth-child(7),
+.account-view-subscriptions tr:nth-child(8) {
+  display: none;
+}
+
+/* Scent Item */
+
+@media (max-width: 767px) {
+  .scent-item {
+    align-items: center;
+    display: flex;
+    padding: 0.5rem 2rem;
+  }
+  .scent-item .product_image {
+    max-height: 5rem;
+    margin-right: 1rem;
+  }
+}
+@media (min-width: 768px) {
+  .scent-item {
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .scent-item .product_image {
+    display: inline-block;
+    max-width: 12rem;
+  }
+}
+
+/* Addon slider (slider in mobile, grid on desktop) */
+
+.addon-slider {
+  overflow: hidden;
+  position: relative;
+}
+.addon-slider .frame {
+  overflow: hidden;
+  position: relative;
+}
+.addon-slider .slides {
+  display: flex;
+}
+.addon-slider .js_prev,
+.addon-slider .js_next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+.addon-slider .js_prev.disabled,
+.addon-slider .js_next.disabled {
+  opacity: 0.3;
+}
+.addon-slider .js_prev {
+  left: 0;
+}
+.addon-slider .js_next {
+  right: 0;
+}
+@media (max-width: 767px) {
+  .addon-slider .addon-item {
+    flex: 1 0 100%;
+  }
+}
+@media (min-width: 768px) {
+  .addon-slider .slides{
+    flex-wrap: wrap;
+  }
+  .addon-slider .js_prev,
+  .addon-slider .js_next {
+    display: none;
+  }
+}
+
+/* Addon Item */
+
+.addon-item {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  text-align: center;
+}
+.addon-item h4 {
+  font-weight: bold;
+}
+.addon-item .product_image {
+  margin-bottom: 1rem;
+  max-height: 11rem;
+}
+.addon-item .description {
+  color: #888;
+  font-size: 0.9em;
+  margin: 0 auto;
+  max-width: 20rem;
+}
+.addon-item .description::after {
+  background-color: #ccc;
+  content: '';
+  display: block;
+  height: 1px;
+  margin: 1rem auto;
+  width: 5rem;
+}
+.addon-item .price {
+  display: block;
+  font-family: BebasNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 25px;
+  margin-bottom: 1rem;
+}
+.addon-item .btn {
+  font-size: 16px;
+  line-height: 1;
+  padding: 5px 20px;
+}
+
+/* Mobile collapse toggle */
+
+.mobile-collapse-toggle {
+  background-color: transparent;
+  border-top: 1px solid #ccc;
+  color: inherit;
+  display: block;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  width: calc(100% - 30px);
+}
+.mobile-collapse-toggle[aria-expanded="true"] > .fa {
+  transform: rotate(180deg);
+}
+@media (min-width: 992px) {
+  .mobile-collapse-toggle {
+    display: none;
+  }
+}

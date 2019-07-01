@@ -1,0 +1,21 @@
+<div class="form-container">
+  <div class="row content">
+    <div class="col-lg-10 col-lg-offset-1" id='edit-top-btn-row'>
+      {{ customer_helper.edit_basic_account_info(btn_class="btn-default") }}
+      {{ customer_helper.edit_payment_info(btn_class="btn-default") }}
+      {{ customer_helper.edit_address_info(btn_class="btn-default") }}
+    </div>
+  </div>
+</div>
+<script>
+  // Make the main button stand out
+  var saveBtn = document.querySelector('#save-form')
+  if (saveBtn) saveBtn.classList.remove('btn-default')
+
+  // Normalize Cratejoy buttons
+  var cjBtns = document.querySelectorAll('.skip_button, #confirm-btn')
+  Array.from(cjBtns).forEach(function(btn) {
+    btn.classList.remove('cj-btn', 'btn-default')
+    btn.classList.add('btn-primary')
+  })
+</script>

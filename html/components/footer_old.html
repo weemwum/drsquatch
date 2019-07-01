@@ -1,0 +1,174 @@
+<footer class="sfooter">
+ <section class="signup hpad hide-on-save">
+  <div class="form-inline" id="mc-signup-form">
+   <div class="form-group">
+    <label for>
+     Get Dr. Squatch's Top 5 Natural Health Hacks
+    </label>
+    <input type="email" name="email" id class="form-control" placeholder="Your Email">
+     <input type="hidden" name="list_id" id="email-signup-list-id" value="56ab7fc43b">
+     </input>
+    </input>
+   </div>
+   <button type="submit" id="email-signup-submit" class="btn btn-secondary btn-frame btn-xs">
+    <i class="icon footprint">
+    </i>
+    Get It
+   </button>
+  </div>
+ </section>
+ <section class="signup hpad show-on-save" style="display:none;">
+  <div class="form-inline">
+   <div class="form-group">
+    <label>
+     Success! Squatch headed to an inbox near you!
+    </label>
+   </div>
+  </div>
+ </section>
+ <div class="row hpad">
+  <div class="col-md-2 col-sm-3 col-xs-6">
+   <h4 class="heading" data-barley="footer-l-header" data-barley-editor="plus">
+    Shop By
+   </h4>
+   <ul class="list-unstyled ucase">
+    <li>
+     <a href="/collections/bar-soap">
+      Bar Soaps
+     </a>
+    </li>
+    <li>
+     <a href="/collections/cologne">
+      cologne
+     </a>
+    </li>
+    <li>
+     <a href="/collections/gifts">
+      Gifts
+     </a>
+    </li>
+    <li>
+     <a href="/shop/product/70698419">
+      Soap Savers
+     </a>
+    </li>
+    <li>
+     <a href="/subscription">
+      subscription
+     </a>
+    </li>
+   </ul>
+  </div>
+  <div class="col-md-2 col-sm-3 col-xs-6 barley_hide_outline">
+   <h4 class="heading" data-barley="footer-ml-header" data-barley-editor="plus">
+    Info
+   </h4>
+   <ul class="list-unstyled ucase">
+    <li>
+     <a href="/about" data-barley="footer-about-link" data-barley-editor="linkedit">
+      About Us
+     </a>
+    </li>
+    <li>
+     <a href="/quiz" data-barley="footer-reviews-link" data-barley-editor="linkedit">
+      Squatch Quiz
+     </a>
+    </li>
+    <li>
+     <a href="/wholesale" data-barley="footer-wholesale-link" data-barley-editor="linkedit">
+      wholesale
+     </a>
+    </li>
+    <li>
+     <a href="http://blog.drsquatch.com" data-barley="footer-blog-link" data-barley-editor="linkedit">
+      blog
+     </a>
+    </li>
+    <!--<li>
+     <a href="/collections/hair-care" data-barley="footer-new-link" data-barley-editor="link" contenteditable="false" class="barley_hide_outline">
+      new page
+     </a>
+    </li>
+    !-->
+   </ul>
+  </div>
+  <div class="col-sm-4 hidden-sm hidden-xs barley_hide_outline" data-barley="footer-center-image" data-barley-editor="image" data-width="126" data-height="150" contenteditable="false">
+   <a href="/">
+    <img src="{{ 'images/logo-footer.png' | asset_url }}" alt class="img-responsive img-center"/>
+   </a>
+  </div>
+  <div class="col-md-2 col-sm-3 col-xs-6">
+   <h4 class="heading" data-barley="footer-mr-header" data-barley-editor="plus">
+    Help
+   </h4>
+   <ul class="list-unstyled ucase">
+    <li>
+     <a href="/contact" data-barley="footer-contact-link" data-barley-editor="linkedit">
+      Contact Us
+     </a>
+    </li>
+    <li>
+     <a href="/faq" data-barley="footer-faq-link" data-barley-editor="linkedit">
+      faq
+     </a>
+    </li>
+    <li>
+     <a href="/shipping" data-barley="footer-shipping-link" data-barley-editor="linkedit">
+      shipping
+     </a>
+    </li>
+    <li>
+     <a href="/returns" data-barley="footer-returns-link" data-barley-editor="linkedit">
+      returns
+     </a>
+    </li>
+    <li>
+     <a href="/terms" data-barley="footer-terms-link" data-barley-editor="linkedit">
+      terms & privacy
+     </a>
+    </li>
+   </ul>
+  </div>
+  <div class="col-md-2 col-sm-3 col-xs-6">
+   <h4 class="heading" data-barley="footer-r-header" data-barley-editor="plus">
+    Social
+   </h4>
+   <ul class="list-inline socials">
+    <li>
+     <a href="http://instagram.com/drsquatchsoapco" target="_blank" data-barley="social-link-ig" data-barley-editor="link">
+      <i class="fa fa-instagram">
+      </i>
+     </a>
+    </li>
+    <li>
+     <a href="https://twitter.com/drsquatchsoapco" target="_blank" data-barley="social-link-tw" data-barley-editor="link">
+      <i class="fa fa-twitter-square">
+      </i>
+     </a>
+    </li>
+    <li>
+     <a href="https://www.facebook.com/drsquatch" target="_blank" data-barley="social-link-fb" data-barley-editor="link">
+      <i class="fa fa-facebook-official">
+      </i>
+     </a>
+    </li>
+   </ul>
+   <!-- Call Dr. Squatch Widget -->
+   <div class="ac-c2c-event ac-c2c-button call-drsquatch"></div>
+  </div>
+ </div>
+</footer>
+{% block page_javascript %}
+
+<script>
+ (function (d, s, id){
+   var js, params, fjs = d.getElementsByTagName(s)[0];
+   if (d.getElementById(id)) return;
+   params = "c2c_token=54c48919-3aea-40db-9824-acba5160f88a&bckColor=#db8d4d&btnTxt=Call Squatch";
+   js = d.createElement(s);
+   js.id = id;
+   js.src = "https://cdn.aircall.io/c2c/v1/c2c.min.js#"+params;
+   fjs.parentNode.insertBefore(js,fjs);
+ }(document, "script", "aircall-ajs"))
+</script>
+{% endblock %}

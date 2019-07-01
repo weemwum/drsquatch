@@ -1,0 +1,26 @@
+{% set cart = active_cart() %}
+{
+	"products": [
+		{% for cp in cart.products %}
+			{% set product = cp.instance.product %}
+			{% set imgSrc = product | object_img_tag(css_class="media-object cart-product-object") %}
+			{
+				"title": "{{ product.name }}",
+				"price": "{{ cp.price | currency }}",
+				"currency": "USD",
+				"product_id": "{{product.id}}",
+				{% if product.variants %}
+				"variant_id": "{{product.variants[0].id}}",
+				{% endif %}
+				"sku": "{{cp.instance.sku}}",
+				{# "image": {{imgSrc | tojson }}, #}
+				{% if product.images %}
+				"image": "{{product.images[0].url }}",
+				{% endif %}
+				"tags": [{% for tag in product.taxonomy %}"{{ tag.name }}"{% if not loop.last %},{% endif %}{% endfor %}],
+				"product_url": "https://drsquatch.com/shop/product/{{product.id}}",
+				"quantity": {{ cp.quantity }}
+			}{% if not loop.last %},{% endif %}
+		{% endfor %}
+	]
+}

@@ -1,0 +1,118 @@
+<section class="bar-top hpad">
+ <div class="col-md-6">
+  <ul class="list-inline socials">
+   <li class="hidden-xs">
+    <iframe src="https://www.facebook.com/plugins/like.php?href=https://www.facebook.com/drsquatch&send=false&layout=button_count&width=90&show_faces=false&action=like&colorscheme=light&font&height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:90px; height:20px;" allowtransparency="true">
+    </iframe>
+   </li>
+   <li>
+    <a href="https://www.facebook.com/drsquatch" target="_blank">
+     <i class="fa fa-facebook-official">
+     </i>
+    </a>
+   </li>
+   <li>
+    <a href="https://twitter.com/drsquatchsoapco" target="_blank">
+     <i class="fa fa-twitter-square">
+     </i>
+    </a>
+   </li>
+   <li>
+    <a href="https://instagram.com/drsquatchsoapco" target="_blank">
+     <i class="fa fa-instagram">
+     </i>
+    </a>
+   </li>
+   <li>
+    <a href="https://www.youtube.com/channel/UCfb6EofrRqeK6ttHgxZRjcA" target="_blank">
+     <i class="fa fa-youtube">
+     </i>
+    </a>
+   </li>
+   {% if guest %}
+   <li class="login">
+    <a href="/customer/login">
+     login / Sign Up
+    </a>
+   </li>
+   {% else %}
+   <li class="login">
+    <a href="/customer/account">
+     My Account
+    </a>
+   </li>
+   <li class="logout">
+    <a href="/customer/logout">
+     Log Out
+    </a>
+   </li>
+   {% endif %}
+  </ul>
+ </div>
+ <div class="col-md-6 specials hidden-sm hidden-xs barley_hide_outline metropolis-semi-bold" data-barley="top-header-statement" data-barley-editor="plus" contenteditable="false">
+
+   	{#
+    First checks if the user is logged in
+    #}
+   	{% if not guest %}
+
+   		<script>
+
+          	var customerEmail = "{{ customer.email }}";
+          	var customerFirstName = "{{ customer.first_name }}";
+          	var customerLastName = "{{ customer.last_name }}";
+
+            var _learnq = _learnq || [];
+            _learnq.push(['identify', {
+                "$email" : customerEmail,
+                "$first_name" : customerFirstName,
+                "$last_name" : customerLastName
+            }]);
+
+            {#
+           	{%- set subscription_status = [] -%}
+          	{%- for sub in customer.subscriptions -%}
+              {%- do subscription_status.append(sub.term.name) -%}
+            {%- endfor -%}
+
+            {{ subscription_status }}
+            #}
+
+            {% if customer %}
+            	{% if customer.subscriptions %}
+            		{%- set subs_status = customer.subscriptions[0].status -%}
+                {% else %}
+                	{%- set subs_status = 0 -%}
+                {% endif %}
+            {%- endif -%}
+
+          	_learnq.push(['track', 'Customers Subscription Status', {
+                "subscription_status" : "{{ subs_status }}"
+            }]);
+
+        </script>
+
+        {#
+        If so create an array containing all of the user's subscription if any
+        #}
+   		{% set customer_subscriptions = [] %}
+
+        {% for subscriptions in customer.subscriptions %}
+            {% do customer_subscriptions.append(subscriptions) %}
+        {% endfor %}
+
+   		{#
+    	Checks if there's any subscription. If so, displays the correct text
+    	#}
+   		{% if customer_subscriptions %}
+   			WELCOME BACK <span style="text-transform:uppercase; font-weight:bold">{{ customer.first_name }}</span>! FREE SHIPPING AUTOMATICALLY APPLIED.
+   		{% else %}
+   			<a href="/subscription">SOAPSCRIBE TODAY & GET<b> FREE SHIPPING</b> FOR LIFE</a>
+   		{% endif %}
+
+   	{% else %}
+		<a href="/subscription">SOAPSCRIBE TODAY & GET<b> FREE SHIPPING</b> FOR LIFE</a>
+   	{% endif %}
+
+ </div>
+</section>

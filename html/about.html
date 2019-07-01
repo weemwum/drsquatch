@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% import 'components/video.html' as video %}
+
+{% block header_content %}
+<section class="main-masthead" style="background-image: url({{'images/feature-banners/squatch-forest.png' | asset_url }})">
+    <div class="main-masthead-inner">
+        <p>Our Story</p>
+        <h1>For Years, <span>Real Soap</span> was endangered</h1>
+        <a href="/our-products"><button>Shop Soap</button></a>
+        <br>
+        <a id="main-masthead-jump" href="#home-callout">or read on <i class="fa fa-angle-down"></i></a>
+    </div>
+</section>
+{% endblock %}
+
+{% block header_bottom_content %}
+<section id="home-callout" class="home-callout" style="background-image: url('{{'images/wave.png' | asset_url }}')">
+    <div class="home-callout-inner">
+        <p>During the first World War, <strong>Big Soap</strong> began stripping natural ingredients from soap to make production cheaper and faster. Men were forced to settle for boring name brand bars that dried out their skin and made them smell like chemical-based beasts. The term “natural soap” was as rare and mysterious as the Squatch himself.</p>
+    </div>
+</section>
+{% endblock %}
+
+{% block page_content %}
+<section class="home-page-our-story container">
+    <div class="home-page-our-story-single row">
+        <div class="home-page-our-story-single-content col-md-6">
+            <h3><span>The Squatch</span> Emerges...</h3>
+            <p>Driven by a passion for all natural products and a realization that there were no companies out there making honest, all natural soap for dudes, our founder, Jack, began creating his own recipes out of his garage. After countless batches and hours spent perfecting the process, <strong>the Squatch bar</strong> emerged. A few friends tried it out…they loved it.</p>
+        </div>
+        <div class="home-page-our-story-single-image home-page-our-story-single-image-right col-md-6">
+            <img src="{{'images/stack-of-squatch-soap.jpg' | asset_url }}">
+        </div>
+    </div>
+    <div class="home-page-our-story-single row">
+        <div class="col-md-6">
+            {{ video.popup('w93qrxbpki', 'See The Scent Test', 'video/scent-video-thumbnail.mp4', 'images/scent-test-mobile.jpg') }}
+        </div>
+        <div class="home-page-our-story-single-content col-md-6">
+            <h3>Constantly Raising <span>The Bar</span></h3>
+            <p>Fast forward a few years and millions of soap bars and happy customers later and The Dr. Squatch mission remains the same: to <strong>raise the bar</strong> for the men’s grooming industry and change the way men approach their hygiene by providing healthy, all natural products that allow you to feel like a man and smell like a champion.</p>
+        </div>
+    </div>
+    <div class="home-page-our-story-single row">
+        <div class="home-page-our-story-single-content col-md-6">
+            <h3 style="font-size: 22px;">Better Scents + Better Lather = <span>A Better Shower</span></h3>
+            <p>While most soap companies are focused on cutting costs, our focus is on creating a better bar and a better shower. With <strong>9 scents</strong> that produce an intoxicatingly thick, foamy lather, a Dr. Squatch shower is an experience—a wilderness adventure that will have you coming up with excuses to get dirty, just so you can get clean.</p>
+        </div>
+        <div class="col-md-6">
+            {{ video.popup('3h07mcmhmj', 'See The Lather Test', 'video/lather-video-thumbnail.mp4', 'images/lather-test-mobile.jpg') }}
+        </div>
+    </div>
+    <div class="home-page-our-story-single row">
+        <div class="home-page-our-story-single-image col-md-6">
+            <img src="{{'images/all-natural.jpg' | asset_url }}">
+        </div>
+        <div class="home-page-our-story-single-content col-md-6">
+            <h3>But, why <span>All-Natural?</span></h3>
+            <p><strong>Great question!</strong> Maybe you’re not the “all natural” type of guy. Maybe you enjoy your generic brand name bar or like to rub down with liquid detergent every day. But the truth is, you’re not a dish, you’re a man, and as a man you have some skin in the game, and that skin craves natural, nourishing ingredients like the ones found in our products.</p>
+            <a target=" " href="http://blog.drsquatch.com/"><button class="squatch-button">Learn more about bar soap</button></a>
+        </div>
+    </div>
+</section>
+
+<section class="home-soap-making-process" style="background-image: url('{{'images/hairpattern.png' | asset_url }}')">
+    <img src="{{'images/soap-process.png' | asset_url }}" />
+    <h2>We Make Soap <span>The Right Way</span></h2>
+    <p>We like to joke that our soap is square because <strong>we refuse to cut corners</strong>. It’s cheesy but it’s true – we use the traditional cold process for all of our soap to retain the glycerin and nutrients in each bar, without the need for harsh preservatives.  On top of that, all our products are made in the USA, so not only are you supporting your skin and your scent, you’re supporting America.</p>
+</section>
+
+<section class="home-page-our-story home-bottom-section">
+    <div class="container">
+        <div class="home-page-our-story-single row">
+            <div class="home-page-our-story-single-content col-md-6">
+                <h3>Step up your<span>Shower</span></h3>
+                <p>Our mission doesn't stop with suds. We guarantee the same level of care and craftsmanship for our <strong>hair care, colognes, beard oils, shave kit</strong> and all the grooming get up we stamp our name on. Check out the complete Dr. Squatch product line up and turn your shower up a notch.</p>
+            </div>
+            <div class="home-page-our-story-single-image home-page-our-story-single-image-right col-md-6">
+                <img src="{{'images/dr-squatch-collection.jpg' | asset_url }}">
+            </div>
+        </div>
+        <div class="home-page-our-story-full-single row">
+            <div class="home-page-our-story-full-single-content col-md-12">
+                <img src="{{'images/squatch-illustrated.png' | asset_url }}" />
+                <h3>Your <span>Sudisfaction</span> is guaranteed</h3>
+                <p>We’re confident in your confidence and truly believe our soap stands above the rest. If you use Dr. Squatch and can honestly say it’s not the <strong>best bar of soap</strong> you’ve ever used, we’ll send you your money back no questions asked.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="footer-call-to-action">
+    <div>
+        <div class="footer-call-to-action-inner" style="background-image: url('{{'images/squatch-smell.jpg' | asset_url }}')">
+            <div class="footer-call-to-action-content">
+                <h4>You Are Worthy Of <span>Greatness</span></h4>
+                <p>Listen, you are worthy of a better bar of soap, a better shower and a better life. Reclaim your lather, smell your best and <strong>join the nation</strong> of men that have decided they are worthy of greatness.</p>
+                <div class="footer-call-to-action-buttons">
+                    <a href="/our-products"><button class="squatch-button">Shop Soap</button></a>
+                    <a href="/subscription"><button class="squatch-button">Soapscribe</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="raindrop-page"></div>
+{% endblock %}
+
+{% block page_javascript %}
+<script src="{{ 'js/ma5slider.combined.js' | asset_url }}"></script>
+<style>.slides { font-size: 14px}</style>
+<link href="{{ 'css/plugins/ma5slider.min.css' | asset_url }}" rel="stylesheet" type="text/css">
+<script>
+jQuerySafe(window).on('load', function () {
+    jQuery3('.ma5slider').ma5slider();
+    //jQuerySafe('.home-play-btn').show();
+});
+</script>
+<script src="{{ 'js/raindrop.min.js' | asset_url }}"></script>
+{% endblock %}

@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+<section class="banner-landscape centered" style="background-image: url('{{'images/gift-box-banner.jpg' | asset_url }}')" data-barley="bg-img-giftbox" data-barley-editor="bgimage">
+ <div class="content text-invert barley_hide_outline" data-barley="header-giftbox" data-barley-editor="advanced" contenteditable="false">
+  <hgroup>
+   <h1 class="heading">
+    gift box
+   </h1>
+   <h2 class="heading regular">
+    a unique gift with a personal touch
+   </h2>
+   <p class="rating big">
+    <span class="price">
+     $42+
+    </span>
+   </p>
+  </hgroup>
+ </div>
+ <ol class="breadcrumb">
+  <li>
+   <a href="#" data-barley="giftbox-breadcrumb1" data-barley-editor="linkedit">
+    Home
+   </a>
+  </li>
+  <li>
+   <a href="#" data-barley="giftbox-breadcrumb2" data-barley-editor="linkedit">
+    gifts
+   </a>
+  </li>
+  <li class="active" data-barley="giftbox-breadcrumb3" data-barley-editor="simple">
+   gift box
+  </li>
+ </ol>
+</section>
+{% endblock %}
+
+{% macro render_product_cell(product, check_it=False) %}
+<div class="customize">
+ <div class="control">
+  <input type="radio" name="customize" {% if check_it %} checked="checked" {% endif %} class="cstyle cradio" product-id="{{product.id}}">
+  </input>
+ </div>
+ <div class="content">
+  <h5 class="heading">
+   {{ product.name }}
+  </h5>
+  {{ product | object_img_tag(css_class='img-responsive img-gift-box') }}
+ </div>
+ <div class="giftbox-description" data-barley="gift-product-{{product.id}}-description" data-barley-editor="simple">
+  {% if product.description %}{{ product.description }} {% else %}   {% endif %}
+ </div>
+</div>
+{% endmacro %}
+
+{% macro render_extra_special_cell(product) %}
+<label class="checkbox-inline ucase giftbox-addon">
+ <input type="checkbox" id="inlineCheckbox1" value="option1" class="cstyle ccheckbox size-2x" product-id="{{product.id}}">
+  <br>
+   <br>
+    <span data-barley="giftbox-addons-description-{{product.id}}" data-barley-editor="simple">
+     add {{ product.name }}
+    </span>
+    <br>
+     <span class="hlight" data-barley="giftbox-addons-price-{{product.id}}" data-barley-editor="simple">
+      {{ product.calc_min_ecom_price() | currency }}
+     </span>
+ </input>
+</label>
+{% endmacro %}
+
+{% block page_content %}
+
+{% set all_products = [] %}
+
+{% for p in store.shop_products(category='collection-gift-box') %}
+    {% set ordering = [-1] %}
+  	{% for t in p.taxonomy %}
+  		{% if 'collection-ordering-' in t.slug %}
+  			{% do ordering.append(t.slug.replace('collection-ordering-','')|int) %}
+  		{% endif %}
+    {% endfor %}
+
+	{% do all_products.append({'product': p, 'ordering': (-1)*ordering[-1]}) %}
+{% endfor %}
+<div class="pholder">
+ <div class="row hpad">
+  <section class="col-lg-5 col-sm-6 text-center">
+   <hgroup>
+    <h2 class="heading cf-secondary" data-barley="giftbox-form-header-1" data-barley-editor="simple">
+     customize your gift
+    </h2>
+    <h4 class="heading hlight" data-barley="giftbox-form-header-step1" data-barley-editor="simple">
+     step 1: Choose style
+    </h4>
+   </hgroup>
+   <form>
+    <div class="primary-products">
+     {% set is_first = True %}
+		{% for record in all_products|sort(attribute='ordering') %}
+      		{% set p = record['product'] %}
+        	{% if is_first == True %}
+        		{{ render_product_cell(p, check_it=True) }}
+        		{% set is_first = False %}
+        	{% else %}
+        		{{ render_product_cell(p) }}
+        	{% endif %}
+        {% endfor %}
+    </div>
+    <h4 class="heading hlight" data-barley="giftbox-form-header-step2" data-barley-editor="simple">
+     step 2: make it extra special
+    </h4>
+    <br>
+     <div class="form-group addon-products">
+      {% for p in store.shop_products(category='collection-gift-box-addon') %}
+          {{ render_extra_special_cell(p) }}
+          {% endfor %}
+     </div>
+     <br>
+      <a href="#" class="btn btn-secondary btn-frame btn-md" id="gift-box-submit" data-barley="giftbox-form-header-checkout" data-barley-editor="simple">
+       <i class="icon footprint">
+       </i>
+       Add to cart
+      </a>
+   </form>
+  </section>
+  <section class="col-lg-6 col-sm-6 col-lg-offset-1 product-overview vspace">
+   <figure>
+    <img src="{{ 'images/gift-box-product-page.png' | asset_url }}" alt class="img-responsive center-block"/>
+   </figure>
+   <br>
+    <p data-barley="giftbox-description-main" data-barley-editor="simple" contenteditable="false" class="barley_hide_outline">
+     Finding the perfect present for a special dude is no easy task: look no further than the stack of never-worn clown ties in your dad’s closet. Take the guesswork out of gentleman gift-giving when you ship a vintage cigar box of all-natural goodness to your best bud.
+     <br>
+      <br>
+       Each package will contain four carefully selected bars of soap -- select from a trio of scent combinations -- as well as a personalized note, if you so chose. We guarantee your man friend will be beaming, and we also guarantee there will be no awkward, “Oh, great, another tie…” moments -- a real win, win.
+    </p>
+    <div class="row">
+     <div class="col-sm-4 p-details">
+      <figure>
+       <img src="{{ 'images/hand-curated.png' | asset_url }}" alt class="img-responsive"/>
+      </figure>
+      <br>
+       <small class="ucase">
+        hand curated, repurposed cigar boxes
+       </small>
+     </div>
+     <div class="col-sm-4 p-details">
+      <figure>
+       <img src="{{ 'images/your-guy.png' | asset_url }}" alt class="img-responsive"/>
+      </figure>
+      <br>
+       <small class="ucase">
+        pick the bars that fit your guy
+       </small>
+     </div>
+     <div class="col-sm-4 p-details">
+      <figure>
+       <img src="{{ 'images/extras.png' | asset_url }}" alt class="img-responsive"/>
+      </figure>
+      <br>
+       <small class="ucase">
+        make it special with extras and a note
+       </small>
+     </div>
+    </div>
+  </section>
+ </div>
+</div>
+
+{% endblock %}
+
+{% block page_javascript %}
+<script type="text/javascript">
+ $(function(){
+  jQuerySafe('.cstyle').styler();
+  $(document).on("click", "#gift-box-submit", function(event){
+    event.preventDefault();
+    var products = [];
+
+
+  var $trg = $("#gift-box-submit");
+  var add_callback = function(product_id){
+    setTimeout(function() { button_success($trg) }, 1000);
+    setTimeout(function() { button_reset($trg, product_id) }, 2000);
+  };
+
+    _.each($(".primary-products input:checked"), function(item){
+    	var p = {
+        	product_id: $(item).attr('product-id'),
+          	qty: 1
+        };
+      	BBSafe.trigger("newProduct:add", $(item).attr('product-id'), add_callback);
+      	products.push(p);
+    });
+
+    _.each($(".addon-products input:checked"), function(item){
+    	var p = {
+        	product_id: $(item).attr('product-id'),
+          	qty: 1
+        };
+	    BBSafe.trigger("newProduct:add", $(item).attr('product-id'), add_callback);
+      	products.push(p);
+    });
+
+    var data = {};
+    data['products'] = products;
+
+     $.ajax({
+    	type: 'POST',
+      	contentType: 'application/json',
+      	data: JSON.stringify(data),
+      	dataType: 'json',
+      	url: '/cart/add',
+      	success: function(e){
+
+        	//window.location = '/checkout';
+        }
+    });
+
+  });
+
+
+
+});
+</script>
+{% endblock %}

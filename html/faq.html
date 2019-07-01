@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+{% include 'static-page-css.html' %}
+
+<section class="banner-landscape split static-page-banner" style="background-image: url('{{'images/dark-wood-bg.jpg' | asset_url }}')" data-barley="bg-img-faq" data-barley-editor="bgimage">
+  <div class="content text-invert text-center">
+    <hgroup>
+      <h1 class="heading" data-barley='our-products-name' data-barley-editor='simple'>FAQ</h1>
+      <p class="regular sub-heading" data-barley='our-products-description' data-barley-editor='simple'><span>Answers to your burning questions</span></p>
+    </hgroup>
+  </div>
+</section>
+{% endblock %}     
+
+{% block page_content %}
+{% set sections = ['About the Soap', 'Using the Soap', 'Soapscriptions', 'Cologne', 'Shipping, errors, & Returns'] %}
+{% set question_lengths = [7, 7, 7, 7, 7 ] %}
+{% set default_questions = [
+'Whats in the soap?',
+'How is your soap different than commercial "soap"?',
+'Where and how is it made?',
+'What is the size of your soap?',
+'How long will your soap last?',
+'Do you use animal products in your soap?',
+'Do you test your products on animals?',
+'Do you test your products on animals?',
+'Do you test your products on animals?',
+'Do you test your products on animals?',
+'Do you test your products on animals?',
+'Do you test your products on animals?',
+'Do you test your products on animals?',
+]
+%}
+<article class="pholder hpad post ptopics">
+  <div class="row">
+    <div class="col-lg-6 col-sm-5">
+      {% for x in range(sections | length) %} 
+      {% set num_questions = question_lengths[x] %}
+      <h4 data-toggle="collapse" data-target="#collapse-{{x}}" aria-expanded="false" aria-controls="collapseExample" class="heading" data-barley='faq-cat{{x}}-header' data-barley-editor='simple'>
+        {{ sections[x] }}
+      </h4>
+      <div class="collapse {% if loop.first %}in{% endif %} pquestions" id="collapse-{{x}}">
+        <ul class="list-unstyled">
+          {% for y in range(num_questions) %}
+          <li><a href="#answer-{{x}}-{{y}}" aria-controls="home" role="tab" data-toggle="tab" data-barley='faq-q-{{x}}-{{y}}' data-barley-editor='simple'>
+            {{ default_questions[y] }}
+          </a></li>							
+          {% endfor %}        
+        </ul>
+      </div>	
+      {% endfor %} 
+    </div>
+    <div class="col-lg-6 col-sm-7">
+      <div class="tab-content">
+        {% for x in range(sections | length) %}
+        {% set num_questions = question_lengths[x] %}
+        {% for y in range(num_questions) %}
+        <div role="tabpanel" class="tab-pane {% if x == 0 and y == 0 %}active{% endif %}" id="answer-{{x}}-{{y}}">
+          <h3 class="heading" data-barley='answer-header-{{x}}-{{y}}' data-barley-editor='simple'>{{ default_questions[y] }}</h3>
+          <div data-barley='faq-a-{{x}}-{{y}}' data-barley-editor='advanced'>
+            <p>Our natural soap bars are made primarily from the following five natural oils which are the base for all of our soaps:</p>
+            <p>
+              Olive Oil<br>
+              Coconut Oil<br>
+              Soybean Oil<br>
+              Hemp Oil<br>
+              Shea Butter
+            </p>
+            <p>We find that these oils represent the best combination of nutrients and vitamins to keep your skin healthy and soft. None of our soaps contain Palm Oil which is typically farmed through tropical rainforest deforestation and whose source is hard to verify. </p>
+            <p>Cold process soaps contain lye which is naturally removed during the soap making process. Our soaps also contain essential oils or fragrance oils that are gentle on your skin, as well as natural exfoliants such as oatmeal, leaves, and sand.</p>    	
+          </div>
+        </div>
+        {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>					
+</article>
+{% endblock %}

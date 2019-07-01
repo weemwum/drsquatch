@@ -1,0 +1,65 @@
+{% import "collections/generic.html" as cg %}
+{% extends "base.html" %}
+
+{# block header_content %}
+<section class="banner-landscape split shave_new_banner">
+ <div class="col-lg-offset-7 col-lg-5 col-sm-offset-5 col-sm-7 content text-invert text-center">
+  <div data-barley="collection-shave-header" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+   <br>
+    <br>
+     <hgroup>
+      <h1 class="heading">
+       SHAVE
+      </h1>
+      <h2 class="heading regular">
+       SHAVE THE TRADITIONAL WAY
+      </h2>
+     </hgroup>
+     <p class="vspace">
+      Save your face from the rough blades of cartridge razors and keep it smooth with an old school shave.  We’ve got the soap, brush, and mug to get it done.  Check out our kit and get the custom box!
+     </p>
+  </div>
+ </div>
+ <div class="overlay row hpad">
+  <div class="col-md-7 col-sm-7 hidden-xs barley_hide_outline" data-barley="shave-bg" data-barley-editor="image" contenteditable="false">
+   <img src="{{ 'images/full-shave-set-NEW.png' | asset_url }}" alt class="img-responsive"/>
+  </div>
+ </div>
+</section>
+{% endblock #}
+
+{% block header_content %}
+<section class="banner-landscape split collection-fix landscape-19">
+ <div class="col-sm-5 col-sm-offset-1 row hpad hidden-xs content">
+   <br>
+   <br>
+  <div class="" data-barley="shave-bg_2" data-barley-editor="image">
+   <img src="{{ 'images/full-shave-set-NEW.png' | asset_url }}" alt class="img-responsive">
+  </div>
+ </div>
+ <div class="col-sm-5 content text-invert text-center barley_hide_outline" data-barley="collection-shave-header_2" data-barley-editor="advanced" contenteditable="false">
+  <br>
+   <br>
+    <hgroup>
+       <h1 class="heading metropolis-semi-bold">
+         SHAVE
+       </h1>
+        <h3 class="heading metropolis-semi-bold">
+        SHAVE THE TRADITIONAL WAY
+       </h3>
+     </hgroup>
+   <p class="vspace">
+     Save your face from the rough blades of cartridge razors and keep it smooth with an old school shave.  We’ve got the soap, brush, and mug to get it done.  Check out our kit and get the custom box!
+   </p>
+ </div>
+</section>
+{% endblock %}
+
+{% block page_content %}
+{{ cg.render_collection_page_content(tag_filter='collection-shave', show_soapscribe=False, show_quiz=False) }}
+{% endblock %}
+
+{% block page_javascript %}
+<script src="{{ 'js/reviews-excerpt.js' | asset_url }}">
+</script>
+{% endblock %}

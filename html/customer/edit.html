@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block endofhead %}
+  <link rel="stylesheet" href="{{ 'css/customer.css' | asset_url }}">
+{% endblock endofhead %}
+
+{% block header_content %}{% endblock %}
+
+{% block page_content %}
+<div class="inner-container">
+
+  {% include "components/form_feedback.html" %}
+
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h2>Update your subscription</h2>
+    </div>
+  </div>
+
+  <section class="errors">
+    <div class="row">
+      <div class="container error-container my-account">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2">
+            <div class="alert alert-danger">
+              {{ message | safe }}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+      </div>
+    </div>
+  </section>
+
+  {% if forms["subscription_cancel"] %}
+    {% include "customer/includes/cancel.html" %}
+  {% else %}
+    {% include "customer/includes/edit.html" %}
+  {% endif %}
+
+</div>
+{% endblock page_content %}
+
+{% block page_javascript %}
+  <script type='text/javascript'>
+  $(function(){
+  {% if sub %}
+    var $skp = $("#skip_button");
+    $skp.addClass('btn').attr('id', null);
+    $skp.parent().append('<a href="/customer/edit_scents?id={{sub.id}}" data-skipped="false" class="btn btn-primary pull-left">Edit Scents</a>');
+    $skp.parent().css("margin-bottom", "20px");
+  {% endif %}
+  });
+  </script>
+{% endblock %}

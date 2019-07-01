@@ -1,0 +1,106 @@
+{% extends "better-base.html" %}
+
+{% block header_content %}
+    <section class="banner-landscape landscape-0" style="background-color: #d4d4d4" data-barley="default-bg-img" data-barley-editor="bgimage">
+        <div class="bb-featured-banner-v2">
+            <div class="bb-content">
+                <h1>A Better Bar</h1>
+                <p>
+                  Dr. Squatch Natural Soap uses <br> the best ingredients to give you the best <br> shower experience.
+                </p>
+                <p>
+                  <a href="/our-products"><button class="btn squatch-button _bb-bg-green">shop soap</button></a>
+                </p>
+            </div>
+            <div class="bb-image">
+              <img src="{{'images/squatchhand.png' | asset_url}}" alt="">
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block bb_section_video %}
+{% import 'components/video.html' as video %}
+
+<section class="home-page-our-story">
+    <div class="home-page-our-story-single bb-featured-video">
+      <div class="bb-item-video">
+        <div class="bb-live-thumbnail-embed" data-wistia-id="3h07mcmhmj">
+            <video muted loop autoplay src="{{'video/lather-video-thumbnail.mp4' | asset_url }}"></video>
+            <div class="content">
+                <h1 class="_bb-title-orange"><span>The</span> Lather Test</h1>
+            </div>
+        </div>
+        {{ video.inline('3h07mcmhmj') }}
+
+        <div class="bb-featured-product -border-right">
+            <div class="bb-image">
+                <img src="{{'images/reclaimlather.png' | asset_url}}" alt="">
+            </div>
+            <div class="bb-content">
+                <h1 class="_bb-title-orange">Reclaim Your Lather!</h1>
+                <p class="_bb-mb-20">
+                    Better suds make for a better shower. The mixture of lye, essential oils and shea butter in our Soap
+                    create a rich, healthy lather that cannot be beat by the artificial found in name brand bars.
+                </p>
+                <p class="_bb-mb-20">
+                    <i>Don't believe us?</i>
+                </p>
+                <span class="_bb-mb-35">
+                    Run YOUR OWN Lather Test and share your experience!
+                </span>
+                <div class="footer-call-to-action-buttons">
+                    <a href="/collections/bar-soap"><button class="squatch-button btn-md _bb-mb-10 _bb-bg-green">Shop Bars</button></a>
+                    <a href="/subscription"><button class="squatch-button btn-md _bb-mb-10">Soapscribe</button></a>
+                </div>
+            </div>
+        </div>
+
+      </div>
+      <div class="bb-item-video">
+          <div class="bb-live-thumbnail-embed" data-wistia-id="w93qrxbpki">
+            <video muted loop autoplay src="{{ 'video/scent-video-thumbnail.mp4' | asset_url }}"></video>
+            <div class="content">
+                <h1><span>The</span> Scent Test</h1>
+            </div>
+          </div>
+          {{ video.inline('w93qrxbpki') }}
+
+          <div class="bb-featured-product">
+            <div class="bb-image">
+                <img src="{{'images/findyourscent.png' | asset_url}}" alt="">
+            </div>
+            <div class="bb-content">
+              <h1>Find Your Scent</h1>
+              <p class="_bb-mb-20">
+                Your soap should transform your shower into an adventure. We offer 10 manly scents that will fill
+                your bathroom and your life with an intoxicatingly good aroma.
+              </p>
+              <span class="_bb-mb-35">
+                Explore our scents and find your favorite.
+              </span>
+              <div class="footer-call-to-action-buttons">
+                <a href="/collections/bar-soap"><button class="squatch-button btn-md _bb-bg-green _bb-mb-10">Shop Bars</button></a>
+                <a href="/subscription"><button class="squatch-button btn-md _bb-mb-10">Soapscribe</button></a>
+              </div>
+            </div>
+          </div>
+
+      </div>
+
+    </div>
+  </section>
+
+{% endblock %}
+
+{% block page_javascript %}
+<script src="{{ 'js/ma5slider.combined.js' | asset_url }}"></script>
+<link href="{{ 'css/plugins/ma5slider.min.css' | asset_url }}" rel="stylesheet" type="text/css">
+<script>
+jQuerySafe(window).on('load', function () {
+    jQuery3('.ma5slider').ma5slider();
+    //jQuerySafe('.home-play-btn').show();
+});
+</script>
+<script src="{{ 'js/raindrop.min.js' | asset_url }}"></script>
+{% endblock %}

@@ -1,0 +1,384 @@
+{% extends "base.html" %}
+{% block header_content %}
+<section class="banner-landscape centered" style="background-image: url({{ 'images/banner-landscape-2.jpg' | asset_url }})" data-barley="bg-img-subscription" data-barley-editor="bgimage">
+ <div class="col-md-offset-5 col-md-7 col-sm-offset-5 col-sm-7 content text-invert text-center">
+  <div data-barley="subscription-header" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+   <hgroup>
+    <h1 class="heading">
+     Gift Soapscription
+    </h1>
+    <h2 class="heading">
+     automatic soap, free shipping
+    </h2>
+   </hgroup>
+   <p class="hpad vspace">
+    Give the Gift of Soap, Delivered Quarterly.  Year Subscriptions include 2 free months!
+   </p>
+  </div>
+ </div>
+</section>
+{% endblock %}
+
+{% block page_content %}
+
+{# STEP 1 - SELECT PRODUCT #}
+<div class="panel-group hpad pholder" id="accordion" role="tablist" aria-multiselectable="true">
+ <section class="panel substep">
+  <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+   <span class="number">
+    1
+   </span>
+   <h1 class="panel-title" data-barley="subscription-step1-header" data-barley-editor="simple">
+    Gift Subscripiton Length?
+   </h1>
+  </div>
+  <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+   <div class="panel-body">
+    <section class="squatch-collection">
+     <h4 class="h-section" data-barley="sub-step-1-sub-heading" data-barley-editor="simple">
+      Two Bars Per Month - Delivered Quarterly
+     </h4>
+     <div class="row product-template-holder">
+     </div>
+    </section>
+   </div>
+   <div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+     <a href="#collapseTwo" role="tab" class="btn btn-success btn-frame btn-md fullsize" data-toggle="collapse" data-parent="#accordion" aria-controls="collapseTwo">
+      <i class="icon footprint">
+      </i>
+      Next >
+     </a>
+    </div>
+   </div>
+  </div>
+ </section>
+
+<!--  
+  {# STEP 2 - SELECT TERM #}
+ <section class="panel substep">
+  <div class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+   <span class="number">
+    2
+   </span>
+   <h1 class="panel-title" data-barley="subscription-step2-header" data-barley-editor="simple">
+    How often should we ship?
+   </h1>
+  </div>
+  <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+   <div class="panel-body">
+    <section class="squatch-collection">
+     <h4 class="h-section" data-barley="sub-step-2-sub-heading" data-barley-editor="simple">
+      Free Shipping
+     </h4>
+     <div class="row term-template-holder">
+     </div>
+    </section>
+   </div>
+   <div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+     <a href="#collapseThree" role="tab" class="btn btn-success btn-frame btn-md fullsize" data-toggle="collapse" data-parent="#accordion" aria-controls="collapseThree">
+      <i class="icon footprint">
+      </i>
+      Next >
+     </a>
+    </div>
+   </div>
+  </div>
+ </section>
+-->
+ {# STEP 3 - SELECT SCENTS #}
+ <section class="panel substep">
+  <div class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" data-target="#collapseThree" aria-controls="collapseThree">
+   <span class="number">
+    2
+   </span>
+   <h1 class="panel-title" data-barley="subscription-step3-header" data-barley-editor="simple">
+    What scents should we send?
+   </h1>
+  </div>
+  <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+   <div class="panel-body">
+    <div class="row">
+     <div class="col-md-7 col-sm-6 scents">
+      <div class="h-section">
+       <h4 class="heading" data-barley="sub-step-3-sub-heading" data-barley-editor="simple">
+        choose your scents
+       </h4>
+      </div>
+      {# STEP 3A - AVAILABLE SCENTS #}
+      <div class="content scent-template-holder">
+      </div>
+     </div>
+     <div class="col-md-5 col-sm-6 hidden-xs scents">
+      <div class="h-section">
+       <h4 class="heading" data-barley="sub-step-4-sub-heading" data-barley-editor="simple">
+        your shipment
+       </h4>
+      </div>
+      <div class="selected">
+       {# STEP 3B - CHOSEN SCENTS #}
+       <div class="chosen-scent-template-holder">
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+     <a href="#collapseFour" role="tab" class="btn btn-success btn-frame btn-md fullsize" data-toggle="collapse" data-parent="#accordion" aria-controls="collapseFour">
+      <i class="icon footprint">
+      </i>
+      Next >
+     </a>
+    </div>
+   </div>
+  </div>
+ </section>
+ {# STEP 4 - SELECT ADDONS #}
+ <section class="panel substep">
+  <div class="panel-heading collapsed" role="tab" id="headingFour" data-toggle="collapse" data-parent="#accordion" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+   <span class="number">
+    3
+   </span>
+   <h1 class="panel-title" data-barley="subscription-step4-header" data-barley-editor="simple">
+    What Add-Ons would you like?
+   </h1>
+  </div>
+  <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+   <div class="panel-body">
+    <section class="squatch-collection">
+     <h4 class="h-section barley_hide_outline" data-barley="sub-step-5-sub-heading" data-barley-editor="simple" contenteditable="false">
+      Add some goodies, only sent with your first shipment
+     </h4>
+     <div class="row addon-template-holder">
+     </div>
+    </section>
+   </div>
+   <div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+     <a href="#" class="btn btn-success btn-frame btn-md fullsize submit-subscription">
+      <i class="icon footprint">
+      </i>
+      Finish
+     </a>
+    </div>
+   </div>
+  </div>
+ </section>
+</div>
+{# ITEM TEMPLATE FOR STEP 1 - PRODUCTS #}
+<script type="text/template" id="product_template">
+ <section class="b-product col-sm-4 col-xs-12">
+    <figure><%= image %></figure>
+    <hgroup>
+      <h3 class="heading"><%= name %><span class="hlight"><%= price %></span></h3>
+      <h4 class="p-title"><%= description %></h4>
+    </hgroup>
+    <a href="#" class="btn btn-default btn-frame btn-md btn-product-select <%= selected == true ? "btn-subscription-selected": "" %>">
+        <i class="icon footprint"></i> 
+    	<%= selected == true ? "Selected" : "Select" %>
+  	</a>
+  </section>
+</script>
+{# END ITEM TEMPLATE STEP 1 #}
+
+{# ITEM TEMPLATE FOR STEP 2 - TERMS #}
+<script type="text/template" id="term_template">
+ <section class="b-product col-sm-6 col-xs-12">
+    <figure><%= image %></figure>
+    <hgroup>
+      <h3 class="heading"><%= name %></h3>
+      <h4 class="p-title"><%= description%></h4>
+      <input type='hidden' value="<%= term_type %>" class='term_type' />
+    </hgroup>
+    <a href="#" class="btn btn-default btn-frame btn-md btn-term-select <%= selected == true ? "btn-subscription-selected": "" %>">
+    	<i class="icon footprint"></i>
+    	<%= selected == true ? "Selected" : "Select" %>
+    </a>
+  </section>
+</script>
+{# END ITEM TEMPLATE STEP 2 #}
+
+{# ITEM TEMPLATE FOR STEP 3A - AVAILABLE SCENTS #}
+<script type="text/template" id="scent_template">
+ <section class="col-md-4 col-xs-12 box-counter">
+    <figure><%= image %></figure>
+    <div class="product-content-wrapper">
+      <h3 class="heading center-text"><%= name %></h3>
+      <div class="control-counter framed center-align">
+        <a href="#" class="qty-down vless"><i class="fa fa-minus"></i></a>
+        <span class="count"><%= qty %></span>
+        <a href="#" class="qty-up vmore"><i class="fa fa-plus"></i></a>
+      </div>
+      <input type='hidden' class='scent_id' value='<%= id %>' />
+    </div>
+  </section>
+</script>
+{# END ITEM TEMPLATE STEP 3A #}
+
+{# ITEM TEMPLATE FOR STEP 3B - CHOSEN SCENTS #}
+<script type="text/template" id="chosen_scent_template">
+ <section class="col-lg-4 col-sm-5 box-counter">
+    <figure><%= image %></figure>
+  </section>
+</script>
+{# END ITEM TEMPLATE STEP 3B #}
+
+{# ITEM TEMPLATE STEP 4 - ADDONS #}
+<script type="text/template" id="addon_template">
+ <section class="b-product col-sm-4 col-xs-12">
+    <figure><%= image %></figure>
+    <hgroup>
+      <h3 class="heading"><%= name %><span class="hlight"><%= price %></span></h3>
+      <h4 class="p-title"><%= description %></h4>
+    </hgroup>
+    <a href="#" class="btn btn-default btn-frame btn-md btn-addon-select <%= selected == true ? "btn-subscription-selected": "" %>"><i class="icon footprint"></i> 
+    	<%= selected == true ? "Added" : "Add" %>
+  	</a>
+    <input type='hidden' class='addon_id' value='<%= id %>' />
+  </section>
+</script>
+{# END ITEM TEMPLATE STEP4 #}
+
+{% endblock %}
+
+
+{% block page_javascript %}
+<script type="text/javascript">
+ var availableProducts = [];
+  {% for prod in store.shop_products(category='collection-subscription') %}
+  {# Resolving quantity based on the appropriate tag - Defaults to '1' if not found #}
+  var qty = 1; 
+  {% for t in prod.taxonomy %}
+  {% if 'collection-qty-' in t.slug %}
+  qty = parseInt("{{ t.slug.replace('collection-qty-','') }}");
+  {% endif %}
+  {% endfor %}
+  if (isNaN(qty)){ qty = 1; }
+  {# End Resolving quantity #}
+    
+  {# Resolving term type (monthly, quarterly) based on the appropriate tag - Defaults to '1' if not found #}
+  var term_type = 1;
+  {% for t in prod.taxonomy %}
+  {% if 'collection-term-' in t.slug %}
+  term_type = parseInt("{{ t.slug.replace('collection-term-','') }}");
+  {% endif %}
+  {% endfor %}
+  if (isNaN(term_type)){ term_type = 1; }
+  {# End Resolving term type #}
+  
+  var product = {
+  	id: {{ prod.id }},
+    term_type: term_type,
+    qty: qty
+  };
+   
+   availableProducts.push(product);
+  {% endfor %}
+  
+  
+  {# STEP 1 - Setting up available quantities #}
+  var availableQuantities = [];
+  availableQuantities.push({
+      	name: "1 BAR ", 
+    	image: '<img src="{{ "images/Soapscription-1.png" | asset_url }}" alt class="img-responsive small-monthly-icon">',
+  		description: "FOR LIGHT SHOWERING, TRAVELERS",
+    	price: '$7.00',
+    	selected: false,
+    	qty: 1
+  });
+  availableQuantities.push({
+      	name: "2 BARS ", 
+    	image: '<img src="{{ "images/Soapscription-2.png" | asset_url }}" alt class="img-responsive small-monthly-icon">',
+  		description: "MOST POPULAR FOR REGULAR USE",
+    	price: '$14.00',
+    	selected: true,
+    	qty: 2
+  });
+  availableQuantities.push({
+      	name: "3 BARS ", 
+    	image: '<img src="{{ "images/Soapscription-3.png" | asset_url }}" alt class="img-responsive small-monthly-icon">',
+  		description: "MAXIMUM LATHER, SHOWER SHARING",
+    	price: '$21.00',
+    	selected: false,
+    	qty: 3 
+  });
+  
+  {# STEP 2 - Setting up available terms #}
+  var availableTerms = [];
+  availableTerms.push({
+    image: '<img src="{{ "images/sub-monthly.png" | asset_url }}" alt class="img-responsive small-monthly-icon">',
+    name: 'Monthly',
+    description: 'Add $1 for Handling',
+    term_type: 1,
+    selected: false,
+    display: true,
+  });
+  availableTerms.push({
+    image: '<img src="{{ "images/sub-quarterly.png" | asset_url }}" alt class="img-responsive small-monthly-icon">',
+    name: 'Quarterly',
+    description: 'Max Savings',
+    term_type: 3,
+    selected: true,
+    display: true
+  });
+   {# END STEP 2 #}
+  
+   {# STEP 3 - Setting up available Scents #}
+  var availableScents = [];
+  {% for prod in store.shop_products(category='collection-scent') %}
+  
+  	var ordering = 1; 
+  	{% for t in prod.taxonomy %}
+  		{% if 'collection-ordering-' in t.slug %}
+  		ordering = parseInt("{{ t.slug.replace('collection-ordering-','') }}");
+  		{% endif %}
+  	{% endfor %}
+    
+  if (isNaN(ordering)){ ordering = 1; }
+   
+  availableScents.push({ 
+    id: "{{ prod.id }}",
+    name: "{{ prod.name }}",
+    image: '{{ prod | object_img_tag(css_class="img-responsive") }}',
+    qty: 0, 
+    sku: "{{ prod.instances[0].sku }}",
+  	ordering: ordering});
+  {% endfor %}
+  
+  availableScents = _.sortBy(availableScents, function(item){ return -1*item.ordering });
+  
+  {# END STEP 3 #}
+  
+  {# STEP 4 - Addons #}
+  var availableAddons = [];
+  {% for prod in store.shop_products(category='collection-subscription-addons') %}
+  
+  var ordering = 1; 
+  	{% for t in prod.taxonomy %}
+  		{% if 'collection-ordering-' in t.slug %}
+  		ordering = parseInt("{{ t.slug.replace('collection-ordering-','') }}");
+  		{% endif %}
+    {% endfor %}
+  
+  if (isNaN(ordering)){ ordering = 1; }
+     
+  availableAddons.push({ 
+    id: "{{ prod.id }}", 
+    name: "{{ prod.name }} ", 
+    description: "{{ prod.description }}",
+	image: '{{ prod | object_img_tag(css_class="img_responsive") }}',
+    is_single_purchasable: "{{ prod.single_purchasable }}",
+    price: "{% if prod.single_purchasable == False %}{{ prod.calc_min_price() | currency }}{% else %}{{ prod.calc_min_ecom_price() | currency }}{% endif %}",
+    selected: false,
+    ordering: ordering
+  });
+  {% endfor %}
+  
+  availableAddons = _.sortBy(availableAddons, function(item){ return -1*item.ordering });
+  {# END STEP 4 #}
+</script>
+<script src="{{ 'js/backbone_subscription.js' | asset_url }}">
+</script>
+{% endblock %}

@@ -1,0 +1,28 @@
+<div class="action-box-row _pt-20">
+  <a href="/customer/skip_subscription/{{ sub.id }}?skip=true" class="action-box -orange">
+    <div class="title">Skip my Next Shipment</div>
+    <p>You can pick up where you left off whenever you want at the same rate.</p>
+    <div class="footnote">
+      Your next order will be shipped:<br>
+      <strong>{{ sub.end_date | date }}</strong>
+    </div>
+  </a>
+
+  <a href="/customer/account" class="action-box -green">
+    <div class="title">Go back to my account</div>
+  </a>
+</div>
+
+<p class="text-center link-invert _mb-40">
+  <a href="#cancel-form" data-toggle="collapse" data-target="#cancel-form" aria-expanded="false">
+    I'm tired of great soap, please cancel.
+  </a>
+</p>
+
+<div class="collapse" id="cancel-form">
+  <div class="row _mb-40">
+    {{ customer_helper.edit_basic_account_info(btn_class="btn-med btn-primary") }}
+    {{ customer_helper.edit_payment_info(btn_class="btn-med btn-primary") }}
+    {{ customer_helper.edit_address_info(btn_class="btn-med btn-primary") }}
+  </div>
+</div>

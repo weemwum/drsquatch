@@ -1,0 +1,40 @@
+{% import "collections/generic.html" as cg %}
+
+{% extends "base.html" %}
+
+{% block header_content %}
+<section class="banner-landscape split collection-fix landscape-19">
+ <div class="col-sm-5 col-sm-offset-1 row hpad hidden-xs content">
+   <br>
+   <br>
+  <div class="" data-barley="bar-soap-bg" data-barley-editor="image">
+   <img src="{{ 'images/Soap-Collection-xxl.png' | asset_url }}" alt class="img-responsive">
+  </div>
+ </div>
+ <div class="col-sm-5 content text-invert text-center barley_hide_outline" data-barley="collection-bar-soap-header" data-barley-editor="advanced" contenteditable="false">
+  <br>
+   <br>
+    <hgroup>
+      <p class="playball">
+      	All Natural
+       </p>
+       <h1 class="heading metropolis-semi-bold">
+         HANDMADE<br>BAR SOAPS
+       </h1>
+     </hgroup>
+   <p class="vspace">
+     Handmade.  Cold Processed.<br>9 natural ways to smell like a man.
+   </p>
+ </div>
+</section>
+{% endblock %}           
+
+
+{% block page_content %}
+{{ cg.render_collection_page_content(tag_filter='collection-bar-soap', show_soapscribe=True, show_quiz=True) }}
+{% endblock %}
+
+{% block page_javascript %}
+<script src="{{ 'js/reviews-excerpt.js' | asset_url }}">
+</script>
+{% endblock %}

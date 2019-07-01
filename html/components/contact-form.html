@@ -1,0 +1,29 @@
+{% macro contact_form(subject_from, notes_heading="Comment") %}
+<form class="cform" accept-charset="UTF-8" autocomplete="off" enctype="multipart/form-data" method="post" novalidate
+      action="https://dantestforms.wufoo.com/forms/zf41as1098o7h5/#public">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="form-group">
+       <!-- <label for="name" data-barley='contact-name' data-barley-editor='simple'>Name</label> -->
+        <input type="text" required class="form-control" id="Field3" name="Field3" placeholder="Name">
+      </div>
+    </div>
+  </div>								 
+  <div class="row">
+    <div class="col-lg-6">							 
+      <div class="form-group">
+        <!-- <label for="email" data-barley='contact-email' data-barley-editor='simple'>Email</label> -->
+        <input type="email" required class="form-control" id="Field4" name="Field4" placeholder="Email">
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <!-- <label for="comment">{{notes_heading}}</label> -->
+    <textarea class="form-control" required rows="8" id="Field6" name="Field6" placeholder="Comment"></textarea>
+  </div>
+  <input type="hidden" id="idstamp" name="idstamp" value="ipPQTCx2HbPepcsLq+fEC4NwyPJr26TlIDqrGBd8ubo=" />
+  <input type="hidden" id="Field9" name="Field9" value="{{ subject_from }}" />
+  <button type="submit" class="btn btn-secondary btn-frame btn-md btn-contact-submit"><i class="icon footprint"></i> Submit</button>
+</form>		
+
+{% endmacro %}

@@ -1,0 +1,358 @@
+{% set cart = active_cart() %}
+<!DOCTYPE HTML>
+<html>
+ <html lang>
+  <head>
+   <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+      <meta property="fb:app_id" content="259221937513591" /> 
+
+      <title>
+       {% block title %} {{ page_title }} {% endblock %}
+      </title>
+      <!-- Bootstrap CSS -->
+    <link rel="shortcut icon" href="{{ 'images/favicon.ico' | asset_url }}" type="image/x-icon"/>
+      <link rel="stylesheet" type="text/css" href="{{ 'css/plugins/jquery.formstyler.css' | asset_url }}">
+       <link rel="stylesheet" type="text/css" href="{{ 'css/main.css' | asset_url }}">
+        <link rel="stylesheet" type="text/css" href="{{ 'css/style.css' | asset_url }}">
+    	<link rel="stylesheet" type="text/css" href="{{ 'css/subscription-v2.min.css' | asset_url }}">
+    	<link href="//cdn.rawgit.com/noelboss/featherlight/1.4.0/release/featherlight.min.css" type="text/css" rel="stylesheet" />
+         {{ css.base() }}
+{{ 'css/product-reviews.css' | asset_url | stylesheet_tag }}
+         <!--link rel="stylesheet/less" type="text/css" href="less/main.less">
+<script src="js/less.min.js" type="text/javascript"></script-->
+         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+         <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+        </link>
+       </link>
+      </link>
+     </meta>
+    </meta>
+   </meta>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+   </script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js">
+   </script>
+
+	<style>
+      
+      .review_excerpt .cancel-on-png, 
+      .review_excerpt .cancel-off-png, 
+      .review_excerpt .star-on-png, 
+      .review_excerpt .star-off-png, 
+      .review_excerpt .star-half-png {
+        font-size: 1em !important;
+      }
+      @font-face {
+        font-family: "raty";
+        font-style: normal;
+        font-weight: normal;
+        src: url("{{ 'fonts/fontawesome-webfont.eot' | asset_url }}");
+        src: url("{{ 'fonts/fontawesome-webfont.eot?#iefix' | asset_url }}") format("embedded-opentype");
+        src: url("{{ 'fonts/fontawesome-webfont.svg' | asset_url }}") format("svg");
+        src: url("{{ 'fonts/fontawesome-webfont.ttf' | asset_url }}") format("truetype");
+        src: url("{{ 'fonts/fontawesome-webfont.woff' | asset_url }}") format("woff");
+      }
+      .cancel-on-png, .cancel-off-png, .star-on-png, .star-off-png, .star-half-png {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: "raty";
+        font-style: normal;
+        font-variant: normal;
+        font-weight: normal;
+        line-height: 1;
+        speak: none;
+        text-transform: none;
+      }
+      .cancel-on-png:before {
+        content: "\e600";
+      }
+      .cancel-off-png:before {
+        content: "\e601";
+      }
+      .star-on-png:before {
+        content: "\f005";
+      }
+      .star-off-png:before {
+        content: "\f006";
+      }
+      .star-half-png:before {
+        content: "\f123";
+      }
+      
+    </style>
+
+   {{ settings.header_code | safe }}
+
+<script>
+  // Forces HTTPS
+  if (window.location.protocol != "https:")
+    window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+</script>
+
+<!-- Pinterest tracking code -->
+<script type="text/javascript"> !function(e){if(!window.pintrk){window.pintrk=function(){window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var n=window.pintrk;n.queue=[],n.version="3.0";var t=document.createElement("script");t.async=!0,t.src=e;var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js"); pintrk('load','2617908370808'); pintrk('page', { page_name: 'My Page', page_category: 'My Page Category' }); </script> <noscript> <img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/v3/?tid=2617908370808&noscript=1" /> </noscript>
+
+<script>
+pintrk('track', 'lead');
+pintrk('track', 'pagevisit');
+</script>
+
+
+<!-- Yotpo -->
+<script>
+  (function e(){var e=document.createElement("script");
+  e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/rovsuhtR01AOZ8Vl90zCBkGot9h5DML2IsoJ9tn3/widget.js";
+  var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
+</script>
+<!-- end Yotpo -->
+
+<!-- FOMO -->
+<script type="text/javascript" src="https://www.usefomo.com/api/v1/gOOzAIrEgq23IAh1p56L2w/load.js" async></script>
+
+
+<!-- KISS METRICS -->
+<script type="text/javascript">var _kmq = _kmq || [];
+var _kmk = _kmk || '47d9ebc1a6564265ff8b5bc9904c60a34efdcf03';
+function _kms(u){
+  setTimeout(function(){
+    var d = document, f = d.getElementsByTagName('script')[0],
+    s = d.createElement('script');
+    s.type = 'text/javascript'; s.async = true; s.src = u;
+    f.parentNode.insertBefore(s, f);
+  }, 1);
+}
+_kms('//i.kissmetrics.com/i.js');
+_kms('//scripts.kissmetrics.com/' + _kmk + '.2.js');
+</script>
+<!-- KISS METRICS -->
+
+
+  </head>
+  <body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-MQXWN9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MQXWN9');</script>
+<!-- End Google Tag Manager -->
+    
+    
+<!-- Proof | Real-time conversion signals -->
+<script id=proof-script>!function(){function b(){var a=(new Date).getTime(),b=document.createElement('script');b.type='text/javascript',b.async=!0,b.src='https://cdn.getmoreproof.com/embed/latest/proof.js?'+a;var c=document.getElementsByTagName('script')[0];c.parentNode.insertBefore(b,c)}var a=window;a.attachEvent?a.attachEvent('onload',b):a.addEventListener('load',b,!1),window.proof_config={acc:'SNtfH9gySWVSBxcrWOsjSksHGJC2', v:'1.1'}}()</script>
+<!-- End Proof -->
+    
+    <!-- Paste this code right after the <body> tag on every page of your site. -->
+<script type="text/javascript">
+  var _kiq = _kiq || [];
+  (function(){
+    setTimeout(function(){
+    var d = document, f = d.getElementsByTagName('script')[0], s = d.createElement('script'); s.type = 'text/javascript';
+    s.async = true; s.src = '//s3.amazonaws.com/ki.js/61909/e5y.js'; f.parentNode.insertBefore(s, f);
+    }, 1);
+  })();
+</script>
+   <!-- MAIN CONTAINER -->
+   <div class="container">
+    {% include 'components/topheader.html' %}
+    <div class="wrapper-content w-bg">
+     <!-- Main Navigation -->
+     {% include 'components/nav.html' %}
+      {% block header_content %}
+     <section class="banner-landscape landscape-0" style="background-image: url('{{'images/banner-main-7.jpg' | asset_url }}')" data-barley="default-bg-img" data-barley-editor="bgimage">
+      {% block header_inner_content %}
+      <div class="col-sm-offset-7 col-sm-5 content text-invert text-center home-layout">
+       <div class="col-xs-12 hidden-sm hidden-md hidden-lg" data-barley="index-top-header-img" data-barley-editor="image">
+        <img src="{{ 'images/CedarCitrus-xxl.png' | asset_url }}" alt class="header-img-top-sm-home">
+        </img>
+       </div>
+       <div data-barley="index-top-header" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+       </div>
+      </div>
+      {% endblock %}
+     </section>
+     {% endblock %}
+
+    {% block header_bottom_content %}
+    {% endblock %}
+
+    {% block page_content %}
+    {% endblock %}
+
+
+    {% include 'components/footer.html' %}
+    </div>
+    <!-- /.wrapper-content -->
+   </div>
+   <!-- /MAIN CONTAINER -->
+   {% include 'components/cart.html' %}
+   
+   <script src="{{ 'js/underscore-min.js' | asset_url }}">
+   </script>
+   <script src="{{ 'js/backbone-min.js' | asset_url }}">
+   </script>
+   <script type="text/javascript">
+    BBSafe = window.Backbone;
+   </script>
+   <script src="{{ 'js/jquery.raty.js' | asset_url }}">
+   </script>
+   <script type="text/javascript">
+    jQuerySafe = $;
+   </script>
+   <script src="//cdn.rawgit.com/noelboss/featherlight/1.4.0/release/featherlight.min.js" type="text/javascript" charset="utf-8">
+   </script>
+   <script src="{{ 'js/jquery.formstyler.min.js' | asset_url }}">
+   </script>
+   <script src="{{ 'js/backbone_cart.js' | asset_url }}">
+   </script>
+   <script src="{{ 'js/cart.js' | asset_url }}">
+   </script>
+   {{ js.base() }}
+{{ picreel }}
+   <script>
+    var getParam = function () {
+      // This function is anonymous, is executed immediately and 
+      // the return value is assigned to QueryString!
+      var query_string = {};
+      var query = window.location.search.substring(1);
+      var vars = query.split("&");
+      for (var i=0;i<vars.length;i++) {
+        var pair = vars[i].split("=");
+            // If first entry with this name
+        if (typeof query_string[pair[0]] === "undefined") {
+          query_string[pair[0]] = decodeURIComponent(pair[1]);
+            // If second entry with this name
+        } else if (typeof query_string[pair[0]] === "string") {
+          var arr = [ query_string[pair[0]],decodeURIComponent(pair[1]) ];
+          query_string[pair[0]] = arr;
+            // If third or later entry with this name
+        } else {
+          query_string[pair[0]].push(decodeURIComponent(pair[1]));
+        }
+      } 
+        return query_string;
+    }();
+
+    // Removes elements when product is showed by iframe
+    if (getParam.iframe) {
+        var nav = $('.navbar-site'),
+            buy = $('.one_time_product_submit'),
+            pin = $('.pin_section'),
+            ftr = $('.sfooter'),
+            brc = $('.breadcrumb'),
+            hel = $('.picreel-element'),
+            vid = $('.embed-responsive-item'),
+            btp = $('.bar-top').find('.col-md-6');
+        nav.remove();
+      	buy.remove();
+      	pin.remove();
+      	ftr.remove();
+      	btp.remove(); 
+      	brc.remove(); 
+      	hel.remove(); 
+      	vid.remove(); 
+    }
+  
+   </script>
+   <script type="text/javascript">
+    var submitEmailSignup = function(event){
+     	event.preventDefault();
+        var url = '/customer/list_subscribe';
+      	var data = {
+        	'list_id': $("#email-signup-list-id").val(),
+          	'email': $("#email-signup-email").val()
+        }
+        $.post(url, data, function(){
+        	$(".show-on-save").show();
+          	$(".hide-on-save").hide();
+        });
+    };
+     
+$('#accordion').on('show hide', function() {
+    $(this).css('height', 'auto');
+});
+    
+     
+     (function() {
+
+       //$('.navbar-header .navbar-toggle').bind('mousedown', function(e){
+       $(document).on('click', '.navbar-header .navbar-toggle', function(e){
+		e.preventDefault();
+         //$('body').toggleClass('modal-open');
+         $(this).toggleClass('opened');
+         $(".nav-primary").toggleClass('in');
+       });
+
+	   $(document).on('mouseenter mouseleave click', '.dropdown', function(e){
+           //e.preventDefault();
+           $(this).toggleClass('open');
+       });
+
+       jQuerySafe('.product-rating').raty({
+         score: function(){
+           return $(this).attr('data-score');
+         },
+         readOnly: true,
+         starType: 'i',
+         hints: null
+       });
+
+     })();
+
+  $(document).on('scroll', function(){
+    if ($(window).scrollTop() > 200) {
+      $('html').addClass('fixed-top');
+      $('.navbar-site').addClass('navbar-fixed-top');
+    } else {
+      $('html').removeClass('fixed-top');
+      $('.navbar-site').removeClass('navbar-fixed-top');
+    }
+  });
+
+$('body').on({
+    'touchmove': function(e) { 
+      if ($(this).scrollTop() > 200) {
+        $('html').addClass('fixed-top');
+        $('.navbar-site').addClass('navbar-fixed-top');
+      } else {
+        $('html').removeClass('fixed-top');
+        $('.navbar-site').removeClass('navbar-fixed-top');
+      }
+    }
+});
+     
+$(window).scroll(function() { 
+      if ($(this).scrollTop() > 200) {
+        $('html').addClass('fixed-top');
+        $('.navbar-site').addClass('navbar-fixed-top');
+      } else {
+        $('html').removeClass('fixed-top');
+        $('.navbar-site').removeClass('navbar-fixed-top');
+      }
+});
+     
+    $(document).on('click', '#email-signup-submit', submitEmailSignup);     
+     
+   </script>
+    
+	{{ ga.base() }}
+    {% block page_javascript %}
+
+    {% endblock %}
+
+    {{ settings.footer_code | safe}}
+
+    {% include 'js/criteo-tracking.js' %}
+	{% include 'js/klaviyo-tracking.js' %}
+  </body>
+ </html>
+</html>

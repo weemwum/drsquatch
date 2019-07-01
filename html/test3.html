@@ -1,0 +1,400 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+<style>
+  /* Beast Kit page specific */
+  @font-face {
+    font-family: 'DIN Condensed Bold';
+    src: url("{{'fonts/DIN_Condensed_Bold.ttf' | asset_url}}") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Nexa Rust Script';
+    src: url("{{'fonts/NexaRustScriptR-00.otf' | asset_url}}") format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .header-tame-your {
+    font-family: 'Nexa Rust Script';
+    font-size: 78px;
+  }
+  .header-beast-kit {
+    font-family: 'DIN Condensed Bold';
+    font-size: 125px;
+  }
+  .even-if-sasquatch {
+    font-family: 'DIN Condensed Bold';
+    font-size: 50px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .limited-edition-heading {
+    font-family: 'Nexa Rust Script';
+    font-size: 39px;
+  }
+  .uniquely-engineered {
+    font-family: 'DIN Condensed Bold';
+    font-size: 53px;
+    text-transform: uppercase;
+  }
+  .for-the-job {
+    font-family: 'Nexa Rust Script';
+    font-size: 53px;
+  }
+  .limited-edition {
+    font-family: 'Nexa Rust Script';
+    font-size: 66px;
+  }
+  .tame-now {
+    font-family: 'DIN Condensed Bold';
+    font-size: 90px;
+    text-transform: uppercase;
+    line-height: 90px;
+  }
+  .beast-video-wrapper {
+    margin:35px 0; 
+    padding-left: 0;
+  }
+  .beast-video-wrapper:before {
+      top: 10px;
+      left: -10px;
+      height: 100%;
+      width: calc(100% - 15px);
+      position: absolute;
+      content: '';
+      background: #FFF;
+  }
+  .beast-blue-bg {
+    background-color: #016bac; 
+  }
+  .beast-blue-bg h3 {
+    margin-bottom: 20px;
+  }
+  .blue-text {
+    color: #016bac;
+  }
+  .vpadding8 {
+    padding: 8px 0;
+  }
+  .tame-your-beast-kit {
+    padding: 30px; 
+    background-color: white;
+  }
+  .beast-gold-text {
+    color:#cea449;
+  }
+  .limited-edition-list {
+    font-size: 19px; 
+    line-height: 28px; 
+    padding-top: 12px;
+  }
+  .engineered-underlined {
+    line-height: 36px;
+    font-size: 30px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+  }
+  .engineered-underlined:after {
+      content: '';
+      height: 1px;
+      width: 100%;
+      position: absolute;
+      background: #FFF;
+      bottom: 0px;
+      left: 0;
+  }
+  .beast-blue-bg p {
+    line-height: 24px;
+    color: #b1bac3;
+    font-weight: bold;
+  }
+  .engineered-boxed {
+    border:thin solid white; 
+    padding:4px;
+    font-size: 11px;
+    text-align: center;
+    color: #FFF;
+    line-height: 1em;
+    font-weight: normal;
+  }
+  .horiz-line {
+    border-top: solid thin white;
+    position: relative;
+    top: 66px;
+    left:-98px;
+    width: 220px;
+  }
+  .learn-more, .learn-more a {
+    color: #fff200 !important;
+    padding: 0 0 20px 0;
+  }
+  .line-through {
+    text-decoration: line-through;
+  }
+  .video-responsive {
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+  }
+  .video-responsive iframe {
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+  }
+@media (max-width: 1329px) {
+   .horiz-line {
+      left:-38px;
+   	  width: 130px;
+  }
+}
+@media (max-width: 991px) {
+   .horiz-line {
+   	  left: -88px;
+      width: 220px;
+      top: 36px;
+  }
+   .beast-video-wrapper {
+      margin: 0 0 20px 0; 
+      padding-left: 15px;
+  }
+  .beast-video-wrapper:before {
+      display: none;
+  }
+  .header-tame-your {
+    font-size: 48px;
+  }
+  .header-beast-kit {
+    font-size: 96px;
+  }
+}
+@media (max-width: 767px) {
+   .horiz-line {
+   	  left: -88px;
+      width: 180px;
+  }
+}
+@media (max-width: 480px) {
+   .horiz-line {
+      left: -58px;
+      width: 130px;
+  }
+}
+  
+
+</style>
+
+
+
+
+
+<section class="banner-landscape landscape-0" style="background-image: url('{{'images/banner-beast-kit.jpg' | asset_url }}')" data-barley="bg-img" data-barley-editor="bgimage">
+   <div class="col-xs-12" data-barley="beast-logos-header-img" data-barley-editor="image">
+     <div class="text-center" style="padding-top: 50px;">
+       <img style="margin-bottom: 10px;" src="{{ 'images/drsquatch-manscaped-logos.png' | asset_url }}" alt class="text-center">
+      </div>
+  </div>
+  <div class="col-md-7 hidden-xs content text-invert text-center">
+    <div data-barley="beast-header" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+     <hgroup>
+      <div class="header-tame-your">
+        Tame Your
+      </div>
+      <div class="header-beast-kit">
+        BEAST KIT!
+      </div>
+     </hgroup>
+    </div>
+ </div>
+  <div class="col-md-5 col-xs-12 youtube-embed-banner beast-video-wrapper" data-barley="beast-video" data-barley-editor="image">
+    <div class="video-responsive">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/VicrNsyjmSA?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1&amp;enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block page_content %}
+<section class="beast-blue-bg vpadding8">
+  <div class="tame-your-beast-kit">
+    <div class="pholder-header" data-barley="beast-tame-kit-header" data-barley-editor="advanced">
+      <div class="even-if-sasquatch">
+        even if you are <span class="beast-gold-text">sasquatch</span> you shouldn’t <span class="beast-gold-text">smell</span> or <span class="beast-gold-text">look</span> like one down there.
+      </div>
+    </div>
+    <div class="barley_hide_outline text-center" data-barley="beast-tame-kit" data-barley-editor="image" contenteditable="false">
+       <img src="{{ 'images/beast-Tame-Your-Beast-Kit.jpg' | asset_url }}" alt class="img-responsive center-block">
+       </img>
+    <h3><span class="line-through">$89</span> <strong>$29.99</strong> </h3>
+        <a href="#" class="ecom-add-to-cart btn btn-secondary btn-frame btn-md" style="display: inline-block;" data-ecom-price='2999' data-ecom-id='1549025229'><i class="icon footprint"></i> ADD TO CART</a>
+    </div>
+  </div>
+</section>
+
+<section class="beast-wood-bg pholder hpad" style="background-image: url('{{'images/beast-wood.jpg' | asset_url }}'); position:relative; background-position: 50% 50%; background-size: cover;" data-barley="bg-wood-img" data-barley-editor="bgimage">
+   <div class="col-sm-3">  
+  	  <div class="barley_hide_outline" data-barley="beast-sasquatch" data-barley-editor="image" contenteditable="false">
+         <img src="{{ 'images/beast-sasquatch.png' | asset_url }}" alt class="img-responsive center-block">
+         </img>
+      </div>
+    </div>
+    <div class="col-sm-9 text-invert" data-barley="beast-sasquatch-text" data-barley-editor="advanced">
+      <div class="limited-edition-heading">
+    	  This Limited Edition Kit Includes:
+      </div>
+      <ul class="limited-edition-list">
+        <li>1 Bar of <strong>Dr. Squatch’s</strong> All Natural, Moisturizing <strong>Pine Tar Soap</strong></li>
+        <li>1 <strong>Dr. Squatch</strong> Soapsaver</li>
+        <li><strong>Manscaped’s</strong> Plow Straight Razor</li>
+        <li><strong>Manscaped’s</strong> 24-Hour, Non-Powder Ball Deodorant</li>
+        <li><strong><em>FREE</em></strong> set of Disposable Shaving Mats</li>
+      </ul>
+   </div>
+</section>
+
+<!-- <section class="beast-designed-to-tame pholder hpad" style="background-image: url('{{'images/beast_DrSquatch_Products-14.jpg' | asset_url }}'); position:relative; background-position: center 25%; background-size: cover; min-height:440px;" data-barley="bg-designed-img" data-barley-editor="bgimage">
+   <div class="barley_hide_outline" data-barley="beast-designed" data-barley-editor="image" contenteditable="false">
+       <img src="{{ 'images/beast-Designed-To-Tame.png' | asset_url }}" alt class="img-responsive center-block">
+       </img>
+   </div>
+</section> -->
+
+<section class="beast-blue-bg">
+   <div class="barley_hide_outline" data-barley="beast-designed" data-barley-editor="image" contenteditable="false">
+       <img src="{{ 'images/beast_DrSquatch_Products-Logo.jpg' | asset_url }}" alt class="img-responsive center-block" style="width:100%;">
+       </img>
+   </div>
+</section>
+
+<section class="bg-alt pholder">
+  <div class="hpad">
+     <div class="hpad" data-barley="index-collection-header" data-barley-editor="advanced">
+      <p>
+       This all-star bar, which is made with real pine extract, is as tough as a freshly cut bar. A true MVP of the shower, this heavy-hitter knocks out grime with its gritty composition and ultra-manly woodsy scents. Toss in the exfoliating and nourishing oatmeal and the super-soothing shea butter, and you’ve got a bullpen of all-natural ingredients that will strike out any stink.
+      </p>
+     </div>
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="barley_hide_outline" data-barley="beast-651" data-barley-editor="image" contenteditable="false">
+          <img src="{{ 'images/beast-Layer-651.png' | asset_url }}" alt class="img-responsive center-block">
+          </img>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <div class="barley_hide_outline" data-barley="beast-652" data-barley-editor="image" contenteditable="false">
+          <img src="{{ 'images/beast-Layer-652.png' | asset_url }}" alt class="img-responsive center-block">
+          </img>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <div class="barley_hide_outline" data-barley="beast-653" data-barley-editor="image" contenteditable="false">
+          <img src="{{ 'images/beast-Layer-653.png' | asset_url }}" alt class="img-responsive center-block">
+          </img>
+        </div>
+      </div>
+    </div>
+   </div>
+
+</section>
+
+<section class="beast-blue-bg pholder">
+  <div class="col-sm-12 text-invert pholder-header" data-barley="beast-engineered-text" data-barley-editor="advanced">
+   <div class="uniquely-engineered">
+    	  UNIQUELY ENGINEERED & FORMULATED 
+   </div>
+   <div class="for-the-job">
+    	  for the job
+    </div>
+  </div>
+  <div class="col-xs-6 col-md-3 col-md-offset-3 text-invert">
+      <div class="" data-barley="preserver-text" data-barley-editor="advanced">
+        <h3>
+          <span class="engineered-underlined">CROP</span><br><span class="engineered-underlined">PRESERVER</span>
+        </h3>
+		<p>
+           Our one-of-a-kind, multitasking deodorant, antiperspirant, and moisturizer was designed specifically the unique needs of  a man’s most sensitive regions. This residue- and oil-free, anti-chafing liquid talcum gel features ingredients that preserve skin’s essential barrier, promote antibacterial protection, and maintain all-day freshness.
+        </p>
+        <!-- <div class="learn-more"><a href="#">LEARN MORE </a></div> -->
+        <br><br>
+        <p><span class="engineered-boxed"> WEIGHT </span><span class="engineered-boxed"> 4 FL OZ </span></p>
+      </div>
+  </div>
+  <div class="col-xs-6 col-md-3">
+    <div class="horiz-line"></div>
+    <div class="barley_hide_outline" data-barley="beast-preserver" data-barley-editor="image" contenteditable="false">
+       <img src="{{ 'images/beast-preserver.png' | asset_url }}" alt class="img-responsive center-block">
+       </img>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="col-xs-6 col-md-3 col-md-offset-2">
+   <div class="barley_hide_outline" data-barley="beast-razor" data-barley-editor="image" contenteditable="false">
+       <img src="{{ 'images/beast-razor.png' | asset_url }}" alt class="img-responsive center-block">
+       </img>
+   </div>
+  </div>
+  <div class="col-xs-6 col-md-5 text-invert">
+      <div class="hpad pholder" data-barley="razor-text" data-barley-editor="advanced">
+        <h3>
+          <span class="engineered-underlined">SAFETY</span><br><span class="engineered-underlined">RAZOR</span>
+        </h3>
+		<p>     
+		Our safety razor was created to give you a close, refined shave with its thoughtful, elegant design. Its custom size, built-in guard, and single blade allow for maneuverability and safety. After using the electric trimmer, utilize this one-of-kind razor for further refinement and smoothness.
+        </p>
+         <!-- <div class="learn-more"><a href="#">LEARN MORE </a></div> -->
+     </div>
+  </div>
+  <div class="clearfix"></div>
+</section>
+
+<section class="featured-in">
+ <div class="col-sm-12 pholder-header" data-barley="beast-order-header" data-barley-editor="advanced">
+   <div class="limited-edition blue-text">
+    	  Limited Edition
+   </div>
+   <div class="tame-now blue-text">
+    	  TAME YOUR BEAST NOW!
+    </div>
+  </div>
+ <div class="pholder-header">
+    <div class="barley_hide_outline" data-barley="beast-kit" data-barley-editor="image" contenteditable="false">
+       <img src="{{ 'images/beast-kit.jpg' | asset_url }}" alt class="img-responsive center-block">
+   </div>
+ </div>
+<div class="col-xs-12">
+      <div class="hpad" data-barley="order-text" data-barley-editor="advanced">
+        <h3 style="font-weight: bold; font-size: 36px;">
+          TAME YOUR BEAST KIT
+        </h3>
+		<p style="font-size: 18px; color: #666">     
+		The bare essentials for the job 
+        </p>
+        <p style="font-size: 22px; line-height: 1.3em;"><span class="line-through" style="color:#AAA;">$89</span> <strong>$29.99</strong> </p>
+        <a href="#" class="ecom-add-to-cart btn btn-secondary btn-frame btn-md" style="display: inline-block;" data-ecom-price='2999' data-ecom-id='1549025229'><i class="icon footprint"></i> ADD TO CART</a>
+        <div class="clearfix"></div>
+        <div class="col-sm-6 col-sm-offset-3 hpad" style="margin-top:30px; font-size: 16px;">
+          <p class="text-left" style="font-size:17px;">WHAT'S INCLUDED:</p>
+          <ul class="text-left" style="line-height: 1.4em;">
+            <li>CROP PRESERVER residue-free, anti-chafing moisturizer</li>
+            <li>THE PLOW straight edge safety razor</li>
+            <li>DR. SQUATCH’S BLACK PINE SOAP exfoliating & nourishing</li>
+            <li>DR. SQUATCH’S SOAP SAVER makes your soap last longer</li>
+            <li>THE MAGIC MAT set of disposable shaving mats</li>
+          </ul>
+        </div>
+     </div>
+  </div>
+<div class="clearfix"></div>
+</section>
+<!-- <section class="squatch-collection bg-alt">
+  <div class="hpad text-center" data-barley="order-timer" data-barley-editor="advanced">
+    <h3>
+       Order within the next 09 minutes and 52 secs and select Free Accelerated Shipping at checkout.
+    </h3>
+  </div>
+</section> -->
+{% endblock %}

@@ -1,0 +1,383 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+<style>
+  /* Ambassador page specific */
+ @font-face {
+    font-family: 'SignPainter';
+	src: url("{{'fonts/SignPainter_HouseScript_Regular.ttf' | asset_url}}") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  .off-white-bg {
+    background-color: #fff8f2;
+  }
+  .header-become-an { 
+    font-size: 78px;
+    margin-top: 40px;
+  }
+  .header-ambassador {
+    font-size: 125px;
+  }
+  .ambassador-join {
+    display: inline;
+    font-size: 48px;
+    border-top: 2px white solid;
+    border-bottom: 2px white solid;
+  }
+  .ambassador-dr-squatch {
+    font-size: 98px;
+  }
+  .ambassador-team {
+    font-size: 48px;
+  }
+  .ambassador-signup {
+    font-size: 82px;
+    text-align: right;
+  }
+  .ambassador-earn {
+    font-size: 40px;
+    text-align: right;
+  }
+  .ambassador-heading-underline {
+    margin: 60px 0 30px;
+    font-size: 180px;
+    line-height: 160px;
+  }
+  .ambassador-heading-underline img{
+  	width: 80%;
+    height: 80%;
+  }
+  .ambassador-heading-underline.rewards img{
+  	width: 50%;
+    height: 50%;
+  }
+  .ambassador-list {
+    font-size: 82px;
+    margin: 40px 140px;
+  }
+  .numbers {
+   font-size: 140px;
+   padding: 20px 0;
+  }
+  .steps {
+    font-size: 40px;
+    line-height: 60px;
+  }
+  .levels .bebas{
+    text-transform: uppercase;
+    font-size: 48px;
+    text-align: right;
+  }
+  .ambassador-list .levels img {
+    padding: 20px 0;
+  }
+  .ambassador-rewards-sub {
+    font-size: 40px;
+  }
+  .vpadding8 {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+@media (max-width: 1329px) {
+  .ambassador-join {
+    font-size: 44px;
+  }
+  .ambassador-dr-squatch {
+    font-size: 90px;
+  }
+  .ambassador-team {
+    font-size: 44px;
+  }
+  .ambassador-signup {
+    font-size: 72px;
+  }
+  .ambassador-earn {
+    font-size: 36px;
+  }
+  .ambassador-heading-underline {
+    font-size: 120px;
+    line-height: normal;
+  }
+  .ambassador-heading-underline img{
+  	width: 60%;
+    height: 60%;
+  }
+  .ambassador-heading-underline.rewards img{
+  	width: 40%;
+    height: 40%;
+  }
+  .ambassador-list {
+    margin: 30px 100px;
+  }
+  .levels .bebas{
+    font-size: 42px;
+  }
+  
+}
+@media (max-width: 991px) {
+  .ambassador-join {
+    font-size: 40px;
+  }
+  .ambassador-dr-squatch {
+    font-size: 80px;
+  }
+  .ambassador-team {
+    font-size: 40px;
+  }
+  .ambassador-signup {
+    font-size: 68px;
+  }
+  .ambassador-earn {
+    font-size: 32px;
+  }
+  .ambassador-heading-underline {
+    font-size: 100px;
+  }
+  .ambassador-list {
+    font-size: 68px;
+    margin: 30px 50px;
+  }
+  .numbers {
+   font-size: 100px;
+  }
+  .steps {
+    font-size: 32px;
+    line-height: 50px;
+  }
+ .ambassador-rewards-sub {
+    font-size: 32px;
+  }
+  .levels .bebas{
+    font-size: 34px;
+  }
+}
+@media (max-width: 767px) {
+   .header-become-an { 
+    font-size: 66px;
+    margin-top: 20px;
+  }
+  .header-ambassador {
+    font-size: 108px;
+  }
+   .ambassador-signup {
+    font-size: 68px;
+    text-align: center;
+    margin-top: 30px;
+  }
+  .ambassador-earn {
+    font-size: 32px;
+    text-align: center;
+  }
+ .ambassador-heading-underline {
+    font-size: 72px;
+  }
+ .ambassador-list {
+    font-size: 46px;
+    margin: 30px 10px;
+  }
+ .numbers {
+   font-size: 80px;
+  }
+  .steps {
+    font-size: 24px;
+    line-height: 40px;
+  }
+  .ambassador-rewards-sub {
+    font-size: 20px;
+  }
+  .levels .bebas{
+    font-size: 22px;
+  }
+}
+@media (max-width: 480px) {
+ .header-become-an { 
+    font-size: 40px;
+    margin-top: 40px;
+  }
+  .header-ambassador {
+    font-size: 60px;
+  }
+  .ambassador-join {
+    display: inline;
+    font-size: 24px;
+    border-top: 2px white solid;
+    border-bottom: 2px white solid;
+  }
+  .ambassador-dr-squatch {
+    font-size: 48px;
+  }
+  .ambassador-team {
+    font-size: 24px;
+  }
+  .ambassador-signup {
+    font-size: 40px;
+  }
+  .ambassador-earn {
+    font-size: 20px;
+  }
+  .ambassador-heading-underline {
+    font-size: 56px;
+  }
+ .ambassador-list {
+    font-size: 34px;
+    margin: 30px 0px;
+  }
+  .numbers {
+   font-size: 56px;
+  }
+  .steps {
+    font-size: 16px;
+    line-height: 30px;
+  }
+ .ambassador-rewards-sub {
+    font-size: 16px;
+  }
+  .levels .bebas{
+    font-size: 18px;
+  }
+}
+ 
+</style>
+
+<section class="banner-landscape landscape-0" style="background-image: url('{{'images/banner-ambassador.jpg' | asset_url }}')" data-barley="bg-img" data-barley-editor="bgimage">
+  <div class="col-xs-12 content text-invert text-center">
+    <div data-barley="beast-header" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+     <hgroup>
+      <div class="header-become-an signpainter">
+        Become an
+      </div>
+      <div class="header-ambassador bebas">
+        AMBASSADOR
+      </div>
+     </hgroup>
+    </div>
+ </div>
+</section>
+{% endblock %}
+
+{% block page_content %}
+<section class="ambassador-palomar-bg pholder hpad" style="background-image: url('{{'images/Palomar.jpg' | asset_url }}'); position:relative; background-position: 20% 0%; background-size: cover; min-height: 860px; padding-top: 60px;" data-barley="bg-palomar-img" data-barley-editor="bgimage">
+   <div class="col-md-5 col-sm-6 text-invert pholder-header" data-barley="ambassador-join-text" data-barley-editor="advanced">
+  	  <div class="ambassador-join signpainter">
+    	  Join the
+      </div>
+     <div class="ambassador-dr-squatch signpainter">
+    	  Dr. Squatch
+      </div>
+     <div class="ambassador-team bebas">
+    	  AMBASSADOR TEAM
+      </div>
+    </div>
+    <div class="col-md-6 col-md-offset-1 col-sm-6 text-invert vpadding8" data-barley="ambassador-signup-text" data-barley-editor="advanced">
+      <div class="ambassador-signup bebas">
+    	  SIGN UP AND
+      </div>
+      <div class="ambassador-earn bebas">
+    	  EARN 10% COMMISSION<br>ON ALL OF YOUR SALES
+      </div>
+      <div class="col-lg-6 col-lg-offset-6 col-md-8 col-md-offset-4 col-sm-10 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+      	<div class="klaviyo-form-HJKTab"></div>
+      </div>
+   </div>
+</section>
+
+<section class="off-white-bg pholder">
+  <div class="hpad">
+    <div class="hpad" data-barley="howitworks" data-barley-editor="advanced">
+      <div class="ambassador-heading-underline signpainter text-center">
+    	  HOW IT WORKS
+         <img src="{{ 'images/ambassador-line.png' | asset_url }}" alt class="img-responsive img-center">
+          </img>
+      </div>
+      <div class="ambassador-list signpainter">
+        <div class="clearfix">
+          <div class="col-sm-3 col-xs-2 numbers">1.</div>
+          <div class="col-sm-9 col-xs-10 bebas steps">
+          		Sign up and get a <strong>personal promo code for 15% OFF</strong> to share with your friends, Family and followers
+          </div>
+        </div>
+        <div class="clearfix">
+          <div class="col-sm-3 col-xs-2 numbers">2.</div>
+          <div class="col-sm-9 col-xs-10  bebas steps">
+          		REPRESENT THE SQUATCH NATION by sharing PHOTOS and  spreading the word about dr. Squatch
+          </div>
+        </div>
+        <div class="clearfix">
+          <div class="col-sm-3 col-xs-2 numbers">3.</div>
+          <div class="col-sm-9 col-xs-10  bebas steps">
+          		<strong>Receive 10% Commissions</strong> and EARN <strong>exclusive rewards</strong> when anybody uses your promo code
+          </div>
+        </div>
+       </div>
+     </div>
+
+   </div>
+
+</section>
+<section class="off-white-bg">
+  <div class="hpad">
+     <div class="hpad" data-barley="rewards" data-barley-editor="advanced">
+      <div class="ambassador-heading-underline rewards signpainter text-center">
+    	  REWARDS
+        <img src="{{ 'images/ambassador-line.png' | asset_url }}" alt class="img-responsive img-center">
+          </img>
+      </div>
+       <div class="bebas text-center ambassador-rewards-sub">
+         <strong>A PERSONALIZED 15% OFF DISCOUNT CODE + </strong>
+       </div>
+      <div class="ambassador-list signpainter">
+        <div class="levels clearfix">
+          <div class="col-xs-3">
+            <img src="{{ 'images/ambassador-pinecone.png' | asset_url }}" alt class="img-responsive"></img>
+          </div>
+          <div class="col-xs-9">PineCone Level
+          	<div class="bebas">
+          	1 Order = Secret Sticker Package 
+            </div>
+          </div>
+        </div>
+        <div class="levels clearfix">
+          <div class="col-xs-3">
+            <img src="{{ 'images/ambassador-sapling.png' | asset_url }}" alt class="img-responsive"></img>
+    	  </div>
+          <div class="col-xs-9">Sapling Status
+            <div class="bebas">
+          	5 Orders = Exclusive Dr. Squatch Staff T-shirt
+         	</div>
+    	  </div>
+  		</div>
+        <div class="levels clearfix">
+          <div class="col-xs-3">
+            <img src="{{ 'images/ambassador-sequoia.png' | asset_url }}" alt class="img-responsive"></img>
+  		  </div>
+          <div class="col-xs-9">Sequoia Certified
+            <div class="bebas">
+          	10 Orders = Cigar Box Bundle & Handmade mug 
+          	</div>
+  		  </div>
+		</div>
+  
+      </div>
+	 </div>
+   </div>
+
+</section>
+
+{% endblock %}
+{% block page_javascript %}
+<!-- BEGIN KLAVIYO SIGNUP FORM CODE -->
+<script type="text/javascript">
+  var __klKey = __klKey || 'pWh7nE';
+  (function() {
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = '//static.klaviyo.com/forms/js/client.js';
+    var x = document.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
+  })();
+</script>
+<!-- END KLAVIYO SIGNUP FORM CODE -->
+{% endblock %} 

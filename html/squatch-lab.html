@@ -1,0 +1,265 @@
+{% extends "base.html" %}
+{% import "components/contact-form.html" as contact %}
+
+{% block header_content %}
+<section class="banner-landscape centered" style="background-image: url({{ 'images/banner-landscape-17.jpg' | asset_url }})" data-barley='bg-img-sl' data-barley-editor='bgimage'>
+  <div class="content text-invert">
+    <div data-barley='squatch-lab-header' data-barley-editor='advanced'>
+      <hgroup>
+        <h1 class="heading">The Squatch Lab</h1>
+        <h2 class="heading regular">help us decide what to cook up next</h2>
+      </hgroup>  
+    </div>
+    <div class="media b-inline">
+      <div class="media-left media-middle">
+        <a href="#submit-idea">
+          <img class="media-object" src="{{ 'images/icon-submit.png' | asset_url }}" alt="">
+        </a>
+      </div>
+      <div class="media-body text-left vspace" data-barley='squatch-lab-header-submit' data-barley-editor='advanced'>
+        <h3 class="media-heading">Submit</h3>
+        <span class="light-strong">Submit your idea to the board and watch it come to life</span>
+      </div>
+    </div>  
+    <div class="media b-inline">
+      <div class="media-left media-middle">
+        <a href="#">
+          <img class="media-object" src="{{ 'images/icon-vote.png' | asset_url }}" alt="">
+        </a>
+      </div>
+      <div class="media-body text-left vspace" data-barley='squatch-lab-vote' data-barley-editor='advanced'>
+        <h3 class="media-heading">Vote</h3>
+        <span class="light-strong">Vote for your favorites and we’ll make them</spang>
+      </div>
+    </div>                 					               
+  </div>
+</section>      
+{% endblock %}
+
+
+{% block page_content %}
+<div class="pholder">
+  <div class="pholder-header" data-barley='squatch-lab-content-header' data-barley-editor='advanced'>
+    <h1 class="heading">Current Projects</h1>
+  </div>
+
+  <div class="row hpad">
+    <div class="col-lg-6">
+      <section class="box-vote bg-alt">
+        <div data-barley='squatch-lab-cp-1-header' data-barley-editor='advanced'>
+          <hgroup>
+            <h1 class="h-box">Men’s Shampoo & Conditioner</h1>
+            <h4 class="heading">Daily hair care to compliment your bar</h4>
+          </hgroup>
+        </div>
+        <div class="content" data-barley='squatch-lab-cp-1-sub-header' data-barley-editor='advanced'>
+          <p>We’re currently forumulating this puppy. It will be nutrient dense for scalp and hair health, and without common chemcicals added to shampoos. We’re thinking a nice woodsy scent that is similiar to our pine tar. Target Date June 2015.</p>							
+        </div>
+        <footer class="row">
+          <div class="col-sm-6 action">
+            <h2 class="h-box">Leave comment</h2>
+            <a href="#submit-idea" class="btn-action lb-comment">Comment</a>
+          </div>
+          <div class="col-sm-6 action">
+            <h2 class="h-box">Vote</h2>
+
+            <span class="likebtn likebtn-wrapper" data-identifier="vote1" data-theme="black" data-group_identifier="one" data-dislike_enabled="false"></span>
+          </div>
+        </footer>
+      </section>
+    </div>
+    
+    
+    <div class="col-lg-6">
+      <section class="box-vote bg-alt">
+        <div data-barley='squatch-lab-cp-2-header' data-barley-editor='advanced'>
+          <hgroup>
+            <h1 class="h-box">The Ultimate Shave Bar</h1>
+            <h4 class="heading">Respect your mug with a skin friendly shave</h4>
+          </hgroup>
+        </div>
+        <div class="content" data-barley='squatch-lab-cp-2-sub-header' data-barley-editor='advanced'>
+          <p>You already love the skin benefits of the Squatch bar, so we’re kicking it up a notch with the perfect shave bar.   We’ll be adding stuff like bentonite clay and helichrysum to provide the perfect way to get a close shave and protect your face. Target date May 2015.</p>							
+        </div>
+        <footer class="row">
+          <div class="col-sm-6 action">
+            <h2 class="h-box">Leave comment</h2>
+            <a href="#submit-idea" class="btn-action lb-comment">Comment</a>
+          </div>
+          <div class="col-sm-6 action">
+            <h2 class="h-box">Vote</h2>
+            <span class="likebtn likebtn-wrapper" data-identifier="vote2" data-theme="black" data-group_identifier="two" data-dislike_enabled="false"></span>
+          </div>
+        </footer>
+      </section>
+    </div>					
+  </div>
+</div>   
+
+<section class="pholder bg-alt">
+  <div class="pholder-header" data-barley='squatch-lab-ib-header' data-barley-editor='advanced'>
+    <h1 class="heading hlight">THE IDEA BOARD</h1>
+  </div>      
+  <div class="row hpad">
+    <div class="col-lg-4 col-sm-6">
+      <section class="box-vote smaller">
+        <div data-barley='squatch-lab-ib-1-header' data-barley-editor='advanced'>
+          <hgroup>
+            <h1 class="h-box">Squatch Candles</h1>
+            <h6 class="heading">Bring the outdoors to your living room</h6>
+          </hgroup>
+        </div>
+        <div class="content" data-barley='squatch-lab-ib-1-content' data-barley-editor='advanced'>
+          <p>Envision kicking back on your bed as the subtle scent of a redwood forest or a pacific beach washes over your room. Sure beats dirty laundry.  Safe soy based candles with maximum scent.</p>
+        </div>
+        <footer class="row">
+          <div class="col-sm-6 action">
+            <h4 class="h-box">Leave comment</h4>
+            <a href="#submit-idea" class="btn-action lb-comment">Comment</a>
+          </div>
+          <div class="col-sm-6 action">
+            <h4 class="h-box">Vote</h4>
+            <span class="likebtn likebtn-wrapper" data-identifier="vote3" data-theme="black" data-group_identifier="three" data-dislike_enabled="false"></span>
+          </div>
+        </footer>
+      </section>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <section class="box-vote smaller">
+        <div data-barley='squatch-lab-ib-2-header' data-barley-editor='advanced'>
+          <hgroup>
+            <h1 class="h-box">Travel Soap Pack</h1>
+            <h6 class="heading">No more wet bar in a ziplog bag!</h6>
+          </hgroup>
+        </div>
+        <div class="content" data-barley='squatch-lab-ib-2-content' data-barley-editor='advanced'>
+          <p>We know the road warriors amongst Squatch nation have a tough time transporting their bars around the country.  With bars designed for 3 day use this problem is solved.</p>
+        </div>
+        <footer class="row">
+          <div class="col-sm-6 action">
+            <h4 class="h-box">Leave comment</h4>
+            <a href="#submit-idea" class="btn-action lb-comment">Comment</a>
+          </div>
+          <div class="col-sm-6 action">
+            <h4 class="h-box">Vote</h4>
+            <span class="likebtn likebtn-wrapper" data-identifier="vote4" data-theme="black" data-group_identifier="four" data-dislike_enabled="false"></span>
+          </div>
+        </footer>
+      </section>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <section class="box-vote smaller">
+        <div data-barley='squatch-lab-ib-3-header' data-barley-editor='advanced'>
+          <hgroup>
+            <h1 class="h-box">Deodorant</h1>
+            <h6 class="heading">natural deodorant that works hard</h6>
+          </hgroup>
+        </div>
+        <div class="content" data-barley='squatch-lab-ib-3-content' data-barley-editor='advanced'>
+          <p>Commercial deodorant contains harmful aluminum, most natural stuff leaves you smelling worse than before.  What’s a Squatch man to do?  We’d like to put together a crystal deodorant that protects with a manly scent.</p>
+        </div>
+        <footer class="row">
+          <div class="col-sm-6 action">
+            <h4 class="h-box">Leave comment</h4>
+            <a href="#contact-form-holder" class="btn-action lb-comment">Comment</a>
+          </div>
+          <div class="col-sm-6 action">
+            <h4 class="h-box">Vote</h4>
+            <span class="likebtn likebtn-wrapper" data-identifier="vote5" data-theme="black" data-group_identifier="five" data-dislike_enabled="false"></span>
+          </div>
+        </footer>
+      </section>
+    </div>			
+    <div class="col-lg-4 col-sm-6">
+      <section class="box-vote smaller">
+        <div data-barley='squatch-lab-ib-4-header' data-barley-editor='advanced'>
+          <hgroup>
+            <h1 class="h-box">Squatch Candles</h1>
+            <h6 class="heading">Bring the outdoors to your living room</h6>
+          </hgroup>
+        </div>
+        <div class="content" data-barley='squatch-lab-ib-4-content' data-barley-editor='advanced'>
+          <p>Envision kicking back on your bed as the subtle scent of a redwood forest or a pacific beach washes over your room. Sure beats dirty laundry.  Safe soy based candles with maximum scent.</p>
+        </div>
+        <footer class="row">
+          <div class="col-sm-6 action">
+            <h4 class="h-box">Leave comment</h4>
+            <a href="#submit-idea" class="btn-action lb-comment">Comment</a>
+          </div>
+          <div class="col-sm-6 action">
+            <h4 class="h-box">Vote</h4>
+            <span class="likebtn likebtn-wrapper" data-identifier="vote6" data-theme="black" data-group_identifier="six" data-dislike_enabled="false"></span>
+          </div>
+        </footer>
+      </section>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <section class="box-vote smaller">
+        <div data-barley='squatch-lab-ib-5-header' data-barley-editor='advanced'>
+          <hgroup>
+            <h1 class="h-box">Travel Soap Pack</h1>
+            <h6 class="heading">No more wet bar in a ziplog bag!</h6>
+          </hgroup>
+        </div>
+        <div class="content" data-barley='squatch-lab-ib-5-content' data-barley-editor='advanced'>
+          <p>We know the road warriors amongst Squatch nation have a tough time transporting their bars around the country.  With bars designed for 3 day use this problem is solved.</p>
+        </div>
+        <footer class="row">
+          <div class="col-sm-6 action">
+            <h4 class="h-box">Leave comment</h4>
+            <a href="#submit-idea" class="btn-action lb-comment">Comment</a>
+          </div>
+          <div class="col-sm-6 action">
+            <h4 class="h-box">Vote</h4>
+            <span class="likebtn likebtn-wrapper" data-identifier="vote7" data-theme="black" data-group_identifier="seven" data-dislike_enabled="false"></span>
+          </div>
+        </footer>
+      </section>
+    </div>
+    <div class="col-lg-4 col-sm-6">
+      <section class="box-vote smaller">
+        <div data-barley='squatch-lab-ib-6-header' data-barley-editor='advanced'>
+          <hgroup>
+            <h1 class="h-box">Deodorant</h1>
+            <h6 class="heading">natural deodorant that works hard</h6>
+          </hgroup>
+        </div>
+        <div class="content" data-barley='squatch-lab-ib-6-content' data-barley-editor='advanced'>
+          <p>Commercial deodorant contains harmful aluminum, most natural stuff leaves you smelling worse than before.  What’s a Squatch man to do?  We’d like to put together a crystal deodorant that protects with a manly scent.</p>
+        </div>
+        <footer class="row">
+          <div class="col-sm-6 action">
+            <h4 class="h-box">Leave comment</h4>
+            <a href="#submit-idea" class="btn-action lb-comment">Comment</a>
+          </div>
+          <div class="col-sm-6 action">
+            <h4 class="h-box">Vote</h4>
+            <span class="likebtn likebtn-wrapper" data-identifier="vote8" data-theme="black" data-group_identifier="eight" data-dislike_enabled="false"></span>
+          </div>
+        </footer>
+      </section>
+    </div>										
+  </div>
+</section>
+
+<section class="pholder hpad">
+  <div class="pholder-header">
+    <h1 class="heading">SUBMIT YOUR IDEA</h1>
+  </div>      
+
+  <div class="row">
+    <div class="col-sm-6" id='submit-idea'>
+    {{ contact.contact_form("Squatch Lab Form", notes_heading="YOUR IDEA") }}
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block page_javascript %}
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;
+                         a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";
+                         a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","https://w.likebtn.com/js/w/widget.js");</script>
+
+<script src="{{ 'js/likebtn.js' | asset_url }}"></script>
+<script src="{{ 'js/contact.js' | asset_url }}"></script>
+{% endblock %}

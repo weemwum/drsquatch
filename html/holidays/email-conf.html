@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<style type="text/css">
+		@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300');
+	</style>
+</head>
+
+<body style="margin: 0;">
+	<table cellpadding="0" cellspacing="0" width="100%" style="margin: 0; padding: 0; text-align: center;">
+		<tr>
+			<td>
+				<table border="0" cellpadding="0" cellspacing="0" width="450" style="margin: 0 auto 20px; background-color: #ffffff; border-collapse: collapse;">
+					<tr>
+						<td>
+							<div style="padding: 15px 0; border-bottom: 1px solid #E0E0E0; background-color: #efedeb;">
+								<img src="https://d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men/images/logo.png?ts=1439563719&host=drsquatch.cratejoy.com"
+								 alt="Dr. Squatch Soap Co." />
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div style="padding:0 65px;">
+								<h1 style="font-family: OpenSans, sans-serif; font-weight: 600; font-size: 26px; color: #343030; line-height: 36px; margin-top: 25px; margin-bottom: 25px;">Thank You for<br>your order</h1>
+								<!--<h2 style="font-family: OpenSans, sans-serif; font-size: 18px; color: #B0B0B0; line-height: 22px; width: 370px; margin: 0 auto;">For ordering with Dr. Squatch</h2>
+					<div style="border-bottom: 1px solid #E0E0E0; width: 90%; margin: 5px auto;">-->
+
+								<p>Hi {{ customer.first_name }}, We've received order
+									<a href="{{ base_url }}/customer/order/{{ order.id }}" style="color:#cc7837;font-weight:bold;">
+									#{{ order.id }}</a> and have a team of surprisingly nimble Sasquatches working to put it together now.</p>
+								<br/>
+								<p>Orders usually take 1 business day to process and 3-5 business days to ship once processed. In the meantime, feel
+									free to get dirty and rugged -- soap is on the way.
+									<br/>
+									<br/>
+									<i>All orders placed by December 20th will be delivered in time for Christmas</i>
+								</p>
+							</div>
+							<br/>
+							<h4 style="font-family: OpenSans, sans-serif; font-weight: 400; font-size: 15px; color: black; line-height: 36px; width: 90%; margin: 0 auto; padding-left: 4%; box-sizing: border-box; color: white; background-color: #7f992c; text-align: left;">ORDER &amp; SHIPPING INFO</h4>
+							<blockquote style="border-left: 0; text-align: left; margin-top: 25px; margin-bottom: 0; padding-left:25px; padding-top: 0; font-family: OpenSans, sans-serif; font-weight: 400;">
+								<h4 style="font-family: OpenSans, sans-serif; font-weight: 800; margin-bottom:10px; font-size: 15px;">Order Number</h4>
+								<p>
+									<a href="{{ base_url }}/customer/order/{{ order.id }}" style="color:#cc7837;"> #{{ order.id }}</a>
+								</p>
+
+							</blockquote>
+							{% if order.gifts_only %}
+							<p style="text-align: right; margin: 0; font-family: OpenSans, sans-serif; font-weight: 400;"><span style="margin:16px 0; display: block;">Your gift recipient will be notified via email.</span></p>
+							{% else %} {% set shipping_address = order.ship_address %}
+							<blockquote style="border-left: 0; padding-left: 25px; text-align: left; padding-top: 0; font-family: OpenSans, sans-serif; font-weight: 400;">
+								<h4 style="font-family: OpenSans, sans-serif; font-weight: 800; margin-bottom:10px; font-size: 15px;">Shipping Address</h4>
+								<div class="name">{{ shipping_address.to }}</div>
+								<div class="street-address">{{ shipping_address.street }}</div>
+								<div class="extended-address">{{ shipping_address.unit }}</div>
+								<span class="locality">{{ shipping_address.city }}</span>,
+								<span class="region">{{ shipping_address.state }}</span>
+								<span class="postal-code">{{ shipping_address.zip_code }}</span>
+								<div class="country-name">{{ shipping_address.country }}</div>
+							</blockquote>
+							{% endif %}
+							<h4 style="font-family: OpenSans, sans-serif; font-weight: 400;  font-size: 15px; color: black; line-height: 36px; width: 90%; margin: 0 auto; padding-left: 4%; box-sizing: border-box; color: white; background-color: #7f992c; text-align: left;">HERE'S WHAT YOU ORDERED</h4>
+							<br/>
+							<table border="0" cellpadding="0" cellspacing="0" width="450" style="margin: 0 auto 20px; background-color: #ffffff; border-collapse: collapse; width: 90%;">
+								<tr><td>
+								{% for cart_product in order.products %}
+								<blockquote style="border-left: 0;padding-left: 25px; text-align: left; padding-top: 0; font-family: OpenSans, sans-serif; font-weight: 400;">
+									<div style="font-weight: 400;">
+										{%- set instance = cart_product.instance -%} {%- set product = instance.product -%} {{ product.name }} {% for variant in
+										instance.variants %}{% if not loop.first %} / {% endif %}{{ variant.variant_value.value }}{% endfor %}
+									</div>
+									<div style="font-weight: 300;">
+										Price: {{ cart_product.price | currency(store=store) }}
+									</div>
+									<div style="font-weight: 300;">
+										Qty: {{ cart_product.quantity }}
+									</div>
+								</blockquote>
+								{% endfor %} {% for cart_product in order.gifts %}
+								<blockquote style="border-left: 0; padding-left: 25px; text-align: left; padding-top: 0; font-family: OpenSans, sans-serif; font-weight: 400; margin-bottom: 15px;">
+									<div style="font-weight: 400;">
+										{%- set instance = cart_product.instance -%} {%- set product = instance.product -%} {{ product.name }} {% for variant in
+											instance.variants %}{% if not loop.first %} / {% endif %}{{ variant.variant_value.value }}{% endfor %}
+									</div>
+									<div style="font-weight: 400;">
+										Price: {{ cart_product.price | currency(store=store) }}
+									</div>
+									<div style="font-weight: 400;">
+										Qty: {{ cart_product.quantity }}
+									</div>
+								</blockquote>
+								{% endfor %}
+								</td></tr>
+								<tr style="border-top: 1px solid #E0E0E0;">
+									<th style="padding-top: 15px;font-family: OpenSans, sans-serif; text-align: left; font-weight: 400; padding-right:20px; line-height: 24px; padding-left: 7px;">Item Subtotal</th>
+									<td></td>
+									<td class="currency" style="padding-top: 15px; text-align: right; padding-left:20px; font-family: OpenSans, sans-serif; font-weight: 400; padding-right: 7px;">{{ order.total_price | currency(store=store) }}</td>
+								</tr>
+								{% if order.total_tax and order.total_tax > 0 %}
+								<tr>
+									<th style="font-family: OpenSans, sans-serif; text-align: left; font-weight: 400; padding-right:20px; line-height: 24px; padding-left: 7px;">Tax</th>
+									<td></td>
+									<td class="currency" style="text-align: right; padding-left:20px; font-family: OpenSans, sans-serif; font-weight: 400; padding-right: 7px;">{{ order.total_tax | currency(store=store) }}</td>
+								</tr>
+								{% endif %}
+								{% for cart_coupon in order.coupons %}
+								<tr style="color: #7f992c;">
+									<th style="font-family: OpenSans, sans-serif; text-align: left; font-weight: 400; padding-right:20px; line-height: 24px; padding-left: 7px;">Holiday Savings ({{ cart_coupon.code_used }})</th></td>
+									<td></td>
+									<td style="text-align: right; padding-left:20px; font-family: OpenSans, sans-serif; font-weight: 400; padding-right:20px; padding-right: 7px;">-{{ cart_coupon.discount_value | currency(store=store) }}</td>
+								</tr>
+								{% endfor %} {% if order.total_shipping > 0 %}
+								<tr>
+									<th style="font-family: OpenSans, sans-serif; text-align: left; font-weight: 400; padding-right:20px; line-height: 24px; padding-left: 7px;">Shipping</th>
+									<td></td>
+									<td class="currency" style="text-align: right; padding-left:20px; font-family: OpenSans, sans-serif; font-weight: 400; padding-right: 7px;">{{ order.total_shipping | currency(store=store) }}</td>
+								</tr>
+								{% endif %}
+								<tr style="background: #E0E0E0;">
+									<th style="font-family: OpenSans, sans-serif; text-align: left; font-weight: 800; padding-right:20px; line-height: 24px; padding-left: 7px;">Order Total</th>
+									<td></td>
+									<td class="currency" style="text-align: right; padding-left:20px; font-family: OpenSans, sans-serif; font-weight: 400; padding-right: 7px;">{{ order.total | currency(store=store) }}</td>
+								</tr>
+							</table>
+
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" cellspacing="0" width="450" height="240" style="padding-bottom:15px; margin: 0 auto 0; background: #cc7837; color: #FFF; border-collapse: collapse; text-align: center;">
+		<tr>
+			<td style="padding-top: 20px;">
+				<img style="display: inline-block;" src="https://s3.amazonaws.com/cratejoy_vendor_images/drsquatchsoapco/joybox_men-copy-16/images/bubbles-icon.png">
+				<br/>
+				<span style="font-family: OpenSans, sans-serif; padding:10px 0; display:inline-block;">THE DR. SQUATCH BLOG</span>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<a href="http://blog.drsquatch.com/why-use-natural-soap/" style="text-decoration: none; color: #FFF; font-family: OpenSans, sans-serif; padding:10px 0; font-size: 24px; display:inline-block;">Why Use Natural Soap
+					<br/> - Your Skin Will Notice
+					<br/> the Difference
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<td style="padding-bottom: 15px;">
+				<a href="http://blog.drsquatch.com/why-use-natural-soap/">
+					<img style="display: inline-block;" src="https://s3.amazonaws.com/cratejoy_vendor_images/drsquatchsoapco/joybox_men-copy-16/images/arrow-icon.png">
+				</a>
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" cellspacing="0" width="450" style="background: #FFF; font-family: OpenSans, sans-serif; padding-bottom:15px; margin: 0 auto 100px; border-collapse: collapse; text-align: center;">
+		<tr>
+			<td style="padding-top: 40px;">
+				<span style="line-height: 22px; font-size: 20px; display:inline-block; font-weight: bold;">Any Questions?</span>
+				<br/>
+				<span style=" display:inline-block; ">Call (844) 643-8347 or
+					<a href="https://drsquatch.com/contact" style="color: black; text-decoration: underline;">visit us online</a>.</span>
+				<br/>
+				<span style=" display:inline-block; ">We're happy to help!</span>
+				<br/>
+				<br/>
+				<span style="line-height: 22px; font-size: 20px; display:inline-block; font-weight: bold;">Sudisfaction Guarantee</span>
+				<br/>
+				<span style=" display:inline-block; ">Your satisfaction is 100% guaranteed.</span>
+				<br/>
+				<span style=" display:inline-block; ">See our
+					<a href="https://drsquatch.com/returns" style="color: black; text-decoration: underline;">Returns &amp; Exchanges Policy</a>.</span>
+				<br/>
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>

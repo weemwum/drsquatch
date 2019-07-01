@@ -1,0 +1,219 @@
+{% extends "base.html" %}
+
+{% block header_content %}
+{% include 'static-page-css.html' %}
+<section class="banner-landscape split static-page-banner" style="background-image: url('{{'images/dark-wood-bg.jpg' | asset_url }}')" data-barley="index-bg-img" data-barley-editor="bgimage">
+ <div class="content text-invert text-center">
+  <hgroup>
+   <h1 class="heading" data-barley="our-products-name" data-barley-editor="simple">
+    Our Products
+   </h1>
+   <p class="regular" data-barley="our-products-description" data-barley-editor="simple">
+    Handmade, all-natural products to tame your inner Squatch.
+   </p>
+  </hgroup>
+ </div>
+</section>
+{% endblock %}
+
+
+{% block page_content %}
+<div class="our-products-page">
+ <section class="pholder">
+  <div class="row hpad">
+   <div class="col-md-6">
+    <div class="our-products-main-right">
+     <img src="{{'images/our-products-main.png' | asset_url}}">
+     </img>
+    </div>
+   </div>
+   <div class="col-md-6">
+    <div class="our-products-main-right">
+     <div class="our-products-feature-name">
+      Bar Soap
+     </div>
+     <div class="op-feature-description">
+      Handmade. Cold-processed. All natural.
+     </div>
+     <div class="op-feature-long-description">
+      Get great skin with our natural bar
+          soap made the traditional way. Nine
+          natural ways to smell like a man.
+     </div>
+     <a href="/collections/bar-soap" class="btn btn-secondary btn-frame btn-md">
+      SHOP ALL BAR SOAPS
+     </a>
+     <a href="/subscription" class="btn btn-success btn-frame btn-dark btn-md">
+      GET THE SOAPSCRIPTION
+     </a>
+    </div>
+   </div>
+  </div>
+  <!-- End row -->
+ </section>
+ <section class="squatch-collection">
+  <div class="row">
+   <div class="productDivider">
+   </div>
+   <section class="b-product col-sm-3">
+    <div class="inline-block barley_hide_outline" data-barley="index-coll-img3" data-barley-editor="image" contenteditable="false">
+     <a href="/collections/hair-care" contenteditable="false">
+      <img src="{{ 'images/hair-care-home-col.png' | asset_url }}" alt class="img-responsive">
+      </img>
+     </a>
+    </div>
+    <div data-barley="index-coll-desc3" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+     <h2 class="heading">
+      hair care
+     </h2>
+     <p class>
+      100% NPA natural certified
+     </p>
+     <p class>
+      Get the best of both worlds with our shampoo & conditioner combo. Buy them together and save 15%.
+     </p>
+     <a href="/collections/hair-care" class="btn btn-secondary btn-frame btn-sm">
+      SHOP ALL HAIR CARE
+     </a>
+    </div>
+   </section>
+   <section class="b-product col-sm-3">
+    <div class="inline-block barley_hide_outline" data-barley="index-coll-img4" data-barley-editor="image" contenteditable="false">
+     <a href="/collections/cologne">
+      <img src="{{ 'images/both-cologne-new.png' | asset_url }}" alt class="img-responsive">
+      </img>
+     </a>
+    </div>
+    <div data-barley="index-coll-desc4" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+     <h2 class="heading">
+      Colognes
+     </h2>
+     <p class>
+      Accentuate yourself, naturally
+     </p>
+     <p class>
+      Don't smother your scent with an Axe bomb. Accentuate it with our organic & wildcrafted oils.
+     </p>
+     <a href="/collections/cologne" class="btn btn-secondary btn-frame btn-sm">
+      SHOP ALL COLOGNES
+     </a>
+    </div>
+   </section>
+   <section class="b-product col-sm-3">
+    <div class="inline-block barley_hide_outline" data-barley="index-coll-img6" data-barley-editor="image" contenteditable="false">
+     <a href="/collections/shave">
+      <img src="{{ 'images/both-beard-oil.png' | asset_url }}" alt class="img-responsive">
+      </img>
+     </a>
+    </div>
+    <div data-barley="index-coll-desc6" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+     <h2 class="heading">
+      Beard Oil
+     </h2>
+     <p class>
+      Soften and tame coarse hair.
+     </p>
+     <p class>
+      The ideal beard should look shiny and groomed, not flaky and shaggy. Treat it right and thank us later.
+     </p>
+     <a href="/collections/beard" class="btn btn-secondary btn-frame btn-sm">
+      SHOP ALL BEARD
+     </a>
+    </div>
+   </section>
+   <section class="b-product col-sm-3">
+    <div class="inline-block barley_hide_outline" data-barley="index-coll-img6" data-barley-editor="image" contenteditable="false">
+     <a href="/collections/shave">
+      <img src="{{ 'images/shave-home-col.png' | asset_url }}" alt class="img-responsive">
+      </img>
+     </a>
+    </div>
+    <div data-barley="index-coll-desc6" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+     <h2 class="heading">
+      Shave
+     </h2>
+     <p class>
+      Shave the traditional way.
+     </p>
+     <p class>
+      Save your face from the rough blades of cartridge razors and keep it smooth with an old school shave.
+     </p>
+     <a href="/collections/shave" class="btn btn-secondary btn-frame btn-sm">
+      SHOP ALL SHAVE
+     </a>
+    </div>
+   </section>
+   <div class="productDivider hidden-xs">
+   </div>
+   <section class="b-product col-sm-4">
+    <div class="inline-block barley_hide_outline" data-barley="index-coll-img5" data-barley-editor="image" contenteditable="false">
+     <a href="/collections/gifts">
+      <img src="{{ 'images/gift-home-col.png' | asset_url }}" alt class="img-responsive">
+      </img>
+     </a>
+    </div>
+    <div data-barley="index-coll-desc5" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+     <h2 class="heading">
+      Squatch Gifts
+     </h2>
+     <p class>
+      The subtle way to say, "You stink."
+     </p>
+     <p class>
+      Sometimes guys smell. And we’ve got the perfect gifts: fresh, natural scents to clean up their inner lumberjack.
+     </p>
+     <a href="/collections/gifts" class="btn btn-secondary btn-frame btn-sm">
+      SHOP ALL GIFTS
+     </a>
+    </div>
+   </section>
+   <section class="b-product col-sm-4">
+    <div class="inline-block barley_hide_outline" data-barley="index-coll-img1" data-barley-editor="image" contenteditable="false">
+     <a href="/collections/gear">
+      <img src="{{ 'images/gear-home-col.png' | asset_url }}" alt class="img-responsive">
+      </img>
+     </a>
+    </div>
+    <div data-barley="index-coll-desc1" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+     <h2 class="heading">
+      Squatch Gear
+     </h2>
+     <p class>
+      Put some schwag in your bag.
+     </p>
+     <p class>
+      Whether you're in the shower, out in the wild or just out to dinner, you can rep the Squatch in style.
+     </p>
+     <a href="/collections/gear" class="btn btn-secondary btn-frame btn-sm">
+      SHOP ALL GEAR
+     </a>
+    </div>
+   </section>
+   <section class="b-product col-sm-4">
+    <div class="inline-block barley_hide_outline" data-barley="index-coll-img7" data-barley-editor="image" contenteditable="false">
+     <a href="/shop/product/203407568">
+      <img src="{{ 'images/sampler.png' | asset_url }}" alt class="img-responsive">
+      </img>
+     </a>
+    </div>
+    <div data-barley="index-coll-desc7" data-barley-editor="advanced" contenteditable="false" class="barley_hide_outline">
+     <h2 class="heading">
+      Sampler Bundle
+     </h2>
+     <p class>
+      A 4-pack of our best sellers.
+     </p>
+     <p class>
+      Treat your skin right with three of our best-smelling, best-selling soaps - and our Soap Saver to keep them fresh.
+     </p>
+     <a href="/shop/product/203407568" class="btn btn-secondary btn-frame btn-sm">
+      SHOP THE BUNDLE
+     </a>
+    </div>
+   </section>
+  </div>
+ </section>
+ <!-- End product grid -->
+</div>
+<!-- End Our Products Page -->
+{% endblock %}

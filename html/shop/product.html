@@ -1,0 +1,841 @@
+{% if 'avgrating' in args %}
+  {{ reviews_data.avg_rating }}
+{% else %}
+  {% extends "base.html" %}
+  {% block meta_additions %}
+
+    <link rel="canonical" href="https://drsquatch.com/shop/product/{{product.slug}}">
+    {% if product.id == 83122902 %}
+      <meta name="description" content="Dr.Squatch has all natural shampoo that has been carefully crafted with thickening ingredients for healthy locks. Shop the best in organic shampoo today!">
+    {% elif product.id == 83122952 %}
+      <meta name="description" content="Try the best in citrus scented conditioner from Dr. Squatch. Our men's natural hair conditioner is made with all natural ingredients to give you incredible shine.">
+    {% else %}
+      <meta name="description" content="{{product.description}}">
+    {% endif %}
+  {% endblock %}
+
+  {% block title %}
+    {% set title_tags = [] %}
+    {% for tag in product.taxonomy %}
+      {% if 'title-tag-' in tag.slug %} {{ '' if title_tags.append(tag.slug.replace('title-tag-', '').replace('-', ' ').title()) }} {% endif %}
+    {% endfor %}
+
+    {% if title_tags %}
+      {{ ' | '.join(title_tags) }}
+    {% else %}
+      {{ product.name }}
+    {% endif %}
+  {% endblock %}
+
+{% import 'components/product-img-carousel.html' as imgCarousel %}
+
+{% set min_price = product.calc_min_ecom_price() %}
+{% set max_price = product.calc_max_ecom_price() %}
+{% set product_category = [] %}
+{% set product_category_link = [] %}
+
+{# set vars = { 'show_video': True,
+'video_url': 'https://www.youtube.com/embed/s_zB1Mvz79Q',
+'show_process': True,
+'show_subscribe_button': True,
+'show_usage': True,
+'show_shave_box' : False,
+'show_howtoshave' : False,
+'show_haircare_process' : False,
+'is_shave_page' : False,
+'show_details_bottom': True,
+'show_ingredients' : False,
+'change_ingredients_name' : False,
+'shave_kit_text' : False } #}
+
+{% set vars = { 'show_video': True,
+'video_url': 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fdrsquatch%2Fvideos%2F1152109414931703%2F&show_text=0',
+'show_process': True,
+'show_subscribe_button': True,
+'show_usage': True,
+'show_shave_box' : False,
+'show_howtoshave' : False,
+'show_haircare_process' : False,
+'is_shave_page' : False,
+'show_details_bottom': True,
+'hide_exfoliation': False,
+'show_ingredients' : False,
+'change_ingredients_name' : False,
+'shave_kit_text' : False } %}
+
+{% for t in product.taxonomy %}
+{% if t.slug == 'collection-bar-soap' %}
+
+{% do product_category.append("Bar Soaps") %}
+{% do product_category_link.append("/collections/bar-soap") %}
+
+{% elif t.slug == 'collection-best-seller' %}
+
+{% do product_category.append("Best Sellers") %}
+{% do product_category_link.append("/collections/best-sellers") %}
+
+{% elif t.slug == 'collection-cologne' %}
+{% do product_category.append("Cologne") %}
+{% do product_category_link.append("/collections/cologne") %}
+{% do vars.update({'show_video': False}) %}
+{% do vars.update({'show_video': False}) %}
+{% do vars.update({'show_process': False}) %}
+{% do vars.update({'show_details_bottom': True}) %}
+{% do vars.update({'show_usage': False}) %}
+{% do vars.update({'show_subscribe_button': False}) %}
+{% do vars.update({'hide_exfoliation': True}) %}
+
+{% elif t.slug == 'product-type-haircare' %}
+{% do vars.update({'show_video': True}) %}
+{% do vars.update({'show_subscribe_button': False}) %}
+{# do vars.update({'video_url': 'https://www.youtube.com/embed/hL659tRaMa4'}) #}
+{% do vars.update({'video_url': 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fdrsquatch%2Fvideos%2F1152109414931703%2F&show_text=0'}) %}
+{% do vars.update({'show_process': False}) %}
+{% do vars.update({'show_haircare_process': True}) %}
+
+{% elif t.slug == 'bundle' %}
+{% do vars.update({'change_ingredients_name': True}) %}
+{% do vars.update({'show_details_bottom': False}) %}
+
+{% elif t.slug == 'collection-gift' %}
+{% do vars.update({'change_ingredients_name': False}) %}
+
+{% elif t.slug == 'product-type-shirt' %}
+{% do vars.update({'change_ingredients_name': True}) %}
+{% do vars.update({'show_details_bottom': False}) %}
+{% do vars.update({'show_video': False}) %}
+{% do vars.update({'show_process': False}) %}
+{% do vars.update({'show_subscribe_button': False}) %}
+{% do vars.update({'show_usage': False}) %}
+
+{% elif t.slug == 'product-type-koozie' %}
+{% do vars.update({'change_ingredients_name': True}) %}
+{% do vars.update({'show_details_bottom': False}) %}
+{% do vars.update({'show_video': False}) %}
+{% do vars.update({'show_process': False}) %}
+{% do vars.update({'show_subscribe_button': False}) %}
+{% do vars.update({'show_usage': False}) %}
+
+{% elif t.slug == 'gift-card' %}
+{% do vars.update({'show_details_bottom': False}) %}
+{% do vars.update({'show_subscribe_button': False}) %}
+{% do vars.update({'show_usage': False}) %}
+{% do vars.update({'change_ingredients_name': True}) %}
+
+{% do product_category.append("Gift") %}
+{% do product_category_link.append("/collections/gift") %}
+{% do vars.update({'change_ingredients_name': False}) %}
+
+{% elif t.slug == 'collection-shave' %}
+{% do vars.update({'show_video': False}) %}
+{% do vars.update({'show_usage': True}) %}
+{% do vars.update({'show_process': False}) %}
+{% do vars.update({'show_shave_box': True}) %}
+{% do vars.update({'show_howtoshave': True}) %}
+{% do vars.update({'is_shave_page': True}) %}
+{% do vars.update({'show_details_bottom': False}) %}
+{% do vars.update({'change_ingredients_name': False}) %}
+{% do vars.update({'shave_kit_text': False}) %}
+
+{% elif t.slug == 'collection-beard' %}
+{% do product_category.append("Beard") %}
+{% do product_category_link.append("/collections/beard") %}
+{% do vars.update({'video_url': 'https://www.facebook.com/plugins/video.php?href=https://business.facebook.com/drsquatch/videos/693179951063776/&show_text=0'}) %}
+{% do vars.update({'show_usage': False}) %}
+{% do vars.update({'show_process': False}) %}
+{% do vars.update({'show_details_bottom': True}) %}
+{% do vars.update({'hide_exfoliation': True}) %}
+{% endif %}
+{% endfor %}
+
+{% if product.id == 70698419 %}
+{% do vars.update({'show_video': False}) %}
+{% do vars.update({'show_process': False}) %}
+{% do vars.update({'show_usage': False}) %}
+{% endif %}
+
+{% if product.id == 543921815 %}
+{% do vars.update({'show_video': False}) %}
+{% do vars.update({'show_process': False}) %}
+{% do vars.update({'show_usage': False}) %}
+{% do vars.update({'show_subscribe_button': False}) %}
+{% do vars.update({'show_details_bottom': False}) %}
+{% endif %}
+
+{% if product.id == 503651566 %}
+{% do vars.update({'show_details_bottom': False}) %}
+{% endif %}
+
+{% if product.id == 83120574 %}
+{% do vars.update({'show_ingredients': True}) %}
+{% endif %}
+
+{% if product.id == 83121848 %}
+{% do vars.update({'show_ingredients': True}) %}
+{% endif %}
+
+{% if product.id == 83121030 %}
+{% do vars.update({'change_ingredients_name': True}) %}
+{% do vars.update({'shave_kit_text': True}) %}
+{% endif %}
+{% block header_content %}
+
+<script>
+  dataLayer.push({'event' : 'productViewed', 'productId': '{{product.id}}', 'productName': '{{product.name}}', 'price' : Math.round({{min_price / 100}}) })
+</script>
+  <!-- STICKY ADD TO CART -->
+  <div class="container-fluid hidden-md hidden-lg">
+    <div class="row">
+      <a href="#"  data-toggle="modal" data-target="#cart-slide" onclick="pass_pixel1();" class="orange-btn mobile-fixed-btn ecom-add-to-cart btn"  data-ecom-id='{{product.id}}'>
+        Add to Cart
+        <img src="//d3a1v57rabk2hm.cloudfront.net/drsquatchsoapco/joybox_men-copy-26/images/btn-icon@2x.png?ts=1558117491&amp;host=drsquatch.com ">
+      </a>
+    </div>
+  </div>
+  <style>
+    .orange-btn{
+    	font-family: "proxima-nova",sans-serif;
+    	background-color: #f77a2d;
+    	font-size: 16px;
+    	font-weight: bold;
+    	font-style: normal;
+    	font-stretch: normal;
+    	line-height: normal;
+    	letter-spacing: normal;
+    	text-align: center;
+    	color: #ffffff;
+    	padding: 12px 38px 12px 30px;
+    	transition:all 0.2s;
+    }
+    .orange-btn img {
+      width: 7px;
+      position: relative;
+      left: 10px;
+      top: -1px;
+      transition:all 0.2s;
+    }
+    .orange-btn:hover{
+    	color:#fff;
+    	text-decoration:none;
+    	background-color: #E66F27;
+    }
+    .orange-btn:hover img{
+    	left:15px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .mobile-fixed-btn {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 999;
+        padding: 17px 38px 17px 30px;
+    	}
+    }
+  </style>
+          <!-- END STICKY ADD TO CART -->
+{#<section class="banner-landscape centered" style="background-image: url({{ 'images/banner-landscape-2.jpg' | asset_url }})" data-barley="bg-img-{{product.id}}-header" data-barley-editor="bgimage">#}
+  <div class="product-page-header">
+
+    <section class="banner-landscape split landscape-19">
+      {#<div class="product-page-banner" data-barley="test-{{product.id}}-image2" data-barley-editor="image">#}
+      {# <div class="product-page-banner">
+      <img src="{{ 'images/dark-wood-bg.jpg' | asset_url }}">#}
+      {# if product.slug == 'shampoo' %}
+      <img src="{{ 'images/banner-landscape-39.jpg' | asset_url }}">
+      {% elif product.slug == 'conditioner' %}
+      <img src="{{ 'images/banner-landscape-41.jpg' | asset_url }}">
+      {% elif product.slug == 'hair-care-kit' %}
+      <img src="{{ 'images/banner-landscape-40.jpg' | asset_url }}">
+      {% else %}
+      <img src="{{ 'images/banner-landscape-5.jpg' | asset_url }}">
+      {% endif #}
+      {# </div>#}
+      <div class="content text-invert text-center">
+        <div class="row">
+          {#<div class="col-xs-12 hidden-sm hidden-md hidden-lg" data-barley="product-{{product.id}}-img" data-barley-editor="image"> #}
+          <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+            <br><br>
+            {# product | object_img_tag(css_class='header-img-top-sm') #}
+          </div>
+          </div>
+          <hgroup>
+            {# <h1 class="heading product-page add-lines" data-product-id="{{product.id}}" data-barley='product-{{product.id}}-name' data-barley-editor='simple'>{{ product.name }}</h1>#}
+            {# <p class="regular" data-barley='product-{{product.id}}-description' data-barley-editor='simple'>{{ description }}</p> #}
+            <h1 class="heading product-page add-lines" data-product-id="{{product.id}}">{{ product.name }}</h1>
+            <p class="regular">{{ description }}</p>
+          </hgroup>
+        </div>
+        <div class="hpad">
+          <div class="row" id="slider">
+            {# <div class="col-xs-12 hidden-xs img-product-collection-holder-full" data-barley='product-{{product.id}}-img-lg' data-barley-editor='image'> #}
+            <div class="col-xs-12 img-product-collection-holder-full">
+
+
+              {{ imgCarousel.renderCarousel(product) }}
+
+
+            </div>
+            </div>
+          </div>
+          <ol class="breadcrumb">
+            <li>
+              <a href="/">Home</a>
+            </li>
+            {% if vars.is_shave_page == True %}
+            <li>
+              <a href="/collections/shave">Shave</a>
+            </li>
+            {% else %}
+            {% if product_category | length != 0 and product_category_link | length != 0 %}
+            <li>
+              <a href="{{ product_category_link[0] }}">{{ product_category[0] }}</a>
+            </li>
+            {% endif %}
+            {% endif %}
+            <li class="active">{{ product.name }}</li>
+          </ol>
+          </section>
+
+      </div> <!-- End  product-page-header -->
+      {% endblock %}
+
+      {% block page_content %}
+
+      <section class="pholder">
+        <div class="row hpad">
+          <div class="col-md-6 col-md-push-6 product-meta-container"
+            itemscope itemtype="http://schema.org/Product">
+
+            <meta itemprop="brand" content="Dr. Squatch" />
+            <meta itemprop="name" content="{{ product.name }}" />
+            {% if product.images %}
+              <meta itemprop="image" content="{{ product.images[0].url }}" />
+            {% endif %}
+
+            <span itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+              <meta itemprop="lowPrice" content="{{ min_price / 100 }}" />
+              <meta itemprop="highPrice" content="{{ max_price / 100 }}" />
+              <meta itemprop="priceCurrency" content="USD" />
+              <meta itemprop="offerCount" content="{{ instance.inventory.quantity_on_hand }}" />
+
+              {% if min_price == max_price %}
+                <span class="product-price">{{ min_price | currency }}</span>
+              {% else %}
+                <span class="product-price">{{ min_price | currency }} - {{ max_price | currency }}</span>
+              {% endif %}
+            </span>
+
+            {# Quick logic to check if all of the variants are out of stock so we can use it to hide/show the out of stock button properly #}
+
+            {% set out_of_stock_inventory = [] %}
+            {% set all_inventory = [] %}
+            {% for instance in product.instances %}
+              {% if instance.inventory.out_of_stock_purchases==False and instance.inventory.track_inventory and instance.inventory.quantity_on_hand==0 %}
+                {% do out_of_stock_inventory.append(instance) %}
+              {% endif %}
+              {% do all_inventory.append(instance) %}
+            {% endfor %}
+
+            {% if out_of_stock_inventory==all_inventory or product.instances[0].inventory.quantity_on_hand==0 and product.instances[0].inventory.out_of_stock_purchases==False %}
+              <a><img style="max-height: 40px;" src="{{ 'images/out-of-stock.png' | asset_url }}" /></a>
+            {% else %}
+              <!------------------------>
+              <form  role="form" class="cform one_time_product_submit" id="product-form">
+                <!--one_time_product_submit-->
+                {% if product.id == 138753842 %}
+                  {% for variant in product.variants %}
+                    {% if variant.name %}
+                      <div class="form-group">
+                        <input type="hidden" id="variant_type" value="{{ variant.name }}"/>
+                        <div class="select_arrow">
+                          <div class="select_border">
+                            <select class="cselect" name="variant:{{ variant.name }}" id="variant_val">
+                              {% for instance in product.instances %}
+                                {% if instance.inventory.out_of_stock_purchases==False and instance.inventory.track_inventory and instance.inventory.quantity_on_hand==0 %}
+                                  <option value="{{ instance.variants[0].variant_value.value }}" id="{{ instance.inventory.product_instance_id }}" disabled>
+                                    {{ instance.variants[0].variant_value.value }} - Out of stock
+                                  </option>
+                                {% else %}
+                                  <option value="{{ instance.variants[0].variant_value.value }}" id="{{ instance.inventory.product_instance_id }}">
+                                    {{ instance.variants[0].variant_value.value }}
+                                  </option>
+                                {% endif %}
+                              {% endfor %}
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+
+                <input type="hidden" id="pro_id" name="product_id" value="{{ product.id }}" />
+                <input type="hidden" id="pro_name" name="product_name" value="{{ product.name }}" />
+                <div class="form-group">
+                  <a href="#"  data-toggle="modal" data-target="#cart-slide" onclick="pass_pixel1();" class="ecom-add-to-cart btn hidden-sm hidden-md hidden-lg btn-secondary btn-frame btn-md"  data-ecom-id='{{product.id}}'>Add to cart</a>
+                  {% if vars.show_subscribe_button == True %}
+                    <a href="/subscription" class="btn hidden-sm hidden-md hidden-lg btn-success btn-frame btn-dark btn-md">Subscribe</a>
+                  {% endif %}
+
+                  <a data-toggle="modal" data-target="#cart-slide" href="#" class="ecom-add-to-cart btn hidden-xs btn-secondary btn-frame btn-md"   data-ecom-id='{{product.id}}'><i class="icon footprint"></i> Add to cart</a>
+
+                  {% if vars.show_subscribe_button == True %}
+                    <a href="/subscription" class="btn hidden-xs btn-success btn-frame btn-dark btn-md">Subscribe</a>
+                  {% endif %}
+                  <div class="shopmessage-checkbox" id="addToCartCheckbox" allow_login="true"></div>
+                </div>
+              </form>
+            <!------------------------>
+            {% endif %}
+
+            <div class="yotpo bottomLine"
+              data-product-id="{{ product.id }}"
+              data-url="{{ url }}">
+
+              {% include 'components/reviews/{}.html'.format(product.id) ignore missing %}
+            </div>
+
+            <p class="product-description" data-barley='product-{{product.id}}-description' data-barley-editor='simple'></p>
+            <meta itemprop="description" content="{{ product.description }}" />
+          </div>
+
+          <div class="col-md-6 col-md-pull-6">
+
+            {% if vars.shave_kit_text == True %}
+            <div class="embed-responsive-16by9">
+              <div data-barley='product-{{product.id}}-shave-kit-text-new' data-barley-editor='advanced' class="shave_kit_new_text">
+                <p>Shave money off your grooming bills. In just two years of wet Shaving, <a href="http://guides.drsquatch.com/how-to-wet-shave-ultimate-guide">you'll save around $382</a></p>
+              </div>
+              {% else %}
+              <div class="embed-responsive embed-responsive-16by9">
+                {% endif %}
+
+                {% if vars.show_video == True %}
+                  {% import 'components/video.html' as video %}
+                  {{ video.inline('5b70x8m3hp') }}
+                {% endif %}
+                {% if vars.show_shave_box == True %}
+                <div class="shave_detail_image">
+                  <div class="change_pro_detail_img text-center"  data-barley='product-{{product.id}}-change-pro-detail-img' data-barley-editor='image'><img src="{{ 'images/logo.png' | asset_url }}" /></div>
+                  {% if vars.shave_kit_text == False %}
+                  <h2><a href="/shop/product/shave-kit"  data-barley='product-{{product.id}}-change-pro-detail-title-new' data-barley-editor='link'>Get our shave kit and save 10%</a></h2>
+                  {% endif %}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          </section>
+
+        <div class="diamond-divider"><div class="divider-diamond"></div></div>
+
+        <section class="pholder tab-section">
+          <div class="row hpad">
+            <div class="col-md-12">
+              <div role="tabpanel" class="product-overview">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation" class="active"><a href="#tabpanel-1" aria-controls="home" role="tab" data-toggle="tab">Details</a></li>
+                  {% if vars.change_ingredients_name == True %}
+                  <li role="presentation"><a href="#tabpanel-2" aria-controls="profile" role="tab" data-toggle="tab">Contains</a></li>
+                  {% else %}
+                  {% if vars.show_ingredients == False %}
+                  <li role="presentation"><a href="#tabpanel-2" aria-controls="profile" role="tab" data-toggle="tab">Ingredients</a></li>
+                  {% endif %}
+                  {% endif %}
+                  {% if vars.show_usage == True %}
+                  <li role="presentation"><a href="#tabpanel-3" aria-controls="messages" role="tab" data-toggle="tab">Usage</a></li>
+                  {% endif %}
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane active" id="tabpanel-1">
+                    <p data-barley='product-{{product.id}}-sub-details' data-barley-editor='simple'>Tough just like you, this black soap has a natural pine tar oil blend.  The true pine oil brings the woods to your shower,like bathing in a massive old growth pine forest! The soap has a massaging, exfoliating effect because of the oatmeal and sand; if you’re manly you’ll love this bar.</p>
+
+                    {% if vars.show_details_bottom == True %}
+                    <div class="row">
+                      <div class="col-sm-4 p-details">
+                        <h5 class="heading" data-barley='product-{{product.id}}-sub-details-header1' data-barley-editor='simple'>Scent</h5>
+                        <figure data-barley='product-{{product.id}}-sub-details-img1' data-barley-editor='image' ><img src="{{ 'images/tropic-red.png' | asset_url }}" alt="" class="img-responsive"></figure>
+                        <p data-barley='product-{{product.id}}-sub-details-footer1' data-barley-editor='simple'>Island Tropics w Spice</p>
+                      </div>
+                      {% if vars.hide_exfoliation == False %}
+                      <div class="col-sm-4 p-details">
+                        <h5 class="heading" data-barley='product-{{product.id}}-sub-details-header2' data-barley-editor='simple'>Exfoliation</h5>
+                        <figure data-barley='product-{{product.id}}-sub-details-img2' data-barley-editor='image'><img src="{{ 'images/exfoliation-red.png' | asset_url }}" alt="" class="img-responsive"></figure>
+                        <p data-barley='product-{{product.id}}-sub-details-footer2' data-barley-editor='simple'>None</p>
+                      </div>
+                      {% endif %}
+                      <div class="col-sm-4 p-details">
+                        <h5 class="heading" data-barley='product-{{product.id}}-sub-details-header3' data-barley-editor='simple'>Featuring</h5>
+                        <figure data-barley='product-{{product.id}}-sub-details-img3' data-barley-editor='image'><img src="{{ 'images/shea-red.png' | asset_url }}" alt="" class="img-responsive"></figure>
+                        <p data-barley='product-{{product.id}}-sub-details-footer3' data-barley-editor='simple'>Shea Butter</p>
+                      </div>
+                    </div>
+                    {% endif %}
+                  </div>
+                  <div role="tabpanel" class="tab-pane" id="tabpanel-2">
+                    <div data-barley='product-{{product.id}}-ingredients-section' data-barley-editor='advanced'>
+                      {% if product.id == 2185991005 %}
+                        <p>Pack Includes:</p>
+                        <ul>
+                          <li>Our best-selling Pine Tar ultimate exfoliating bar</li>
+                        	<li>The richly scently Gold Moss bar</li>
+                          <li>The always fresh and crisp, Cedar Citrus bar</li>
+                          <li>A Soap Saver soap dish to extend the life of your soap 2x as long!</li>
+                        </ul>
+                      {% else %}
+                      Enter information about the ingredients here!
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane text-center" id="tabpanel-3">
+                    <div  data-barley='product-{{product.id}}-usage-img' data-barley-editor='advanced'>
+                      {% if vars.is_shave_page == True %}
+                      Enter information about the Usage here!
+                      {% else %}
+                      <div>Getting clean is easy... <br> Just follow our simple, 3-step process:
+                        <img src="{{ 'images/usage-soap3.png' | asset_url }}" class="usage-soap" />
+                        {% endif %}
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            </section>
+
+          {% include 'components/sudisfaction-guarantee.html' %}
+
+          {% if vars.show_howtoshave == True %}
+          {% include "components/how-to-shave.html" %}
+          {% endif %}
+
+          {% if vars.show_haircare_process == True %}
+          {% include "components/shampoo-hair-care.html" %}
+          {% endif %}
+
+          {% if vars.show_process == True %}
+          {% include "components/soapmaking-process.html" %}
+          {% endif %}
+
+          <!-- Yotpo Review -->
+          <section class="pholder bg-alt new_review_section">
+            <div class="pholder-header">
+              <div id="product-reviews-list-row" class="pholder-header">
+                <h2 class="heading metropolis-semi-bold">REVIEWS</h2>
+                <div class="yotpo yotpo-main-widget"
+                     data-product-id="{{ product.id }}"
+                     data-name="{{ product.name }}"
+                     data-url="{{ url }}"
+                     data-image-url="The product image url. Url escaped"
+                     data-description="{{ description }}">
+                </div>
+              </div>
+            </div>
+            <style>
+              @media only screen and (max-width: 768px) {
+                #product-reviews-list-row > div > div > div.write-question-review-buttons-container {
+                    margin-top: 40px;
+                }
+              }
+            </style>
+          </section>
+          <!-- end -->
+
+          <!--
+{% if reviews_data %}
+<section class="pholder bg-alt new_review_section">
+
+<div class="pholder-header">
+
+<!---------- Lucas's Solution ---------- ->
+<div id="product-reviews-list-row" class="pholder-header">
+
+<h1 class="heading hlight">REVIEWS</h1>
+
+{% if reviews_data and reviews_data.reviews > 0 %}
+<div id='reviews-root' class="reviews_heading"><span>Reviews ({{ reviews_data['num_reviews'] }})</span></div>
+
+{% for review in reviews_data.reviews %}
+<div class="new_review_box">
+<h2>{{ review.meta_string }} <div class="product-review-rating product-rating" data-score="{{ review.rating }}"></div></h2>
+<h3> {{ review.title }}</h3>
+<p class="text-left review_text">{{ review.body }}</p>
+</div>
+{% endfor %}
+
+<div id="reviews_box"></div>
+
+<!-- Underscore template to contain loaded reviews - ->
+<script type='text/template' id='review_box'>
+
+<%
+_.each(reviews,function(review){
+  %>
+<div class="new_review_box">
+<h2><%= review.meta_string %> <div class="product-review-rating product-rating" data-score="<%- review.rating %>"></div></h2>
+<h3> <%= review.title %></h3>
+<p class="text-left review_text"><%= review.body %></p>
+</div>
+<%
+});
+%>
+
+</script>
+
+{% if reviews_data.addl_reviews %}
+<div class="col-sm-12">
+<span id="reviews-show-more" class="btn btn-xs">Load More</span>
+</div>
+{% endif %}
+
+</div>
+<!-- end Lucas's Solution - ->
+
+{% else %}
+<h5 class='heading'>Be the first to review this product!</h5>
+{% endif %}
+</div>
+
+
+<div id="write-a-review" class="">
+<div >
+<h3 >{{ reviews_data.copy_settings.review_form_header }}</h3>
+
+{% set messages = get_flashed_messages(with_categories=True, category_filter=['review_success']) %}
+{% if messages %}
+{% set message = messages[0][1] %}
+<div class="review_msg">
+{{ reviews_data.copy_settings.review_form_success }} {{ message|safe }}
+</div>
+{% elif reviews_data.write_disabled %}
+<div class="review_msg_login">
+{% if reviews_data.disabled_reason == 'login' %}
+You must <a href="/customer/login">login</a> before writing a review.
+{% elif reviews_data.disabled_reason == 'duplicate' %}
+You have already submitted a review for this product.
+{% else %}
+Writing a review has been temporarily disabled.
+{% endif %}
+</div>
+{% else %}
+<form action="/shop/product_review/{{ product.id }}" method="POST" class="form-horizontal">
+<div class="write-review-rating-row">
+<span class="write-review-rating-label">
+How would you rate this product?
+</span>
+<span id="write-review-rating"></span>
+</div>
+
+<div class="form-group">
+<div class="col-xs-12">
+<input type="text" class="form-control input-lg write-review-title" name="review_title" id="review-title" placeholder="{{ reviews_data.copy_settings.review_form_title }}">
+</div>
+</div>
+
+<div class="form-group">
+<div class="col-xs-12">
+<textarea rows="5" class="form-control write-review-body" name="review_body" placeholder="{{ reviews_data.copy_settings.review_form_body }}"></textarea>
+</div>
+</div>
+
+<div class="form-group">
+<div class="col-xs-12">
+<button type="submit" class="btn btn-success">Submit</button>
+</div>
+</div>
+</form>
+{% endif %}
+</div>
+</div>
+
+</section>
+{% endif %}
+-->
+
+          {% if vars.show_haircare_process == True %}
+          {% include "components/dr-squatch-vs-competition.html" %}
+          {% endif %}
+
+          {% endblock %}
+
+          {% block page_javascript %}
+          <script type='text/javascript'>
+
+            jQuerySafe('#write-review-rating').raty({
+              scoreName: 'review_rating',
+              starType: 'i',
+              hints: null,
+              score: 3
+            });
+
+
+            var reviewsContainer = jQuerySafe('#reviews_box');
+            var reviewTemplate = jQuerySafe('#review_box');
+            var showMoreButton = jQuerySafe('#reviews-show-more');
+            var pageNumber = 1;
+            var productId = {{ product.id }};
+            var reviews = [];
+
+            showMoreButton.on('click', function() {
+
+              showMoreButton.html('loading more reviews...');
+
+              jQuerySafe.ajax({
+                url: '/shop/product_reviews/' + productId,
+                dataType: 'json',
+                contentType: 'application/json',
+                method: 'POST',
+                data: JSON.stringify({cursor: pageNumber }),
+                success: function(res) {
+
+                  var totalReviews = res.reviews;
+
+                  for (var i = 0; i < totalReviews.length; i++) {
+                    reviews.push(totalReviews[i]);
+                  }
+
+                  //console.info(reviews);
+
+                  var template = reviewTemplate.html();
+                  reviewsContainer.html(_.template(template,{reviews:reviews}));
+
+                  jQuerySafe('.product-rating').raty({
+                    score: function(){
+                      return $(this).attr('data-score');
+                    },
+                    readOnly: true,
+                    starType: 'i',
+                    hints: null
+                  });
+
+                  showMoreButton.html('load more');
+                  pageNumber++;
+                },
+                error: function(res) {
+                  console.error(res);
+                  showMoreButton.html('Something went wrong. Try again, please.');
+                }
+              });
+
+            });
+
+            window.criteo_q.push(
+              { event: "setAccount", account: 22076}, // You should never update this line
+              { event: "setEmail", email: "" }, // Can be an empty string
+              { event: "setSiteType", type: deviceType},
+              { event: "viewItem", item: "{{product.id}}" }
+            );
+          </script>
+
+          <script>
+            $.get('https://drsquatch.herokuapp.com/review/{{ product.id }}');
+          </script>
+
+          <script src="{{ 'js/ma5slider.combined.js' | asset_url }}"></script>
+          <!--<script src="{{ 'js/jquery-ui.min.js' | asset_url }}"></script>
+<script>window.jQuery3 = jQuery;  console.log(jQuery); </script>
+<script src="{{ 'js/jquery-ui.min.js' | asset_url }}"></script>
+<script src="{{ 'js/jquery.ui.touch-punch.min.js' | asset_url }}"></script>
+<link href="{{ 'css/plugins/ma5slider.min.css' | asset_url }}" rel="stylesheet" type="text/css">
+<script src="{{ 'js/ma5slider.min.js' | asset_url }}"></script>
+-->
+          <link href="{{ 'css/plugins/ma5slider.min.css' | asset_url }}" rel="stylesheet" type="text/css">
+          <script>
+            jQuerySafe(window).on('load', function () {
+              jQuery3('.ma5slider').ma5slider();
+            });
+          </script>
+	<script>
+      /* THIS IS ONLY TEMPORARY :: CAN BE REMOVED ONCE KARL PROMOTION IS OVER */
+      var prodId = {{product.id}}
+      if (prodId == 2185991005) {
+        // This takes time to load. hide and Show loading styles
+
+        // manually set Karl's pack description
+        document.getElementsByClassName("product-description")[0].innerHTML = `
+          <p style="font-weight: 800;text-decoration:underline">Squatch x Clement Valles sampler pack.</p>
+          <p>Pen and paper, shoes and socks, gin and tonic&mdash;somethings just go good together. For a limited time only, enjoy Karl's special collaboration and
+                get 25% off a Dr. Squatch sampler pack, plus FREE SHIPPING!</p>
+          <p>Pack Includes:</p>
+          <ul>
+            <li>Our best-selling Pine Tar ultimate exfoliating bar</li>
+          	<li>The richly scently Gold Moss bar</li>
+            <li>The always fresh and crisp, Cedar Citrus bar</li>
+            <li>A Soap Saver soap dish to extend the life of your soap 2x as long!</li>
+          </ul>
+          `;
+        // manually override product slider with all pics and new styling
+         document.getElementById("slider").innerHTML = `
+         <div class="col-xs-12 img-product-collection-holder-full">
+           <style>
+              /* Style Overrides */
+                .ma5slider img { display: none; max-width: 100%; width: auto !important; } /* Styling for before ma5 slider renders */
+                .ma5slider a { transition: none; }
+                .ma5slider .slide img, .ma5slider>img.slide { max-width: 100%; width: auto !important; }
+                @media(max-width: 480px) {
+                  .ma5slider img {
+                    max-height: 120px;
+                  }
+                }
+                @media(max-width: 370px) {
+                  .ma5slider img {
+                    max-height: 100px;
+                  }
+                }
+            	.new_review_section {
+            			display: none;
+                    }
+                    .yotpo {
+                      display: none;
+                    }
+                  		.hpad {
+            				display: block;
+              }
+            </style>
+          <div class="ma5slider outside-navs outside-dots anim-horizontal loop-mode dir-next horizontal-navs horizontal-dots center-dots bottom-dots anim-horizontal">
+            <div class="slides">
+              <!-- children = slides -->
+              <a href="#slide-1"><img src="https://s3.amazonaws.com/cratejoy_vendor_images/6d379797daba4dd083c01d7a1e9e0187.png" alt=""></a>
+              <a href="#slide-2"><img src="https://s3.amazonaws.com/cratejoy_vendor_images/8df125acd37d43c6a85dc2342f516beb.png" alt=""></a>
+              <a href="#slide-3"><img src="https://s3.amazonaws.com/cratejoy_vendor_images/7402e00bfd9a479a9c4b4519bd7abbd3.png" alt=""></a>
+              <a href="#slide-4"><img src="https://s3.amazonaws.com/cratejoy_vendor_images/86f52254ed9049b6ad22602cde6e794c.png" alt=""></a>
+              <a href="#slide-5"><img src="https://s3.amazonaws.com/cratejoy_vendor_images/897dbb934f4f42f990740ccb6c219c9f.png" alt=""></a>
+            </div>
+          </div>
+        </div>
+        <style>
+          #product-form > div > a.btn.hidden-sm.hidden-md.hidden-lg.btn-success.btn-frame.btn-dark.btn-md,
+          #product-form > div > a.btn.hidden-xs.btn-success.btn-frame.btn-dark.btn-md {
+           display: none;
+          }
+        </style>
+        `;
+        // change video to custom img.
+        document.getElementsByClassName("col-md-6 col-md-pull-6")[0].innerHTML = `<img src="https://s3.amazonaws.com/cratejoy_vendor_images/b968332063564cc68a7894882e6df9b5.jpeg" alt="ike team" />`
+      }
+      /* END CUSTOM KARL PROMOTION SCRIPT */
+     </script>
+          <script>
+            if(typeof _shopmsg !== 'undefined') {
+              _shopmsg('trigger', 'ViewProduct', {
+                "title" : "{{product.name}}" ,
+                "price" : "{{min_price / 100}}",
+                "product_id" : "{{product.id}}",
+                {% if product.images is defined and product.images[0] is defined %}
+                  "image" : "https:{{product.images[0].url}}",
+                {% endif %}
+                "product_url" : "https://drsquatch.com/shop/product/{{product.id}}",
+                "tags" : [{% for tag in product.taxonomy %}"{{ tag.name }}"{% if not loop.last %},{% endif %}{% endfor %}],
+                "vendor" : "Dr. Squatch"
+              });
+            }
+          </script>
+          {% endblock %}
+          {% endif %}

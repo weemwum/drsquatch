@@ -1,0 +1,180 @@
+{% from 'macros.html' import render_sorted_products %}
+{% extends "base.html" %}
+
+{% if customer.subscriptions %}
+{% set subscription = customer.subscriptions[0] %}
+{% endif %}
+
+{% set scents = store.shop_products(category='collection-scent') %}
+{% set addons = store.shop_products(category='collection-subscription-addons') %}
+
+{% macro slider_controls() -%}
+  <div class="js_prev" aria-hidden="true">
+    <i class="fa fa-angle-left fa-3x fa-fw"></i>
+  </div>
+  <div class="js_next" aria-hidden="true">
+    <i class="fa fa-angle-right fa-3x fa-fw"></i>
+  </div>
+{%- endmacro  %}
+
+{% block endofhead %}
+  <link rel="stylesheet" href="{{ 'css/customer.css' | asset_url }}">
+{% endblock endofhead %}
+
+{% block header_content %}{% endblock %}
+
+{% block page_content %}
+{% import 'scripts/survicate.html' as survicate %}
+{{ survicate.script(customer.id) }}
+
+<div class="inner-container">
+  <div class="section-header">
+    <h1>
+      {% if customer.first_name %}
+        {{ customer.first_name }}'s account
+      {% else %}
+        Your account
+      {% endif %}
+    </h1>
+  </div>
+
+  <div class="account-status text-uppercase">
+    {% if subscription %}
+      <p>Account Status: <span class="-color-green">{{ subscription.status_pretty_string }}</span></p>
+    {% endif %}
+    <p>View <a href="#" class="-color-orange">Next Shipment</a></p>
+  </div>
+
+  <div class="row">
+    <!-- Left column -->
+    <button data-toggle="collapse" data-target="#subscription-info" class="mobile-collapse-toggle">
+      My Soapscription <i class="fa fa-chevron-down -color-green"></i>
+    </button>
+    <div class="col-lg-8 collapse in" id="subscription-info" data-mobile-collapse>
+
+      <!-- Basic info (some rows are hidden by JS, see below) -->
+      {{ customer_helper.show_subscription_info(vertical=True, btn_class="btn-default", heading="My Soapscription") }}
+
+      <!-- Chosen scents -->
+      {% if subscription %}
+        <div class="panel panel-cratejoy">
+          <div class="panel-heading">
+            <h3 class="panel-title">My Scents/Soaps</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row -flex">
+              {% set selected_skus = subscription.custom_data.survey.values() %}
+              {% for scent in scents %}
+                {% if scent.instances[0].sku in selected_skus %}
+                  <div class="col-xs-12 col-sm-6 col-md-4 scent-item">
+                    {{ scent | object_img_tag() }}
+                    <h4>{{ scent.name }}</h4>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          <div class="panel-footer">
+            <a href="/customer/edit_scents?id={{ subscription.id }}" class="btn btn-default">Edit</a>
+          </div>
+        </div>
+      {% endif %}
+
+      <!-- Addons -->
+      <div class="panel panel-addons panel-cratejoy -alt">
+        <div class="panel-heading">
+          <h3 class="panel-title">Order More Squatch Goods with Free Shipping</h3>
+        </div>
+
+        <div class="panel-body">
+          <p class="-color-green text-uppercase" style="margin-bottom: 20px;">
+            <strong>Items will be sent immediately</strong>
+          </p>
+          <div class="addon-slider js_slider">
+            {{ slider_controls() }}
+            <div class="frame js_frame">
+              <div class="slides js_slides">
+                {{ render_sorted_products(addons, "customer/addon_items.html") }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column -->
+    <button data-toggle="collapse" data-target="#account-info" class="mobile-collapse-toggle">
+      Account Details <i class="fa fa-chevron-down -color-green"></i>
+    </button>
+    <div class="col-lg-4 collapse in" id="account-info" data-mobile-collapse>
+
+      <!-- Additional subscriptions -->
+      <div class="panel panel-cratejoy">
+        <div class="panel-heading">
+          <h3 class="panel-title">Additional Subscriptions</h3>
+        </div>
+        <div class="panel-body">
+          <p>
+            <a href="https://drsquatch.com/subscription" class="btn btn-md btn-success btn-block">Start a new Soapscription!</a>
+          </p>
+          <!-- COMMENTED OUT FOR NOW
+          <p>
+            <a href="https://www.drsquatch.com/subscription-sc-only" class="btn btn-md btn-primary btn-block" >Hair Care Subscription!</a>
+          </p> -->
+        </div>
+      </div>
+
+      <!-- Account info -->
+      {{ customer_helper.show_basic_account_info(btn_class="btn-default", vertical=True, heading="Account Details") }}
+      {{ customer_helper.show_shipping_address_info(btn_class="btn-default", heading="Shipping Information") }}
+      {{ customer_helper.show_payment_info(btn_class="btn-default", vertical=True, heading="Billing Information") }}
+
+      <!-- Referrals -->
+      <p>
+        <a href="/ambassador">
+          <img src="{{ 'images/ambassador.jpg' | asset_url }}" alt="Become a Dr. Squatch Ambassador" class="img-responsive">
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block page_javascript %}
+<script>
+  // Without this all Bootstrap methods on jQuery break *shrug*
+  // It should now be safe to use $ for jQuery
+  jQuery.noConflict(true)
+
+  (function($){
+    // Toggle accordion functionality according to screen width
+    // Always expand on desktop, always collapse on mobile
+    var mobileMQ = window.matchMedia('(max-width: 991px)')
+    var $accordions = $('[data-mobile-collapse]')
+    function toggleAccordions() {
+      $accordions.collapse(mobileMQ.matches ? 'hide' : 'show')
+    }
+    mobileMQ.addListener(toggleAccordions) // Execute when the viewport changes size
+    toggleAccordions() // Execute on load
+
+    // Load and initialize Lory
+    var loryUrl = 'https://cdnjs.cloudflare.com/ajax/libs/lory.js/2.5.3/jquery.lory.min.js'
+    $.getScript(loryUrl).done(function() {
+      $('.js_slider').lory()
+    })
+
+    // Reset sliders whenever an accordion is expanded
+    // For some reason sliders become unresponsive when collapsed and need a reset
+    $accordions.on('shown.bs.collapse', function() {
+      var $slider = $(this).find('.js_slider')
+      if ($slider.length) $slider.data().lory.reset()
+    })
+  }(jQuery))
+
+  (function($){
+    // Move panel footers to the top
+    $('.panel-cratejoy').addClass('-footer-top')
+  }(jQuery))
+</script>
+{% endblock page_javascript %}

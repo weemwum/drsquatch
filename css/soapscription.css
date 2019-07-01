@@ -1,0 +1,694 @@
+/* Step tabs */
+
+.step-tabs {
+    border-color: #333;
+    border-style: solid;
+    border-width: 2px 0;
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.step-tabs > li {
+    border-color: #fff;
+    border-style: solid;
+    border-width: 1px 1px 1px 0;
+    margin: 0;
+    padding: 0;
+    flex: 1 0 auto;
+}
+.step-tabs > li:last-child {
+    border-right: 0;
+}
+.step-tabs a {
+    background-color: #999;
+    color: #fff;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding: 12px 10px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+.step-tabs li.active > a,
+.step-tabs li > a:hover,
+.step-tabs li > a:focus {
+    background-color: #91a054 !important;
+}
+@media (max-width: 1340px) {
+    /* Only show the step number in mobile */
+    .step-tabs a > span {
+        display: none;
+    }
+}
+
+/* Banner landscape  */
+
+.banner-landscape.-auto-height {
+    min-height: auto !important;
+}
+@media (min-width: 768px) {
+    .banner-landscape.-auto-height .content {
+        padding: 60px;
+    }
+}
+
+/* Section wrapper */
+
+.section-wrapper {
+    padding: 35px 0 35px;
+}
+.section-wrapper > .inner {
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 0 30px;
+}
+.section-wrapper > .inner.-narrow {
+    max-width: 1100px;
+}
+@media (min-width: 992px) {
+    .section-wrapper {
+        padding: 80px 0 65px;
+    }
+    .section-wrapper.-slim {
+        padding: 35px 0 35px;
+    }
+}
+
+/* Buttons */
+
+.btn-product-select,
+.btn-term-select {
+    background-color: #dc7b1f;
+    opacity: 0.5;
+}
+.btn-product-select.btn-subscription-selected,
+.btn-term-select.btn-subscription-selected {
+    opacity: 1;
+}
+
+/* Option list wrapper */
+
+.option-list-wrapper {
+    align-items: flex-start;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 30rem;
+}
+.option-list-wrapper > .fa {
+    background-color: #91a054;
+    color: #fff;
+    flex-shrink: 0;
+    font-size: 2rem;
+    height: 5rem;
+    line-height: 5rem;
+    text-align: center;
+    width: 5rem;
+}
+.option-list-wrapper.-open > .fa:before {
+    transform: rotate(90deg);
+    display: inline-block;
+}
+.option-list-wrapper > .option-list {
+    flex-basis: 100%;
+    max-height: calc(5rem + 2px); /* Include bottom and top border in height */
+}
+.option-list-wrapper.-open > .option-list {
+    max-height: none;
+}
+.option-list-wrapper:not(.-open) .option-item {
+    pointer-events: none;
+}
+.option-list-wrapper:not(.-open) .option-item.-selected {
+    order: -1;
+}
+.option-list-wrapper.-open .option-item {
+    pointer-events: auto;
+}
+
+/* Option list */
+
+.option-list {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-style: solid;
+    border-color: #ccc;
+    border-width: 1px 1px 0 1px;
+}
+
+/* Option item */
+
+.option-item {
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-shrink: 0;
+    font-weight: bold;
+    height: 5rem;
+    padding: 0 1.5rem;
+}
+.option-item > img {
+    height: 4rem;
+    margin-right: 1rem;
+    object-fit: contain;
+    width: 5rem;
+}
+
+/* Product item */
+
+.product-item {
+    padding-left: 35px;
+    padding-right: 35px;
+    flex: 1 0 0; /* Auto same-width */
+    min-width: 100%; /* Start full-width, override in media queries */
+    text-align: center;
+}
+.product-item > .pretitle {
+    font-family: SignPainter, cursive, sans-serif;
+    font-size: 3rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.product-item > .image {
+    max-height: 165px;
+    width: auto;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+.product-item > .title  {
+    font-weight: bold;
+    margin: 0 0 20px;
+    position: relative;
+    text-transform: uppercase;
+}
+.product-item > .title > span  {
+    display: block;
+    font-family: SignPainter, cursive, sans-serif;
+    font-weight: normal;
+    text-transform: none;
+}
+.product-item > .title::after {
+    background-color: currentColor;
+    content: '';
+    display: block;
+    margin: 10px auto 0;
+    height: 1px;
+    width: 50px;
+}
+.product-item > .subtitle {
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.product-item > .subtitle > span {
+    display: block;
+    font-family: BebasNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+.product-item > .actions {
+    margin-bottom: 20px;
+}
+.product-item > .description {
+    line-height: 1.5;
+    margin: 0 auto 15px;
+    max-width: 165px;
+}
+.product-item > .callout {
+    color: #91a054;
+    font-family: BebasNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+.product-item > .learnmore {
+    color: #dc7b1f;
+    display: inline-block;
+    font-weight: bold;
+    margin-top: -10px;
+    padding: 15px; /* Increase clickable area */
+    text-transform: uppercase;
+}
+@media (max-width: 991px) {
+    /* Condensed controls in mobile */
+    .product-item.-mobile-condensed > .image,
+    .product-item.-mobile-condensed > h3,
+    .product-item.-mobile-condensed > .description {
+        display: none;
+    }
+    .product-item.-mobile-condensed {
+        margin-bottom: 20px;
+    }
+}
+@media (min-width: 768px) {
+    .product-item {
+        margin-bottom: 20px;
+        min-width: 50%;
+    }
+    .product-item.-separated {
+        position: relative;
+    }
+    .product-item.-separated:not(:last-child)::after {
+        /* Border effect */
+        background-color: #ccc;
+        content: '';
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0%;
+        width: 1px;
+    }
+    .product-item > .pretitle {
+        height: 1em;
+    }
+}
+@media (min-width: 992px) {
+    .product-item {
+        margin-bottom: 30px;
+        min-width: 33.33%;
+    }
+}
+
+/* Product wrapper
+   We're using Lory.js to create sliders when the viewport is 768px or smaller */
+.product-wrapper {
+    margin-left: -30px;
+    margin-right: -30px;
+    position: relative;
+}
+.product-wrapper .js_frame {
+    overflow: hidden;
+    position: relative;
+}
+.product-wrapper .js_slides {
+    display: flex;
+}
+.product-wrapper > .js_prev,
+.product-wrapper > .js_next {
+    color: #aaa;
+    cursor: pointer;
+    padding: 1rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+.product-wrapper > .js_prev.disabled,
+.product-wrapper > .js_next.disabled {
+    opacity: 0.3;
+}
+.product-wrapper > .js_prev {
+    left: 0;
+}
+.product-wrapper > .js_next {
+    right: 0;
+}
+.product-wrapper .js_dots {
+    display: block;
+    padding: 0;
+    list-style-type: none;
+    margin-bottom: 30px;
+    text-align: center;
+}
+.product-wrapper .js_dots > li {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #888;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    margin: 0 2px;
+    cursor: pointer;
+    background-clip: padding-box;
+}
+.product-wrapper .js_dots > li.active {
+    background-color: transparent;
+    border-color: #888;
+}
+@media (min-width: 768px) {
+    .product-wrapper .js_dots,
+    .product-wrapper .js_next,
+    .product-wrapper .js_prev {
+        display: none;
+    }
+}
+
+/* Non slider styles */
+@media (min-width: 768px) {
+    .product-wrapper .js_slides {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* Quantity list */
+@media (max-width: 991px) {
+    .quantity-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .quantity-list > * {
+        flex: 1 0 33%;
+    }
+}
+
+/* Quantity control */
+
+.quantity-control {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.quantity-control > button {
+    font-size: inherit;
+    line-height: 1;
+    padding: 8px 12px;
+}
+.quantity-control > span {
+    border: 1px solid currentColor;
+    display: inline-block;
+    margin: 0 1px;
+    width: 50px;
+    font-weight: bold;
+    padding: 8px 0;
+}
+
+/* Quantity item */
+
+.quantity-item {
+    margin-bottom: 15px;
+    opacity: 0.4;
+}
+.quantity-item > .image {
+    display: none;
+}
+.quantity-item > .qty {
+    display: inline-block;
+    font-family: BebasNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 25px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.quantity-item > .remove {
+    background: none;
+    color: maroon;
+    font-size: 22px;
+    margin-left: 10px;
+    padding: 0;
+    vertical-align: middle;
+    visibility: hidden;
+}
+.quantity-item.-nonzero {
+    opacity: 1;
+}
+.quantity-item.-nonzero > .qty {
+    color: #91a054;
+}
+.quantity-item.-nonzero > .remove {
+    visibility: visible;
+}
+@media (max-width: 991px) {
+    .quantity-item {
+        opacity: 1;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 3rem;
+    }
+    .quantity-item > .image {
+        display: block;
+        margin-bottom: 1rem;
+    }
+    .quantity-item > .image > img {
+        max-height: 5rem;
+    }
+    .quantity-item > .title {
+        order: 1;
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+        position: relative;
+    }
+    .quantity-item > .title:after {
+        content: "";
+        display: block;
+        width: 30%;
+        background-color: currentColor;
+        height: 1px;
+        margin: 0.75rem auto;
+    }
+    .quantity-item > .qty {
+        order: 2;
+        margin: 0;
+    }
+    .quantity-item > .remove {
+        order: 3;
+        display: none;
+    }
+
+    .quantity-item.-nonzero > .qty:before {
+        content: 'x';
+        transform: scaleY(0.5);
+        display: inline-block;
+        transform-origin: center 75%;
+    }
+    .quantity-item.-nonzero > .remove {
+        display: block;
+    }
+}
+
+/* Sidebar layout */
+
+@media (max-width: 991px) {
+    .sidebar-layout > .sidebar {
+        border-top: 1px solid #ccc;
+        padding-top: 30px;
+    }
+}
+@media (min-width: 992px) {
+    .sidebar-layout {
+        display: flex;
+    }
+    .sidebar-layout > .main {
+        flex-grow: 1;
+    }
+    .sidebar-layout > .sidebar {
+        border-left: 3px solid #ccc;
+        flex-shrink: 0;
+        margin-left: 30px;
+        padding-left: 30px;
+        width: 30%;
+    }
+}
+
+/* Sidebar legend */
+
+.sidebar-legend {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+@media (min-width: 992px) {
+    .sidebar-legend {
+        border-bottom: 3px solid #ccc;
+    }
+}
+
+/* Squatch Grand Total (already defined in raindrop.css) */
+
+.squatch-grand-total.-dark {
+    background-color: #442e05;
+    color: #fff;
+}
+
+/* Product Modal */
+
+.product-modal {
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    transition-duration: 0.4s;
+    transition-property: opacity, visibility;
+    transition-timing-function: ease, step-end;
+}
+.product-modal.-is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transition-timing-function: ease, step-start;
+    visibility: visible;
+}
+.product-modal.-is-loaded .loading-placeholder {
+    display: none;
+}
+@media (max-width: 767px) {
+    /* Display as inline collapsible */
+    .product-modal {
+        height: 0;
+        overflow: hidden;
+    }
+    .product-modal.-is-visible {
+        height: auto;
+        overflow: visible;
+    }
+}
+@media (min-width: 768px) {
+    /* Display as a regular modal */
+    .product-modal {
+        background-color: rgba(0,0,0,0.85);
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 1000;
+    }
+}
+
+/* Product Modal Content */
+
+.product-modal-content {
+    background-color: #31401a;
+    color: #fff;
+    margin: 15px -35px; /* Expand to the edges */
+    position: relative;
+    text-align: center;
+}
+.product-modal-content > [data-close] {
+    background-color: #f0eeeb;
+    display: block;
+    padding: 0.5rem;
+    width: 100%;
+}
+.product-modal-content > [data-close]:before {
+    color: #31401a;
+    content: "\f0d8"; /* fa-caret-up */
+    font-family: FontAwesome;
+}
+.product-modal-content > header {
+    padding: 4rem 20%;
+}
+.product-modal-content > header img {
+    max-height: 18rem;
+    max-width: 18rem;
+}
+.product-modal-content .fragment {
+    border-top: 1px solid rgba(255,255,255,0.25);
+    padding: 3rem 10%;
+}
+.product-modal-content h5 {
+    color: #91a054;
+    font-size: inherit;
+}
+@media (min-width: 768px) {
+    /* Display as regular modal */
+    .product-modal-content {
+        width: 45rem;
+        margin: 30px auto;
+        max-width: 90%;
+    }
+    .product-modal-content > [data-close] {
+        background-color: transparent;
+        padding: 1rem 1.5rem;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
+    .product-modal-content > [data-close]:before {
+        color: inherit;
+        content: "\f057"; /* fa-times-circle */
+    }
+}
+
+/* Product Modal Hacks */
+/* Hacks to style the HTML that comes from shop/product.html */
+.product-modal-content .p-details img {
+    filter: brightness(0) invert(1); /* Force white images */
+    margin: 2rem auto;
+}
+/* Always force 3 columns */
+.product-modal-content .p-details {
+    width: 33.33%;
+    float: left;
+}
+
+/* Star gauge */
+
+.star-gauge {
+    display: inline-block;
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+}
+.star-gauge .fa-star,
+.star-gauge .fa-star-half-o {
+    color: #dc7b1f;
+}
+
+/* Sticky top */
+
+@media (min-width: 992px) {
+    ._sticky-top {
+        position: sticky;
+        top: 90px; /* Height of the main nav and then some */
+    }
+}
+
+/* Font helpers */
+
+._font-family-cursive {
+    font-family: SignPainter, cursive, sans-serif;
+    font-size: 32px;
+    line-height: 1;
+}
+._color-orange {
+    color: #dc7b1f !important;
+}
+._color-green {
+    color: #91a054;
+}
+._text-transform-none {
+    text-transform: none !important;
+}
+
+/* Layout helpers */
+
+._mb-0 {
+    margin-bottom: 0 !important;
+}
+._mt-0 {
+    margin-top: 0 !important;
+}
+._ml-0 {
+    margin-left: 0 !important;
+}
+._mr-0 {
+    margin-right: 0 !important;
+}
+._mb-10 {
+    margin-bottom: 10px !important;
+}
+._mb-20 {
+    margin-bottom: 20px !important;
+}
+._mb-30 {
+    margin-bottom: 30px !important;
+}
+._mb-40 {
+    margin-bottom: 40px !important;
+}
+._mt-10 {
+    margin-top: 10px !important;
+}
+._mt-20 {
+    margin-top: 20px !important;
+}
+
+/* Some scripts are used as Backbone templates,
+   make sure they are always hidden even if they have classes applied */
+[type="text/template"] {
+    display: none !important;
+}

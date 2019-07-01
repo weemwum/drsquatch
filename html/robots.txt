@@ -1,0 +1,10 @@
+#
+# robots.txt
+#
+user-agent: *
+disallow: /customer/
+disallow: /checkout/
+disallow: /*preview=*
+disallow: /*edit=*
+allow: /
+sitemap: http://drsquatch.com/sitemap.xml
